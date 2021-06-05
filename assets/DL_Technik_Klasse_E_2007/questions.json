@@ -1211,6 +1211,7 @@
         "chapter": [
           {
             "name": "Allgemeine mathematische Grundkenntnisse",
+            "icon": "functions",
             "@id": "1",
             "question": [
               {
@@ -1269,6 +1270,7 @@
           },
           {
             "name": "Größen und Einheiten",
+            "icon": "square_foot",
             "@id": "2",
             "question": [
               {
@@ -1385,6 +1387,7 @@
         "chapter": [
           {
             "name": "Leiter, Halbleiter und Isolator",
+            "icon": "developer_board",
             "@id": "1",
             "question": [
               {
@@ -1456,6 +1459,7 @@
           },
           {
             "name": "Strom- und Spannungsquellen",
+            "icon" : "power",
             "@id": "2",
             "question": [
               {
@@ -1528,6 +1532,7 @@
           {
             "name": "Elektrisches Feld",
             "@id": "3",
+            "icon": "bolt_outlined",
             "question": [
               {
                 "@id": "TB301",
@@ -1573,6 +1578,7 @@
           {
             "name": "Magnetisches Feld",
             "@id": "4",
+            "icon": "explore",
             "question": [
               {
                 "@id": "TB401",
@@ -1644,6 +1650,7 @@
           {
             "name": "Elektromagnetisches Feld",
             "@id": "5",
+            "icon": "settings_input_antenna",
             "question": [
               {
                 "@id": "TB501",
@@ -1715,6 +1722,7 @@
           {
             "name": "Sinusförmige Signale",
             "@id": "6",
+            "icon" : "leak_add",
             "question": [
               {
                 "@id": "TB601",
@@ -1890,6 +1898,7 @@
           {
             "name": "Nichtsinusförmige Signale",
             "@id": "7",
+            "icon" : "leak_remove",
             "question": [
               {
                 "@id": "TB701",
@@ -1922,6 +1931,7 @@
           {
             "name": "Modulierte Signale",
             "@id": "8",
+            "icon" : "radio",
             "question": [
               {
                 "@id": "TB801",
@@ -2006,6 +2016,7 @@
           {
             "name": "Ohmsches Gesetz, Leistung und Energie",
             "@id": "9",
+            "icon" : "battery_charging_full",
             "question": [
               {
                 "@id": "TB901",
@@ -4653,7 +4664,7 @@
             ]
           },
           {
-            "name": "Antennenmerkmale ´",
+            "name": "Antennenmerkmale ",
             "@id": "2",
             "question": [
               {
