@@ -19,7 +19,7 @@ void main() {
         brightness: Brightness.dark,
         cardColor: main_col,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       title: 'Afutrainer',
       home: Afutrainer(),
     ),

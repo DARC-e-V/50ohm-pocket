@@ -23,25 +23,20 @@ class Chaptermenu{
     }
     this.results["chapternames"] = chapternames;
   }
-// Sorry btw will fix that soon :D
 
   subchapter_info(){
     var chaptername = data["chapter"]["chapter"];
     var rootsubchapterlist = [];
-    var subsubchapterlist = [];
     var subchapterlist = [];
     for(var i in chaptername){
         for(var subchapter in i["chapter"]){
           var name = subchapter["name"];
           var icon = subchapter["icon"];
-          subchapterlist.add(name);
-          subchapterlist.add(icon);
-          subsubchapterlist.add(subchapterlist);
-          subchapterlist = [];
+          subchapterlist.add([name, icon]);
           //print(rootsubchapterlist);
         }
-        rootsubchapterlist.add(subsubchapterlist);
-        subsubchapterlist = [];
+        rootsubchapterlist.add(subchapterlist);
+        subchapterlist = [];
         //print(rootsubchapterlist);
     }
     this.results["chapterinfo"] = rootsubchapterlist;
@@ -49,6 +44,7 @@ class Chaptermenu{
   }
   question(final int chapter,final int subchapter){
     var chaptername = this.data["chapter"]["chapter"];
+    //todo take a coustom question not the first one!!!
     print(chaptername[chapter]["chapter"][subchapter]["question"][0]);
     var result = chaptername[chapter]["chapter"][subchapter]["question"][0];
     return result;

@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -18,12 +20,11 @@ void pushquestion(final title, BuildContext context, var data, var chapter, var 
   );
 }
 
-
-
-
 _questionwidget(var data, var chapter, var subchapter) {
   var menuq = Chaptermenu(data);
   var qdata = menuq.question(chapter,subchapter);
+  var questionlist = _questionlist(qdata);
+  print(questionlist);
   return ListView(
     children: [
       Padding(padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding), child: HtmlWidget(qdata["textquestion"],textStyle: TextStyle(
@@ -37,24 +38,47 @@ _questionwidget(var data, var chapter, var subchapter) {
           shrinkWrap: true,
           itemCount: qdata["textanswer"].length,
           itemBuilder: (context, i){
-            print(i);
+            return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [ListTile(
 
-            return ListTile(
-
-              title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
-              leading : Radio(
-                value: "GDEZ", onChanged: (String? value) {  }, groupValue: '',
-              ),
-            );
+                  //title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
+                  title: HtmlWidget(questionlist[i][1]),
+                  leading : Radio(
+                    value: "GDEZ", onChanged: (String? value) {  }, groupValue: '',
+                  ),
+            )]);
           }),
       SizedBox(height: std_padding * 1.5,),
-      TextButton(
-        style: ButtonStyle(
-          visualDensity: VisualDensity(vertical: 1,horizontal: 1,),
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 23,
+            ),
+            visualDensity: VisualDensity(vertical: 3,horizontal: 0,),
+          shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
         ),
+
         onPressed: () {}, child: Text("Überprüfen"),
       )
     ],
   );
 
+}
+
+ _questionlist(var qdata) {
+  //print(qdata["textanswer"]);//[0]["@correct"]);
+  var questionlist = [];
+  var x = 0;
+  for(var y in qdata["textanswer"]){
+    x += 1;
+    if(x == 1){
+      questionlist.add(["true", y["text"].toString()]);
+    }else{
+      questionlist.add(["false", y]);
+   }
+  }
+  questionlist.shuffle();
+  return questionlist;
 }
