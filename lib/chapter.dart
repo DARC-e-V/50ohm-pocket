@@ -7,15 +7,13 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'json.dart';
 
-Widget selectlesson(var data) {
+Widget selectlesson(var data, var context) {
   var menu = Chaptermenu(data);
   menu.learn_module_name();
   menu.chapter_names();
   menu.subchapter_info();
   menu.main_chapter_names();
-  //print(menu.results['chapterinfo'][1].length);
-  //print(menu.results['chapterinfo'].length);
-  return ListView.builder(
+  return Padding(padding: EdgeInsets.only(left: 5,right: 5),child: ListView.builder(
             itemCount: menu.results["chapternames"].length ,
             itemBuilder: (context, i) {
               if(i < 1){
@@ -32,8 +30,10 @@ Widget selectlesson(var data) {
                   ],)
                 );
               }
-                return chapterwidget(menu, i, data);
+                return chapterwidget(menu, i, data, context);
             }
+    )
   );
+
 }
 

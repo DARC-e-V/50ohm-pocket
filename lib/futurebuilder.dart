@@ -6,12 +6,12 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'chapter.dart';
 import 'constants.dart';
 
-futurebuilder() => FutureBuilder(
+futurebuilder(var context) => FutureBuilder(
   future: loadAsset(),
   builder: (context, snapshot){
     if (snapshot.hasData) {
       var build_info = jsonprocess(snapshot.data);
-      return selectlesson(build_info);
+      return selectlesson(build_info, context);
     }else if(snapshot.hasError){
       return
         Expanded(child:
