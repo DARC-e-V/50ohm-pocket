@@ -42,11 +42,11 @@ class Chaptermenu{
     this.results["chapterinfo"] = rootsubchapterlist;
 
   }
-  question(final int chapter,final int subchapter){
+  question(final int chapter,final int subchapter, final int question){
     var chaptername = this.data["chapter"]["chapter"];
     //todo take a coustom question not the first one!!!
-    print(chaptername[chapter]["chapter"][subchapter]["question"][0]);
-    var result = chaptername[chapter]["chapter"][subchapter]["question"][0];
+    print(chaptername[chapter]["chapter"][subchapter]["question"][question]);
+    var result = chaptername[chapter]["chapter"][subchapter]["question"][question];
     return result;
   }
 }
