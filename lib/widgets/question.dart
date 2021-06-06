@@ -73,8 +73,8 @@ class _Questionstate extends State<Question>{
                       //title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
                       title: HtmlWidget(questionlist[i][1]),
                       leading : Radio(
-                        groupValue: [false,true,false,false],
-                        value: false,
+                        groupValue: question,
+                        value: i,
                         onChanged: (var value) {
                           setState(() {
                             question = i;
@@ -100,31 +100,45 @@ class _Questionstate extends State<Question>{
       );
     }
 
+displaysnackbar(var text){
+  ScaffoldMessenger.of(context).removeCurrentSnackBar();
+  return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$text'),));
 
+}
 
   _checkquestion() {
     print(questionlist[this.question][0]);
     bool b = questionlist[this.question][0].toLowerCase() == "true";
-    final snackBar = (var text) => SnackBar(content: Text('$text'));
     print("$b");
-    if(correct){
+    if(tries > 1){
+      displaysnackbar("Zu oft Falsch");
+    }
+    if(correct || tries > 2){
       questionnum += 1;
       menuq = Chaptermenu(data);
       qdata = menuq.question(chapter,subchapter,questionnum);
       questionlist = _questionlist(qdata);
-      correct = false;
-      tries = 0;
+      setState(() {correct = false; tries = 0;question = null;});
       //initState();
     }
-    if(tries > 1){
-      ScaffoldMessenger.of(context).showSnackBar(snackBar("Zu oft Falsch"));
-    }
-    if(b){
-      ScaffoldMessenger.of(context).showSnackBar(snackBar("Richtig"));
+
+    else if(b && tries < 1){
+      displaysnackbar("Richtig");
       setState(() {correct = true; });
     }else{
-      ScaffoldMessenger.of(context).showSnackBar(snackBar("Falsch"));
+      displaysnackbar("Falsch");
       setState(() {correct = false; tries += 1;});
+    }
+  }
+  _textdisplay() {
+    print("\n");
+    print(correct);
+    print(tries);
+    if(correct || tries > 1){
+      return Text("Weiter");//return Question(subchapter,chapter,data,questionnum + 1);
+    }
+    else{
+      return Text("Überprüfen");
     }
   }
 
@@ -144,17 +158,6 @@ class _Questionstate extends State<Question>{
     return questionlist;
 }
 
-  _textdisplay() {
-    print("\n");
-    print(correct);
-    print(tries);
-    if(correct || tries > 1){
-      return Text("Weiter");//return Question(subchapter,chapter,data,questionnum + 1);
-    }
-    else{
-      return Text("Überprüfen");
-    }
-  }
 
 
 }
