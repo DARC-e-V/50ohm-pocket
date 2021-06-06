@@ -1,4 +1,6 @@
 
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -66,14 +68,11 @@ class _Questionstate extends State<Question>{
                       //Text("$correct"),
                       //TextButton(onPressed: () => setState(() {), child: child),
                       ListTile(
+
                       //title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
                       title: HtmlWidget(
                           questionlist[i][1],
-                          customStylesBuilder: (element){
-                            if(element.attributes["src"] != null){
-                              print("img");
-                            }
-                          }
+
                       ),
                       leading : Radio(
                         groupValue: question,
