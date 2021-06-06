@@ -1,7 +1,5 @@
 
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -24,11 +22,9 @@ void pushquestion(final title, BuildContext context, var data, var chapter, var 
 class Question extends StatefulWidget {
   var subchapter, chapter, data, questionnum;
   Question(this.subchapter,this.chapter,this.data,this.questionnum);
-
   @override
   createState() => _Questionstate(subchapter,chapter,data,questionnum);
 }
-
 class _Questionstate extends State<Question>{
   //, var data, var chapter, var subchapter
   var questionnum = 0;
@@ -52,6 +48,7 @@ class _Questionstate extends State<Question>{
   Widget build(BuildContext context) {
     return ListView(
         children: [
+          LinearProgressIndicator(value: menuq.questioncount(chapter,subchapter, questionnum),),
           Padding(padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding), child: HtmlWidget(qdata["textquestion"],textStyle: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 20
@@ -69,9 +66,15 @@ class _Questionstate extends State<Question>{
                       //Text("$correct"),
                       //TextButton(onPressed: () => setState(() {), child: child),
                       ListTile(
-
                       //title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
-                      title: HtmlWidget(questionlist[i][1]),
+                      title: HtmlWidget(
+                          questionlist[i][1],
+                          customStylesBuilder: (element){
+                            if(element.attributes["src"] != null){
+                              print("img");
+                            }
+                          }
+                      ),
                       leading : Radio(
                         groupValue: question,
                         value: i,
@@ -84,6 +87,7 @@ class _Questionstate extends State<Question>{
                     )]);
               }),
           SizedBox(height: std_padding * 1.5,),
+          //Todo: change the color based on the tries you already had
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               textStyle: TextStyle(
@@ -95,7 +99,7 @@ class _Questionstate extends State<Question>{
             ),
             onPressed: () => _checkquestion(),
             child: _textdisplay(),
-          )
+          ),
         ],
       );
     }
@@ -107,33 +111,36 @@ displaysnackbar(var text){
 }
 
   _checkquestion() {
-    print(questionlist[this.question][0]);
+    //print(questionlist[this.question][0]);
     bool b = questionlist[this.question][0].toLowerCase() == "true";
     print("$b");
-    if(tries > 1){
-      displaysnackbar("Zu oft Falsch");
-    }
-    if(correct || tries > 2){
+    if(correct || tries > 1){
       questionnum += 1;
       menuq = Chaptermenu(data);
       qdata = menuq.question(chapter,subchapter,questionnum);
       questionlist = _questionlist(qdata);
       setState(() {correct = false; tries = 0;question = null;});
       //initState();
-    }
-
-    else if(b && tries < 1){
+    } else if(b && tries < 1){
+      print("richtig");
       displaysnackbar("Richtig");
       setState(() {correct = true; });
-    }else{
+    }else if(tries > 0){
+      displaysnackbar("Zu oft Falsch");
+      setState(() {
+        question = 1;
+        tries += 1;
+      });
+    }else if(!b){
+      print("falsch");
       displaysnackbar("Falsch");
-      setState(() {correct = false; tries += 1;});
+      setState(() { tries += 1;});
     }
   }
   _textdisplay() {
-    print("\n");
-    print(correct);
-    print(tries);
+    //print("\n");
+    //print(correct);
+    //print(tries);
     if(correct || tries > 1){
       return Text("Weiter");//return Question(subchapter,chapter,data,questionnum + 1);
     }
@@ -157,7 +164,5 @@ displaysnackbar(var text){
     questionlist.shuffle();
     return questionlist;
 }
-
-
 
 }

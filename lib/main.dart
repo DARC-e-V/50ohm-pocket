@@ -17,6 +17,7 @@ void main() {
       darkTheme: ThemeData(
         primaryColorDark: Color(0xFF1C1F44),
         brightness: Brightness.dark,
+        primarySwatch: Colors.indigo,
         cardColor: main_col,
       ),
       themeMode: ThemeMode.system,

@@ -14,7 +14,6 @@ futurebuilder(var context) => FutureBuilder(
       return selectlesson(build_info, context);
     }else if(snapshot.hasError){
       return
-        Expanded(child:
         Row(
             children: [
               Icon(
@@ -37,7 +36,6 @@ futurebuilder(var context) => FutureBuilder(
                 ),
               ),
             ]
-        ),
         );
     } else{
       return Padding(padding: EdgeInsets.all(std_padding), child: Column(
@@ -59,5 +57,5 @@ Map<String, dynamic> jsonprocess(var data) {
 }
 
 Future loadAsset() async {
-  return rootBundle.loadString('assets/DL_Technik_Klasse_E_2007/questions.json');
+  return rootBundle.loadString('DL_Technik_Klasse_E_2007/questions.json');
 }

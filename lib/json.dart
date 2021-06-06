@@ -44,10 +44,14 @@ class Chaptermenu{
   }
   question(final int chapter,final int subchapter, final int question){
     var chaptername = this.data["chapter"]["chapter"];
-    //todo take a coustom question not the first one!!!
-    print(chaptername[chapter]["chapter"][subchapter]["question"][question]);
+    print(100 / (chaptername[chapter]["chapter"][subchapter]["question"].length));
     var result = chaptername[chapter]["chapter"][subchapter]["question"][question];
     return result;
+  }
+  questioncount(final int chapter,final int subchapter, final int question){
+    var chaptername = this.data["chapter"]["chapter"];
+    var returnvalue = ((100 / (chaptername[chapter]["chapter"][subchapter]["question"].length)) / 100) * question;
+    return returnvalue;
   }
 }
 
