@@ -29,9 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   json_annotation: ^4.0.1
-  sqflite: ^2.0.0+3
   path_provider: ^2.0.2
   flutter_widget_from_html: ^0.6.1
+  advance_pdf_viewer: ^2.0.0
+  shared_preferences: ^2.0.6
 
 
 dev_dependencies:
