@@ -1,7 +1,11 @@
+import 'package:amateurfunktrainer/screens/formelsammlung.dart';
+import 'package:amateurfunktrainer/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'widgets/futurebuilder.dart';
 import 'widgets/navbar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() {
   runApp(
@@ -22,10 +26,35 @@ void main() {
       ),
       themeMode: ThemeMode.system,
       title: 'Afutrainer',
-      home: Afutrainer(),
+      home: startapp(),//Afutrainer(),
     ),
   );
 }
+startapp(){
+  // Afutrainer();
+  return FutureBuilder(
+      future: welcome(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
+        if(snapshot.hasData){
+          print("sucsess");
+        }else if(snapshot.hasError){
+          print("error");
+        }
+      }
+  );
+}
+
+
+
+welcome() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if((prefs.getInt('welcome') ?? false) == false){
+    print("Hallo");
+  }else{
+    print("hallo schon wieder");
+  }
+}
+
 
 class Afutrainer extends StatefulWidget {
   @override
@@ -37,16 +66,32 @@ class _AfutrainerState extends State<Afutrainer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Afutrainer')),//Color(0xff253478),),
+      appBar: AppBar(
+          title: Text('Afutrainer'),
+        actions: [
+          PopupMenuButton(itemBuilder: (context) => [
+            PopupMenuItem(value: 1, child: Text("Formelsammlung")),
+            PopupMenuItem(value: 0, child: Text("Einstellungen")),
+          ],
+            onSelected: (item) => SelectedItem(context, item!),
+          ),
+        ],
+      ),//Color(0xff253478),),
       body: Container(
         child: futurebuilder(context)
       ),
       bottomNavigationBar: bottomnavbar()
     );
   }
+
+  SelectedItem(BuildContext context, Object item) {
+    switch(item){
+      case 0:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+        break;
+      case 1:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularypage()));
+        break;
+    }
+  }
 }
-
-
-
-
-

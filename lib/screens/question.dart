@@ -55,7 +55,6 @@ class _Questionstate extends State<Question>{
     }
 
   return ListView(
-
         children: [
           LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
           Padding(padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding), child: HtmlWidget(qdata["textquestion"],textStyle: TextStyle(
@@ -131,7 +130,7 @@ displaysnackbar(var text){
         questionlist = _questionlist(qdata);
         setState(() {correct = false; tries = 0;question = null;questionnum += 1;});
       //}
-    } else if(b && tries < 1){
+    } else if(b && tries < 2){
       print("richtig");
       displaysnackbar("Richtig");
       setState(() {correct = true; });
