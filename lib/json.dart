@@ -48,10 +48,14 @@ class Chaptermenu{
     var result = chaptername[chapter]["chapter"][subchapter]["question"][question];
     return result;
   }
-  questioncount(final int chapter,final int subchapter, final int question){
+  questionprocent(final int chapter,final int subchapter, final int question){
     var chaptername = this.data["chapter"]["chapter"];
     var returnvalue = ((100 / (chaptername[chapter]["chapter"][subchapter]["question"].length)) / 100) * question;
     return returnvalue;
+  }
+  questioncount(final int chapter,final int subchapter, final int question){
+    var chaptername = this.data["chapter"]["chapter"];
+    return chaptername[chapter]["chapter"][subchapter]["question"].length;
   }
 }
 

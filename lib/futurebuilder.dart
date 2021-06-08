@@ -57,5 +57,5 @@ Map<String, dynamic> jsonprocess(var data) {
 }
 
 Future loadAsset() async {
-  return rootBundle.loadString('DL_Technik_Klasse_E_2007/questions.json');
+  return rootBundle.loadString('assets/DL_Technik_Klasse_E_2007/questions.json');
 }

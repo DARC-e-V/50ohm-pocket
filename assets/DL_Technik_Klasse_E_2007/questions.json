@@ -1464,7 +1464,7 @@
             "question": [
               {
                 "@id": "TB201",
-                "textquestion": "Welche Spannung zeigt der Spannungsmesser in folgender Schaltung?<p><img src='asset:graphics/tb201f.png'>",
+                "textquestion": "Welche Spannung zeigt der Spannungsmesser in folgender Schaltung?<p><img src='asset:assets/graphics/tb201f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1477,7 +1477,7 @@
               },
               {
                 "@id": "TB202",
-                "textquestion": "Folgende Schaltung eines Akkus besteht aus Zellen von je 2 V. Jede Zelle kann 10 Ah Ladung liefern. Welche Daten hat der Akku?<p><img src='asset:graphics/tb202f.png'>",
+                "textquestion": "Folgende Schaltung eines Akkus besteht aus Zellen von je 2 V. Jede Zelle kann 10 Ah Ladung liefern. Welche Daten hat der Akku?<p><img src='asset:assets/graphics/tb202f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1503,7 +1503,7 @@
               },
               {
                 "@id": "TB204",
-                "textquestion": "Kann in folgender Schaltung von zwei gleichen Spannungsquellen Strom fließen? Welche Begründung ist richtig?<p><img src='asset:graphics/tb204f.png'>",
+                "textquestion": "Kann in folgender Schaltung von zwei gleichen Spannungsquellen Strom fließen? Welche Begründung ist richtig?<p><img src='asset:assets/graphics/tb204f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1549,7 +1549,7 @@
               },
               {
                 "@id": "TB302",
-                "textquestion": "Wie nennt man das Feld zwischen zwei parallelen Kondensatorplatten bei Anschluss einer Gleichspannung?<p><img src='asset:graphics/tb302f.png'>",
+                "textquestion": "Wie nennt man das Feld zwischen zwei parallelen Kondensatorplatten bei Anschluss einer Gleichspannung?<p><img src='asset:assets/graphics/tb302f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1562,7 +1562,7 @@
               },
               {
                 "@id": "TB303",
-                "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:graphics/tb303f.png'>",
+                "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:assets/graphics/tb303f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1595,7 +1595,7 @@
               },
               {
                 "@id": "TB402",
-                "textquestion": "Wie nennt man das Feld im Innern einer langen Zylinderspule beim Fließen eines Gleichstroms?<p><img src='asset:graphics/tb402f.png'>",
+                "textquestion": "Wie nennt man das Feld im Innern einer langen Zylinderspule beim Fließen eines Gleichstroms?<p><img src='asset:assets/graphics/tb402f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1621,7 +1621,7 @@
               },
               {
                 "@id": "TB404",
-                "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:graphics/tb404f.png'>",
+                "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:assets/graphics/tb404f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1680,7 +1680,7 @@
               },
               {
                 "@id": "TB503",
-                "textquestion": "Das folgende Bild zeigt die Feldlinien eines elektromagnetischen Feldes. Welche Polarisation hat die skizzierte Wellenfront?<p><img src='asset:graphics/tb503f.png'>",
+                "textquestion": "Das folgende Bild zeigt die Feldlinien eines elektromagnetischen Feldes. Welche Polarisation hat die skizzierte Wellenfront?<p><img src='asset:assets/graphics/tb503f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1706,7 +1706,7 @@
               },
               {
                 "@id": "TB505",
-                "textquestion": "Die Polarisation des Sendesignals in der Hauptstrahlrichtung dieser Richtantenne ist<p><img src='asset:graphics/tb505f.png'>",
+                "textquestion": "Die Polarisation des Sendesignals in der Hauptstrahlrichtung dieser Richtantenne ist<p><img src='asset:assets/graphics/tb505f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1843,7 +1843,7 @@
               },
               {
                 "@id": "TB610",
-                "textquestion": "Welche Frequenz hat die in diesem Oszillogramm dargestellte Spannung?<p><img src='asset:graphics/tb610f.png'>",
+                "textquestion": "Welche Frequenz hat die in diesem Oszillogramm dargestellte Spannung?<p><img src='asset:assets/graphics/tb610f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1856,7 +1856,7 @@
               },
               {
                 "@id": "TB611",
-                "textquestion": "Welche Frequenz hat das in diesem Schirmbild dargestellte Signal?<p><img src='asset:graphics/tb611f.png'>",
+                "textquestion": "Welche Frequenz hat das in diesem Schirmbild dargestellte Signal?<p><img src='asset:assets/graphics/tb611f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1915,7 +1915,7 @@
               },
               {
                 "@id": "TB702",
-                "textquestion": "Ein periodische Schwingung, die wie das folgende Signal aussieht, besteht<p><img src='asset:graphics/tb702f.png'>",
+                "textquestion": "Ein periodische Schwingung, die wie das folgende Signal aussieht, besteht<p><img src='asset:assets/graphics/tb702f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2227,7 +2227,7 @@
               },
               {
                 "@id": "TC105",
-                "textquestion": "Welches Bauteil hat folgendes Schaltzeichen?<p><img src='asset:graphics/tc105f.png'>",
+                "textquestion": "Welches Bauteil hat folgendes Schaltzeichen?<p><img src='asset:assets/graphics/tc105f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2244,11 +2244,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tc106a.png'>"
+                    "text": "<img src='asset:assets/graphics/tc106a.png'>"
                   },
-                  "<img src='asset:graphics/tc106b.png'>",
-                  "<img src='asset:graphics/tc106c.png'>",
-                  "<img src='asset:graphics/tc106d.png'>"
+                  "<img src='asset:assets/graphics/tc106b.png'>",
+                  "<img src='asset:assets/graphics/tc106c.png'>",
+                  "<img src='asset:assets/graphics/tc106d.png'>"
                 ]
               },
               {
@@ -2257,11 +2257,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tc107a.png'>"
+                    "text": "<img src='asset:assets/graphics/tc107a.png'>"
                   },
-                  "<img src='asset:graphics/tc107b.png'>",
-                  "<img src='asset:graphics/tc107c.png'>",
-                  "<img src='asset:graphics/tc107d.png'>"
+                  "<img src='asset:assets/graphics/tc107b.png'>",
+                  "<img src='asset:assets/graphics/tc107c.png'>",
+                  "<img src='asset:assets/graphics/tc107d.png'>"
                 ]
               },
               {
@@ -2350,7 +2350,7 @@
               },
               {
                 "@id": "TC203",
-                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:graphics/tc203f.png'>",
+                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc203f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2363,7 +2363,7 @@
               },
               {
                 "@id": "TC204",
-                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:graphics/tc204f.png'>",
+                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc204f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2376,7 +2376,7 @@
               },
               {
                 "@id": "TC205",
-                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:graphics/tc205f.png'>",
+                "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc205f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2434,7 +2434,7 @@
             "question": [
               {
                 "@id": "TC301",
-                "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Windungszahl bei gleicher Wickellänge verdoppelt wird?<p><img src='asset:graphics/tc301f.png'>",
+                "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Windungszahl bei gleicher Wickellänge verdoppelt wird?<p><img src='asset:assets/graphics/tc301f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2447,7 +2447,7 @@
               },
               {
                 "@id": "TC302",
-                "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Wicklung auf dem Wickelkörper bei gleicher Windungszahl auf die doppelte Länge auseinander gezogen wird?<p><img src='asset:graphics/tc302f.png'>",
+                "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Wicklung auf dem Wickelkörper bei gleicher Windungszahl auf die doppelte Länge auseinander gezogen wird?<p><img src='asset:assets/graphics/tc302f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2473,7 +2473,7 @@
               },
               {
                 "@id": "TC304",
-                "textquestion": "Das folgende Bild zeigt einen Kern, um den ein Kabel für den Bau einer Netzdrossel gewickelt ist. Der Kern sollte aus<p><img src='asset:graphics/tc304f.png'>",
+                "textquestion": "Das folgende Bild zeigt einen Kern, um den ein Kabel für den Bau einer Netzdrossel gewickelt ist. Der Kern sollte aus<p><img src='asset:assets/graphics/tc304f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2486,7 +2486,7 @@
               },
               {
                 "@id": "TC305",
-                "textquestion": "Schaltet man zwei Glühlampen gleichzeitig an eine Spannungsquelle, wobei eine Glühlampe zum Helligkeitsausgleich über einen Widerstand und die andere über eine Spule mit vielen Windungen und Eisenkern angeschlossen ist, so<p><img src='asset:graphics/tc305f.png'>",
+                "textquestion": "Schaltet man zwei Glühlampen gleichzeitig an eine Spannungsquelle, wobei eine Glühlampe zum Helligkeitsausgleich über einen Widerstand und die andere über eine Spule mit vielen Windungen und Eisenkern angeschlossen ist, so<p><img src='asset:assets/graphics/tc305f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2619,11 +2619,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "0,7 V <img src='asset:graphics/tc505a.png'>1,3 V"
+                    "text": "0,7 V <img src='asset:assets/graphics/tc505a.png'>1,3 V"
                   },
-                  "-2,6 V <img src='asset:graphics/tc505b.png'> -2,0 V",
-                  "15 V <img src='asset:graphics/tc505a.png'> 9 V",
-                  "3,4 V <img src='asset:graphics/tc505b.png'> 4,0 V"
+                  "-2,6 V <img src='asset:assets/graphics/tc505b.png'> -2,0 V",
+                  "15 V <img src='asset:assets/graphics/tc505a.png'> 9 V",
+                  "3,4 V <img src='asset:assets/graphics/tc505b.png'> 4,0 V"
                 ]
               },
               {
@@ -2632,11 +2632,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "-2 V <img src='asset:graphics/tc505b.png'> -2,6 V"
+                    "text": "-2 V <img src='asset:assets/graphics/tc505b.png'> -2,6 V"
                   },
-                  "5,3 V <img src='asset:graphics/tc505a.png'> 4,7 V",
-                  "15 V <img src='asset:graphics/tc505b.png'> 18 V",
-                  "3,9 V <img src='asset:graphics/tc505a.png'> 3,2 V"
+                  "5,3 V <img src='asset:assets/graphics/tc505a.png'> 4,7 V",
+                  "15 V <img src='asset:assets/graphics/tc505b.png'> 18 V",
+                  "3,9 V <img src='asset:assets/graphics/tc505a.png'> 3,2 V"
                 ]
               },
               {
@@ -2654,7 +2654,7 @@
               },
               {
                 "@id": "TC508",
-                "textquestion": "Wozu dient folgende Schaltung? Sie dient<p><img src='asset:graphics/tc508f.png'>",
+                "textquestion": "Wozu dient folgende Schaltung? Sie dient<p><img src='asset:assets/graphics/tc508f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2667,7 +2667,7 @@
               },
               {
                 "@id": "TC509",
-                "textquestion": "Wozu dient die folgende Schaltung? Sie dient<p><img src='asset:graphics/tc509f.png'>",
+                "textquestion": "Wozu dient die folgende Schaltung? Sie dient<p><img src='asset:assets/graphics/tc509f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2712,7 +2712,7 @@
               },
               {
                 "@id": "TC603",
-                "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:graphics/tc603f.png'>",
+                "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:assets/graphics/tc603f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2725,7 +2725,7 @@
               },
               {
                 "@id": "TC604",
-                "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:graphics/tc604f.png'>",
+                "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:assets/graphics/tc604f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2829,7 +2829,7 @@
               },
               {
                 "@id": "TC612",
-                "textquestion": "Wie bezeichnet man die Anschlüsse des nebenstehenden Transistors? <p><img src='asset:graphics/tc612f.png'>",
+                "textquestion": "Wie bezeichnet man die Anschlüsse des nebenstehenden Transistors? <p><img src='asset:assets/graphics/tc612f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2854,7 +2854,7 @@
             "question": [
               {
                 "@id": "TD101",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1000 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:graphics/td101f.png'>",
+                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1000 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2867,7 +2867,7 @@
               },
               {
                 "@id": "TD102",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 1 k&Omega;, R<sub>2<\/sub> = 2000 &Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:graphics/td101f.png'>",
+                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 1 k&Omega;, R<sub>2<\/sub> = 2000 &Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2880,7 +2880,7 @@
               },
               {
                 "@id": "TD103",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 500 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:graphics/td103f.png'>",
+                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 500 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2893,7 +2893,7 @@
               },
               {
                 "@id": "TD104",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1,5 k&Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:graphics/td103f.png'>",
+                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1,5 k&Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2906,7 +2906,7 @@
               },
               {
                 "@id": "TD105",
-                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 5 nF, C<sub>3<\/sub> = 5000 pF<p><img src='asset:graphics/td105f.png'>",
+                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 5 nF, C<sub>3<\/sub> = 5000 pF<p><img src='asset:assets/graphics/td105f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2919,7 +2919,7 @@
               },
               {
                 "@id": "TD106",
-                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,02 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 10000 pF<p><img src='asset:graphics/td105f.png'>",
+                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,02 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 10000 pF<p><img src='asset:assets/graphics/td105f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2932,7 +2932,7 @@
               },
               {
                 "@id": "TD107",
-                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 5000 pF<p><img src='asset:graphics/td107f.png'>",
+                "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 5000 pF<p><img src='asset:assets/graphics/td107f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2945,7 +2945,7 @@
               },
               {
                 "@id": "TD108",
-                "textquestion": "Die Gesamtspannung U an folgendem Spannungsteiler beträgt 12,2 V. Die Widerstände haben die Werte R<sub>1<\/sub> = 10 k&Omega; und R<sub>2<\/sub> = 2,2 k&Omega; Wie groß ist die Teilspannung U<sub>2<\/sub>?<p><img src='asset:graphics/td108f.png'>",
+                "textquestion": "Die Gesamtspannung U an folgendem Spannungsteiler beträgt 12,2 V. Die Widerstände haben die Werte R<sub>1<\/sub> = 10 k&Omega; und R<sub>2<\/sub> = 2,2 k&Omega; Wie groß ist die Teilspannung U<sub>2<\/sub>?<p><img src='asset:assets/graphics/td108f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2990,7 +2990,7 @@
             "question": [
               {
                 "@id": "TD201",
-                "textquestion": "Der Impedanzfrequenzgang in der Abbildung zeigt die Kennlinie<p><img src='asset:graphics/td201f.png'>",
+                "textquestion": "Der Impedanzfrequenzgang in der Abbildung zeigt die Kennlinie<p><img src='asset:assets/graphics/td201f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3003,7 +3003,7 @@
               },
               {
                 "@id": "TD202",
-                "textquestion": "Der im folgenden Bild dargestellte Impedanzfrequenzgang ist typisch für<p><img src='asset:graphics/td202f.png'>",
+                "textquestion": "Der im folgenden Bild dargestellte Impedanzfrequenzgang ist typisch für<p><img src='asset:assets/graphics/td202f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3020,11 +3020,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/td203a.png'>"
+                    "text": "<img src='asset:assets/graphics/td203a.png'>"
                   },
-                  "<img src='asset:graphics/td203b.png'>",
-                  "<img src='asset:graphics/td203c.png'>",
-                  "<img src='asset:graphics/td203d.png'>"
+                  "<img src='asset:assets/graphics/td203b.png'>",
+                  "<img src='asset:assets/graphics/td203c.png'>",
+                  "<img src='asset:assets/graphics/td203d.png'>"
                 ]
               },
               {
@@ -3055,7 +3055,7 @@
               },
               {
                 "@id": "TD206",
-                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:graphics/td206f.png'>",
+                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td206f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3068,7 +3068,7 @@
               },
               {
                 "@id": "TD207",
-                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:graphics/td207f.png'>",
+                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td207f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3081,7 +3081,7 @@
               },
               {
                 "@id": "TD208",
-                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:graphics/td208f.png'>",
+                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td208f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3094,7 +3094,7 @@
               },
               {
                 "@id": "TD209",
-                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:graphics/td209f.png'>",
+                "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td209f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3165,7 +3165,7 @@
               },
               {
                 "@id": "TD304",
-                "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 5:1.<p><img src='asset:graphics/td304f.png'>",
+                "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 5:1.<p><img src='asset:assets/graphics/td304f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3178,7 +3178,7 @@
               },
               {
                 "@id": "TD305",
-                "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 8:1.<p><img src='asset:graphics/td304f.png'>",
+                "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 8:1.<p><img src='asset:assets/graphics/td304f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3455,7 +3455,7 @@
               },
               {
                 "@id": "TE103",
-                "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:graphics/te103f.png'>",
+                "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:assets/graphics/te103f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3468,7 +3468,7 @@
               },
               {
                 "@id": "TE104",
-                "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:graphics/te104f.png'>",
+                "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:assets/graphics/te104f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3481,7 +3481,7 @@
               },
               {
                 "@id": "TE105",
-                "textquestion": "Das folgende Oszillogramm zeigt<p><img src='asset:graphics/te105f.png'>",
+                "textquestion": "Das folgende Oszillogramm zeigt<p><img src='asset:assets/graphics/te105f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3494,7 +3494,7 @@
               },
               {
                 "@id": "TE106",
-                "textquestion": "Das folgende Oszillogramm zeigt ein typisches Zweiton-SSB-Testsignal. Bestimmen Sie den Modulationsgrad!<p><img src='asset:graphics/te106f.png'>",
+                "textquestion": "Das folgende Oszillogramm zeigt ein typisches Zweiton-SSB-Testsignal. Bestimmen Sie den Modulationsgrad!<p><img src='asset:assets/graphics/te106f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3914,7 +3914,7 @@
               },
               {
                 "@id": "TF204",
-                "textquestion": "Ein Doppelsuper hat eine erste ZF von 10,7 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 28 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:graphics/tf204f.png'>",
+                "textquestion": "Ein Doppelsuper hat eine erste ZF von 10,7 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 28 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:assets/graphics/tf204f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3927,7 +3927,7 @@
               },
               {
                 "@id": "TF205",
-                "textquestion": "Ein Doppelsuper hat eine erste ZF von 9 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 21,1 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:graphics/tf204f.png'>",
+                "textquestion": "Ein Doppelsuper hat eine erste ZF von 9 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 21,1 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:assets/graphics/tf204f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3946,7 +3946,7 @@
             "question": [
               {
                 "@id": "TF301",
-                "textquestion": "In der folgenden Schaltung können bei einer Empfangsfrequenz von 28,3 MHz und einer Oszillatorfrequenz von 39 MHz Spiegelfrequenzstörungen bei<p><img src='asset:graphics/tf301f.png'>",
+                "textquestion": "In der folgenden Schaltung können bei einer Empfangsfrequenz von 28,3 MHz und einer Oszillatorfrequenz von 39 MHz Spiegelfrequenzstörungen bei<p><img src='asset:assets/graphics/tf301f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4447,11 +4447,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tg504a.png'>"
+                    "text": "<img src='asset:assets/graphics/tg504a.png'>"
                   },
-                  "<img src='asset:graphics/tg504b.png'>",
-                  "<img src='asset:graphics/tg504c.png'>",
-                  "<img src='asset:graphics/tg504d.png'>"
+                  "<img src='asset:assets/graphics/tg504b.png'>",
+                  "<img src='asset:assets/graphics/tg504c.png'>",
+                  "<img src='asset:assets/graphics/tg504d.png'>"
                 ]
               },
               {
@@ -4473,11 +4473,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tg506a.png'>"
+                    "text": "<img src='asset:assets/graphics/tg506a.png'>"
                   },
-                  "<img src='asset:graphics/tg506b.png'>",
-                  "<img src='asset:graphics/tg506c.png'>",
-                  "<img src='asset:graphics/tg506d.png'>"
+                  "<img src='asset:assets/graphics/tg506b.png'>",
+                  "<img src='asset:assets/graphics/tg506c.png'>",
+                  "<img src='asset:assets/graphics/tg506d.png'>"
                 ]
               }
             ]
@@ -4611,7 +4611,7 @@
               },
               {
                 "@id": "TH110",
-                "textquestion": "Sie wollen eine Zweibandantenne für 160 und 80 m selbst bauen. Welche der folgenden Antworten enthält die richtige Drahtlänge l zwischen den Schwingkreisen und die richtige Resonanzfrequenz f<sub>res<\/sub> der Kreise?<p><img src='asset:graphics/th110f.png'>",
+                "textquestion": "Sie wollen eine Zweibandantenne für 160 und 80 m selbst bauen. Welche der folgenden Antworten enthält die richtige Drahtlänge l zwischen den Schwingkreisen und die richtige Resonanzfrequenz f<sub>res<\/sub> der Kreise?<p><img src='asset:assets/graphics/th110f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4637,7 +4637,7 @@
               },
               {
                 "@id": "TH112",
-                "textquestion": "Das folgende Bild enthält eine einfache Richtantenne. Die Bezeichnungen der Elemente in numerischer Reihenfolge lauten<p><img src='asset:graphics/th112f.png'>",
+                "textquestion": "Das folgende Bild enthält eine einfache Richtantenne. Die Bezeichnungen der Elemente in numerischer Reihenfolge lauten<p><img src='asset:assets/graphics/th112f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4686,11 +4686,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Dipol<p><img src='asset:graphics/th202a.png'>"
+                    "text": "Dipol<p><img src='asset:assets/graphics/th202a.png'>"
                   },
-                  "Groundplane<p><img src='asset:graphics/th202b.png'>",
-                  "Yagiantenne<p><img src='asset:graphics/th202c.png'>",
-                  "Faltdipol<p><img src='asset:graphics/th202d.png'>"
+                  "Groundplane<p><img src='asset:assets/graphics/th202b.png'>",
+                  "Yagiantenne<p><img src='asset:assets/graphics/th202c.png'>",
+                  "Faltdipol<p><img src='asset:assets/graphics/th202d.png'>"
                 ]
               },
               {
@@ -4760,7 +4760,7 @@
               },
               {
                 "@id": "TH208",
-                "textquestion": "Das folgende Bild enthält verschiedene UKW-Vertikalantennen. In welcher der folgenden Zeilen ist die entsprechende Bezeichnung der Antenne richtig zugeordnet?<p><img src='asset:graphics/th208f.png'>",
+                "textquestion": "Das folgende Bild enthält verschiedene UKW-Vertikalantennen. In welcher der folgenden Zeilen ist die entsprechende Bezeichnung der Antenne richtig zugeordnet?<p><img src='asset:assets/graphics/th208f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4773,7 +4773,7 @@
               },
               {
                 "@id": "TH209",
-                "textquestion": "Das folgende Bild enthält verschiedene UKW-Antennen. Welche der folgenden Antworten ist richtig?<p><img src='asset:graphics/th209f.png'>",
+                "textquestion": "Das folgende Bild enthält verschiedene UKW-Antennen. Welche der folgenden Antworten ist richtig?<p><img src='asset:assets/graphics/th209f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4857,7 +4857,7 @@
               },
               {
                 "@id": "TH305",
-                "textquestion": "Welche Dämpfung hat ein 25 m langes Koaxkabel vom Typ Aircell 7 bei 145 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:graphics/kabeldaempfung.png'>",
+                "textquestion": "Welche Dämpfung hat ein 25 m langes Koaxkabel vom Typ Aircell 7 bei 145 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:assets/graphics/kabeldaempfung.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4870,7 +4870,7 @@
               },
               {
                 "@id": "TH306",
-                "textquestion": "Welche Dämpfung hat ein 20 m langes Koaxkabel vom Typ RG 58 bei 29 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:graphics/kabeldaempfung.png'>",
+                "textquestion": "Welche Dämpfung hat ein 20 m langes Koaxkabel vom Typ RG 58 bei 29 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:assets/graphics/kabeldaempfung.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5019,7 +5019,7 @@
               },
               {
                 "@id": "TH405",
-                "textquestion": "Auf einem Ferritkern sind etliche Windungen Koaxialkabel aufgewickelt. Diese Anordnung kann dazu dienen,<p><img src='asset:graphics/th405f.png'>",
+                "textquestion": "Auf einem Ferritkern sind etliche Windungen Koaxialkabel aufgewickelt. Diese Anordnung kann dazu dienen,<p><img src='asset:assets/graphics/th405f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5446,7 +5446,7 @@
               },
               {
                 "@id": "TI310",
-                "textquestion": "In dem folgenden Geländeprofil sei S ein Sender im 2-m-Band, E1 bis E4 vier Empfangsstationen. Welche Funkstrecke geht wahrscheinlich am besten, welche am schlechtesten?<p><img src='asset:graphics/ti310f.png'>",
+                "textquestion": "In dem folgenden Geländeprofil sei S ein Sender im 2-m-Band, E1 bis E4 vier Empfangsstationen. Welche Funkstrecke geht wahrscheinlich am besten, welche am schlechtesten?<p><img src='asset:assets/graphics/ti310f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5611,11 +5611,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tj201a.png'>"
+                    "text": "<img src='asset:assets/graphics/tj201a.png'>"
                   },
-                  "<img src='asset:graphics/tj201b.png'>",
-                  "<img src='asset:graphics/tj201c.png'>",
-                  "<img src='asset:graphics/tj201d.png'>"
+                  "<img src='asset:assets/graphics/tj201b.png'>",
+                  "<img src='asset:assets/graphics/tj201c.png'>",
+                  "<img src='asset:assets/graphics/tj201d.png'>"
                 ]
               },
               {
@@ -5633,7 +5633,7 @@
               },
               {
                 "@id": "TJ203",
-                "textquestion": "Die Zeitbasis eines Oszilloskops ist so eingestellt, dass ein Skalenteil 0,5 ms entspricht. Welche Frequenz hat die angelegte Spannung?<p><img src='asset:graphics/tj203f.png'>",
+                "textquestion": "Die Zeitbasis eines Oszilloskops ist so eingestellt, dass ein Skalenteil 0,5 ms entspricht. Welche Frequenz hat die angelegte Spannung?<p><img src='asset:assets/graphics/tj203f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5659,7 +5659,7 @@
               },
               {
                 "@id": "TJ205",
-                "textquestion": "Welche Spannung wird bei dem folgenden Messinstrument angezeigt, wenn dessen Messbereich auf 10 V eingestellt ist?<p><img src='asset:graphics/tj205f.png'>",
+                "textquestion": "Welche Spannung wird bei dem folgenden Messinstrument angezeigt, wenn dessen Messbereich auf 10 V eingestellt ist?<p><img src='asset:assets/graphics/tj205f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5737,7 +5737,7 @@
               },
               {
                 "@id": "TJ211",
-                "textquestion": "An welchem Punkt sollte das Stehwellenmessgerät eingeschleift werden, um zu prüfen, ob der Sender gut an die Antennenanlage angepasst ist?<p><img src='asset:graphics/tj211f.png'>",
+                "textquestion": "An welchem Punkt sollte das Stehwellenmessgerät eingeschleift werden, um zu prüfen, ob der Sender gut an die Antennenanlage angepasst ist?<p><img src='asset:assets/graphics/tj211f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -6090,11 +6090,11 @@
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "<img src='asset:graphics/tk314a.png'>"
+                    "text": "<img src='asset:assets/graphics/tk314a.png'>"
                   },
-                  "<img src='asset:graphics/tk314b.png'>",
-                  "<img src='asset:graphics/tk314c.png'>",
-                  "<img src='asset:graphics/tk314d.png'>"
+                  "<img src='asset:assets/graphics/tk314b.png'>",
+                  "<img src='asset:assets/graphics/tk314c.png'>",
+                  "<img src='asset:assets/graphics/tk314d.png'>"
                 ]
               },
               {

@@ -1,6 +1,4 @@
 
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -48,9 +46,18 @@ class _Questionstate extends State<Question>{
   }
   @override
   Widget build(BuildContext context) {
-    return ListView(
+
+    var questionchecked;
+    if(question != null){
+      questionchecked = true;
+    }else{
+      questionchecked = false;
+    }
+
+  return ListView(
+
         children: [
-          LinearProgressIndicator(value: menuq.questioncount(chapter,subchapter, questionnum),),
+          LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
           Padding(padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding), child: HtmlWidget(qdata["textquestion"],textStyle: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 20
@@ -64,26 +71,19 @@ class _Questionstate extends State<Question>{
               itemBuilder: (context, i){
                 return Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Text("$correct"),
                       //TextButton(onPressed: () => setState(() {), child: child),
-                      ListTile(
+                      RadioListTile(
+                          groupValue: question,
+                          value: i,
+                          onChanged: (var value) {setState(() {question = i;});},
+                        title: HtmlWidget(questionlist[i][1],),
+                        ),
 
-                      //title: HtmlWidget(i == 0 ? qdata["textanswer"][i]["text"] : qdata["textanswer"][i]),
-                      title: HtmlWidget(
-                          questionlist[i][1],
-
-                      ),
-                      leading : Radio(
-                        groupValue: question,
-                        value: i,
-                        onChanged: (var value) {
-                          setState(() {
-                            question = i;
-                          });
-                      },
-                      ),
-                    )]);
+                    ]
+                );
               }),
           SizedBox(height: std_padding * 1.5,),
           //Todo: change the color based on the tries you already had
@@ -96,11 +96,20 @@ class _Questionstate extends State<Question>{
               visualDensity: VisualDensity(vertical: 3,horizontal: 0,),
               shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
             ),
-            onPressed: () => _checkquestion(),
+            onPressed: questionchecked ? () =>  _checkquestion() : null,
             child: _textdisplay(),
           ),
         ],
       );
+    }
+    _questiondiable(){
+    print("$question");
+    if(question != null){
+          return _checkquestion();
+        }else{
+          print("deactivated");
+          return null;
+        }
     }
 
 displaysnackbar(var text){
@@ -114,12 +123,14 @@ displaysnackbar(var text){
     bool b = questionlist[this.question][0].toLowerCase() == "true";
     print("$b");
     if(correct || tries > 1){
-      questionnum += 1;
-      menuq = Chaptermenu(data);
-      qdata = menuq.question(chapter,subchapter,questionnum);
-      questionlist = _questionlist(qdata);
-      setState(() {correct = false; tries = 0;question = null;});
-      //initState();
+      /*if(question > menuq.questioncount(chapter,subchapter, questionnum)){
+        print("ALARM");
+      }else{*/
+        menuq = Chaptermenu(data);
+        qdata = menuq.question(chapter,subchapter,questionnum);
+        questionlist = _questionlist(qdata);
+        setState(() {correct = false; tries = 0;question = null;questionnum += 1;});
+      //}
     } else if(b && tries < 1){
       print("richtig");
       displaysnackbar("Richtig");
@@ -133,7 +144,7 @@ displaysnackbar(var text){
     }else if(!b){
       print("falsch");
       displaysnackbar("Falsch");
-      setState(() { tries += 1;});
+      setState(() { tries += 1;question = null;});
     }
   }
   _textdisplay() {
