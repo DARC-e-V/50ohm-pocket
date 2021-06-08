@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'futurebuilder.dart';
-import 'navbar.dart';
+import 'widgets/futurebuilder.dart';
+import 'widgets/navbar.dart';
 
 void main() {
   runApp(
@@ -28,7 +28,6 @@ void main() {
 }
 
 class Afutrainer extends StatefulWidget {
-
   @override
   createState() => _AfutrainerState();
 }

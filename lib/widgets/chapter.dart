@@ -1,19 +1,11 @@
-
 import 'dart:ui';
 
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
-import 'package:amateurfunktrainer/widgets/question.dart';
+import 'package:amateurfunktrainer/screens/question.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../constants.dart';
 
-//darkmode checker
-darkmodechecker(var context){
-  var brightness = MediaQuery.of(context).platformBrightness;
-  final bool darkModeOn = brightness == Brightness.dark;
-  return darkModeOn;
-}
 chapterwidget(var menu, var s, var data, var context){
   var currentchapter = s - 1;
   return Container(
@@ -48,7 +40,7 @@ chapterwidget(var menu, var s, var data, var context){
                             InkWell(
                             onTap: () => pushquestion(menu.results['chapternames'][currentchapter], context, data, currentchapter, i),
                             child: ListTile(
-                              leading: Icon(strtoicon(menu.results['chapterinfo'][currentchapter][i][1])),//Icon(icon(i, subchapter)),
+                              leading: Icon(starticon(menu.results['chapterinfo'][currentchapter][i][1])),//Icon(icon(i, subchapter)),
                               title: Text(
                                 menu.results['chapterinfo'][currentchapter][i][0],
                                 style: TextStyle(
@@ -68,7 +60,7 @@ chapterwidget(var menu, var s, var data, var context){
     );
 }
 
-strtoicon(var string){
+starticon(var string){
   if(string == null){
     return Icons.keyboard_arrow_right;
   }
