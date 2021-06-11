@@ -54,7 +54,7 @@ flutter:
   assets:
     - assets/DL_Technik_Klasse_E_2007/
     - assets/graphics/
-
+    - assets/Formelsammlung.pdf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

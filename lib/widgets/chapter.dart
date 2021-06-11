@@ -9,7 +9,7 @@ import '../constants.dart';
 chapterwidget(var menu, var s, var data, var context){
   var currentchapter = s - 1;
   return Container(
-    margin: EdgeInsets.only(top: std_padding, bottom: std_padding + 20),
+    margin: EdgeInsets.only(top: std_padding),
     decoration: BoxDecoration(
       color: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -19,14 +19,22 @@ chapterwidget(var menu, var s, var data, var context){
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Chaptername displayed in every Chapter
             Row(
                 children: [
-                  Expanded(child: Text(
-                    menu.results['chapternames'][currentchapter],
-                    style: Theme.of(context).textTheme.headline5,
-                  ),)
+                  Expanded(
+                    child: OutlineButton(
+                      padding: EdgeInsets.all(18),
+                      onPressed: (){},
+                      child: Text(
+                        menu.results['chapternames'][currentchapter],
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                    ),
+                  )
                 ]
             ),
+            // List View displays the subsections
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 addAutomaticKeepAlives: true,
