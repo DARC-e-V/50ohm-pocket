@@ -119,3 +119,5 @@ app.*.symbols
 
 .flutter-plugins-dependencies
 .flutter-plugins
+
+.dart_tool/
