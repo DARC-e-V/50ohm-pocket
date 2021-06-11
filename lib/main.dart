@@ -24,12 +24,14 @@ void main() {
         primarySwatch: Colors.indigo,
         cardColor: main_col,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       title: 'Afutrainer',
-      home: startapp(),//Afutrainer(),
+      home: Afutrainer(),
     ),
   );
 }
+//Todo: implement a start screen to guide the user
+/*
 startapp(){
   // Afutrainer();
   return FutureBuilder(
@@ -40,10 +42,11 @@ startapp(){
         }else if(snapshot.hasError){
           print("error");
         }
+        print("error");
       }
   );
 }
-
+*/
 
 
 welcome() async {
@@ -77,6 +80,11 @@ class _AfutrainerState extends State<Afutrainer> {
           ),
         ],
       ),//Color(0xff253478),),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+          child: const Icon(Icons.shuffle),
+          backgroundColor: Colors.amber,
+        ),
       body: Container(
         child: futurebuilder(context)
       ),

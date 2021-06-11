@@ -57,10 +57,15 @@ class _Questionstate extends State<Question>{
   return ListView(
         children: [
           LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
-          Padding(padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding), child: HtmlWidget(qdata["textquestion"],textStyle: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 20
-          ),),),
+          Padding(
+            padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+             child: HtmlWidget(qdata["textquestion"],
+               textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20
+                ),
+             ),
+          ),
           Divider(height: std_padding * 2,),
           ListView.builder(
               physics: NeverScrollableScrollPhysics(),
@@ -80,12 +85,11 @@ class _Questionstate extends State<Question>{
                           onChanged: (var value) {setState(() {question = i;});},
                         title: HtmlWidget(questionlist[i][1],),
                         ),
-
                     ]
-                );
-              }),
+                  );
+                }
+              ),
           SizedBox(height: std_padding * 1.5,),
-          //Todo: change the color based on the tries you already had
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               textStyle: TextStyle(
@@ -100,8 +104,8 @@ class _Questionstate extends State<Question>{
           ),
         ],
       );
-    }
-    _questiondiable(){
+      }
+  _questiondiable(){
     print("$question");
     if(question != null){
           return _checkquestion();
@@ -109,13 +113,13 @@ class _Questionstate extends State<Question>{
           print("deactivated");
           return null;
         }
-    }
+  }
 
-displaysnackbar(var text){
-  ScaffoldMessenger.of(context).removeCurrentSnackBar();
-  return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$text'),));
+  displaysnackbar(var text){
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$text'),));
 
-}
+  }
 
   _checkquestion() {
     //print(questionlist[this.question][0]);
@@ -125,10 +129,10 @@ displaysnackbar(var text){
       /*if(question > menuq.questioncount(chapter,subchapter, questionnum)){
         print("ALARM");
       }else{*/
+        setState(() {correct = false; tries = 0;question = null;questionnum += 1;});
         menuq = Chaptermenu(data);
         qdata = menuq.question(chapter,subchapter,questionnum);
         questionlist = _questionlist(qdata);
-        setState(() {correct = false; tries = 0;question = null;questionnum += 1;});
       //}
     } else if(b && tries < 2){
       print("richtig");
@@ -146,32 +150,32 @@ displaysnackbar(var text){
       setState(() { tries += 1;question = null;});
     }
   }
-  _textdisplay() {
-    //print("\n");
-    //print(correct);
-    //print(tries);
-    if(correct || tries > 1){
-      return Text("Weiter");//return Question(subchapter,chapter,data,questionnum + 1);
+    _textdisplay() {
+      //print("\n");
+      //print(correct);
+      //print(tries);
+      if(correct || tries > 1){
+        return Text("Weiter");//return Question(subchapter,chapter,data,questionnum + 1);
+      }
+      else{
+        return Text("Überprüfen");
+      }
     }
-    else{
-      return Text("Überprüfen");
-    }
-  }
 
-   _questionlist(var qdata) {
-    //print(qdata["textanswer"]);//[0]["@correct"]);
-    var questionlist = [];
-    var x = 0;
-    for(var y in qdata["textanswer"]){
-      x += 1;
-      if(x == 1){
-        questionlist.add(["true", y["text"].toString()]);
-      }else{
-        questionlist.add(["false", y]);
-     }
-    }
-    questionlist.shuffle();
-    return questionlist;
-}
+     _questionlist(var qdata) {
+      //print(qdata["textanswer"]);//[0]["@correct"]);
+      var questionlist = [];
+      var x = 0;
+      for(var y in qdata["textanswer"]){
+        x += 1;
+        if(x == 1){
+          questionlist.add(["true", y["text"].toString()]);
+        }else{
+          questionlist.add(["false", y]);
+       }
+      }
+      questionlist.shuffle();
+      return questionlist;
+  }
 
 }

@@ -32,7 +32,7 @@ class _formularystate extends State<Formularypage> {
   }
 
   _loadpdf() async{
-    PDFDocument doc = await PDFDocument.fromAsset('assets/DL_Technik_Klasse_E_2007/Formelsammlung.pdf');
+    PDFDocument doc = await PDFDocument.fromAsset('assets/Formelsammlung.pdf');
     return doc;
   }
 

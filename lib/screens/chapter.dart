@@ -13,22 +13,25 @@ Widget selectlesson(var data, var context) {
   menu.chapter_names();
   menu.subchapter_info();
   menu.main_chapter_names();
-  return Padding(padding: EdgeInsets.only(left: 5,right: 5),child: ListView.builder(
+  return Padding(
+      padding: EdgeInsets.only(left: 5,right: 5),
+      child: ListView.builder(
             itemCount: menu.results["chapternames"].length ,
             itemBuilder: (context, i) {
               if(i < 1){
-                return Padding(padding: EdgeInsets.only(top:20, right: std_padding, left: std_padding), child:
-                  Column(children: [
-
-                    Text(
-                      menu.results["learnmodulename"],
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
+                return Padding(
+                    padding: EdgeInsets.only(top:20, right: std_padding, left: std_padding),
+                    child:
+                    Column(children: [
+                      Text(
+                        menu.results["learnmodulename"],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 35,
+                          ),
                         ),
-                      ),
-                    Divider()
-                  ],)
+                      Divider()
+                    ],)
                 );
               }
                 return chapterwidget(menu, i, data, context);
