@@ -1,3 +1,55 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+
+class Json{
+  Map<String, dynamic>? data;
+  Json(this.data);
+
+  Future load() async {
+    var rawdata = await rootBundle.loadString('assets/DL_Technik_Klasse_E_2007/questions.json');
+    this.data = jsonDecode(rawdata);
+    return this.data;
+  }
+
+  main_chapter_name(){
+    return this.data!["exam"]["name"];
+  }
+  chapter_names(var chapter){
+    return (this.data!["chapter"]["chapter"][chapter]["name"]);
+  }
+
+
+}
+
+class JsonWidget extends InheritedWidget{
+  final Map<String, dynamic>? json;
+
+  const JsonWidget(Widget child, this.json) : super(child:child);
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) =>
+      false;
+
+  static JsonWidget of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<JsonWidget>()!;
+
+}
+
+/*class Jsonwidget extends InheritedWidget{
+  final Json
+  Jsonwidget() : super(child: );
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    // TODO: implement updateShouldNotify
+    throw UnimplementedError();
+  }
+
+}*/
+
+
 class Chaptermenu{
   var data;
   List chapter = [];
@@ -44,7 +96,6 @@ class Chaptermenu{
   }
   question(final int chapter,final int subchapter, final int question){
     var chaptername = this.data["chapter"]["chapter"];
-    print(100 / (chaptername[chapter]["chapter"][subchapter]["question"].length));
     var result = chaptername[chapter]["chapter"][subchapter]["question"][question];
     return result;
   }
