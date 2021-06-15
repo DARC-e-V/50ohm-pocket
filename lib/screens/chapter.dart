@@ -24,7 +24,7 @@ Widget selectlesson(var data, var context) {
                     child:
                     Column(children: [
                       Text(
-                        menu.results["learnmodulename"],
+                        "${Json(JsonWidget.of(context).json).main_chapter_name()}",//menu.results["learnmodulename"],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 35,

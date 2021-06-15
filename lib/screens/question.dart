@@ -27,11 +27,8 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question>{
   //, var data, var chapter, var subchapter
-  var questionnum = 0;
-  var question ;
-  var subchapter, chapter, data;
-  var menuq, qdata, questionlist;
-  var tries = 0 ;
+  var questionnum, tries = 0;
+  var question, subchapter, chapter, data, menuq, qdata, questionlist;
   bool correct = false;
 
   _Questionstate(this.subchapter,this.chapter,this.data,this.questionnum);
@@ -42,7 +39,6 @@ class _Questionstate extends State<Question>{
     menuq = Chaptermenu(data);
     qdata = menuq.question(chapter,subchapter,questionnum);
     questionlist = _questionlist(qdata);
-    print(questionlist);
   }
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,14 @@
 import 'dart:ui';
 
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
+import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/screens/question.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 chapterwidget(var menu, var s, var data, var context){
+  Json json = Json(JsonWidget.of(context).json);
   var currentchapter = s - 1;
   return Container(
     margin: EdgeInsets.only(top: std_padding),
@@ -27,7 +29,7 @@ chapterwidget(var menu, var s, var data, var context){
                       padding: EdgeInsets.all(18),
                       onPressed: (){},
                       child: Text(
-                        menu.results['chapternames'][currentchapter],
+                        json.chapter_names(currentchapter),
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
