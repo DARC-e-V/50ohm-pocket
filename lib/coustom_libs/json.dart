@@ -13,12 +13,25 @@ class Json{
     return this.data;
   }
 
-  main_chapter_name(){
-    return this.data!["exam"]["name"];
+  main_chapter_name() => this.data!["exam"]["name"];
+
+  chapter_names(var chapter) => this.data!["chapter"]["chapter"][chapter]["name"];
+
+
+  questionname(var chapter, var subchapter, var question) =>
+      this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textquestion"];
+
+  question(var chapter, var subchapter, var question){
+    for(var y in this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"], var i++ ){
+      if(i == 0){
+        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][i]["text"]),true];
+      }else{
+        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][i]),false];
+      }
+    }
+
   }
-  chapter_names(var chapter){
-    return (this.data!["chapter"]["chapter"][chapter]["name"]);
-  }
+
 
 
 }

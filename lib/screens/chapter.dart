@@ -34,7 +34,7 @@ Widget selectlesson(var data, var context) {
                     ],)
                 );
               }
-                return chapterwidget(menu, i, data, context);
+                return chapterwidget(menu, i, context);
             }
     )
   );

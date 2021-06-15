@@ -10,7 +10,7 @@
     "@published": "2006-09-01",
     "text": "1. Auflage, September 2006"
   },
-  "valid": {
+  "vaid": {
     "@from": "2007-02-01",
     "@until": ""
   },
@@ -20,7 +20,7 @@
     "@mixanswers": "true"
   },
   "exam": {
-    "@id": "T",
+    "id": "T",
     "name": "Technische Kenntnisse Klasse E",
     "@duration": "60",
     "@maxerrorpoints": "9",
@@ -1203,19 +1203,19 @@
   ],
   "chapter": {
     "name": "Prüfungsfragen im Prüfungsteil „Technische Kenntnisse“",
-    "@id": "T",
+    "id": "T",
     "chapter": [
       {
         "name": "Allgemeine mathematische Grundkenntnisse und Größen",
-        "@id": "A",
+        "id": "A",
         "chapter": [
           {
             "name": "Allgemeine mathematische Grundkenntnisse",
             "icon": "functions",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TA101",
+                "id": "TA101",
                 "textquestion": "0,042 A entspricht",
                 "textanswer": [
                   {
@@ -1228,7 +1228,7 @@
                 ]
               },
               {
-                "@id": "TA102",
+                "id": "TA102",
                 "textquestion": "0,00042 A entspricht",
                 "textanswer": [
                   {
@@ -1241,7 +1241,7 @@
                 ]
               },
               {
-                "@id": "TA103",
+                "id": "TA103",
                 "textquestion": "100 mW entspricht",
                 "textanswer": [
                   {
@@ -1254,7 +1254,7 @@
                 ]
               },
               {
-                "@id": "TA104",
+                "id": "TA104",
                 "textquestion": "4 200 000 Hz entspricht",
                 "textanswer": [
                   {
@@ -1271,10 +1271,10 @@
           {
             "name": "Größen und Einheiten",
             "icon": "square_foot",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TA201",
+                "id": "TA201",
                 "textquestion": "Welche Einheit wird für die elektrische Spannung verwendet?",
                 "textanswer": [
                   {
@@ -1287,7 +1287,7 @@
                 ]
               },
               {
-                "@id": "TA202",
+                "id": "TA202",
                 "textquestion": "Welche Einheit wird für die elektrische Ladung verwendet?",
                 "textanswer": [
                   {
@@ -1300,7 +1300,7 @@
                 ]
               },
               {
-                "@id": "TA203",
+                "id": "TA203",
                 "textquestion": "Welche Einheit wird für die elektrische Leistung verwendet?",
                 "textanswer": [
                   {
@@ -1313,8 +1313,8 @@
                 ]
               },
               {
-                "@id": "TA204",
-                "textquestion": "In welcher Einheit wird der elektrische Widerstand angegeben?",
+                "id": "TA204",
+                "textquestion": "In welcher Einheit wird der elektrische iderstand angegeben?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -1326,7 +1326,7 @@
                 ]
               },
               {
-                "@id": "TA205",
+                "id": "TA205",
                 "textquestion": "Welche der nachfolgenden Antworten enthält nur Basiseinheiten nach dem internationalen Einheitensystem?",
                 "textanswer": [
                   {
@@ -1339,7 +1339,7 @@
                 ]
               },
               {
-                "@id": "TA206",
+                "id": "TA206",
                 "textquestion": "0,22 µF sind",
                 "textanswer": [
                   {
@@ -1352,7 +1352,7 @@
                 ]
               },
               {
-                "@id": "TA207",
+                "id": "TA207",
                 "textquestion": "3,75 MHz sind",
                 "textanswer": [
                   {
@@ -1365,7 +1365,7 @@
                 ]
               },
               {
-                "@id": "TA208",
+                "id": "TA208",
                 "textquestion": "Welche Einheit wird für die Kapazität verwendet?",
                 "textanswer": [
                   {
@@ -1383,15 +1383,15 @@
       },
       {
         "name": "Elektrizitäts-, Elektromagnetismus- und Funktheorie",
-        "@id": "B",
+        "id": "B",
         "chapter": [
           {
             "name": "Leiter, Halbleiter und Isolator",
             "icon": "developer_board",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TB101",
+                "id": "TB101",
                 "textquestion": "Welche Gruppe enthält insgesamt die besten gut leitenden Metalle?",
                 "textanswer": [
                   {
@@ -1404,7 +1404,7 @@
                 ]
               },
               {
-                "@id": "TB102",
+                "id": "TB102",
                 "textquestion": "Welches der genannten Metalle hat die beste elektrische Leitfähigkeit?",
                 "textanswer": [
                   {
@@ -1417,7 +1417,7 @@
                 ]
               },
               {
-                "@id": "TB103",
+                "id": "TB103",
                 "textquestion": "Welches der genannten Metalle hat die schlechteste elektrische Leitfähigkeit?",
                 "textanswer": [
                   {
@@ -1430,20 +1430,20 @@
                 ]
               },
               {
-                "@id": "TB104",
+                "id": "TB104",
                 "textquestion": "Welche Gruppe von Materialien enthält nur Nichtleiter (Isolatoren)?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Epoxid, Polyethylen (PE), Polystyrol (PS)"
+                    "text": "Epoid, Polyethylen (PE), Polystyrol (PS)"
                   },
-                  "Pertinax, Polyvinylchlorid (PVC), Graphit",
+                  "Pertinax, Polyvinylchloid (PVC), Graphit",
                   "Polyethylen (PE), Messing, Konstantan",
                   "Teflon, Pertinax, Bronze"
                 ]
               },
               {
-                "@id": "TB105",
+                "id": "TB105",
                 "textquestion": "Was verstehen Sie unter Halbleitermaterialien?",
                 "textanswer": [
                   {
@@ -1460,10 +1460,10 @@
           {
             "name": "Strom- und Spannungsquellen",
             "icon" : "power",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TB201",
+                "id": "TB201",
                 "textquestion": "Welche Spannung zeigt der Spannungsmesser in folgender Schaltung?<p><img src='asset:assets/graphics/tb201f.png'>",
                 "textanswer": [
                   {
@@ -1476,7 +1476,7 @@
                 ]
               },
               {
-                "@id": "TB202",
+                "id": "TB202",
                 "textquestion": "Folgende Schaltung eines Akkus besteht aus Zellen von je 2 V. Jede Zelle kann 10 Ah Ladung liefern. Welche Daten hat der Akku?<p><img src='asset:assets/graphics/tb202f.png'>",
                 "textanswer": [
                   {
@@ -1489,7 +1489,7 @@
                 ]
               },
               {
-                "@id": "TB203",
+                "id": "TB203",
                 "textquestion": "Was versteht man unter „technischer Stromrichtung“ in der Elektrotechnik?",
                 "textanswer": [
                   {
@@ -1502,7 +1502,7 @@
                 ]
               },
               {
-                "@id": "TB204",
+                "id": "TB204",
                 "textquestion": "Kann in folgender Schaltung von zwei gleichen Spannungsquellen Strom fließen? Welche Begründung ist richtig?<p><img src='asset:assets/graphics/tb204f.png'>",
                 "textanswer": [
                   {
@@ -1511,11 +1511,11 @@
                   },
                   "Nein, weil der Pluspol mit dem Minuspol verbunden ist.",
                   "Ja, sogar Kurzschlussstrom, weil der Pluspol mit dem Minuspol verbunden ist.",
-                  "Ja. Der Strom hängt vom Innenwiderstand der Batterien ab."
+                  "Ja. Der Strom hängt vom Inneniderstand der Batterien ab."
                 ]
               },
               {
-                "@id": "TB205",
+                "id": "TB205",
                 "textquestion": "Wie lange könnte man mit einem voll geladenen Akku mit 55 Ah einen Amateurfunkempfänger betreiben, der einen Strom von 0,8 A aufnimmt?",
                 "textanswer": [
                   {
@@ -1531,11 +1531,11 @@
           },
           {
             "name": "Elektrisches Feld",
-            "@id": "3",
+            "id": "3",
             "icon": "bolt_outlined",
             "question": [
               {
-                "@id": "TB301",
+                "id": "TB301",
                 "textquestion": "Welche Einheit wird für die elektrische Feldstärke verwendet?",
                 "textanswer": [
                   {
@@ -1548,7 +1548,7 @@
                 ]
               },
               {
-                "@id": "TB302",
+                "id": "TB302",
                 "textquestion": "Wie nennt man das Feld zwischen zwei parallelen Kondensatorplatten bei Anschluss einer Gleichspannung?<p><img src='asset:assets/graphics/tb302f.png'>",
                 "textanswer": [
                   {
@@ -1561,7 +1561,7 @@
                 ]
               },
               {
-                "@id": "TB303",
+                "id": "TB303",
                 "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:assets/graphics/tb303f.png'>",
                 "textanswer": [
                   {
@@ -1577,11 +1577,11 @@
           },
           {
             "name": "Magnetisches Feld",
-            "@id": "4",
+            "id": "4",
             "icon": "explore",
             "question": [
               {
-                "@id": "TB401",
+                "id": "TB401",
                 "textquestion": "Welche Einheit wird für die magnetische Feldstärke verwendet?",
                 "textanswer": [
                   {
@@ -1594,7 +1594,7 @@
                 ]
               },
               {
-                "@id": "TB402",
+                "id": "TB402",
                 "textquestion": "Wie nennt man das Feld im Innern einer langen Zylinderspule beim Fließen eines Gleichstroms?<p><img src='asset:assets/graphics/tb402f.png'>",
                 "textanswer": [
                   {
@@ -1607,7 +1607,7 @@
                 ]
               },
               {
-                "@id": "TB403",
+                "id": "TB403",
                 "textquestion": "Wenn Strom durch einen gestreckten Leiter fließt, entsteht ein",
                 "textanswer": [
                   {
@@ -1620,7 +1620,7 @@
                 ]
               },
               {
-                "@id": "TB404",
+                "id": "TB404",
                 "textquestion": "Wie werden die mit X gekennzeichneten Feldlinien einer Vertikalantenne bezeichnet?<p><img src='asset:assets/graphics/tb404f.png'>",
                 "textanswer": [
                   {
@@ -1633,7 +1633,7 @@
                 ]
               },
               {
-                "@id": "TB405",
+                "id": "TB405",
                 "textquestion": "Welcher der nachfolgenden Werkstoffe ist ein ferromagnetischer Stoff?",
                 "textanswer": [
                   {
@@ -1649,11 +1649,11 @@
           },
           {
             "name": "Elektromagnetisches Feld",
-            "@id": "5",
+            "id": "5",
             "icon": "settings_input_antenna",
             "question": [
               {
-                "@id": "TB501",
+                "id": "TB501",
                 "textquestion": "Wodurch entsteht ein elektromagnetisches Feld? Ein elektromagnetisches Feld entsteht,",
                 "textanswer": [
                   {
@@ -1666,7 +1666,7 @@
                 ]
               },
               {
-                "@id": "TB502",
+                "id": "TB502",
                 "textquestion": "Wie erfolgt die Ausbreitung einer elektromagnetischen Welle? Die Ausbreitung erfolgt",
                 "textanswer": [
                   {
@@ -1679,7 +1679,7 @@
                 ]
               },
               {
-                "@id": "TB503",
+                "id": "TB503",
                 "textquestion": "Das folgende Bild zeigt die Feldlinien eines elektromagnetischen Feldes. Welche Polarisation hat die skizzierte Wellenfront?<p><img src='asset:assets/graphics/tb503f.png'>",
                 "textanswer": [
                   {
@@ -1692,7 +1692,7 @@
                 ]
               },
               {
-                "@id": "TB504",
+                "id": "TB504",
                 "textquestion": "Der Winkel zwischen den elektrischen und magnetischen Feldkomponenten eines elektromagnetischen Feldes beträgt im Fernfeld",
                 "textanswer": [
                   {
@@ -1705,7 +1705,7 @@
                 ]
               },
               {
-                "@id": "TB505",
+                "id": "TB505",
                 "textquestion": "Die Polarisation des Sendesignals in der Hauptstrahlrichtung dieser Richtantenne ist<p><img src='asset:assets/graphics/tb505f.png'>",
                 "textanswer": [
                   {
@@ -1721,11 +1721,11 @@
           },
           {
             "name": "Sinusförmige Signale",
-            "@id": "6",
+            "id": "6",
             "icon" : "leak_add",
             "question": [
               {
-                "@id": "TB601",
+                "id": "TB601",
                 "textquestion": "Welches ist die Einheit der Wellenlänge?",
                 "textanswer": [
                   {
@@ -1738,7 +1738,7 @@
                 ]
               },
               {
-                "@id": "TB602",
+                "id": "TB602",
                 "textquestion": "Welcher Wellenlänge &lambda; entspricht die Frequenz 1,84 MHz?",
                 "textanswer": [
                   {
@@ -1751,7 +1751,7 @@
                 ]
               },
               {
-                "@id": "TB603",
+                "id": "TB603",
                 "textquestion": "Welcher Wellenlänge &lambda; entspricht die Frequenz 28,48 MHz?",
                 "textanswer": [
                   {
@@ -1764,7 +1764,7 @@
                 ]
               },
               {
-                "@id": "TB604",
+                "id": "TB604",
                 "textquestion": "Eine Wellenlänge von 2,06 m entspricht einer Frequenz von",
                 "textanswer": [
                   {
@@ -1777,7 +1777,7 @@
                 ]
               },
               {
-                "@id": "TB605",
+                "id": "TB605",
                 "textquestion": "Eine Wellenlänge von 80,0 m entspricht einer Frequenz von",
                 "textanswer": [
                   {
@@ -1790,7 +1790,7 @@
                 ]
               },
               {
-                "@id": "TB606",
+                "id": "TB606",
                 "textquestion": "Welche Bezeichnung ist für eine Schwingung von 145 000 000 Perioden pro Sekunde richtig?",
                 "textanswer": [
                   {
@@ -1803,7 +1803,7 @@
                 ]
               },
               {
-                "@id": "TB607",
+                "id": "TB607",
                 "textquestion": "Die Periodendauer von 50 µs entspricht einer Frequenz von",
                 "textanswer": [
                   {
@@ -1816,7 +1816,7 @@
                 ]
               },
               {
-                "@id": "TB608",
+                "id": "TB608",
                 "textquestion": "Den Frequenzbereich zwischen 30 und 300 MHz bezeichnet man als",
                 "textanswer": [
                   {
@@ -1829,7 +1829,7 @@
                 ]
               },
               {
-                "@id": "TB609",
+                "id": "TB609",
                 "textquestion": "Das 70-cm-Band befindet sich im",
                 "textanswer": [
                   {
@@ -1842,7 +1842,7 @@
                 ]
               },
               {
-                "@id": "TB610",
+                "id": "TB610",
                 "textquestion": "Welche Frequenz hat die in diesem Oszillogramm dargestellte Spannung?<p><img src='asset:assets/graphics/tb610f.png'>",
                 "textanswer": [
                   {
@@ -1855,7 +1855,7 @@
                 ]
               },
               {
-                "@id": "TB611",
+                "id": "TB611",
                 "textquestion": "Welche Frequenz hat das in diesem Schirmbild dargestellte Signal?<p><img src='asset:assets/graphics/tb611f.png'>",
                 "textanswer": [
                   {
@@ -1868,7 +1868,7 @@
                 ]
               },
               {
-                "@id": "TB612",
+                "id": "TB612",
                 "textquestion": "Eine sinusförmige Wechselspannung hat einen Spitzenwert von 12 V. Wie groß ist der Effektivwert der Wechselspannung?",
                 "textanswer": [
                   {
@@ -1881,7 +1881,7 @@
                 ]
               },
               {
-                "@id": "TB613",
+                "id": "TB613",
                 "textquestion": "Ein sinusförmiges Signal hat einen Effektivwert von 12 V. Wie groß ist der Spitzen-Spitzen-Wert?",
                 "textanswer": [
                   {
@@ -1897,11 +1897,11 @@
           },
           {
             "name": "Nichtsinusförmige Signale",
-            "@id": "7",
+            "id": "7",
             "icon" : "leak_remove",
             "question": [
               {
-                "@id": "TB701",
+                "id": "TB701",
                 "textquestion": "Welche Signalform sollte der Träger einer hochfrequenten Schwingung haben?",
                 "textanswer": [
                   {
@@ -1914,7 +1914,7 @@
                 ]
               },
               {
-                "@id": "TB702",
+                "id": "TB702",
                 "textquestion": "Ein periodische Schwingung, die wie das folgende Signal aussieht, besteht<p><img src='asset:assets/graphics/tb702f.png'>",
                 "textanswer": [
                   {
@@ -1930,11 +1930,11 @@
           },
           {
             "name": "Modulierte Signale",
-            "@id": "8",
+            "id": "8",
             "icon" : "radio",
             "question": [
               {
-                "@id": "TB801",
+                "id": "TB801",
                 "textquestion": "Was ist der Unterschied zwischen AM und SSB?",
                 "textanswer": [
                   {
@@ -1947,7 +1947,7 @@
                 ]
               },
               {
-                "@id": "TB802",
+                "id": "TB802",
                 "textquestion": "Was ist der Unterschied zwischen LSB und USB?",
                 "textanswer": [
                   {
@@ -1955,12 +1955,12 @@
                     "text": "LSB arbeitet mit Trägerunterdrückung und dem unteren Seitenband, USB arbeitet mit Trägerunterdrückung und dem oberen Seitenband."
                   },
                   "LSB arbeitet mit Träger und zwei Seitenbändern, USB arbeitet mit Trägerunterdrückung und einem Seitenband.",
-                  "LSB arbeitet mit Träger und einem Seitenband, USB arbeitet mit Trägerunterdrückung und beiden Seitenbändern.",
+                  "LSB arbeitet mit Träger und einem Seitenband, USB arbeitet mit Trägerunterdrückung und biden Seitenbändern.",
                   "LSB arbeitet mit Trägerunterdrückung und dem oberen Seitenband, USB arbeitet mit Trägerunterdrückung und dem unteren Seitenband."
                 ]
               },
               {
-                "@id": "TB803",
+                "id": "TB803",
                 "textquestion": "Welche Aussage über modulierte Signale ist richtig?",
                 "textanswer": [
                   {
@@ -1973,7 +1973,7 @@
                 ]
               },
               {
-                "@id": "TB804",
+                "id": "TB804",
                 "textquestion": "Was ist der Unterschied zwischen FSK und AFSK?",
                 "textanswer": [
                   {
@@ -1986,7 +1986,7 @@
                 ]
               },
               {
-                "@id": "TB805",
+                "id": "TB805",
                 "textquestion": "Wie groß ist die HF-Bandbreite, die bei der Übertragung eines SSB-Signals entsteht?",
                 "textanswer": [
                   {
@@ -1999,7 +1999,7 @@
                 ]
               },
               {
-                "@id": "TB806",
+                "id": "TB806",
                 "textquestion": "Ein Träger von 3,65 MHz wird mit der NF-Frequenz von 2 kHz in SSB (LSB) moduliert. Welche Frequenz/Frequenzen treten im modulierten HF-Signal hauptsächlich auf?",
                 "textanswer": [
                   {
@@ -2015,11 +2015,11 @@
           },
           {
             "name": "Ohmsches Gesetz, Leistung und Energie",
-            "@id": "9",
+            "id": "9",
             "icon" : "battery_charging_full",
             "question": [
               {
-                "@id": "TB901",
+                "id": "TB901",
                 "textquestion": "Die Maßeinheit der elektrischen Leistung ist",
                 "textanswer": [
                   {
@@ -2032,7 +2032,7 @@
                 ]
               },
               {
-                "@id": "TB902",
+                "id": "TB902",
                 "textquestion": "Welcher der nachfolgenden Zusammenhänge ist richtig?",
                 "textanswer": [
                   {
@@ -2045,8 +2045,8 @@
                 ]
               },
               {
-                "@id": "TB903",
-                "textquestion": "Welche Spannung lässt einen Strom von 2 A durch einen Widerstand von 50 Ohm fließen?",
+                "id": "TB903",
+                "textquestion": "Welche Spannung lässt einen Strom von 2 A durch einen iderstand von 50 Ohm fließen?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2058,8 +2058,8 @@
                 ]
               },
               {
-                "@id": "TB904",
-                "textquestion": "Welcher Widerstand ist erforderlich um einen Strom von 3 A bei einer Spannung von 90 Volt fließen zu lassen?",
+                "id": "TB904",
+                "textquestion": "Welcher iderstand ist erforderlich um einen Strom von 3 A bei einer Spannung von 90 Volt fließen zu lassen?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2071,7 +2071,7 @@
                 ]
               },
               {
-                "@id": "TB905",
+                "id": "TB905",
                 "textquestion": "Eine Stromversorgung nimmt bei 230 V einen Strom von 0,63 A auf. Welche elektrische Arbeit (Energie) wird bei einer Betriebsdauer von 7 Stunden verbraucht?",
                 "textanswer": [
                   {
@@ -2084,7 +2084,7 @@
                 ]
               },
               {
-                "@id": "TB906",
+                "id": "TB906",
                 "textquestion": "Eine Glühlampe hat einen Nennwert von 12 V und 48 W. Bei einer 12-V-Versorgung beträgt die Stromentnahme",
                 "textanswer": [
                   {
@@ -2097,7 +2097,7 @@
                 ]
               },
               {
-                "@id": "TB907",
+                "id": "TB907",
                 "textquestion": "Der Effektivwert der Spannung an einer künstlichen 50-&Omega;-Antenne wird mit 100 V gemessen. Die Leistung an der Last beträgt",
                 "textanswer": [
                   {
@@ -2110,7 +2110,7 @@
                 ]
               },
               {
-                "@id": "TB908",
+                "id": "TB908",
                 "textquestion": "Ein mit einer künstlichen 50-&Omega;-Antenne in Serie geschaltetes Amperemeter zeigt 2 A an. Die Leistung in der Last beträgt",
                 "textanswer": [
                   {
@@ -2123,7 +2123,7 @@
                 ]
               },
               {
-                "@id": "TB909",
+                "id": "TB909",
                 "textquestion": "Ein Mobil-Transceiver (Sender-Empfänger) hat bei Sendebetrieb eine Leistungsaufnahme von 100 Watt aus dem 12-V-Bordnetz des Kraftfahrzeuges. Wie groß ist die Stromaufnahme?",
                 "textanswer": [
                   {
@@ -2136,8 +2136,8 @@
                 ]
               },
               {
-                "@id": "TB910",
-                "textquestion": "Ein 100-&Omega;-Widerstand, an dem 10 V anliegen, muss mindestens eine Belastbarkeit haben von",
+                "id": "TB910",
+                "textquestion": "Ein 100-&Omega;-iderstand, an dem 10 V anliegen, muss mindestens eine Belastbarkeit haben von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2149,8 +2149,8 @@
                 ]
               },
               {
-                "@id": "TB911",
-                "textquestion": "Welche Belastbarkeit muss ein Vorwiderstand haben, an dem bei einem Strom von 50 mA eine Spannung von 50 V abfallen soll?",
+                "id": "TB911",
+                "textquestion": "Welche Belastbarkeit muss ein Voriderstand haben, an dem bei einem Strom von 50 mA eine Spannung von 50 V abfallen soll?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2167,15 +2167,15 @@
       },
       {
         "name": "Elektrische und elektronische Bauteile",
-        "@id": "C",
+        "id": "C",
         "chapter": [
           {
-            "name": "Widerstand",
-            "@id": "1",
+            "name": "iderstand",
+            "id": "1",
             "question": [
               {
-                "@id": "TC101",
-                "textquestion": "Die Farbringe gelb, violett und orange auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert von",
+                "id": "TC101",
+                "textquestion": "Die Farbringe gelb, violett und orange auf einem iderstand mit 4 Farbringen bedeuten einen iderstandswert von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2187,8 +2187,8 @@
                 ]
               },
               {
-                "@id": "TC102",
-                "textquestion": "Die Farbringe gelb, violett und rot auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert von",
+                "id": "TC102",
+                "textquestion": "Die Farbringe gelb, violett und rot auf einem iderstand mit 4 Farbringen bedeuten einen iderstandswert von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2200,8 +2200,8 @@
                 ]
               },
               {
-                "@id": "TC103",
-                "textquestion": "Die Farbringe rot, violett und orange auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert von",
+                "id": "TC103",
+                "textquestion": "Die Farbringe rot, violett und orange auf einem iderstand mit 4 Farbringen bedeuten einen iderstandswert von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2213,8 +2213,8 @@
                 ]
               },
               {
-                "@id": "TC104",
-                "textquestion": "Die Farbringe rot, violett und rot auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert von",
+                "id": "TC104",
+                "textquestion": "Die Farbringe rot, violett und rot auf einem iderstand mit 4 Farbringen bedeuten einen iderstandswert von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2226,7 +2226,7 @@
                 ]
               },
               {
-                "@id": "TC105",
+                "id": "TC105",
                 "textquestion": "Welches Bauteil hat folgendes Schaltzeichen?<p><img src='asset:assets/graphics/tc105f.png'>",
                 "textanswer": [
                   {
@@ -2239,7 +2239,7 @@
                 ]
               },
               {
-                "@id": "TC106",
+                "id": "TC106",
                 "textquestion": "Welches der folgenden Bauteile ist ein NTC?",
                 "textanswer": [
                   {
@@ -2252,8 +2252,8 @@
                 ]
               },
               {
-                "@id": "TC107",
-                "textquestion": "Welches der folgenden Schaltsymbole stellt einen PTC-Widerstand dar?",
+                "id": "TC107",
+                "textquestion": "Welches der folgenden Schaltsymbole stellt einen PTC-iderstand dar?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2265,8 +2265,8 @@
                 ]
               },
               {
-                "@id": "TC108",
-                "textquestion": "Ein Widerstand hat eine Toleranz von 10 %. Bei einem nominalen Widerstandswert von 5,6 k&Omega; liegt der tatsächliche Wert zwischen",
+                "id": "TC108",
+                "textquestion": "Ein iderstand hat eine Toleranz von 10 %. Bei einem nominalen iderstandswert von 5,6 k&Omega; liegt der tatsächliche Wert zwischen",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2278,21 +2278,21 @@
                 ]
               },
               {
-                "@id": "TC109",
-                "textquestion": "Welche Bauart von Widerstand folgender Auswahl ist am besten für eine künstliche Antenne (Dummy Load) geeignet?",
+                "id": "TC109",
+                "textquestion": "Welche Bauart von iderstand folgender Auswahl ist am besten für eine künstliche Antenne (Dummy Load) geeignet?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Ein Metalloxidwiderstand"
+                    "text": "Ein Metalloididerstand"
                   },
-                  "Ein Kohleschichtwiderstand",
-                  "Ein keramischer Drahtwiderstand",
-                  "Ein frei gewickelter Drahtwiderstand aus Kupferdraht"
+                  "Ein Kohleschichtiderstand",
+                  "Ein keramischer Drahtiderstand",
+                  "Ein frei gewickelter Drahtiderstand aus Kupferdraht"
                 ]
               },
               {
-                "@id": "TC110",
-                "textquestion": "Welchen Wert hat ein SMD-Widerstand mit der Kennzeichnung 221?",
+                "id": "TC110",
+                "textquestion": "Welchen Wert hat ein SMD-iderstand mit der Kennzeichnung 221?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2304,8 +2304,8 @@
                 ]
               },
               {
-                "@id": "TC111",
-                "textquestion": "Welchen Wert hat ein SMD-Widerstand mit der Kennzeichnung 223?",
+                "id": "TC111",
+                "textquestion": "Welchen Wert hat ein SMD-iderstand mit der Kennzeichnung 223?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2320,10 +2320,10 @@
           },
           {
             "name": "Kondensator",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TC201",
+                "id": "TC201",
                 "textquestion": "Welche Aussage zur Kapazität eines Plattenkondensators ist richtig?",
                 "textanswer": [
                   {
@@ -2336,7 +2336,7 @@
                 ]
               },
               {
-                "@id": "TC202",
+                "id": "TC202",
                 "textquestion": "Ein Bauelement, bei dem sich Platten auf einer isolierten Achse befinden, die zwischen fest stehende Platten hineingedreht werden können, nennt man",
                 "textanswer": [
                   {
@@ -2349,7 +2349,7 @@
                 ]
               },
               {
-                "@id": "TC203",
+                "id": "TC203",
                 "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc203f.png'>",
                 "textanswer": [
                   {
@@ -2362,7 +2362,7 @@
                 ]
               },
               {
-                "@id": "TC204",
+                "id": "TC204",
                 "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc204f.png'>",
                 "textanswer": [
                   {
@@ -2375,7 +2375,7 @@
                 ]
               },
               {
-                "@id": "TC205",
+                "id": "TC205",
                 "textquestion": "Welche Kapazität hat nebenstehend abgebildeter Kondensator?<p><img src='asset:assets/graphics/tc205f.png'>",
                 "textanswer": [
                   {
@@ -2388,7 +2388,7 @@
                 ]
               },
               {
-                "@id": "TC206",
+                "id": "TC206",
                 "textquestion": "Drei Kondensatoren mit den Kapazitäten C<sub>1<\/sub> = 0,1 µF, C<sub>2<\/sub> = 150 nF und C<sub>3<\/sub> = 50000 pF werden parallel geschaltet. Wie groß ist die Gesamtkapazität?",
                 "textanswer": [
                   {
@@ -2401,7 +2401,7 @@
                 ]
               },
               {
-                "@id": "TC207",
+                "id": "TC207",
                 "textquestion": "Bei welchem der folgenden Bauformen von Kondensatoren muss beim Einbau auf die Polarität geachtet werden?",
                 "textanswer": [
                   {
@@ -2414,26 +2414,26 @@
                 ]
               },
               {
-                "@id": "TC208",
+                "id": "TC208",
                 "textquestion": "Mit zunehmender Frequenz",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "sinkt der Wechselstromwiderstand von Kondensatoren."
+                    "text": "sinkt der Wechselstromiderstand von Kondensatoren."
                   },
-                  "sinkt der Wechselstromwiderstand von Kondensatoren bis zu einem Minimum und steigt dann wieder.",
-                  "steigt der Wechselstromwiderstand von Kondensatoren.",
-                  "steigt der Wechselstromwiderstand von Kondensatoren bis zu einem Maximum und sinkt dann wieder."
+                  "sinkt der Wechselstromiderstand von Kondensatoren bis zu einem Minimum und steigt dann wieder.",
+                  "steigt der Wechselstromiderstand von Kondensatoren.",
+                  "steigt der Wechselstromiderstand von Kondensatoren bis zu einem Maximum und sinkt dann wieder."
                 ]
               }
             ]
           },
           {
             "name": "Spule",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TC301",
+                "id": "TC301",
                 "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Windungszahl bei gleicher Wickellänge verdoppelt wird?<p><img src='asset:assets/graphics/tc301f.png'>",
                 "textanswer": [
                   {
@@ -2446,7 +2446,7 @@
                 ]
               },
               {
-                "@id": "TC302",
+                "id": "TC302",
                 "textquestion": "Wie ändert sich die Induktivität einer Spule von 12 µH, wenn die Wicklung auf dem Wickelkörper bei gleicher Windungszahl auf die doppelte Länge auseinander gezogen wird?<p><img src='asset:assets/graphics/tc302f.png'>",
                 "textanswer": [
                   {
@@ -2459,7 +2459,7 @@
                 ]
               },
               {
-                "@id": "TC303",
+                "id": "TC303",
                 "textquestion": "Wie kann man die Induktivität einer Spule vergrößern?",
                 "textanswer": [
                   {
@@ -2472,7 +2472,7 @@
                 ]
               },
               {
-                "@id": "TC304",
+                "id": "TC304",
                 "textquestion": "Das folgende Bild zeigt einen Kern, um den ein Kabel für den Bau einer Netzdrossel gewickelt ist. Der Kern sollte aus<p><img src='asset:assets/graphics/tc304f.png'>",
                 "textanswer": [
                   {
@@ -2485,8 +2485,8 @@
                 ]
               },
               {
-                "@id": "TC305",
-                "textquestion": "Schaltet man zwei Glühlampen gleichzeitig an eine Spannungsquelle, wobei eine Glühlampe zum Helligkeitsausgleich über einen Widerstand und die andere über eine Spule mit vielen Windungen und Eisenkern angeschlossen ist, so<p><img src='asset:assets/graphics/tc305f.png'>",
+                "id": "TC305",
+                "textquestion": "Schaltet man zwei Glühlampen gleichzeitig an eine Spannungsquelle, wobei eine Glühlampe zum Helligkeitsausgleich über einen iderstand und die andere über eine Spule mit vielen Windungen und Eisenkern angeschlossen ist, so<p><img src='asset:assets/graphics/tc305f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2498,26 +2498,26 @@
                 ]
               },
               {
-                "@id": "TC306",
+                "id": "TC306",
                 "textquestion": "Mit zunehmender Frequenz",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "steigt der Wechselstromwiderstand einer Spule."
+                    "text": "steigt der Wechselstromiderstand einer Spule."
                   },
-                  "sinkt der Wechselstromwiderstand einer Spule.",
-                  "sinkt der Wechselstromwiderstand einer Spule bis zu einem Minimum und steigt dann wieder.",
-                  "steigt der Wechselstromwiderstand einer Spule bis zu einem Maximum und sinkt dann wieder."
+                  "sinkt der Wechselstromiderstand einer Spule.",
+                  "sinkt der Wechselstromiderstand einer Spule bis zu einem Minimum und steigt dann wieder.",
+                  "steigt der Wechselstromiderstand einer Spule bis zu einem Maximum und sinkt dann wieder."
                 ]
               }
             ]
           },
           {
             "name": "Übertrager und Transformatoren",
-            "@id": "4",
+            "id": "4",
             "question": [
               {
-                "@id": "TC401",
+                "id": "TC401",
                 "textquestion": "Ein Trafo liegt an 230 Volt und gibt 11,5 Volt ab. Seine Primärwicklung hat 600 Windungen. Wie groß ist seine Sekundärwindungszahl?",
                 "textanswer": [
                   {
@@ -2530,7 +2530,7 @@
                 ]
               },
               {
-                "@id": "TC402",
+                "id": "TC402",
                 "textquestion": "Ein Trafo liegt an 45 Volt und gibt 180 Volt ab. Seine Primärwicklung hat 150 Windungen. Wie groß ist seine Sekundärwindungszahl?",
                 "textanswer": [
                   {
@@ -2543,7 +2543,7 @@
                 ]
               },
               {
-                "@id": "TC403",
+                "id": "TC403",
                 "textquestion": "Die Primärspule eines Übertragers hat die fünffache Anzahl von Windungen der Sekundärspule. Wie hoch ist die erwartete Sekundärspannung, wenn die Primärspule an eine 230-V-Stromversorgung angeschlossen wird?",
                 "textanswer": [
                   {
@@ -2559,10 +2559,10 @@
           },
           {
             "name": "Diode",
-            "@id": "5",
+            "id": "5",
             "question": [
               {
-                "@id": "TC501",
+                "id": "TC501",
                 "textquestion": "P-dotiertes Halbleitermaterial ist solches, das mit einem zusätzlichen Stoff versehen wurde, der",
                 "textanswer": [
                   {
@@ -2575,7 +2575,7 @@
                 ]
               },
               {
-                "@id": "TC502",
+                "id": "TC502",
                 "textquestion": "N-leitendes Halbleitermaterial ist gekennzeichnet durch",
                 "textanswer": [
                   {
@@ -2588,7 +2588,7 @@
                 ]
               },
               {
-                "@id": "TC503",
+                "id": "TC503",
                 "textquestion": "Ein in Durchlassrichtung betriebener PN-Übergang ermöglicht",
                 "textanswer": [
                   {
@@ -2601,12 +2601,12 @@
                 ]
               },
               {
-                "@id": "TC504",
+                "id": "TC504",
                 "textquestion": "Eine in Sperrrichtung betriebene Diode hat",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "einen hohen Widerstand."
+                    "text": "einen hohen iderstand."
                   },
                   "eine hohe Kapazität.",
                   "eine geringe Impedanz.",
@@ -2614,7 +2614,7 @@
                 ]
               },
               {
-                "@id": "TC505",
+                "id": "TC505",
                 "textquestion": "Die Auswahlantworten enthalten Silizium- Dioden mit unterschiedlichen Arbeitspunkten. Bei welcher Antwort befindet sich die Diode in leitendem Zustand?",
                 "textanswer": [
                   {
@@ -2627,7 +2627,7 @@
                 ]
               },
               {
-                "@id": "TC506",
+                "id": "TC506",
                 "textquestion": "Die Auswahlantworten enthalten Silizium- Dioden mit unterschiedlichen Arbeitspunkten. Bei welcher Antwort befindet sich die Diode in leitendem Zustand?",
                 "textanswer": [
                   {
@@ -2640,7 +2640,7 @@
                 ]
               },
               {
-                "@id": "TC507",
+                "id": "TC507",
                 "textquestion": "Wie verhält sich die Kapazität einer Kapazitätsdiode (Varicap)?",
                 "textanswer": [
                   {
@@ -2653,7 +2653,7 @@
                 ]
               },
               {
-                "@id": "TC508",
+                "id": "TC508",
                 "textquestion": "Wozu dient folgende Schaltung? Sie dient<p><img src='asset:assets/graphics/tc508f.png'>",
                 "textanswer": [
                   {
@@ -2666,7 +2666,7 @@
                 ]
               },
               {
-                "@id": "TC509",
+                "id": "TC509",
                 "textquestion": "Wozu dient die folgende Schaltung? Sie dient<p><img src='asset:assets/graphics/tc509f.png'>",
                 "textanswer": [
                   {
@@ -2682,10 +2682,10 @@
           },
           {
             "name": "Transistor",
-            "@id": "6",
+            "id": "6",
             "question": [
               {
-                "@id": "TC601",
+                "id": "TC601",
                 "textquestion": "Was versteht man unter Stromverstärkung beim Transistor?",
                 "textanswer": [
                   {
@@ -2698,7 +2698,7 @@
                 ]
               },
               {
-                "@id": "TC602",
+                "id": "TC602",
                 "textquestion": "Das Verhältnis von Kollektorstrom zum Basisstrom eines Transistors liegt üblicherweise im Bereich von",
                 "textanswer": [
                   {
@@ -2711,7 +2711,7 @@
                 ]
               },
               {
-                "@id": "TC603",
+                "id": "TC603",
                 "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:assets/graphics/tc603f.png'>",
                 "textanswer": [
                   {
@@ -2724,7 +2724,7 @@
                 ]
               },
               {
-                "@id": "TC604",
+                "id": "TC604",
                 "textquestion": "Bei diesem Bauelement handelt es sich um einen<p><img src='asset:assets/graphics/tc604f.png'>",
                 "textanswer": [
                   {
@@ -2737,7 +2737,7 @@
                 ]
               },
               {
-                "@id": "TC605",
+                "id": "TC605",
                 "textquestion": "Welche Kollektorspannungen haben NPN- und PNP-Transistoren?",
                 "textanswer": [
                   {
@@ -2750,7 +2750,7 @@
                 ]
               },
               {
-                "@id": "TC606",
+                "id": "TC606",
                 "textquestion": "Bei einem bipolaren Transistor in leitendem Zustand befindet sich die Emitter-Basis-Diode",
                 "textanswer": [
                   {
@@ -2763,7 +2763,7 @@
                 ]
               },
               {
-                "@id": "TC607",
+                "id": "TC607",
                 "textquestion": "Welche Transistortypen sind bipolare Transistoren?",
                 "textanswer": [
                   {
@@ -2776,7 +2776,7 @@
                 ]
               },
               {
-                "@id": "TC608",
+                "id": "TC608",
                 "textquestion": "Wie lauten die Bezeichnungen der Anschlüsse eines bipolaren Transistors?",
                 "textanswer": [
                   {
@@ -2789,7 +2789,7 @@
                 ]
               },
               {
-                "@id": "TC609",
+                "id": "TC609",
                 "textquestion": "Ein bipolarer Transistor ist",
                 "textanswer": [
                   {
@@ -2802,7 +2802,7 @@
                 ]
               },
               {
-                "@id": "TC610",
+                "id": "TC610",
                 "textquestion": "Wenn die Basisspannung eines NPN-Transistors gleich der Emitterspannung ist,",
                 "textanswer": [
                   {
@@ -2815,20 +2815,20 @@
                 ]
               },
               {
-                "@id": "TC611",
+                "id": "TC611",
                 "textquestion": "Wie erfolgt die Steuerung des Stroms im Feldeffekttransistor (FET)?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Die Gatespannung steuert den Widerstand des Kanals zwischen Source und Drain."
+                    "text": "Die Gatespannung steuert den iderstand des Kanals zwischen Source und Drain."
                   },
                   "Die Gatespannung ist allein verantwortlich für den Drainstrom.",
                   "Der Gatestrom ist allein verantwortlich für den Drainstrom.",
-                  "Der Gatestrom steuert den Widerstand des Kanals zwischen Source und Drain."
+                  "Der Gatestrom steuert den iderstand des Kanals zwischen Source und Drain."
                 ]
               },
               {
-                "@id": "TC612",
+                "id": "TC612",
                 "textquestion": "Wie bezeichnet man die Anschlüsse des nebenstehenden Transistors? <p><img src='asset:assets/graphics/tc612f.png'>",
                 "textanswer": [
                   {
@@ -2846,15 +2846,15 @@
       },
       {
         "name": "Elektronische Schaltungen und deren Merkmale",
-        "@id": "D",
+        "id": "D",
         "chapter": [
           {
-            "name": "Serien- und Parallelschaltung von Widerständen, Spulen und Kondensatoren",
-            "@id": "1",
+            "name": "Serien- und Parallelschaltung von iderständen, Spulen und Kondensatoren",
+            "id": "1",
             "question": [
               {
-                "@id": "TD101",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1000 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
+                "id": "TD101",
+                "textquestion": "Wie groß ist der Ersatziderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1000 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2866,8 +2866,8 @@
                 ]
               },
               {
-                "@id": "TD102",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 1 k&Omega;, R<sub>2<\/sub> = 2000 &Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
+                "id": "TD102",
+                "textquestion": "Wie groß ist der Ersatziderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 1 k&Omega;, R<sub>2<\/sub> = 2000 &Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td101f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2879,8 +2879,8 @@
                 ]
               },
               {
-                "@id": "TD103",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 500 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
+                "id": "TD103",
+                "textquestion": "Wie groß ist der Ersatziderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 500 &Omega; und R<sub>3<\/sub> = 1 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2892,8 +2892,8 @@
                 ]
               },
               {
-                "@id": "TD104",
-                "textquestion": "Wie groß ist der Ersatzwiderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1,5 k&Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
+                "id": "TD104",
+                "textquestion": "Wie groß ist der Ersatziderstand der Gesamtschaltung? Gegeben: R<sub>1<\/sub> = 500 &Omega;, R<sub>2<\/sub> = 1,5 k&Omega; und R<sub>3<\/sub> = 2 k&Omega;<p><img src='asset:assets/graphics/td103f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2905,7 +2905,7 @@
                 ]
               },
               {
-                "@id": "TD105",
+                "id": "TD105",
                 "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 5 nF, C<sub>3<\/sub> = 5000 pF<p><img src='asset:assets/graphics/td105f.png'>",
                 "textanswer": [
                   {
@@ -2918,7 +2918,7 @@
                 ]
               },
               {
-                "@id": "TD106",
+                "id": "TD106",
                 "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,02 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 10000 pF<p><img src='asset:assets/graphics/td105f.png'>",
                 "textanswer": [
                   {
@@ -2931,7 +2931,7 @@
                 ]
               },
               {
-                "@id": "TD107",
+                "id": "TD107",
                 "textquestion": "Welche Gesamtkapazität hat die folgende Schaltung? Gegeben: C<sub>1<\/sub> = 0,01 µF; C<sub>2<\/sub> = 10 nF; C<sub>3<\/sub> = 5000 pF<p><img src='asset:assets/graphics/td107f.png'>",
                 "textanswer": [
                   {
@@ -2944,8 +2944,8 @@
                 ]
               },
               {
-                "@id": "TD108",
-                "textquestion": "Die Gesamtspannung U an folgendem Spannungsteiler beträgt 12,2 V. Die Widerstände haben die Werte R<sub>1<\/sub> = 10 k&Omega; und R<sub>2<\/sub> = 2,2 k&Omega; Wie groß ist die Teilspannung U<sub>2<\/sub>?<p><img src='asset:assets/graphics/td108f.png'>",
+                "id": "TD108",
+                "textquestion": "Die Gesamtspannung U an folgendem Spannungsteiler beträgt 12,2 V. Die iderstände haben die Werte R<sub>1<\/sub> = 10 k&Omega; und R<sub>2<\/sub> = 2,2 k&Omega; Wie groß ist die Teilspannung U<sub>2<\/sub>?<p><img src='asset:assets/graphics/td108f.png'>",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2957,8 +2957,8 @@
                 ]
               },
               {
-                "@id": "TD109",
-                "textquestion": "Zwei Widerstände mit R<sub>1<\/sub> = 20 &Omega; und R<sub>2<\/sub> = 30 &Omega; sind parallel geschaltet. Wie groß ist der Ersatzwiderstand?",
+                "id": "TD109",
+                "textquestion": "Zwei iderstände mit R<sub>1<\/sub> = 20 &Omega; und R<sub>2<\/sub> = 30 &Omega; sind parallel geschaltet. Wie groß ist der Ersatziderstand?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2970,8 +2970,8 @@
                 ]
               },
               {
-                "@id": "TD110",
-                "textquestion": "Zwei Widerstände mit R<sub>1<\/sub> = 100 &Omega; und R<sub>2<\/sub> = 150 &Omega; sind parallel geschaltet. Wie groß ist der Ersatzwiderstand?",
+                "id": "TD110",
+                "textquestion": "Zwei iderstände mit R<sub>1<\/sub> = 100 &Omega; und R<sub>2<\/sub> = 150 &Omega; sind parallel geschaltet. Wie groß ist der Ersatziderstand?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -2986,10 +2986,10 @@
           },
           {
             "name": "Schwingkreise und Filter",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TD201",
+                "id": "TD201",
                 "textquestion": "Der Impedanzfrequenzgang in der Abbildung zeigt die Kennlinie<p><img src='asset:assets/graphics/td201f.png'>",
                 "textanswer": [
                   {
@@ -3002,7 +3002,7 @@
                 ]
               },
               {
-                "@id": "TD202",
+                "id": "TD202",
                 "textquestion": "Der im folgenden Bild dargestellte Impedanzfrequenzgang ist typisch für<p><img src='asset:assets/graphics/td202f.png'>",
                 "textanswer": [
                   {
@@ -3015,8 +3015,8 @@
                 ]
               },
               {
-                "@id": "TD203",
-                "textquestion": "Welcher Schwingkreis passt zu dem neben der jeweiligen Schaltung dargestellten Verlauf des Scheinwiderstandes?",
+                "id": "TD203",
+                "textquestion": "Welcher Schwingkreis passt zu dem neben der jeweiligen Schaltung dargestellten Verlauf des Scheiniderstandes?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3028,7 +3028,7 @@
                 ]
               },
               {
-                "@id": "TD204",
+                "id": "TD204",
                 "textquestion": "Wie ändert sich die Resonanzfrequenz eines Schwingkreises, wenn 1. die Spule weniger Windungen erhält, 2. die Länge der Spule durch Zusammenschieben der Drahtwicklung verringert wird, 3. ein Ferritkern in das Innere der Spule gebracht wird?",
                 "textanswer": [
                   {
@@ -3041,20 +3041,20 @@
                 ]
               },
               {
-                "@id": "TD205",
+                "id": "TD205",
                 "textquestion": "Wie verhält sich ein Parallelschwingkreis bei der Resonanzfrequenz?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Wie ein hochohmiger Widerstand."
+                    "text": "Wie ein hochohmiger iderstand."
                   },
-                  "Wie ein niederohmiger Widerstand.",
+                  "Wie ein niederohmiger iderstand.",
                   "Wie ein Kondensator mit sehr kleiner Kapazität.",
                   "Wie eine Spule mit sehr großer Induktivität."
                 ]
               },
               {
-                "@id": "TD206",
+                "id": "TD206",
                 "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td206f.png'>",
                 "textanswer": [
                   {
@@ -3067,7 +3067,7 @@
                 ]
               },
               {
-                "@id": "TD207",
+                "id": "TD207",
                 "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td207f.png'>",
                 "textanswer": [
                   {
@@ -3080,7 +3080,7 @@
                 ]
               },
               {
-                "@id": "TD208",
+                "id": "TD208",
                 "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td208f.png'>",
                 "textanswer": [
                   {
@@ -3093,7 +3093,7 @@
                 ]
               },
               {
-                "@id": "TD209",
+                "id": "TD209",
                 "textquestion": "Was stellt die folgende Schaltung dar?<p><img src='asset:assets/graphics/td209f.png'>",
                 "textanswer": [
                   {
@@ -3106,7 +3106,7 @@
                 ]
               },
               {
-                "@id": "TD210",
+                "id": "TD210",
                 "textquestion": "Welche der nachfolgenden Eigenschaften trifft auf einen Hochpass zu?",
                 "textanswer": [
                   {
@@ -3122,24 +3122,24 @@
           },
           {
             "name": "Stromversorgung",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TD301",
+                "id": "TD301",
                 "textquestion": "Welche Eigenschaften sollten Strom- und Spannungsquellen aufweisen?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Spannungsquellen sollten einen möglichst niedrigen Innenwiderstand und Stromquellen einen möglichst hohen Innenwiderstand haben."
+                    "text": "Spannungsquellen sollten einen möglichst niedrigen Inneniderstand und Stromquellen einen möglichst hohen Inneniderstand haben."
                   },
-                  "Strom- und Spannungsquellen sollten einen möglichst niedrigen Innenwiderstand haben.",
-                  "Strom- und Spannungsquellen sollten einen möglichst hohen Innenwiderstand haben.",
-                  "Spannungsquellen sollten einen möglichst hohen Innenwiderstand und Stromquellen einen möglichst niedrigen Innenwiderstand haben."
+                  "Strom- und Spannungsquellen sollten einen möglichst niedrigen Inneniderstand haben.",
+                  "Strom- und Spannungsquellen sollten einen möglichst hohen Inneniderstand haben.",
+                  "Spannungsquellen sollten einen möglichst hohen Inneniderstand und Stromquellen einen möglichst niedrigen Inneniderstand haben."
                 ]
               },
               {
-                "@id": "TD302",
-                "textquestion": "Die Leerlaufspannung einer Gleichspannungsquelle beträgt 13,5 V. Wenn die Spannungsquelle einen Strom von 1 A abgibt, sinkt die Klemmenspannung auf 12,4 V. Wie groß ist der Innenwiderstand der Spannungsquelle?",
+                "id": "TD302",
+                "textquestion": "Die Leerlaufspannung einer Gleichspannungsquelle beträgt 13,5 V. Wenn die Spannungsquelle einen Strom von 1 A abgibt, sinkt die Klemmenspannung auf 12,4 V. Wie groß ist der Inneniderstand der Spannungsquelle?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3151,8 +3151,8 @@
                 ]
               },
               {
-                "@id": "TD303",
-                "textquestion": "Die Leerlaufspannung einer Gleichspannungsquelle beträgt 13,5 V. Wenn die Spannungsquelle einen Strom von 2 A abgibt, sinkt die Klemmenspannung auf 13 V. Wie groß ist der Innenwiderstand der Spannungsquelle?",
+                "id": "TD303",
+                "textquestion": "Die Leerlaufspannung einer Gleichspannungsquelle beträgt 13,5 V. Wenn die Spannungsquelle einen Strom von 2 A abgibt, sinkt die Klemmenspannung auf 13 V. Wie groß ist der Inneniderstand der Spannungsquelle?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3164,7 +3164,7 @@
                 ]
               },
               {
-                "@id": "TD304",
+                "id": "TD304",
                 "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 5:1.<p><img src='asset:assets/graphics/td304f.png'>",
                 "textanswer": [
                   {
@@ -3177,7 +3177,7 @@
                 ]
               },
               {
-                "@id": "TD305",
+                "id": "TD305",
                 "textquestion": "Berechnen Sie die Leerlaufausgangsspannung dieser Schaltung für ein Transformationsverhältnis von 8:1.<p><img src='asset:assets/graphics/td304f.png'>",
                 "textanswer": [
                   {
@@ -3190,7 +3190,7 @@
                 ]
               },
               {
-                "@id": "TD306",
+                "id": "TD306",
                 "textquestion": "Welches ist der Hauptnachteil eines Schaltnetzteils gegenüber einem konventionellen Netzteil?",
                 "textanswer": [
                   {
@@ -3206,10 +3206,10 @@
           },
           {
             "name": "Verstärker",
-            "@id": "4",
+            "id": "4",
             "question": [
               {
-                "@id": "TD401",
+                "id": "TD401",
                 "textquestion": "In welcher der folgenden Zeilen werden nur Verstärker-Bauelemente genannt?",
                 "textanswer": [
                   {
@@ -3222,7 +3222,7 @@
                 ]
               },
               {
-                "@id": "TD402",
+                "id": "TD402",
                 "textquestion": "Was versteht man in der Elektronik unter Verstärkung? Man spricht von Verstärkung, wenn",
                 "textanswer": [
                   {
@@ -3235,20 +3235,20 @@
                 ]
               },
               {
-                "@id": "TD403",
+                "id": "TD403",
                 "textquestion": "Was ist ein Operationsverstärker?",
                 "textanswer": [
                   {
                     "@correct": "true",
                     "text": "Operationsverstärker sind Gleichstrom gekoppelte Verstärker mit sehr hohem Verstärkungsfaktor und großer Linearität."
                   },
-                  "Operationsverstärker sind Wechselstrom gekoppelte Verstärker mit niedrigem Eingangswiderstand und großer Linearität.",
+                  "Operationsverstärker sind Wechselstrom gekoppelte Verstärker mit niedrigem Eingangsiderstand und großer Linearität.",
                   "Operationsverstärker sind in Empfängerstufen eingebaute Analogverstärker mit sehr niedrigem Verstärkungsfaktor aber großer Linearität.",
                   "Operationsverstärker sind digitale Schaltkreise mit hohem Verstärkungsfaktor."
                 ]
               },
               {
-                "@id": "TD404",
+                "id": "TD404",
                 "textquestion": "Ein IC (integrated circuit) ist",
                 "textanswer": [
                   {
@@ -3261,7 +3261,7 @@
                 ]
               },
               {
-                "@id": "TD405",
+                "id": "TD405",
                 "textquestion": "Worauf beruht die Verstärkerwirkung von Elektronenröhren?",
                 "textanswer": [
                   {
@@ -3277,10 +3277,10 @@
           },
           {
             "name": "Modulator / Demodulator",
-            "@id": "5",
+            "id": "5",
             "question": [
               {
-                "@id": "TD501",
+                "id": "TD501",
                 "textquestion": "Durch Modulation",
                 "textanswer": [
                   {
@@ -3293,7 +3293,7 @@
                 ]
               },
               {
-                "@id": "TD502",
+                "id": "TD502",
                 "textquestion": "Welche Aussage zum Frequenzmodulator ist richtig? Durch das Informationssignal",
                 "textanswer": [
                   {
@@ -3306,7 +3306,7 @@
                 ]
               },
               {
-                "@id": "TD503",
+                "id": "TD503",
                 "textquestion": "Zur Aufbereitung des SSB-Signals müssen",
                 "textanswer": [
                   {
@@ -3315,11 +3315,11 @@
                   },
                   "der Träger hinzugesetzt und ein Seitenband ausgefiltert werden.",
                   "der Träger unterdrückt und ein Seitenband hinzugesetzt werden.",
-                  "der Träger unterdrückt und beide Seitenbänder ausgefiltert werden."
+                  "der Träger unterdrückt und bide Seitenbänder ausgefiltert werden."
                 ]
               },
               {
-                "@id": "TD504",
+                "id": "TD504",
                 "textquestion": "Wie kann ein SSB-Signal erzeugt werden?",
                 "textanswer": [
                   {
@@ -3335,10 +3335,10 @@
           },
           {
             "name": "Oszillator",
-            "@id": "6",
+            "id": "6",
             "question": [
               {
-                "@id": "TD601",
+                "id": "TD601",
                 "textquestion": "Was verstehen Sie unter einem „Oszillator“?",
                 "textanswer": [
                   {
@@ -3351,7 +3351,7 @@
                 ]
               },
               {
-                "@id": "TD602",
+                "id": "TD602",
                 "textquestion": "Was ist ein LC-Oszillator? Es ist ein Schwingungserzeuger, wobei die Frequenz",
                 "textanswer": [
                   {
@@ -3364,7 +3364,7 @@
                 ]
               },
               {
-                "@id": "TD603",
+                "id": "TD603",
                 "textquestion": "Was ist ein Quarz-Oszillator? Es ist ein Schwingungserzeuger, wobei die Frequenz",
                 "textanswer": [
                   {
@@ -3377,7 +3377,7 @@
                 ]
               },
               {
-                "@id": "TD604",
+                "id": "TD604",
                 "textquestion": "Wie verhält sich die Frequenz eines LCOszillators bei Temperaturanstieg, wenn die Kapazität des Schwingkreiskondensators mit dem Temperaturanstieg geringer wird?",
                 "textanswer": [
                   {
@@ -3390,7 +3390,7 @@
                 ]
               },
               {
-                "@id": "TD605",
+                "id": "TD605",
                 "textquestion": "Im VFO eines Senders steigt die Induktivität der Oszillatorspule mit der Temperatur. Der Kondensator bleibt sehr stabil. Welche Auswirkungen hat dies bei steigender Temperatur?",
                 "textanswer": [
                   {
@@ -3403,7 +3403,7 @@
                 ]
               },
               {
-                "@id": "TD606",
+                "id": "TD606",
                 "textquestion": "Der Vorteil von Quarzoszillatoren gegenüber LC-Oszillatoren liegt darin, dass sie",
                 "textanswer": [
                   {
@@ -3421,15 +3421,15 @@
       },
       {
         "name": "Analoge und digitale Modulationsverfahren",
-        "@id": "E",
+        "id": "E",
         "chapter": [
           {
             "name": "Amplitudenmodulation AM, SSB",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TE101",
-                "textquestion": "Wie unterscheidet sich SSB (J3E) von AM (A3E) in Bezug auf die Bandbreite?",
+                "id": "TE101",
+                "textquestion": "Wie unterschidet sich SSB (J3E) von AM (A3E) in Bezug auf die Bandbreite?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3441,7 +3441,7 @@
                 ]
               },
               {
-                "@id": "TE102",
+                "id": "TE102",
                 "textquestion": "Welches der nachfolgenden Modulationsverfahren hat die geringste Störanfälligkeit bei Funkanlagen in Kraftfahrzeugen?",
                 "textanswer": [
                   {
@@ -3454,7 +3454,7 @@
                 ]
               },
               {
-                "@id": "TE103",
+                "id": "TE103",
                 "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:assets/graphics/te103f.png'>",
                 "textanswer": [
                   {
@@ -3467,7 +3467,7 @@
                 ]
               },
               {
-                "@id": "TE104",
+                "id": "TE104",
                 "textquestion": "Das folgende Oszillogramm zeigt ein AM-Signal. Der Modulationsgrad beträgt hier zirka<p><img src='asset:assets/graphics/te104f.png'>",
                 "textanswer": [
                   {
@@ -3480,7 +3480,7 @@
                 ]
               },
               {
-                "@id": "TE105",
+                "id": "TE105",
                 "textquestion": "Das folgende Oszillogramm zeigt<p><img src='asset:assets/graphics/te105f.png'>",
                 "textanswer": [
                   {
@@ -3493,7 +3493,7 @@
                 ]
               },
               {
-                "@id": "TE106",
+                "id": "TE106",
                 "textquestion": "Das folgende Oszillogramm zeigt ein typisches Zweiton-SSB-Testsignal. Bestimmen Sie den Modulationsgrad!<p><img src='asset:assets/graphics/te106f.png'>",
                 "textanswer": [
                   {
@@ -3509,10 +3509,10 @@
           },
           {
             "name": "Frequenzmodulation",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TE201",
+                "id": "TE201",
                 "textquestion": "Wodurch wird bei Frequenzmodulation die Lautstärke-Information übertragen?",
                 "textanswer": [
                   {
@@ -3525,7 +3525,7 @@
                 ]
               },
               {
-                "@id": "TE202",
+                "id": "TE202",
                 "textquestion": "FM hat gegenüber SSB den Vorteil der",
                 "textanswer": [
                   {
@@ -3538,7 +3538,7 @@
                 ]
               },
               {
-                "@id": "TE203",
+                "id": "TE203",
                 "textquestion": "Ein zu großer Hub eines FM-Senders führt dazu,",
                 "textanswer": [
                   {
@@ -3551,7 +3551,7 @@
                 ]
               },
               {
-                "@id": "TE204",
+                "id": "TE204",
                 "textquestion": "Größerer Frequenzhub führt bei einem FM-Sender zu",
                 "textanswer": [
                   {
@@ -3567,10 +3567,10 @@
           },
           {
             "name": "Text-, Daten- und Bildübertragung",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TE301",
+                "id": "TE301",
                 "textquestion": "Welche HF-Bandbreite beansprucht ein 1200-Baud-Packet-Radio-AFSK-Signal?",
                 "textanswer": [
                   {
@@ -3583,7 +3583,7 @@
                 ]
               },
               {
-                "@id": "TE302",
+                "id": "TE302",
                 "textquestion": "Welche HF-Bandbreite beansprucht ein 9600-Baud-FM-Packet-Radio-Signal?",
                 "textanswer": [
                   {
@@ -3596,7 +3596,7 @@
                 ]
               },
               {
-                "@id": "TE303",
+                "id": "TE303",
                 "textquestion": "Welche NF-Zwischenträgerfrequenzen werden in der Regel in Packet Radio bei 1200 Baud benutzt?",
                 "textanswer": [
                   {
@@ -3609,7 +3609,7 @@
                 ]
               },
               {
-                "@id": "TE304",
+                "id": "TE304",
                 "textquestion": "Was versteht man bei Packet Radio unter einem TNC (Terminal Network Controller)? Ein TNC",
                 "textanswer": [
                   {
@@ -3622,7 +3622,7 @@
                 ]
               },
               {
-                "@id": "TE305",
+                "id": "TE305",
                 "textquestion": "Was bedeutet im Prinzip „Packet Radio“? Die Daten werden",
                 "textanswer": [
                   {
@@ -3635,7 +3635,7 @@
                 ]
               },
               {
-                "@id": "TE306",
+                "id": "TE306",
                 "textquestion": "Was versteht man unter 1k2-Packet-Radio?",
                 "textanswer": [
                   {
@@ -3648,7 +3648,7 @@
                 ]
               },
               {
-                "@id": "TE307",
+                "id": "TE307",
                 "textquestion": "Welches ist eine gängige Übertragungsrate in Packet Radio?",
                 "textanswer": [
                   {
@@ -3661,7 +3661,7 @@
                 ]
               },
               {
-                "@id": "TE308",
+                "id": "TE308",
                 "textquestion": "Eine Packet-Radio-Mailbox ist",
                 "textanswer": [
                   {
@@ -3674,7 +3674,7 @@
                 ]
               },
               {
-                "@id": "TE309",
+                "id": "TE309",
                 "textquestion": "Um RTTY-Betrieb durchzuführen benötigt man außer einem Transceiver beispielsweise",
                 "textanswer": [
                   {
@@ -3687,7 +3687,7 @@
                 ]
               },
               {
-                "@id": "TE310",
+                "id": "TE310",
                 "textquestion": "Welcher Unterschied zwischen den Betriebsarten ATV und SSTV ist richtig?",
                 "textanswer": [
                   {
@@ -3700,7 +3700,7 @@
                 ]
               },
               {
-                "@id": "TE311",
+                "id": "TE311",
                 "textquestion": "Welches der folgenden digitalen Übertragungsverfahren hat die geringste Bandbreite?",
                 "textanswer": [
                   {
@@ -3713,8 +3713,8 @@
                 ]
               },
               {
-                "@id": "TE312",
-                "textquestion": "Wie heißt die Übertragungsart mit einem Übertragungskanal, bei der durch Umschaltung abwechselnd in beide Richtungen gesendet werden kann?",
+                "id": "TE312",
+                "textquestion": "Wie heißt die Übertragungsart mit einem Übertragungskanal, bei der durch Umschaltung abwechselnd in bide Richtungen gesendet werden kann?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3731,15 +3731,15 @@
       },
       {
         "name": "Funk-Empfänger",
-        "@id": "F",
+        "id": "F",
         "chapter": [
           {
             "name": "Einfach- und Doppelüberlagerungsempfänger",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TF101",
-                "textquestion": "Eine hohe erste ZF vereinfacht die Filterung zur Vermeidung von",
+                "id": "TF101",
+                "textquestion": "Eine hohe erste ZF vereinfacht die Filterung zur Vermidung von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -3751,7 +3751,7 @@
                 ]
               },
               {
-                "@id": "TF102",
+                "id": "TF102",
                 "textquestion": "Eine hohe erste Zwischenfrequenz",
                 "textanswer": [
                   {
@@ -3764,7 +3764,7 @@
                 ]
               },
               {
-                "@id": "TF103",
+                "id": "TF103",
                 "textquestion": "Welche Aussage ist für einen Doppelsuper richtig?",
                 "textanswer": [
                   {
@@ -3777,7 +3777,7 @@
                 ]
               },
               {
-                "@id": "TF104",
+                "id": "TF104",
                 "textquestion": "Ein Empfänger hat eine ZF von 10,7 MHz und ist auf 28,5 MHz abgestimmt. Der Oszillator des Empfängers schwingt oberhalb der Empfangsfrequenz. Welche Frequenz hat die Spielfrequenz?",
                 "textanswer": [
                   {
@@ -3790,7 +3790,7 @@
                 ]
               },
               {
-                "@id": "TF105",
+                "id": "TF105",
                 "textquestion": "Wodurch wird beim Überlagerungsempfänger die Spiegelfrequenzdämpfung bestimmt? Sie wird vor allem bestimmt durch",
                 "textanswer": [
                   {
@@ -3803,7 +3803,7 @@
                 ]
               },
               {
-                "@id": "TF106",
+                "id": "TF106",
                 "textquestion": "Einem Mischer werden die Frequenzen 136 MHz und 145 MHz zugeführt. Welche Frequenzen werden beim Mischvorgang erzeugt?",
                 "textanswer": [
                   {
@@ -3816,7 +3816,7 @@
                 ]
               },
               {
-                "@id": "TF107",
+                "id": "TF107",
                 "textquestion": "Einem Mischer werden die Frequenzen 28 MHz und 38,7 MHz zugeführt. Welche Frequenzen werden beim Mischvorgang erzeugt?",
                 "textanswer": [
                   {
@@ -3829,7 +3829,7 @@
                 ]
               },
               {
-                "@id": "TF108",
+                "id": "TF108",
                 "textquestion": "Eine schmale Empfängerbandbreite führt im allgemeinen zu einer",
                 "textanswer": [
                   {
@@ -3842,7 +3842,7 @@
                 ]
               },
               {
-                "@id": "TF109",
+                "id": "TF109",
                 "textquestion": "Die Frequenzdifferenz zwischen dem HFNutzsignal und dem Spiegelsignal entspricht",
                 "textanswer": [
                   {
@@ -3855,7 +3855,7 @@
                 ]
               },
               {
-                "@id": "TF110",
+                "id": "TF110",
                 "textquestion": "Durch welchen Vorgang setzt ein Konverter einen Frequenzbereich für einen vorhandenen Empfänger um?",
                 "textanswer": [
                   {
@@ -3871,10 +3871,10 @@
           },
           {
             "name": "Blockschaltbilder",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TF201",
+                "id": "TF201",
                 "textquestion": "Um Schwankungen des NF-Ausgangssignals durch Schwankungen des HF-Eingangssignals zu verringern, wird ein Empfänger mit",
                 "textanswer": [
                   {
@@ -3887,7 +3887,7 @@
                 ]
               },
               {
-                "@id": "TF202",
+                "id": "TF202",
                 "textquestion": "Bei Empfang eines sehr starken Signals verringert die AGC (automatic gain control)",
                 "textanswer": [
                   {
@@ -3900,7 +3900,7 @@
                 ]
               },
               {
-                "@id": "TF203",
+                "id": "TF203",
                 "textquestion": "Was bewirkt die AGC (automatic gain control) bei einem starken Eingangssignal?",
                 "textanswer": [
                   {
@@ -3913,7 +3913,7 @@
                 ]
               },
               {
-                "@id": "TF204",
+                "id": "TF204",
                 "textquestion": "Ein Doppelsuper hat eine erste ZF von 10,7 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 28 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:assets/graphics/tf204f.png'>",
                 "textanswer": [
                   {
@@ -3926,7 +3926,7 @@
                 ]
               },
               {
-                "@id": "TF205",
+                "id": "TF205",
                 "textquestion": "Ein Doppelsuper hat eine erste ZF von 9 MHz und eine zweite ZF von 460 kHz. Die Empfangsfrequenz soll 21,1 MHz sein. Welche Frequenzen sind für den VFO und den CO erforderlich, wenn die Oszillatoren oberhalb der Mischer-Eingangssignale schwingen sollen?<p><img src='asset:assets/graphics/tf204f.png'>",
                 "textanswer": [
                   {
@@ -3942,10 +3942,10 @@
           },
           {
             "name": "Betrieb und Funktionsweise einzelner Stufen",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TF301",
+                "id": "TF301",
                 "textquestion": "In der folgenden Schaltung können bei einer Empfangsfrequenz von 28,3 MHz und einer Oszillatorfrequenz von 39 MHz Spiegelfrequenzstörungen bei<p><img src='asset:assets/graphics/tf301f.png'>",
                 "textanswer": [
                   {
@@ -3958,7 +3958,7 @@
                 ]
               },
               {
-                "@id": "TF302",
+                "id": "TF302",
                 "textquestion": "Der Begrenzerverstärker eines FM-Empfängers ist ein Verstärker,",
                 "textanswer": [
                   {
@@ -3971,7 +3971,7 @@
                 ]
               },
               {
-                "@id": "TF303",
+                "id": "TF303",
                 "textquestion": "Welcher der folgenden als Bandpass einsetzbaren Bauteile verfügt am ehesten über die geringste Bandbreite?",
                 "textanswer": [
                   {
@@ -3987,10 +3987,10 @@
           },
           {
             "name": "Empfängermerkmale",
-            "@id": "4",
+            "id": "4",
             "question": [
               {
-                "@id": "TF401",
+                "id": "TF401",
                 "textquestion": "Die Empfindlichkeit eines Empfängers bezieht sich auf die",
                 "textanswer": [
                   {
@@ -4003,7 +4003,7 @@
                 ]
               },
               {
-                "@id": "TF402",
+                "id": "TF402",
                 "textquestion": "Welchen Vorteil bietet ein Überlagerungsempfänger gegenüber einem Geradeaus- Empfänger?",
                 "textanswer": [
                   {
@@ -4016,7 +4016,7 @@
                 ]
               },
               {
-                "@id": "TF403",
+                "id": "TF403",
                 "textquestion": "Um wie viel S-Stufen müsste die S-Meter- Anzeige Ihres Empfängers steigen, wenn Ihr Partner die Sendeleistung von 10 Watt auf 40 Watt erhöht?",
                 "textanswer": [
                   {
@@ -4029,7 +4029,7 @@
                 ]
               },
               {
-                "@id": "TF404",
+                "id": "TF404",
                 "textquestion": "Ein Funkamateur kommt laut S-Meter mit S7 an. Dann schaltet er seine Endstufe ein und bittet um einen erneuten Rapport. Das SMeter zeigt S9+8dB. Um welchen Faktor müsste der Funkamateur seine Leistung erhöht haben?",
                 "textanswer": [
                   {
@@ -4042,7 +4042,7 @@
                 ]
               },
               {
-                "@id": "TF405",
+                "id": "TF405",
                 "textquestion": "Ein Funkamateur hat eine Endstufe, welche die Leistung verzehnfacht (von 10 auf 100 Watt). Ohne seine Endstufe zeigt Ihr S-Meter genau S8. Auf welchen Wert müsste die Anzeige Ihres S-Meters ansteigen, wenn er die Endstufe dazuschaltet?",
                 "textanswer": [
                   {
@@ -4055,7 +4055,7 @@
                 ]
               },
               {
-                "@id": "TF406",
+                "id": "TF406",
                 "textquestion": "Wie groß ist der Unterschied von S4 nach S7 in dB?",
                 "textanswer": [
                   {
@@ -4068,7 +4068,7 @@
                 ]
               },
               {
-                "@id": "TF407",
+                "id": "TF407",
                 "textquestion": "Welche Baugruppe könnte in einem Empfänger gegebenenfalls dazu verwendet werden, um einen schmalen Frequenzbereich zu unterdrücken, in dem Störungen empfangen werden?",
                 "textanswer": [
                   {
@@ -4081,7 +4081,7 @@
                 ]
               },
               {
-                "@id": "TF408",
+                "id": "TF408",
                 "textquestion": "Was bedeutet an einem Abstimmelement eines Empfängers die Abkürzung AGC?",
                 "textanswer": [
                   {
@@ -4094,7 +4094,7 @@
                 ]
               },
               {
-                "@id": "TF409",
+                "id": "TF409",
                 "textquestion": "Welche Baugruppe könnte in einem Empfänger gegebenenfalls dazu verwendet werden, impulsförmige Störungen auszublenden?",
                 "textanswer": [
                   {
@@ -4112,14 +4112,14 @@
       },
       {
         "name": "Funksender",
-        "@id": "G",
+        "id": "G",
         "chapter": [
           {
             "name": "Blockschaltbilder",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TG101",
+                "id": "TG101",
                 "textquestion": "Wie kann die hochfrequente Ausgangsleistung eines SSB-Senders vermindert werden?",
                 "textanswer": [
                   {
@@ -4132,7 +4132,7 @@
                 ]
               },
               {
-                "@id": "TG102",
+                "id": "TG102",
                 "textquestion": "Welche der nachfolgenden Antworten trifft für die Wirkungsweise eines Transverters zu?",
                 "textanswer": [
                   {
@@ -4145,7 +4145,7 @@
                 ]
               },
               {
-                "@id": "TG103",
+                "id": "TG103",
                 "textquestion": "Was kann man tun, wenn der Hub bei einem Handfunkgerät oder Mobil-Transceiver zu groß ist?",
                 "textanswer": [
                   {
@@ -4158,7 +4158,7 @@
                 ]
               },
               {
-                "@id": "TG104",
+                "id": "TG104",
                 "textquestion": "Was bewirkt in der Regel eine zu hohe Mikrofonverstärkung bei einem SSB-Transceiver?",
                 "textanswer": [
                   {
@@ -4171,7 +4171,7 @@
                 ]
               },
               {
-                "@id": "TG105",
+                "id": "TG105",
                 "textquestion": "Was bewirkt eine zu geringe Mikrofonverstärkung bei einem SSB-Transceiver?",
                 "textanswer": [
                   {
@@ -4187,10 +4187,10 @@
           },
           {
             "name": "Betrieb und Funktionsweise einzelner Stufen",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TG201",
+                "id": "TG201",
                 "textquestion": "Wie heißt die Stufe in einem Sender, welche die Eigenschaft hat, leise Sprachsignale gegenüber den lauten etwas anzuheben?",
                 "textanswer": [
                   {
@@ -4203,7 +4203,7 @@
                 ]
               },
               {
-                "@id": "TG202",
+                "id": "TG202",
                 "textquestion": "Welche Schaltung in einem Sender bewirkt, dass der Transceiver allein durch die Stimme auf Sendung geschaltet werden kann?",
                 "textanswer": [
                   {
@@ -4216,7 +4216,7 @@
                 ]
               },
               {
-                "@id": "TG203",
+                "id": "TG203",
                 "textquestion": "Welche Anforderungen muss ein FM-Funkgerät erfüllen, damit es für die Übertragung von Packet Radio mit 9600 Baud geeignet ist?",
                 "textanswer": [
                   {
@@ -4232,10 +4232,10 @@
           },
           {
             "name": "Betrieb und Funktionsweise von HF-Leistungsverstärkern",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TG301",
+                "id": "TG301",
                 "textquestion": "Ein Sender mit 1 Watt Ausgangsleistung ist an eine Endstufe mit einer Verstärkung von 10 dB angeschlossen. Wie groß ist der Ausgangspegel der Endstufe?",
                 "textanswer": [
                   {
@@ -4248,7 +4248,7 @@
                 ]
               },
               {
-                "@id": "TG302",
+                "id": "TG302",
                 "textquestion": "Ein HF-Leistungsverstärker hat eine Verstärkung von 16 dB. Welche HF-Ausgangsleistung ist zu erwarten, wenn der Verstärker mit 1 W HF-Eingangsleistung angesteuert wird?",
                 "textanswer": [
                   {
@@ -4261,7 +4261,7 @@
                 ]
               },
               {
-                "@id": "TG303",
+                "id": "TG303",
                 "textquestion": "Die Ausgangsleistung eines Senders ist",
                 "textanswer": [
                   {
@@ -4274,7 +4274,7 @@
                 ]
               },
               {
-                "@id": "TG304",
+                "id": "TG304",
                 "textquestion": "Die Spitzenleistung eines Senders ist die",
                 "textanswer": [
                   {
@@ -4287,7 +4287,7 @@
                 ]
               },
               {
-                "@id": "TG305",
+                "id": "TG305",
                 "textquestion": "Eine Verdopplung der Leistung entspricht wie viel dB?",
                 "textanswer": [
                   {
@@ -4300,7 +4300,7 @@
                 ]
               },
               {
-                "@id": "TG306",
+                "id": "TG306",
                 "textquestion": "Die Ausgangsleistung eines FM-Senders",
                 "textanswer": [
                   {
@@ -4313,7 +4313,7 @@
                 ]
               },
               {
-                "@id": "TG307",
+                "id": "TG307",
                 "textquestion": "Wie wird in der Regel die hochfrequente Ausgangsleistung eines SSB-Senders vermindert?",
                 "textanswer": [
                   {
@@ -4329,10 +4329,10 @@
           },
           {
             "name": "Betrieb und Funktionsweise von HF-Transceivern",
-            "@id": "4",
+            "id": "4",
             "question": [
               {
-                "@id": "TG401",
+                "id": "TG401",
                 "textquestion": "Was kann man tun, wenn der Hub bei einem Handfunkgerät oder Mobil-Transceiver zu groß ist?",
                 "textanswer": [
                   {
@@ -4345,7 +4345,7 @@
                 ]
               },
               {
-                "@id": "TG402",
+                "id": "TG402",
                 "textquestion": "In welcher der folgenden Antworten sind Betriebsarten üblicher Kurzwellen-Transceiver aufgezählt?",
                 "textanswer": [
                   {
@@ -4358,7 +4358,7 @@
                 ]
               },
               {
-                "@id": "TG403",
+                "id": "TG403",
                 "textquestion": "Wenn man beim Funkbetrieb mit einem Transceiver die Empfangsfrequenz gegenüber der Senderfrequenz geringfügig verstellen möchte, muss man",
                 "textanswer": [
                   {
@@ -4371,7 +4371,7 @@
                 ]
               },
               {
-                "@id": "TG404",
+                "id": "TG404",
                 "textquestion": "Wie wird die Taste am Mikrofon bezeichnet, mit der man einen Transceiver auf Sendung schalten kann?",
                 "textanswer": [
                   {
@@ -4384,7 +4384,7 @@
                 ]
               },
               {
-                "@id": "TG405",
+                "id": "TG405",
                 "textquestion": "Wie wird der Funkbetrieb bezeichnet, bei dem man einen Transceiver allein durch die Stimme auf Sendung schalten kann?",
                 "textanswer": [
                   {
@@ -4400,10 +4400,10 @@
           },
           {
             "name": "Unerwünschte Aussendungen",
-            "@id": "5",
+            "id": "5",
             "question": [
               {
-                "@id": "TG501",
+                "id": "TG501",
                 "textquestion": "Wodurch werden Tastklicks bei einem CW-Sender hervorgerufen?",
                 "textanswer": [
                   {
@@ -4416,7 +4416,7 @@
                 ]
               },
               {
-                "@id": "TG502",
+                "id": "TG502",
                 "textquestion": "Welches Filter wäre zwischen Senderausgang und Antenne eingeschleift am besten zur Verringerung der Oberwellenausstrahlungen geeignet?",
                 "textanswer": [
                   {
@@ -4429,7 +4429,7 @@
                 ]
               },
               {
-                "@id": "TG503",
+                "id": "TG503",
                 "textquestion": "Um Nachbarkanalstörungen zu minimieren, sollte die Übertragungsbandbreite bei SSB",
                 "textanswer": [
                   {
@@ -4442,7 +4442,7 @@
                 ]
               },
               {
-                "@id": "TG504",
+                "id": "TG504",
                 "textquestion": "Welche Schaltung wäre zwischen Senderausgang und Antenne eingeschleift am besten zur Verringerung der Oberwellenausstrahlungen geeignet?",
                 "textanswer": [
                   {
@@ -4455,7 +4455,7 @@
                 ]
               },
               {
-                "@id": "TG505",
+                "id": "TG505",
                 "textquestion": "Bei der erstmaligen Prüfung eines Senders sollten die Signale zunächst",
                 "textanswer": [
                   {
@@ -4463,12 +4463,12 @@
                     "text": "in eine künstliche 50-&Omega;-Antenne eingespeist werden."
                   },
                   "in eine Antenne eingespeist werden.",
-                  "in einen Kondensator mit einem Blindwiderstand von 50 &Omega; eingespeist werden.",
-                  "in einen 50-&Omega;-Drahtwiderstand eingespeist werden."
+                  "in einen Kondensator mit einem Blindiderstand von 50 &Omega; eingespeist werden.",
+                  "in einen 50-&Omega;-Drahtiderstand eingespeist werden."
                 ]
               },
               {
-                "@id": "TG506",
+                "id": "TG506",
                 "textquestion": "Welche Filtercharakteristik würde sich am besten für einen KW-Mehrband-Sender eignen?",
                 "textanswer": [
                   {
@@ -4486,14 +4486,14 @@
       },
       {
         "name": "Antennen und Übertragungsleitungen",
-        "@id": "H",
+        "id": "H",
         "chapter": [
           {
             "name": "Antennen",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TH101",
+                "id": "TH101",
                 "textquestion": "Was sind typische Kurzwellen-Amateurfunksendeantennen?",
                 "textanswer": [
                   {
@@ -4506,7 +4506,7 @@
                 ]
               },
               {
-                "@id": "TH102",
+                "id": "TH102",
                 "textquestion": "Welche Antennenformen werden im VHF-UHF- Bereich bei den Funkamateuren in der Regel nicht verwendet?",
                 "textanswer": [
                   {
@@ -4519,7 +4519,7 @@
                 ]
               },
               {
-                "@id": "TH103",
+                "id": "TH103",
                 "textquestion": "Welche magnetischen Antennen eignen sich für Sendebetrieb und strahlen dabei im Nahfeld ein starkes magnetisches Feld ab?",
                 "textanswer": [
                   {
@@ -4532,7 +4532,7 @@
                 ]
               },
               {
-                "@id": "TH104",
+                "id": "TH104",
                 "textquestion": "Berechnen Sie die elektrische Länge eines 5/8-&lambda;-langen Vertikalstrahlers für das 10-m- Band (28,5 MHz).",
                 "textanswer": [
                   {
@@ -4545,7 +4545,7 @@
                 ]
               },
               {
-                "@id": "TH105",
+                "id": "TH105",
                 "textquestion": "Sie wollen verschiedene Antennen testen, ob sie für den Funkbetrieb auf Kurzwelle für das 80-m-Band geeignet sind. Man stellt Ihnen jeweils drei Antennen zur Verfügung. Welches Angebot wählen sie, um nur die drei besonders geeigneten Antennen testen zu müssen?",
                 "textanswer": [
                   {
@@ -4558,7 +4558,7 @@
                 ]
               },
               {
-                "@id": "TH106",
+                "id": "TH106",
                 "textquestion": "Welche Antenne gehört nicht zu den symmetrischen Antennen?",
                 "textanswer": [
                   {
@@ -4571,7 +4571,7 @@
                 ]
               },
               {
-                "@id": "TH107",
+                "id": "TH107",
                 "textquestion": "Wie nennt man eine Schleifenantenne, die aus drei gleich langen Drahtstücken besteht?",
                 "textanswer": [
                   {
@@ -4584,7 +4584,7 @@
                 ]
               },
               {
-                "@id": "TH108",
+                "id": "TH108",
                 "textquestion": "Bei welcher Länge hat eine Vertikalantenne die günstigsten Strahlungseigenschaften?",
                 "textanswer": [
                   {
@@ -4597,7 +4597,7 @@
                 ]
               },
               {
-                "@id": "TH109",
+                "id": "TH109",
                 "textquestion": "Eine Vertikalantenne erzeugt",
                 "textanswer": [
                   {
@@ -4610,7 +4610,7 @@
                 ]
               },
               {
-                "@id": "TH110",
+                "id": "TH110",
                 "textquestion": "Sie wollen eine Zweibandantenne für 160 und 80 m selbst bauen. Welche der folgenden Antworten enthält die richtige Drahtlänge l zwischen den Schwingkreisen und die richtige Resonanzfrequenz f<sub>res<\/sub> der Kreise?<p><img src='asset:assets/graphics/th110f.png'>",
                 "textanswer": [
                   {
@@ -4623,7 +4623,7 @@
                 ]
               },
               {
-                "@id": "TH111",
+                "id": "TH111",
                 "textquestion": "Die elektrischen Gegengewichte einer Groundplane-Antenne bezeichnet man auch als",
                 "textanswer": [
                   {
@@ -4636,7 +4636,7 @@
                 ]
               },
               {
-                "@id": "TH112",
+                "id": "TH112",
                 "textquestion": "Das folgende Bild enthält eine einfache Richtantenne. Die Bezeichnungen der Elemente in numerischer Reihenfolge lauten<p><img src='asset:assets/graphics/th112f.png'>",
                 "textanswer": [
                   {
@@ -4649,7 +4649,7 @@
                 ]
               },
               {
-                "@id": "TH113",
+                "id": "TH113",
                 "textquestion": "An welchem Element einer Yagi-Antenne erfolgt die Energieeinspeisung? Sie erfolgt am",
                 "textanswer": [
                   {
@@ -4665,10 +4665,10 @@
           },
           {
             "name": "Antennenmerkmale ",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TH201",
+                "id": "TH201",
                 "textquestion": "Welche elektrische Länge muss eine Dipolantenne haben, damit sie in Resonanz ist?",
                 "textanswer": [
                   {
@@ -4681,7 +4681,7 @@
                 ]
               },
               {
-                "@id": "TH202",
+                "id": "TH202",
                 "textquestion": "Welches Strahlungsdiagramm ist der Antenne richtig zugeordnet?",
                 "textanswer": [
                   {
@@ -4694,8 +4694,8 @@
                 ]
               },
               {
-                "@id": "TH203",
-                "textquestion": "Welchen Eingangs- bzw. Fußpunktwiderstand hat die Groundplane?",
+                "id": "TH203",
+                "textquestion": "Welchen Eingangs- bzw. Fußpunktiderstand hat die Groundplane?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4707,7 +4707,7 @@
                 ]
               },
               {
-                "@id": "TH204",
+                "id": "TH204",
                 "textquestion": "Die Impedanz in der Mitte eines Halbwellendipols beträgt je nach Aufbauhöhe ungefähr",
                 "textanswer": [
                   {
@@ -4720,8 +4720,8 @@
                 ]
               },
               {
-                "@id": "TH205",
-                "textquestion": "Ein Faltdipol hat einen Eingangswiderstand von ungefähr",
+                "id": "TH205",
+                "textquestion": "Ein Faltdipol hat einen Eingangsiderstand von ungefähr",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4733,7 +4733,7 @@
                 ]
               },
               {
-                "@id": "TH206",
+                "id": "TH206",
                 "textquestion": "Ein Halbwellendipol wird auf der Grundfrequenz in der Mitte",
                 "textanswer": [
                   {
@@ -4746,7 +4746,7 @@
                 ]
               },
               {
-                "@id": "TH207",
+                "id": "TH207",
                 "textquestion": "Welcher Prozentsatz entspricht dem Korrekturfaktor, der üblicherweise für die Berechnung der Länge einer Drahtantenne verwendet wird?",
                 "textanswer": [
                   {
@@ -4759,7 +4759,7 @@
                 ]
               },
               {
-                "@id": "TH208",
+                "id": "TH208",
                 "textquestion": "Das folgende Bild enthält verschiedene UKW-Vertikalantennen. In welcher der folgenden Zeilen ist die entsprechende Bezeichnung der Antenne richtig zugeordnet?<p><img src='asset:assets/graphics/th208f.png'>",
                 "textanswer": [
                   {
@@ -4772,7 +4772,7 @@
                 ]
               },
               {
-                "@id": "TH209",
+                "id": "TH209",
                 "textquestion": "Das folgende Bild enthält verschiedene UKW-Antennen. Welche der folgenden Antworten ist richtig?<p><img src='asset:assets/graphics/th209f.png'>",
                 "textanswer": [
                   {
@@ -4785,7 +4785,7 @@
                 ]
               },
               {
-                "@id": "TH210",
+                "id": "TH210",
                 "textquestion": "Eine Drahtantenne für den Amateurfunk im KW-Bereich",
                 "textanswer": [
                   {
@@ -4801,10 +4801,10 @@
           },
           {
             "name": "Übertragungsleitungen",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TH301",
+                "id": "TH301",
                 "textquestion": "Am Ende einer Leitung ist nur noch ein Viertel der Leistung vorhanden. Wie groß ist das Dämpfungsmaß des Kabels?",
                 "textanswer": [
                   {
@@ -4817,7 +4817,7 @@
                 ]
               },
               {
-                "@id": "TH302",
+                "id": "TH302",
                 "textquestion": "Am Ende einer Leitung ist nur noch ein Zehntel der Leistung vorhanden. Wie groß ist das Dämpfungsmaß des Kabels?",
                 "textanswer": [
                   {
@@ -4830,7 +4830,7 @@
                 ]
               },
               {
-                "@id": "TH303",
+                "id": "TH303",
                 "textquestion": "Eine HF-Ausgangleistung von 100 W wird in eine angepasste Übertragungsleitung eingespeist. Am antennenseitigen Ende der Leitung beträgt die Leistung 50 W bei einem Stehwellenverhältnis von 1:1. Wie hoch ist die Leitungsdämpfung?",
                 "textanswer": [
                   {
@@ -4843,7 +4843,7 @@
                 ]
               },
               {
-                "@id": "TH304",
+                "id": "TH304",
                 "textquestion": "Welcher der nachfolgenden Zusammenhänge ist richtig?",
                 "textanswer": [
                   {
@@ -4856,7 +4856,7 @@
                 ]
               },
               {
-                "@id": "TH305",
+                "id": "TH305",
                 "textquestion": "Welche Dämpfung hat ein 25 m langes Koaxkabel vom Typ Aircell 7 bei 145 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:assets/graphics/kabeldaempfung.png'>",
                 "textanswer": [
                   {
@@ -4869,7 +4869,7 @@
                 ]
               },
               {
-                "@id": "TH306",
+                "id": "TH306",
                 "textquestion": "Welche Dämpfung hat ein 20 m langes Koaxkabel vom Typ RG 58 bei 29 MHz? (siehe hierzu beiliegendes Diagramm)<p><img src='asset:assets/graphics/kabeldaempfung.png'>",
                 "textanswer": [
                   {
@@ -4882,8 +4882,8 @@
                 ]
               },
               {
-                "@id": "TH307",
-                "textquestion": "Der Wellenwiderstand einer Leitung",
+                "id": "TH307",
+                "textquestion": "Der Welleniderstand einer Leitung",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4895,8 +4895,8 @@
                 ]
               },
               {
-                "@id": "TH308",
-                "textquestion": "Koaxialkabel weisen typischerweise Wellenwiderstände von",
+                "id": "TH308",
+                "textquestion": "Koaxialkabel weisen typischerweise Welleniderstände von",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4908,25 +4908,25 @@
                 ]
               },
               {
-                "@id": "TH309",
+                "id": "TH309",
                 "textquestion": "Welche Vorteile hat eine Paralleldraht-Speiseleitung gegenüber der Speisung über ein Koaxialkabel?",
                 "textanswer": [
                   {
                     "@correct": "true",
                     "text": "Sie hat geringere Dämpfung und hohe Spannungsfestigkeit."
                   },
-                  "Sie vermeidet Mantelwellen durch Wegfall der Abschirmung.",
-                  "Sie erlaubt leichtere Kontrolle des Wellenwiderstandes durch Verschieben der Spreizer.",
+                  "Sie vermidet Mantelwellen durch Wegfall der Abschirmung.",
+                  "Sie erlaubt leichtere Kontrolle des Welleniderstandes durch Verschieben der Spreizer.",
                   "Sie bietet guten Blitzschutz durch niederohmige Drähte."
                 ]
               },
               {
-                "@id": "TH310",
+                "id": "TH310",
                 "textquestion": "Wann ist eine Speiseleitung unsymmetrisch?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "Wenn die beiden Leiter unterschiedlich geformt sind, z.B. Koaxialkabel."
+                    "text": "Wenn die biden Leiter unterschiedlich geformt sind, z.B. Koaxialkabel."
                   },
                   "Wenn die hin- und zurücklaufende Leistung verschieden sind.",
                   "Wenn sie außerhalb ihrer Resonanzfrequenz betrieben wird.",
@@ -4934,8 +4934,8 @@
                 ]
               },
               {
-                "@id": "TH311",
-                "textquestion": "Welche Leitungen sollten für die HF-Verbindungen zwischen Einrichtungen in der Amateurfunkstelle verwendet werden, um unerwünschte Abstrahlungen zu vermeiden?",
+                "id": "TH311",
+                "textquestion": "Welche Leitungen sollten für die HF-Verbindungen zwischen Einrichtungen in der Amateurfunkstelle verwendet werden, um unerwünschte Abstrahlungen zu vermiden?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -4947,7 +4947,7 @@
                 ]
               },
               {
-                "@id": "TH312",
+                "id": "TH312",
                 "textquestion": "Welches der folgenden Koaxsteckverbindersysteme ist für sehr hohe Frequenzen (70-cm-Band) und hohe Leistungen am besten geeignet?",
                 "textanswer": [
                   {
@@ -4963,10 +4963,10 @@
           },
           {
             "name": "Anpassung, Transformation und Symmetrierung",
-            "@id": "4",
+            "id": "4",
             "question": [
               {
-                "@id": "TH401",
+                "id": "TH401",
                 "textquestion": "Bei welchem Stehwellenverhältnis (VSWR) ist eine Antenne am besten an die Leitung angepasst?",
                 "textanswer": [
                   {
@@ -4979,7 +4979,7 @@
                 ]
               },
               {
-                "@id": "TH402",
+                "id": "TH402",
                 "textquestion": "Fehlanpassungen oder Beschädigungen von HF-Übertragungsleitungen",
                 "textanswer": [
                   {
@@ -4992,7 +4992,7 @@
                 ]
               },
               {
-                "@id": "TH403",
+                "id": "TH403",
                 "textquestion": "Welche Auswirkungen hat es, wenn eine symmetrische Antenne (Dipol) mit einem Koaxkabel gleicher Impedanz gespeist wird?",
                 "textanswer": [
                   {
@@ -5005,7 +5005,7 @@
                 ]
               },
               {
-                "@id": "TH404",
+                "id": "TH404",
                 "textquestion": "Ein symmetrischer Halbwellendipol wird direkt über ein Koaxialkabel von einem Sender gespeist. Das Kabel ist senkrecht am Haus entlang verlegt und verursacht geringe Störungen. Um das Problem weiter zu verringern, empfiehlt es sich",
                 "textanswer": [
                   {
@@ -5018,7 +5018,7 @@
                 ]
               },
               {
-                "@id": "TH405",
+                "id": "TH405",
                 "textquestion": "Auf einem Ferritkern sind etliche Windungen Koaxialkabel aufgewickelt. Diese Anordnung kann dazu dienen,<p><img src='asset:assets/graphics/th405f.png'>",
                 "textanswer": [
                   {
@@ -5031,7 +5031,7 @@
                 ]
               },
               {
-                "@id": "TH406",
+                "id": "TH406",
                 "textquestion": "Am Eingang einer Antennenleitung misst man ein VSWR von 3. Wie groß ist in etwa die rücklaufende Leistung am Messpunkt, wenn die vorlaufende Leistung dort 100 Watt beträgt?",
                 "textanswer": [
                   {
@@ -5049,14 +5049,14 @@
       },
       {
         "name": "Wellenausbreitung und Ionosphäre",
-        "@id": "I",
+        "id": "I",
         "chapter": [
           {
             "name": "Ionosphäre",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TI101",
+                "id": "TI101",
                 "textquestion": "Welche ionosphärischen Schichten bestimmen die Funkwellenausbreitung am Tage?",
                 "textanswer": [
                   {
@@ -5069,7 +5069,7 @@
                 ]
               },
               {
-                "@id": "TI102",
+                "id": "TI102",
                 "textquestion": "Welche ionosphärischen Schichten bestimmen die Fernausbreitung in der Nacht?",
                 "textanswer": [
                   {
@@ -5082,7 +5082,7 @@
                 ]
               },
               {
-                "@id": "TI103",
+                "id": "TI103",
                 "textquestion": "In welcher Höhe befinden sich die für die Fernausbreitung (DX) wichtigen ionosphärischen Schichten? Sie befinden sich in ungefähr",
                 "textanswer": [
                   {
@@ -5095,7 +5095,7 @@
                 ]
               },
               {
-                "@id": "TI104",
+                "id": "TI104",
                 "textquestion": "Welchen Einfluss hat die D-Schicht auf die Fernausbreitung?",
                 "textanswer": [
                   {
@@ -5108,7 +5108,7 @@
                 ]
               },
               {
-                "@id": "TI105",
+                "id": "TI105",
                 "textquestion": "Wie kommt die Fernausbreitung einer Funkwelle auf den Kurzwellenbändern zustande? Sie kommt zustande durch die Reflexion an",
                 "textanswer": [
                   {
@@ -5121,7 +5121,7 @@
                 ]
               },
               {
-                "@id": "TI106",
+                "id": "TI106",
                 "textquestion": "Welche Schicht ist für die gute Ausbreitung im 10-m-Band in den Sommermonaten verantwortlich?",
                 "textanswer": [
                   {
@@ -5134,7 +5134,7 @@
                 ]
               },
               {
-                "@id": "TI107",
+                "id": "TI107",
                 "textquestion": "Die Sonnenfleckenzahl ist einem regelmäßigen Zyklus unterworfen. Welchen Zeitraum hat dieser Zyklus zirka?",
                 "textanswer": [
                   {
@@ -5150,10 +5150,10 @@
           },
           {
             "name": "Kurzwellenausbreitung",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TI201",
+                "id": "TI201",
                 "textquestion": "Die Ausbreitungsgeschwindigkeit freier elektromagnetischer Wellen beträgt etwa",
                 "textanswer": [
                   {
@@ -5166,7 +5166,7 @@
                 ]
               },
               {
-                "@id": "TI202",
+                "id": "TI202",
                 "textquestion": "Unter der \"Toten Zone\" wird der Bereich verstanden,",
                 "textanswer": [
                   {
@@ -5179,7 +5179,7 @@
                 ]
               },
               {
-                "@id": "TI203",
+                "id": "TI203",
                 "textquestion": "Welche der folgenden Aussagen trifft für KW-Funkverbindungen zu, die über Bodenwellen erfolgen?",
                 "textanswer": [
                   {
@@ -5192,7 +5192,7 @@
                 ]
               },
               {
-                "@id": "TI204",
+                "id": "TI204",
                 "textquestion": "Wie groß ist in etwa die maximale Entfernung, die ein KW-Signal bei Reflexion an der E-Schicht auf der Erdoberfläche mit einem Sprung (Hop) überbrücken kann?",
                 "textanswer": [
                   {
@@ -5205,7 +5205,7 @@
                 ]
               },
               {
-                "@id": "TI205",
+                "id": "TI205",
                 "textquestion": "Von welchem der genannten Parameter ist die Sprungdistanz abhängig, die ein KW-Signal auf der Erdoberfläche überbrücken kann? Sie ist abhängig",
                 "textanswer": [
                   {
@@ -5218,7 +5218,7 @@
                 ]
               },
               {
-                "@id": "TI206",
+                "id": "TI206",
                 "textquestion": "Bei der Ausbreitung auf Kurzwelle spielt die so genannte \"Grey Line\" eine besondere Rolle. Was ist die \"Grey Line\"?",
                 "textanswer": [
                   {
@@ -5231,7 +5231,7 @@
                 ]
               },
               {
-                "@id": "TI207",
+                "id": "TI207",
                 "textquestion": "Was versteht man unter dem Begriff \"Mögel-Dellinger-Effekt\"?",
                 "textanswer": [
                   {
@@ -5244,7 +5244,7 @@
                 ]
               },
               {
-                "@id": "TI208",
+                "id": "TI208",
                 "textquestion": "Ein plötzlicher Anstieg der Intensitäten von UV- und Röntgenstrahlung nach einem Flare (Energieausbruch auf der Sonne) führt zu erhöhter Ionisierung der D-Schicht und damit zu kurzzeitigem Totalausfall der ionosphärischen Kurzwellenausbreitung. Diese Erscheinung wird auch als",
                 "textanswer": [
                   {
@@ -5257,7 +5257,7 @@
                 ]
               },
               {
-                "@id": "TI209",
+                "id": "TI209",
                 "textquestion": "Unter dem Begriff \"Short Skip\" versteht man Funkverbindungen besonders im 10-m-Band mit Sprungentfernungen unter 1000 km, die",
                 "textanswer": [
                   {
@@ -5270,7 +5270,7 @@
                 ]
               },
               {
-                "@id": "TI210",
+                "id": "TI210",
                 "textquestion": "Warum sind Signale im 160- und 80-Meter- Band tagsüber nur schwach und nicht für den weltweiten Funkverkehr geeignet? Sie sind ungeeignet wegen der Tagesdämpfung in der",
                 "textanswer": [
                   {
@@ -5283,7 +5283,7 @@
                 ]
               },
               {
-                "@id": "TI211",
+                "id": "TI211",
                 "textquestion": "In welcher ionosphärischen Schicht treten gelegentlich Aurora-Erscheinungen auf?",
                 "textanswer": [
                   {
@@ -5296,7 +5296,7 @@
                 ]
               },
               {
-                "@id": "TI212",
+                "id": "TI212",
                 "textquestion": "Was bedeutet die „MUF“ bei der Kurzwellenausbreitung?",
                 "textanswer": [
                   {
@@ -5309,7 +5309,7 @@
                 ]
               },
               {
-                "@id": "TI213",
+                "id": "TI213",
                 "textquestion": "Wie nennt man den ionosphärischen Feldstärkeschwund durch Überlagerung von Boden- und Raumwelle, der sich bei der Kurzwellenausbreitung besonders bei AM-Sendungen bemerkbar macht?",
                 "textanswer": [
                   {
@@ -5325,10 +5325,10 @@
           },
           {
             "name": "Wellenausbreitung oberhalb 30 MHz",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TI301",
+                "id": "TI301",
                 "textquestion": "Wie weit etwa reicht der Funkhorizont im UKW-Bereich über den geografischen Horizont hinaus? Er reicht etwa",
                 "textanswer": [
                   {
@@ -5341,7 +5341,7 @@
                 ]
               },
               {
-                "@id": "TI302",
+                "id": "TI302",
                 "textquestion": "Überhorizontverbindungen im UHF/VHF-Bereich kommen u.a. zustande durch",
                 "textanswer": [
                   {
@@ -5354,7 +5354,7 @@
                 ]
               },
               {
-                "@id": "TI303",
+                "id": "TI303",
                 "textquestion": "Für VHF-Weitverkehrsverbindungen wird hauptsächlich die",
                 "textanswer": [
                   {
@@ -5367,7 +5367,7 @@
                 ]
               },
               {
-                "@id": "TI304",
+                "id": "TI304",
                 "textquestion": "Was ist die \"Troposphäre\"? Die Troposphäre ist der",
                 "textanswer": [
                   {
@@ -5380,7 +5380,7 @@
                 ]
               },
               {
-                "@id": "TI305",
+                "id": "TI305",
                 "textquestion": "Wie wirkt die Antennenhöhe auf die Reichweite einer UKW-Verbindung aus? Die Reichweite steigt mit zunehmender Antennenhöhe, weil",
                 "textanswer": [
                   {
@@ -5393,7 +5393,7 @@
                 ]
               },
               {
-                "@id": "TI306",
+                "id": "TI306",
                 "textquestion": "Was ist die Ursache für Aurora-Erscheinungen? Die Ursache ist",
                 "textanswer": [
                   {
@@ -5406,7 +5406,7 @@
                 ]
               },
               {
-                "@id": "TI307",
+                "id": "TI307",
                 "textquestion": "Wie wirkt sich \"Aurora\" auf die Signalqualität eines Funksignals aus?",
                 "textanswer": [
                   {
@@ -5419,7 +5419,7 @@
                 ]
               },
               {
-                "@id": "TI308",
+                "id": "TI308",
                 "textquestion": "Welche Betriebsart eignet sich am besten für Auroraverbindungen?",
                 "textanswer": [
                   {
@@ -5432,7 +5432,7 @@
                 ]
               },
               {
-                "@id": "TI309",
+                "id": "TI309",
                 "textquestion": "Was verstehen Sie unter dem Begriff \"Sporadic-E\"? Ich verstehe darunter",
                 "textanswer": [
                   {
@@ -5445,7 +5445,7 @@
                 ]
               },
               {
-                "@id": "TI310",
+                "id": "TI310",
                 "textquestion": "In dem folgenden Geländeprofil sei S ein Sender im 2-m-Band, E1 bis E4 vier Empfangsstationen. Welche Funkstrecke geht wahrscheinlich am besten, welche am schlechtesten?<p><img src='asset:assets/graphics/ti310f.png'>",
                 "textanswer": [
                   {
@@ -5463,14 +5463,14 @@
       },
       {
         "name": "Messungen und Messinstrumente",
-        "@id": "J",
+        "id": "J",
         "chapter": [
           {
             "name": "Messinstrumente",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TJ101",
+                "id": "TJ101",
                 "textquestion": "Das Prinzip eines Drehspulmessgeräts beruht auf",
                 "textanswer": [
                   {
@@ -5483,7 +5483,7 @@
                 ]
               },
               {
-                "@id": "TJ102",
+                "id": "TJ102",
                 "textquestion": "Die Auflösung eines Messinstrumentes entspricht",
                 "textanswer": [
                   {
@@ -5496,7 +5496,7 @@
                 ]
               },
               {
-                "@id": "TJ103",
+                "id": "TJ103",
                 "textquestion": "Was ist ein Dipmeter? Ein Dipmeter ist",
                 "textanswer": [
                   {
@@ -5509,7 +5509,7 @@
                 ]
               },
               {
-                "@id": "TJ104",
+                "id": "TJ104",
                 "textquestion": "Wozu wird ein Dipmeter beispielsweise verwendet? Ein Dipmeter wird zur",
                 "textanswer": [
                   {
@@ -5522,7 +5522,7 @@
                 ]
               },
               {
-                "@id": "TJ105",
+                "id": "TJ105",
                 "textquestion": "Welches dieser Messgeräte ist für die Ermittlung der Resonanzfrequenz eines Traps, das für einen Dipol genutzt werden soll, am besten geeignet?",
                 "textanswer": [
                   {
@@ -5535,7 +5535,7 @@
                 ]
               },
               {
-                "@id": "TJ106",
+                "id": "TJ106",
                 "textquestion": "Wie ermittelt man die Resonanzfrequenz eines Schwingkreises? Man ermittelt sie",
                 "textanswer": [
                   {
@@ -5548,7 +5548,7 @@
                 ]
               },
               {
-                "@id": "TJ107",
+                "id": "TJ107",
                 "textquestion": "Für welche Messungen verwendet man ein Oszilloskop? Ein Oszilloskop verwendet man, um",
                 "textanswer": [
                   {
@@ -5561,7 +5561,7 @@
                 ]
               },
               {
-                "@id": "TJ108",
+                "id": "TJ108",
                 "textquestion": "Welches dieser Geräte wird für die Anzeige von NF-Verzerrungen verwendet?",
                 "textanswer": [
                   {
@@ -5574,28 +5574,28 @@
                 ]
               },
               {
-                "@id": "TJ109",
+                "id": "TJ109",
                 "textquestion": "Eine künstliche Antenne für den VHF-Bereich könnte beispielsweise aus",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "ungewendelten Kohleschichtwiderständen zusammengebaut sein."
+                    "text": "ungewendelten Kohleschichtiderständen zusammengebaut sein."
                   },
-                  "hochbelastbaren Drahtwiderständen zusammengebaut sein.",
+                  "hochbelastbaren Drahtiderständen zusammengebaut sein.",
                   "Glühbirnen zusammengebaut sein.",
-                  "temperaturfesten Blindwiderständen bestehen."
+                  "temperaturfesten Blindiderständen bestehen."
                 ]
               },
               {
-                "@id": "TJ110",
+                "id": "TJ110",
                 "textquestion": "Welche der folgenden Bauteile könnten für eine genaue künstliche Antenne, die bei 28 MHz eingesetzt werden soll, verwendet werden?",
                 "textanswer": [
                   {
                     "@correct": "true",
-                    "text": "10 Kohleschichtwiderstände von 500 &Omega;"
+                    "text": "10 Kohleschichtiderstände von 500 &Omega;"
                   },
-                  "ein 50-&Omega;-Drahtwiderstand",
-                  "2 parallel geschaltete Drahtwiderstände von 100 ..",
+                  "ein 50-&Omega;-Drahtiderstand",
+                  "2 parallel geschaltete Drahtiderstände von 100 ..",
                   "ein Spulenanpassfilter im Ölbad"
                 ]
               }
@@ -5603,11 +5603,11 @@
           },
           {
             "name": "Durchführung von Messungen",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TJ201",
-                "textquestion": "Welche Schaltung könnte dazu verwendet werden, den Wert eines Widerstandes anhand des ohmschen Gesetzes zu ermitteln?",
+                "id": "TJ201",
+                "textquestion": "Welche Schaltung könnte dazu verwendet werden, den Wert eines iderstandes anhand des ohmschen Gesetzes zu ermitteln?",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5619,7 +5619,7 @@
                 ]
               },
               {
-                "@id": "TJ202",
+                "id": "TJ202",
                 "textquestion": "Wie werden elektrische Spannungsmesser an Messobjekte angeschlossen und welche Anforderungen muss das Messgerät erfüllen, damit der Messfehler möglichst gering bleibt?",
                 "textanswer": [
                   {
@@ -5632,7 +5632,7 @@
                 ]
               },
               {
-                "@id": "TJ203",
+                "id": "TJ203",
                 "textquestion": "Die Zeitbasis eines Oszilloskops ist so eingestellt, dass ein Skalenteil 0,5 ms entspricht. Welche Frequenz hat die angelegte Spannung?<p><img src='asset:assets/graphics/tj203f.png'>",
                 "textanswer": [
                   {
@@ -5645,7 +5645,7 @@
                 ]
               },
               {
-                "@id": "TJ204",
+                "id": "TJ204",
                 "textquestion": "Für welchen Zweck wird eine Stehwellenmessbrücke verwendet?",
                 "textanswer": [
                   {
@@ -5658,7 +5658,7 @@
                 ]
               },
               {
-                "@id": "TJ205",
+                "id": "TJ205",
                 "textquestion": "Welche Spannung wird bei dem folgenden Messinstrument angezeigt, wenn dessen Messbereich auf 10 V eingestellt ist?<p><img src='asset:assets/graphics/tj205f.png'>",
                 "textanswer": [
                   {
@@ -5671,7 +5671,7 @@
                 ]
               },
               {
-                "@id": "TJ206",
+                "id": "TJ206",
                 "textquestion": "An welcher Stelle einer Antennenanlage muss ein VSWR-Meter eingeschleift werden, um Aussagen über die Antenne selbst machen zu können? Das VSWR-Meter muss eingeschleift werden zwischen",
                 "textanswer": [
                   {
@@ -5684,8 +5684,8 @@
                 ]
               },
               {
-                "@id": "TJ207",
-                "textquestion": "Ein Stehwellenmessgerät wird in ein ideal angepasstes Sender-/Antennensystem eingeschleift. Das Messgerät sollte",
+                "id": "TJ207",
+                "textquestion": "Ein Stehwellenmessgerät wird in einideal angepasstes Sender-/Antennensystem eingeschleift. Das Messgerät sollte",
                 "textanswer": [
                   {
                     "@correct": "true",
@@ -5697,7 +5697,7 @@
                 ]
               },
               {
-                "@id": "TJ208",
+                "id": "TJ208",
                 "textquestion": "Welches dieser Messgeräte ist für genaue Frequenzmessungen am besten geeignet?",
                 "textanswer": [
                   {
@@ -5710,7 +5710,7 @@
                 ]
               },
               {
-                "@id": "TJ209",
+                "id": "TJ209",
                 "textquestion": "Wie misst man das Stehwellenverhältnis? Man misst es",
                 "textanswer": [
                   {
@@ -5723,7 +5723,7 @@
                 ]
               },
               {
-                "@id": "TJ210",
+                "id": "TJ210",
                 "textquestion": "Ein Stehwellenmessgerät wird eingesetzt bei Sendern zur Messung",
                 "textanswer": [
                   {
@@ -5736,7 +5736,7 @@
                 ]
               },
               {
-                "@id": "TJ211",
+                "id": "TJ211",
                 "textquestion": "An welchem Punkt sollte das Stehwellenmessgerät eingeschleift werden, um zu prüfen, ob der Sender gut an die Antennenanlage angepasst ist?<p><img src='asset:assets/graphics/tj211f.png'>",
                 "textanswer": [
                   {
@@ -5754,14 +5754,14 @@
       },
       {
         "name": "Störemissionen, Störfestigkeit, Schutzanforderungen, Ursachen, Abhilfe",
-        "@id": "K",
+        "id": "K",
         "chapter": [
           {
             "name": "Störungen elektronischer Geräte",
-            "@id": "1",
+            "id": "1",
             "question": [
               {
-                "@id": "TK101",
+                "id": "TK101",
                 "textquestion": "Wie äußert sich Zustopfen bzw. Blockierung eines Empfängers?",
                 "textanswer": [
                   {
@@ -5774,7 +5774,7 @@
                 ]
               },
               {
-                "@id": "TK102",
+                "id": "TK102",
                 "textquestion": "Welche Effekte werden durch Intermodulation hervorgerufen?",
                 "textanswer": [
                   {
@@ -5787,7 +5787,7 @@
                 ]
               },
               {
-                "@id": "TK103",
+                "id": "TK103",
                 "textquestion": "Welche Reaktion ist angebracht, wenn Störungen im TV-Rundfunk beim Nachbarn nicht mit den zur Verfügung stehenden Mitteln beseitigt werden können?",
                 "textanswer": [
                   {
@@ -5800,7 +5800,7 @@
                 ]
               },
               {
-                "@id": "TK104",
+                "id": "TK104",
                 "textquestion": "Bei der Überprüfung des Ausgangssignals eines Senders sollte die Dämpfung der Oberwellen mindestens",
                 "textanswer": [
                   {
@@ -5813,7 +5813,7 @@
                 ]
               },
               {
-                "@id": "TK105",
+                "id": "TK105",
                 "textquestion": "In welchem Fall spricht man von Einströmungen bei EMV? Einströmungen liegen dann vor, wenn die HF",
                 "textanswer": [
                   {
@@ -5826,7 +5826,7 @@
                 ]
               },
               {
-                "@id": "TK106",
+                "id": "TK106",
                 "textquestion": "In welchem Fall spricht man von Einstrahlungen bei EMV? Einstrahlungen liegen dann vor, wenn die HF",
                 "textanswer": [
                   {
@@ -5839,7 +5839,7 @@
                 ]
               },
               {
-                "@id": "TK107",
+                "id": "TK107",
                 "textquestion": "Wie nennt man die elektromagnetische Störung, die durch die Aussendung des reinen Nutzsignals beim Empfang anderer Frequenzen in benachbarten Empfängern auftreten kann?",
                 "textanswer": [
                   {
@@ -5855,10 +5855,10 @@
           },
           {
             "name": "Ursachen für Störungen",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TK201",
+                "id": "TK201",
                 "textquestion": "Wie kommen Geräusche aus den Lautsprechern einer abgeschalteten Stereoanlage möglicherweise zustande?",
                 "textanswer": [
                   {
@@ -5871,7 +5871,7 @@
                 ]
               },
               {
-                "@id": "TK202",
+                "id": "TK202",
                 "textquestion": "Ein Fernsehgerät wird durch das Nutzsignal einer KW-Amateurfunkstelle gestört. Wie dringt das Signal mit größter Wahrscheinlichkeit in das Fernsehgerät ein?",
                 "textanswer": [
                   {
@@ -5884,7 +5884,7 @@
                 ]
               },
               {
-                "@id": "TK203",
+                "id": "TK203",
                 "textquestion": "Die Übersteuerung eines Leistungsverstärkers führt zu",
                 "textanswer": [
                   {
@@ -5897,7 +5897,7 @@
                 ]
               },
               {
-                "@id": "TK204",
+                "id": "TK204",
                 "textquestion": "Die gesamte Bandbreite einer FMÜbertragung beträgt 15 kHz. Wie nah an der Bandgrenze kann ein Träger übertragen werden, ohne dass Außerbandaussendungen erzeugt werden?",
                 "textanswer": [
                   {
@@ -5913,10 +5913,10 @@
           },
           {
             "name": "Maßnahmen zur Störungsbeseitigung",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TK301",
+                "id": "TK301",
                 "textquestion": "Durch welche Maßnahme kann die übermäßige Bandbreite einer 2-m-FM-Übertragung verringert werden? Sie kann verringert werden durch die Änderung der",
                 "textanswer": [
                   {
@@ -5929,7 +5929,7 @@
                 ]
               },
               {
-                "@id": "TK302",
+                "id": "TK302",
                 "textquestion": "Ein Sender sollte so betrieben werden, dass",
                 "textanswer": [
                   {
@@ -5942,7 +5942,7 @@
                 ]
               },
               {
-                "@id": "TK303",
+                "id": "TK303",
                 "textquestion": "Durch eine Mantelwellendrossel in einem Fernseh-Antennenzuführungskabel",
                 "textanswer": [
                   {
@@ -5955,7 +5955,7 @@
                 ]
               },
               {
-                "@id": "TK304",
+                "id": "TK304",
                 "textquestion": "Ein Funkamateur wohnt in einem Reihenhaus. An welcher Stelle sollte die KW-Drahtantenne angebracht werden, um störende Beeinflussungen auf ein Mindestmaß zu begrenzen?",
                 "textanswer": [
                   {
@@ -5968,7 +5968,7 @@
                 ]
               },
               {
-                "@id": "TK305",
+                "id": "TK305",
                 "textquestion": "Beim Betrieb Ihres 2-m-Senders wird bei einem Ihrer Nachbarn ein Fernsehempfänger gestört, der mit einer Zimmerantenne betrieben wird. Zur Behebung des Problems schlagen Sie dem Nachbarn vor,",
                 "textanswer": [
                   {
@@ -5981,7 +5981,7 @@
                 ]
               },
               {
-                "@id": "TK306",
+                "id": "TK306",
                 "textquestion": "Die Bemühungen, die durch eine in der Nähe befindliche Amateurfunkstelle hervorgerufenen Fernsehstörungen zu verringern, sind fehlgeschlagen. Als nächster Schritt ist",
                 "textanswer": [
                   {
@@ -5994,7 +5994,7 @@
                 ]
               },
               {
-                "@id": "TK307",
+                "id": "TK307",
                 "textquestion": "Um die Störwahrscheinlichkeit zu verringern, sollte die benutzte Sendeleistung",
                 "textanswer": [
                   {
@@ -6007,7 +6007,7 @@
                 ]
               },
               {
-                "@id": "TK308",
+                "id": "TK308",
                 "textquestion": "Welches Filter sollte im Störungsfall für die Dämpfung von Kurzwellensignalen in ein Fernsehantennenkabel eingeschleift werden?",
                 "textanswer": [
                   {
@@ -6020,7 +6020,7 @@
                 ]
               },
               {
-                "@id": "TK309",
+                "id": "TK309",
                 "textquestion": "Was sollte zur Herabsetzung starker Signale eines 28-MHz-Senders in das Fernseh- Antennenzuführungskabel eingeschleift werden?",
                 "textanswer": [
                   {
@@ -6033,7 +6033,7 @@
                 ]
               },
               {
-                "@id": "TK310",
+                "id": "TK310",
                 "textquestion": "Welche Filter sollten im Störungsfall vor die einzelnen Leitungsanschlüsse eines UKW oder Fernsehrundfunkgeräts oder angeschlossener Geräte eingeschleift werden, um Kurzwellensignale zu dämpfen?",
                 "textanswer": [
                   {
@@ -6046,7 +6046,7 @@
                 ]
               },
               {
-                "@id": "TK311",
+                "id": "TK311",
                 "textquestion": "Die Signale eines 144-MHz-Senders werden in das Koax-Antennenkabel eines FM-Rundfunkempfängers induziert und verursachen Störungen. Eine Möglichkeit zur Verringerung der Störungen besteht darin,",
                 "textanswer": [
                   {
@@ -6059,7 +6059,7 @@
                 ]
               },
               {
-                "@id": "TK312",
+                "id": "TK312",
                 "textquestion": "Um die Störwahrscheinlichkeit im eigenen Haus zu verringern, empfiehlt es sich vorzugsweise",
                 "textanswer": [
                   {
@@ -6072,7 +6072,7 @@
                 ]
               },
               {
-                "@id": "TK313",
+                "id": "TK313",
                 "textquestion": "Bei der Hi-Fi-Anlage des Nachbarn wird Einströmung in die NF-Endstufe festgestellt. Eine mögliche Abhilfe wäre",
                 "textanswer": [
                   {
@@ -6085,7 +6085,7 @@
                 ]
               },
               {
-                "@id": "TK314",
+                "id": "TK314",
                 "textquestion": "Eine KW-Amateurfunkstelle verursacht im Sendebetrieb in einem in der Nähe betriebenen Fernsehempfänger Störungen. Welches Filter schleifen Sie in das Fernsehantennenkabel ein, um die Störwahrscheinlichkeit zu verringern?",
                 "textanswer": [
                   {
@@ -6098,7 +6098,7 @@
                 ]
               },
               {
-                "@id": "TK315",
+                "id": "TK315",
                 "textquestion": "Bei einem Wohnort in einem Ballungsgebiet empfiehlt es sich, während der abendlichen Fernsehstunden",
                 "textanswer": [
                   {
@@ -6111,7 +6111,7 @@
                 ]
               },
               {
-                "@id": "TK316",
+                "id": "TK316",
                 "textquestion": "Falls sich eine Antenne in der Nähe und parallel zu einer 230-V-Wechselstrom-Freileitung befindet,",
                 "textanswer": [
                   {
@@ -6124,7 +6124,7 @@
                 ]
               },
               {
-                "@id": "TK317",
+                "id": "TK317",
                 "textquestion": "Eine 435-MHz-Sendeantenne mit hohem Gewinn ist unmittelbar auf eine UHF-Fernseh-Empfangsantenne gerichtet. Dies führt gegebenenfalls zu",
                 "textanswer": [
                   {
@@ -6137,7 +6137,7 @@
                 ]
               },
               {
-                "@id": "TK318",
+                "id": "TK318",
                 "textquestion": "Im Mittelwellenbereich ergeben sich häufig Spiegelfrequenzstörungen durch",
                 "textanswer": [
                   {
@@ -6150,7 +6150,7 @@
                 ]
               },
               {
-                "@id": "TK319",
+                "id": "TK319",
                 "textquestion": "Ein korrodierter Anschluss an der Fernseh-Empfangsantenne des Nachbarn",
                 "textanswer": [
                   {
@@ -6168,13 +6168,13 @@
       },
       {
         "name": "Elektromagnetische Verträglichkeit, Anwendung, Personen- und Sachschutz",
-        "@id": "L",
+        "id": "L",
         "chapter": [
           {
             "name": "Störfestigkeit",
-            "@id": "1",
+            "id": "1",
             "question": {
-              "@id": "TL101",
+              "id": "TL101",
               "textquestion": "Um eine Amateurfunkstelle in Bezug auf EMV zu optimieren",
               "textanswer": [
                 {
@@ -6189,10 +6189,10 @@
           },
           {
             "name": "Schutz von Personen",
-            "@id": "2",
+            "id": "2",
             "question": [
               {
-                "@id": "TL201",
+                "id": "TL201",
                 "textquestion": "Nach welcher der Antworten kann die ERP (Effective Radiated Power) berechnet werden, und worauf ist die ERP bzw. der zu verwendende Antennengewinn bezogen?",
                 "textanswer": [
                   {
@@ -6205,7 +6205,7 @@
                 ]
               },
               {
-                "@id": "TL202",
+                "id": "TL202",
                 "textquestion": "Nach welcher der Antworten kann die EIRP berechnet werden, und worauf ist die EIRP bzw. der zu verwendende Antennengewinn bezogen?",
                 "textanswer": [
                   {
@@ -6218,7 +6218,7 @@
                 ]
               },
               {
-                "@id": "TL203",
+                "id": "TL203",
                 "textquestion": "Was versteht man unter dem Begriff \"EIRP\"?",
                 "textanswer": [
                   {
@@ -6231,7 +6231,7 @@
                 ]
               },
               {
-                "@id": "TL204",
+                "id": "TL204",
                 "textquestion": "Ein Sender mit 0,6 Watt Ausgangsleistung ist über eine Antennenleitung, die 1 dB Kabelverluste hat, an eine Richtantenne mit 11 dB Gewinn (auf Dipol bezogen) angeschlossen. Welche EIRP wird von der Antenne maximal abgestrahlt?",
                 "textanswer": [
                   {
@@ -6244,7 +6244,7 @@
                 ]
               },
               {
-                "@id": "TL205",
+                "id": "TL205",
                 "textquestion": "Ein Sender mit 5 Watt Ausgangsleistung ist über eine Antennenleitung, die 2 dB Kabelverluste hat, an eine Antenne mit 5 dB Gewinn (auf Dipol bezogen) angeschlossen. Welche EIRP wird von der Antenne maximal abgestrahlt?",
                 "textanswer": [
                   {
@@ -6257,7 +6257,7 @@
                 ]
               },
               {
-                "@id": "TL206",
+                "id": "TL206",
                 "textquestion": "Ein Sender mit 75 Watt Ausgangsleistung ist über eine Antennenleitung, die 2,15 dB (Faktor 1,64) Kabelverluste hat, an eine Dipol- Antenne angeschlossen. Welche EIRP wird von der Antenne maximal abgestrahlt?",
                 "textanswer": [
                   {
@@ -6270,7 +6270,7 @@
                 ]
               },
               {
-                "@id": "TL207",
+                "id": "TL207",
                 "textquestion": "Muss ein Funkamateur als Betreiber einer ortsfesten Amateurfunkstelle bei der Sendeart F3E und einer Senderleistung von 6 Watt an einer 15-Element-Yagiantenne mit 13 dB Gewinn für 2 m die Einhaltung der Personenschutzgrenzwerte nachweisen?",
                 "textanswer": [
                   {
@@ -6283,7 +6283,7 @@
                 ]
               },
               {
-                "@id": "TL208",
+                "id": "TL208",
                 "textquestion": "Sie besitzen einen &lambda;/4-Vertikalstrahler. Da Sie für diese Antenne keine Selbsterklärung abgeben möchten und somit nur eine Strahlungsleistung von kleiner 10 W EIRP verwenden dürfen, müssen Sie die Sendeleistung soweit reduzieren, dass sie unter diesem Wert bleiben. Wie groß darf die Sendeleistung dabei sein?",
                 "textanswer": [
                   {
@@ -6296,7 +6296,7 @@
                 ]
               },
               {
-                "@id": "TL209",
+                "id": "TL209",
                 "textquestion": "Sie möchten den Personenschutz-Sicherheitsabstand für die Antenne Ihrer Amateurfunkstelle für das 10-m-Band und die Betriebsart RTTY berechnen. Der Grenzwert im Fall des Personenschutzes beträgt 28 V/m. Sie betreiben einen Dipol, der von einem Sender mit einer Leistung von 100 W über ein Koaxialkabel gespeist wird. Die Kabeldämpfung sei vernachlässigbar. Wie groß muss der Sicherheitsabstand sein?",
                 "textanswer": [
                   {
@@ -6309,7 +6309,7 @@
                 ]
               },
               {
-                "@id": "TL210",
+                "id": "TL210",
                 "textquestion": "Sie möchten den Personenschutz-Sicherheitsabstand für die Antenne Ihrer Amateurfunkstelle für das 10-m-Band und die Betriebsart FM berechnen. Der Grenzwert im Fall des Personenschutzes beträgt 28 V/m. Sie betreiben eine Yagi-Antenne mit einem Gewinn von 7,5 dBd. Die Antenne wird von einem Sender mit einer Leistung von 100 W über ein langes Koaxialkabel gespeist. Die Kabeldämpfung beträgt 1,5 dB. Wie groß muss der Sicherheitsabstand sein?",
                 "textanswer": [
                   {
@@ -6322,7 +6322,7 @@
                 ]
               },
               {
-                "@id": "TL211",
+                "id": "TL211",
                 "textquestion": "Sie möchten den Personenschutz-Sicherheitsabstand für die Antenne Ihrer Amateurfunkstelle in Hauptstrahlrichtung für das 2- m-Band und die Betriebsart FM berechnen. Der Grenzwert im Fall des Personenschutzes beträgt 28 V/m. Sie betreiben eine Yagi- Antenne mit einem Gewinn von 11,5 dBd. Die Antenne wird von einem Sender mit einer Leistung von 75 W über ein Koaxialkabel gespeist. Die Kabeldämpfung beträgt 1,5 dB. Wie groß muss der Sicherheitsabstand sein?",
                 "textanswer": [
                   {
@@ -6335,7 +6335,7 @@
                 ]
               },
               {
-                "@id": "TL212",
+                "id": "TL212",
                 "textquestion": "Sie errechnen einen Sicherheitsabstand für Ihre Antenne. Von welchem Punkt aus muss dieser Sicherheitsabstand eingehalten werden, wenn Sie bei der Berechnung die Fernfeldnäherung verwendet haben?",
                 "textanswer": [
                   {
@@ -6348,7 +6348,7 @@
                 ]
               },
               {
-                "@id": "TL213",
+                "id": "TL213",
                 "textquestion": "Mit welcher Ausgangsleistung rechnen Sie im Fall des Personenschutzes, um den Sicherheitsabstand zu ermitteln?",
                 "textanswer": [
                   {
@@ -6361,7 +6361,7 @@
                 ]
               },
               {
-                "@id": "TL214",
+                "id": "TL214",
                 "textquestion": "Herzschrittmacher können auch durch die Aussendung einer Amateurfunkstelle beeinflusst werden. Gibt es einen zeitlichen Grenzwert für die Einwirkdauer?",
                 "textanswer": [
                   {
@@ -6377,10 +6377,10 @@
           },
           {
             "name": "Sicherheit",
-            "@id": "3",
+            "id": "3",
             "question": [
               {
-                "@id": "TL301",
+                "id": "TL301",
                 "textquestion": "Unter welchen Bedingungen darf das Standrohr einer Amateurfunkantenne auf einem Gebäude mit einer vorhandenen Blitzschutzanlage verbunden werden?",
                 "textanswer": [
                   {
@@ -6393,7 +6393,7 @@
                 ]
               },
               {
-                "@id": "TL302",
+                "id": "TL302",
                 "textquestion": "Welches Material und welcher Mindestquerschnitt ist bei einer Erdungsleitung zwischen einem Antennenstandrohr und einer Erdungsanlage nach DIN VDE 0855 Teil 300 für Funksender bis 1 kW zu verwenden?",
                 "textanswer": [
                   {
@@ -6406,7 +6406,7 @@
                 ]
               },
               {
-                "@id": "TL303",
+                "id": "TL303",
                 "textquestion": "Unter welchen Bedingungen darf ein Fundamenterder als Blitzschutzerder verwendet werden?",
                 "textanswer": [
                   {
@@ -6419,7 +6419,7 @@
                 ]
               },
               {
-                "@id": "TL304",
+                "id": "TL304",
                 "textquestion": "Welche Sicherheitsmaßnahmen müssen zum Schutz gegen atmosphärische Überspannungen und zur Verhinderung von Spannungsunterschieden bei Koaxialkabel- Niederführungen ergriffen werden?",
                 "textanswer": [
                   {
@@ -6432,7 +6432,7 @@
                 ]
               },
               {
-                "@id": "TL305",
+                "id": "TL305",
                 "textquestion": "Welche der Antworten A bis D enthält die heutzutage normgerechten Adern- Kennfarben von 3-adrigen, isolierten Energieleitungen und -kabeln in der Abfolge: Schutzleiter, Außenleiter, Neutralleiter?",
                 "textanswer": [
                   {
@@ -6445,7 +6445,7 @@
                 ]
               },
               {
-                "@id": "TL306",
+                "id": "TL306",
                 "textquestion": "Damit die Zulassung eines Kraftfahrzeugs nicht ungültig wird, sind vor dem Einbau einer mobilen Sende-/Empfangseinrichtung grundsätzlich",
                 "textanswer": [
                   {
@@ -6458,7 +6458,7 @@
                 ]
               },
               {
-                "@id": "TL307",
+                "id": "TL307",
                 "textquestion": "Wo sollte aus funktechnischer Sicht eine mobile VHF-Antenne an einem PKW vorzugsweise installiert werden?",
                 "textanswer": [
                   {
@@ -6471,7 +6471,7 @@
                 ]
               },
               {
-                "@id": "TL308",
+                "id": "TL308",
                 "textquestion": "Um ein Zusammenwirken mit der Elektronik des Kraftfahrzeugs zu verhindern, sollte das Antennenkabel",
                 "textanswer": [
                   {
