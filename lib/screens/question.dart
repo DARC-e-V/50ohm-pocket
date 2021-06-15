@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -6,101 +5,98 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import '../constants.dart';
 import '../coustom_libs/json.dart';
 
-void pushquestion(final title, BuildContext context, var data, var chapter, var subchapter) {
-  Navigator.of(context).push(
-    MaterialPageRoute<void>(builder: (BuildContext context){
-      return Scaffold(
-          appBar: AppBar(
-            title: Text(title),
-          ),
-          body: Question(subchapter,chapter,data,0));
-      }
-    ),
-  );
-}
+// please let me know weather there is a bloat free variant of this
 
 class Question extends StatefulWidget {
-  var subchapter, chapter, data, questionnum;
-  Question(this.subchapter,this.chapter,this.data,this.questionnum);
+  var subchapter, chapter, questionnum;
+  final BuildContext context;
+  Question(this.context, this.subchapter,this.chapter,this.questionnum);
   @override
-  createState() => _Questionstate(subchapter,chapter,data,questionnum);
+  createState() => _Questionstate(this.context, this.subchapter,this.chapter,this.questionnum);
 }
 class _Questionstate extends State<Question>{
-  //, var data, var chapter, var subchapter
-  var questionnum, tries = 0;
-  var question, subchapter, chapter, data, menuq, qdata, questionlist;
+  var questionradio, _json;
+  var tries = 0;
+  final context, question, subchapter, chapter;
   bool correct = false;
 
-  _Questionstate(this.subchapter,this.chapter,this.data,this.questionnum);
+
+  _Questionstate(this.context,this.subchapter,this.chapter,this.question);
 
   @override
   initState() {
     super.initState();
-    menuq = Chaptermenu(data);
-    qdata = menuq.question(chapter,subchapter,questionnum);
-    questionlist = _questionlist(qdata);
+    setState(() {
+      _json = Json(JsonWidget.of(context).json);
+    });
   }
   @override
   Widget build(BuildContext context) {
 
     var questionchecked;
-    if(question != null){
+    if(questionradio != null){
       questionchecked = true;
     }else{
       questionchecked = false;
     }
+    var questionlist = _json.question(chapter,subchapter,question)[0];
 
-  return ListView(
-        children: [
-          LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
-          Padding(
-            padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
-             child: HtmlWidget(qdata["textquestion"],
-               textStyle: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20
-                ),
-             ),
-          ),
-          Divider(height: std_padding * 2,),
-          ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              addAutomaticKeepAlives: true,
-              shrinkWrap: true,
-              itemCount: qdata["textanswer"].length,
-              itemBuilder: (context, i){
-                return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //Text("$correct"),
-                      //TextButton(onPressed: () => setState(() {), child: child),
-                      RadioListTile(
-                          groupValue: question,
-                          value: i,
-                          onChanged: (var value) {setState(() {question = i;});},
-                        title: HtmlWidget(questionlist[i][1],),
-                        ),
-                    ]
-                  );
-                }
-              ),
-          SizedBox(height: std_padding * 1.5,),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              textStyle: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 23,
-              ),
-              visualDensity: VisualDensity(vertical: 3,horizontal: 0,),
-              shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
+  return Scaffold(
+    appBar: AppBar(
+      title: Text("Afutrainer"),
+    ),
+    body: ListView(
+      children: [
+        //LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
+        Padding(
+          padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+          child: HtmlWidget("${_json.questionname(chapter,subchapter,question)}",
+            textStyle: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 20
             ),
-            onPressed: questionchecked ? () =>  _checkquestion() : null,
-            child: _textdisplay(),
           ),
-        ],
-      );
-      }
+        ),
+        Divider(height: std_padding * 2,),
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            addAutomaticKeepAlives: true,
+            shrinkWrap: true,
+            itemCount: 2,//qdata["textanswer"].length,
+            itemBuilder: (context, i){
+              return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //Text("$correct"),
+                    //TextButton(onPressed: () => setState(() {), child: child),
+                    RadioListTile(
+                      groupValue: questionradio,
+                      value: i,
+                      onChanged: (var value) {setState(() {questionradio = i;});},
+                      title: HtmlWidget(""),//questionlist[i][1],),
+                    ),
+                  ]
+              );
+            }
+        ),
+        SizedBox(height: std_padding * 1.5,),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 23,
+            ),
+            visualDensity: VisualDensity(vertical: 3,horizontal: 0,),
+            shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
+          ),
+          onPressed: (){},//questionchecked ? () =>  _checkquestion() : null,
+          child: Text("Überprüfen"),//_textdisplay(),
+        ),
+      ],
+    ),
+  );
+      }/*
   _questiondiable(){
     print("$question");
     if(question != null){
@@ -173,5 +169,6 @@ class _Questionstate extends State<Question>{
       questionlist.shuffle();
       return questionlist;
   }
-
+*/
 }
+

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-chapterwidget(var menu, var s, var data, var context){
+Widget chapterwidget(var menu, var s, var context){
   Json json = Json(JsonWidget.of(context).json);
   var currentchapter = s - 1;
   return Container(
@@ -48,7 +48,9 @@ chapterwidget(var menu, var s, var data, var context){
                         child: Column(
                           children: [
                             InkWell(
-                            onTap: () => pushquestion(menu.results['chapternames'][currentchapter], context, data, currentchapter, i),
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, 1, 1, 1)),
+                              ),
                             child: ListTile(
                               leading: Icon(starticon(menu.results['chapterinfo'][currentchapter][i][1])),//Icon(icon(i, subchapter)),
                               title: Text(
