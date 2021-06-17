@@ -49,7 +49,7 @@ Widget chapterwidget(var menu, var s, var context){
                           children: [
                             InkWell(
                             onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, 1, 1, 1)),
+                                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, 0, 0, [0,1,2,3])),
                               ),
                             child: ListTile(
                               leading: Icon(starticon(menu.results['chapterinfo'][currentchapter][i][1])),//Icon(icon(i, subchapter)),

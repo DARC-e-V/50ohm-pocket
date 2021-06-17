@@ -21,17 +21,18 @@ class Json{
   questionname(var chapter, var subchapter, var question) =>
       this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textquestion"];
 
-  question(var chapter, var subchapter, var question){
-    for(var y in this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"], var i++ ){
-      if(i == 0){
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][i]["text"]),true];
-      }else{
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][i]),false];
-      }
-    }
+  answer(int chapter, int subchapter, int question, int answer){
+    try{
+      return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]["text"]), true ];
+    }catch(e){
+      return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]) , false];
 
+    }
   }
 
+  answernum(int chapter, int subchapter, int question){
+
+  }
 
 
 }
