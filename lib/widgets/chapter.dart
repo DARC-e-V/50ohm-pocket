@@ -1,8 +1,7 @@
 import 'dart:ui';
 
-import 'package:amateurfunktrainer/coustom_libs/icons.dart';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
-import 'package:amateurfunktrainer/screens/question.dart';
+import 'package:amateurfunktrainer/widgets/singlechapter.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -36,48 +35,9 @@ Widget chapterwidget(var menu, var s, var context){
                   )
                 ]
             ),
-            // List View displays the subsections
-            ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                addAutomaticKeepAlives: true,
-                shrinkWrap: true,
-              itemCount: menu.results['chapterinfo'][currentchapter].length,
-                itemBuilder: (context, i) {
-                  return Card(
-                        margin: EdgeInsets.only(top: 24),
-                        child: Column(
-                          children: [
-                            InkWell(
-                            onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, 0, 0, [0,1,2,3])),
-                              ),
-                            child: ListTile(
-                              leading: Icon(starticon(menu.results['chapterinfo'][currentchapter][i][1])),//Icon(icon(i, subchapter)),
-                              title: Text(
-                                menu.results['chapterinfo'][currentchapter][i][0],
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500
-                                ),
-                              ),
-                            ),
-                            )
-                          ],
-                        ),
-                      );
-                  }
-              )
-            ],
+            chapterleassons(menu,currentchapter, json),
+          ],
          )
       )
     );
-}
-
-starticon(var string){
-  if(string == null){
-    return Icons.keyboard_arrow_right;
-  }
-  //print(string);
-  var icon = getMaterialIcon( name: '$string');
-  //print(icon);
-  return icon;
 }

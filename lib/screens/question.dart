@@ -17,7 +17,7 @@ class Question extends StatefulWidget {
   createState() => _Questionstate(this.context, this.subchapter,this.chapter,this.questionnum);
 }
 class _Questionstate extends State<Question>{
-  var questionradio, _json,  question;
+  var questionradio, _json,  question, answerorder;
   var currquestion, tries = 0;
   final context, subchapter, chapter;
 
@@ -29,23 +29,25 @@ class _Questionstate extends State<Question>{
   @override
   initState() {
     super.initState();
+    print("hi");
     currquestion = 0;
     setState(() {
+      answerorder = _answerorder(4,true);
       _json = Json(JsonWidget.of(context).json);
     });
   }
   @override
   Widget build(BuildContext context) {
+    print("$answerorder");
     //print("${question[currquestion]}");
-
-    final answerorder = _answerorder(4,false);
+    //!!change to false for non random answers
     return Scaffold(
       appBar: AppBar(
         title: Text("Afutrainer"),
       ),
       body: ListView(
         children: [
-          //LinearProgressIndicator(value: menuq.questionprocent(chapter,subchapter, questionnum),),
+          LinearProgressIndicator(value: _json.procentofchapter(answerorder, currquestion),),
           Padding(
             padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
             child: HtmlWidget("${_json.questionname(chapter,subchapter,question[currquestion])}",
@@ -95,24 +97,26 @@ class _Questionstate extends State<Question>{
 
   }
 
-  _answerorder(int elements, bool random){
-    int i = 0; List orderlist = List.generate(elements,(generator) {i++; return i - 1;});
-    return random ? orderlist.shuffle() : orderlist;
+  _answerorder(var elements, bool random){
+    int i = 0; List<int> orderlist = List.generate((elements),(generator) {i++; return i - 1;});
+
+    if(!random) return orderlist;
+    else orderlist.shuffle(); return orderlist;
   }
+
   _questionhandler( ){
-    var correct = (_json.answer(this.chapter,this.subchapter,this.question[this.currquestion],this.questionradio))[1];
-    //print("${correct[1].runtimeType}");
+    var correct = (_json.answer(this.chapter,this.subchapter,this.question[this.currquestion],this.answerorder[this.questionradio]))[1];
     if(correct){
       try{
         question[currquestion + 1];
         setState(() {
           this.currquestion += 1;
+          answerorder = _answerorder(4,true);
         });
       }catch(e){
         Navigator.of(context).pop();
       }
     }
-
   }
 }
 
