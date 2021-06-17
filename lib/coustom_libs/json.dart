@@ -30,9 +30,11 @@ class Json{
     }
   }
 
-  answernum(int chapter, int subchapter, int question){
-
+  chaptersize(int chapter, int subchapter){
+    return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
   }
+
+  procentofchapter(List questionlist, int currentprog) => (questionlist.length * currentprog) * 0.1 ;
 
 
 }
