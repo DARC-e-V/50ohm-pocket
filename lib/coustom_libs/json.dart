@@ -26,13 +26,12 @@ class Json{
       return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]["text"]), true ];
     }catch(e){
       return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]) , false];
-
     }
   }
 
-  chaptersize(int chapter, int subchapter){
-    return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
-  }
+  subchaptersize(int chapter, int subchapter) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
+  chaptersize(int chapter) => this.data!["chapter"]["chapter"][chapter]["chapter"].length;
+
 
   procentofchapter(List questionlist, int currentprog) => (questionlist.length * currentprog) * 0.1 ;
 
@@ -52,18 +51,6 @@ class JsonWidget extends InheritedWidget{
       context.dependOnInheritedWidgetOfExactType<JsonWidget>()!;
 
 }
-
-/*class Jsonwidget extends InheritedWidget{
-  final Json
-  Jsonwidget() : super(child: );
-
-  @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    // TODO: implement updateShouldNotify
-    throw UnimplementedError();
-  }
-
-}*/
 
 
 class Chaptermenu{
