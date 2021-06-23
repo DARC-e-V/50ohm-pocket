@@ -1,15 +1,16 @@
 
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
-import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/screens/question.dart';
 import 'package:flutter/material.dart';
+
+import 'chapter.dart';
 
 
 Widget chapterleassons(var menu, var chapter, var json) => ListView.builder(
     physics: NeverScrollableScrollPhysics(),
     addAutomaticKeepAlives: true,
     shrinkWrap: true,
-    itemCount: menu.results['chapterinfo'][chapter].length,
+    itemCount: json.chaptersize(chapter),
     itemBuilder: (context, i) {
       return Card(
         margin: EdgeInsets.only(top: 24),
@@ -17,7 +18,7 @@ Widget chapterleassons(var menu, var chapter, var json) => ListView.builder(
           children: [
             InkWell(
               onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, i, chapter, _buildquestionlist(chapter, i, json, true))),
+                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, [i], chapter, buildquestionlist(chapter, i, json, true))),
               ),
               child: ListTile(
                 leading: Icon(starticon(menu.results['chapterinfo'][chapter][i][1])),
@@ -35,14 +36,6 @@ Widget chapterleassons(var menu, var chapter, var json) => ListView.builder(
     }
 );
 
-_buildquestionlist(var chapter, var subchapter, Json json, bool random){
-
-  int i = 0; List<int> orderlist = List.generate((json.chaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
-
-  if(!random) return orderlist;
-  else orderlist.shuffle(); return orderlist;
-
-}
 
 starticon(var string){
   if(string == null){

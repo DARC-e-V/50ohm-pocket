@@ -82,7 +82,7 @@ class _AfutrainerState extends State<Afutrainer> {
       ),//Color(0xff253478),),
         floatingActionButton: FloatingActionButton(
           onPressed: (){},
-          child: const Icon(Icons.shuffle),
+          child: const Icon(Icons.shuffle_rounded, size: 30,),
           backgroundColor: Colors.amber,
         ),
       body: Container(
