@@ -1,11 +1,11 @@
 {
-    "name": "amateurfunktrainer",
-    "short_name": "amateurfunktrainer",
-    "start_url": ".",
+    "name": "Amateurfunktrainer",
+    "short_name": "afutrainer",
+    "start_url": "/Amateurfunktrainer",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Ein fortschrittlicher Amateurfunktrainer.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
