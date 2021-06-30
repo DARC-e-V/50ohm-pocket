@@ -103,7 +103,7 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
                   shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
                 ),
                 onPressed: questionradio == null ? null :  () =>  _questionhandler(),
-                child: Text("Überprüfen"),
+                child: Text(wrong ? "Weiter" : "Überprüfen"),
               ),
             ),
           )
@@ -136,7 +136,7 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
         Navigator.of(context).pop();
       }
     }
-    
+    if(this.wrong)
     if(correct){
       nextquest();
     }
@@ -145,11 +145,6 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
         print("first");
         _shakeController.shake();
         this.wrong = true;
-      }
-      else{
-        print("second");
-        this.wrong = false;
-        nextquest();
       }
     }
   }
