@@ -23,7 +23,7 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter, question;
-  var questionradio = null;
+  var questionradio;
   bool correct = false;
 
 
@@ -114,20 +114,21 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
     );
   }
 
-  _questionhandler( ){
+  _questionhandler(){
     var correct = (_json.answer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey],this.answerorder[this.questionradio]))[1];
-    if(correct){
+    print("$correct");
+    nextquest(){
       try{
-        question[questionkey + 1];
+        this.question[questionkey + 1];
         setState(() {
           //questionradio = null;
           this.questionkey += 1;
           // To do: dynamic not 4 lol
-          answerorder = orderlist(4,true);
+          this.answerorder = orderlist(4,true);
         });
         ///Code that's executed when answer is correct
-        questionradio = null;
-        wrong = false;
+        this.questionradio = null;
+        this.wrong = false;
       }catch(e){
         try{
           this.subchapterkey += 1;
@@ -136,14 +137,22 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
         }
         Navigator.of(context).pop();
       }
-    }else{
-      if(!wrong){
+    }
+    
+    if(correct){
+      nextquest();
+    }
+    else{
+      if(!this.wrong){
+        print("first");
         _shakeController.shake();
-        wrong = true;
-      }else{
-
+        this.wrong = true;
       }
-
+      else{
+        print("second");
+        this.wrong = false;
+        nextquest();
+      }
     }
   }
 }
