@@ -2,7 +2,7 @@ import 'package:amateurfunktrainer/screens/formelsammlung.dart';
 import 'package:amateurfunktrainer/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'widgets/futurebuilder.dart';
+import 'widgets/loadcontent.dart';
 import 'widgets/navbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

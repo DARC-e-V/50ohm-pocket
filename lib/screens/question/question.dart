@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -14,7 +16,7 @@ class Question extends StatefulWidget {
   @override
   createState() => _Questionstate(this.context, this.subchapter,this.chapter,this.questionnum);
 }
-class _Questionstate extends State<Question> with SingleTickerProviderStateMixin{
+class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   var _json, answerorder, chapterorder, _shakeController;
   var questionkey, subchapterkey = 0;
@@ -54,7 +56,8 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
               LinearProgressIndicator(value: _json.procentofchapter(answerorder, questionkey),),
               Padding(
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
-                child: HtmlWidget("${_json.questionname(chapter,chapterorder[subchapterkey],question[questionkey])}",
+                child: HtmlWidget(
+                  "${_json.questionname(chapter,chapterorder[subchapterkey],question[questionkey])}",
                   textStyle: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 20
@@ -76,7 +79,12 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
                             groupValue: questionradio,
                             value: i,
                             onChanged: (var value) {setState(() {questionradio = i;});},
-                            title: HtmlWidget("${_json.answer(chapter,chapterorder[subchapterkey],question[questionkey],answerorder[i])[0]}"),
+                            title: HtmlWidget(
+                                "${_json.answer(chapter,chapterorder[subchapterkey],question[questionkey],answerorder[i])[0]}",
+                                textStyle: TextStyle(
+                                  fontSize: 19
+                                ),
+                            ),
                           ),
                         ]
                     );
@@ -89,15 +97,22 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
             alignment: Alignment.bottomCenter,
             child: ElevatedButton(
                 autofocus: false,
-                style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 23,
-                  ),
-                  fixedSize: Size(MediaQuery.of(context).size.width, 60),
-                  //visualDensity: VisualDensity(vertical: 3,horizontal: 4,),
-                  shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
+                    textStyle: MaterialStateProperty.all<TextStyle>(
+                      TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 25,
+                      ),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7.0),
+                        )
+                    )
                 ),
+
                 onPressed: questionradio == null ? null :  () =>  _questionhandler(),
                 child: Text("Überprüfen"),
               ),
@@ -115,28 +130,46 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
       _overlay(true);
     }
   }
-  _overlay(bool wrong) async {
+  _overlay(bool wrong) {
+    late AnimationController _animationcontroller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    late Animation<double> _animation = CurvedAnimation(
+        parent: _animationcontroller,
+        curve: Curves.easeIn,
+    );
+
     OverlayState? overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
+
     overlayEntry = OverlayEntry(
         builder: (buildcontext){
-          return Container(
-            //color: wrong ? Colors.red.withOpacity(0.1) : Colors.green.withOpacity(0.1),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                  Text(wrong ? "Leider falsch" : "Super richtig"),
-                  ElevatedButton(
+          return  Container(
+              color: wrong ? Colors.red.withOpacity(0.1) : Colors.green.withOpacity(0.1),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //Text(wrong ? "Leider falsch" : "Super richtig"),
+                    ElevatedButton(
+
                       autofocus: false,
-                      style: ElevatedButton.styleFrom(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 23,
-                        ),
-                        fixedSize: Size(MediaQuery.of(context).size.width, 60),
-                        //visualDensity: VisualDensity(vertical: 3,horizontal: 4,),
-                        shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
+                      style: ButtonStyle(
+                          fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
+                          textStyle: MaterialStateProperty.all<TextStyle>(
+                            TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                            ),
+                          ),
+                          backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7.0),
+                              )
+                          )
                       ),
                       onPressed: (){
                         overlayEntry.remove();
@@ -144,8 +177,8 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
                       },
                       child: Text("Weiter"),
                     ),
-              ],
-            )
+                  ],
+                )
           );
       },
     );
