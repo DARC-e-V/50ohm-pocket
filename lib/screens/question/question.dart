@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +94,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+              child: ElevatedButton(
+
                 autofocus: false,
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
@@ -117,6 +119,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 child: Text("Überprüfen"),
               ),
             ),
+          ),
         ],
       )
     );
@@ -153,30 +156,33 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     //Text(wrong ? "Leider falsch" : "Super richtig"),
-                    ElevatedButton(
-
-                      autofocus: false,
-                      style: ButtonStyle(
-                          fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
-                          textStyle: MaterialStateProperty.all<TextStyle>(
-                            TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 25,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: ElevatedButton(
+                        autofocus: false,
+                        style: ButtonStyle(
+                            fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
+                            textStyle: MaterialStateProperty.all<TextStyle>(
+                              TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 25,
+                              ),
                             ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(7.0),
-                              )
-                          )
+                            backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                )
+                            )
+                        ),
+                        onPressed: (){
+                          overlayEntry.remove();
+                          _nextquest();
+                        },
+                        child: Text("Weiter"),
                       ),
-                      onPressed: (){
-                        overlayEntry.remove();
-                        _nextquest();
-                      },
-                      child: Text("Weiter"),
                     ),
+                    SizedBox(height: 10,)
                   ],
                 )
           );
