@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/widgets/singlechapter.dart';
 import 'package:flutter/material.dart';
-import 'package:amateurfunktrainer/screens/question.dart';
+import 'package:amateurfunktrainer/screens/question/question.dart';
 
 import '../constants.dart';
 

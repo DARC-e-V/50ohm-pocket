@@ -28,6 +28,7 @@ class Json{
       return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]) , false];
     }
   }
+  correctanswer(int chapter, int subchapter, int question) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
 
   subchaptersize(int chapter, int subchapter) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
   chaptersize(int chapter) => this.data!["chapter"]["chapter"][chapter]["chapter"].length;
