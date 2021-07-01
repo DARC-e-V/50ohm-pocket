@@ -8,7 +8,7 @@ class Json{
   Json(this.data);
 
   Future load() async {
-    var rawdata = await rootBundle.loadString('assets/DL_Technik_Klasse_E_2007/questions.json');
+    var rawdata = await rootBundle.loadString('/DL_Technik_Klasse_E_2007/questions.json');
     this.data = jsonDecode(rawdata);
     return this.data;
   }
