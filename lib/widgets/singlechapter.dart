@@ -1,6 +1,6 @@
 
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
-import 'package:amateurfunktrainer/screens/question.dart';
+import 'package:amateurfunktrainer/screens/question/question.dart';
 import 'package:flutter/material.dart';
 
 import 'chapter.dart';

@@ -1,10 +1,9 @@
-import 'package:amateurfunktrainer/coustom_libs/shake.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
-import '../constants.dart';
-import '../coustom_libs/json.dart';
+import '../../constants.dart';
+import '../../coustom_libs/json.dart';
 
 // please let me know weather there is a bloat free variant of this
 
@@ -17,7 +16,7 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with SingleTickerProviderStateMixin{
 
-  var _json, answerorder, chapterorder, _shakeController, wrong;
+  var _json, answerorder, chapterorder, _shakeController;
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter, question;
@@ -28,7 +27,6 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
   _Questionstate(this.context,this.subchapter,this.chapter,this.question);
   @override
   initState() {
-    _shakeController = (ShakeController(vsync: this) as ShakeController);
     questionkey = 0;
     subchapterkey = 0;
     print("subchapterlistlenghth " + "${subchapter.length}" + "${subchapter}");
@@ -89,9 +87,7 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: ShakeView(
-              controller: _shakeController,
-              child: ElevatedButton(
+            child: ElevatedButton(
                 autofocus: false,
                 style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(
@@ -106,53 +102,76 @@ class _Questionstate extends State<Question> with SingleTickerProviderStateMixin
                 child: Text("Überprüfen"),
               ),
             ),
-          )
         ],
       )
     );
   }
-
   _questionhandler(){
     var correct = (_json.answer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey],this.answerorder[this.questionradio]))[1];
-    print("$correct");
-    nextquest(){
-      try{
-        this.question[questionkey + 1];
-        setState(() {
-          //questionradio = null;
-          this.questionkey += 1;
-          // To do: dynamic not 4 lol
-          this.answerorder = orderlist(4,true);
-        });
-        ///Code that's executed when answer is correct
-        this.questionradio = null;
-        this.wrong = false;
-      }catch(e){
-        try{
-          this.subchapterkey += 1;
-        }catch(e){
-          Navigator.of(context).pop();
-        }
-        Navigator.of(context).pop();
-      }
-    }
-
     if(correct){
-      nextquest();
+      _overlay(false);
     }
     else{
-      if(!this.wrong){
-        print("first");
-        _shakeController.shake();
-        this.wrong = true;
-      }
-      else{
-        print("second");
-        this.wrong = false;
-        nextquest();
-      }
+      _overlay(true);
     }
   }
+  _overlay(bool wrong) async {
+    OverlayState? overlayState = Overlay.of(context);
+    late OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+        builder: (buildcontext){
+          return Container(
+            //color: wrong ? Colors.red.withOpacity(0.1) : Colors.green.withOpacity(0.1),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                  Text(wrong ? "Leider falsch" : "Super richtig"),
+                  ElevatedButton(
+                      autofocus: false,
+                      style: ElevatedButton.styleFrom(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 23,
+                        ),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 60),
+                        //visualDensity: VisualDensity(vertical: 3,horizontal: 4,),
+                        shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0))),
+                      ),
+                      onPressed: (){
+                        overlayEntry.remove();
+                        _nextquest();
+                      },
+                      child: Text("Weiter"),
+                    ),
+              ],
+            )
+          );
+      },
+    );
+    overlayState!.insert(overlayEntry);
+  }
+  _nextquest(){
+    try{
+      this.question[questionkey + 1];
+      setState(() {
+        questionradio = null;
+        this.questionkey += 1;
+        // To do: dynamic not 4 lol
+        this.answerorder = orderlist(4,true);
+      });
+      ///Code that's executed when answer is correct
+      this.questionradio = null;
+    }catch(e){
+      try{
+        this.subchapterkey += 1;
+      }catch(e){
+        Navigator.of(context).pop();
+      }
+      Navigator.of(context).pop();
+    }
+  }
+
 }
 
 orderlist(var elements, bool random){
