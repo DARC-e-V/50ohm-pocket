@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'widgets/loadcontent.dart';
 import 'widgets/navbar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() {
@@ -24,47 +23,24 @@ void main() {
         primarySwatch: Colors.indigo,
         cardColor: main_col,
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       title: 'Afutrainer',
-      home: Afutrainer(),
+      initialRoute: "/",
+      routes: {
+        "/" : (context) => Learningmodule(),
+        "/examsimulator" : (context) => Scaffold(body: Text("Prüfungsimulation"),),
+        "/profile" : (context) => Scaffold(body: Text("Profil"),),
+      },
     ),
   );
 }
-//Todo: implement a start screen to guide the user
-/*
-startapp(){
-  // Afutrainer();
-  return FutureBuilder(
-      future: welcome(),
-      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
-        if(snapshot.hasData){
-          print("sucsess");
-        }else if(snapshot.hasError){
-          print("error");
-        }
-        print("error");
-      }
-  );
-}
-*/
 
-
-welcome() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  if((prefs.getInt('welcome') ?? false) == false){
-    print("Hallo");
-  }else{
-    print("hallo schon wieder");
-  }
-}
-
-
-class Afutrainer extends StatefulWidget {
+class Learningmodule extends StatefulWidget {
   @override
-  createState() => _AfutrainerState();
+  createState() => _LearningmoduleState();
 }
 
-class _AfutrainerState extends State<Afutrainer> {
+class _LearningmoduleState extends State<Learningmodule> {
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +64,7 @@ class _AfutrainerState extends State<Afutrainer> {
       body: Container(
         child: futurebuilder(context)
       ),
-      bottomNavigationBar: bottomnavbar()
+      bottomNavigationBar: Bottomnavbar()
     );
   }
 
