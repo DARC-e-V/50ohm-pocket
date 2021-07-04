@@ -1,6 +1,6 @@
 
+import 'package:amateurfunktrainer/coustom_libs/icons.dart';
 import 'package:amateurfunktrainer/screens/learning/question.dart';
-import 'package:amateurfunktrainer/screens/learning/singlechapter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +8,11 @@ import '../../constants.dart';
 import '../../coustom_libs/json.dart';
 
 Widget selectlesson(var data, var context) {
-  var menu = Chaptermenu(data);
-  menu.learn_module_name();
-  menu.chapter_names();
-  menu.subchapter_info();
-  menu.main_chapter_names();
+  Json json = Json(data);
   return Padding(
       padding: EdgeInsets.only(left: 5,right: 5),
       child: ListView.builder(
-            itemCount: menu.results["chapternames"].length ,
+            itemCount:json.mainchaptersize(),
             itemBuilder: (context, i) {
               if(i < 1){
                 return Padding(
@@ -24,7 +20,7 @@ Widget selectlesson(var data, var context) {
                     child:
                     Column(children: [
                       Text(
-                        "${Json(JsonWidget.of(context).json).main_chapter_name()}",//menu.results["learnmodulename"],
+                        "${json.main_chapter_name()}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 35,
@@ -34,7 +30,7 @@ Widget selectlesson(var data, var context) {
                     ],)
                 );
               }
-                return chapterwidget(menu, i, context);
+                return chapterwidget(json, i, context);
             }
     )
   );
@@ -42,8 +38,7 @@ Widget selectlesson(var data, var context) {
 }
 
 
-Widget chapterwidget(var menu, var s, var context){
-  Json json = Json(JsonWidget.of(context).json);
+Widget chapterwidget(var json, var s, var context){
   var currentchapter = s - 1;
   return Container(
       margin: EdgeInsets.only(top: std_padding),
@@ -73,12 +68,45 @@ Widget chapterwidget(var menu, var s, var context){
                     )
                   ]
               ),
-              chapterleassons(menu,currentchapter, json),
+              chapterleassons(currentchapter, json),
             ],
           )
       )
   );
 }
+
+Widget chapterleassons(var chapter, var json) => ListView.builder(
+    physics: NeverScrollableScrollPhysics(),
+    addAutomaticKeepAlives: true,
+    shrinkWrap: true,
+    itemCount: json.chaptersize(chapter),
+    itemBuilder: (context, subchapter) {
+      return Card(
+        margin: EdgeInsets.only(top: 24),
+        child: Column(
+          children: [
+            InkWell(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter, buildquestionlist(chapter, subchapter, json, true))),
+              ),
+              child: ListTile(
+                leading: Icon(starticon(json.chaptericon(chapter, subchapter))),
+                title: Text(
+                  json.subchapter_name(chapter, subchapter),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }
+);
+
+//coustom libs
+
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
 
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
@@ -86,4 +114,14 @@ buildquestionlist(var chapter, var subchapter, Json json, bool random){
   if(!random) return orderlist;
   else orderlist.shuffle(); return orderlist;
 
+}
+
+starticon(var string){
+  if(string == null){
+    return Icons.keyboard_arrow_right;
+  }
+  //print(string);
+  var icon = getMaterialIcon( name: '$string');
+  //print(icon);
+  return icon;
 }

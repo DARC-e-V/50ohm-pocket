@@ -9,13 +9,14 @@ class Bottomnavbar extends StatefulWidget{
 
 }
 class _BottomnavbarState extends State<Bottomnavbar>{
+
+  @override
   int _currindex = 0;
   _onpress(int index){
     setState(() {
       _currindex = index;
     });
   }
-  @override
   Widget build(BuildContext context) => BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(icon: Icon(Icons.fact_check_outlined), label: "Lernen"),
@@ -25,5 +26,4 @@ class _BottomnavbarState extends State<Bottomnavbar>{
     currentIndex: _currindex,
     onTap: _onpress(_currindex),
   );
-
 }
