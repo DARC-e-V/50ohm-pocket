@@ -23,7 +23,7 @@ void main() {
         primarySwatch: Colors.indigo,
         cardColor: main_col,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       title: 'Afutrainer',
       initialRoute: "/",
       routes: {
