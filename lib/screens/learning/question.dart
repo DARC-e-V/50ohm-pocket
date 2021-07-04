@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:confetti/confetti.dart';
 
 import '../../constants.dart';
 import '../../coustom_libs/json.dart';
@@ -17,7 +18,7 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var _json, answerorder, chapterorder, _shakeController;
+  var _json, answerorder, chapterorder;
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter, question;
@@ -55,11 +56,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               LinearProgressIndicator(value: _json.procentofchapter(answerorder, questionkey),),
               Padding(
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
-                child: HtmlWidget(
-                  "${_json.questionname(chapter,chapterorder[subchapterkey],question[questionkey])}",
-                  textStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20
+                child: Center(
+                  child: HtmlWidget(
+                    "${_json.questionname(chapter,chapterorder[subchapterkey],question[questionkey])}",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 22
+                    ),
                   ),
                 ),
               ),
@@ -126,14 +129,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   }
   _questionhandler(){
     var correct = (_json.answer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey],this.answerorder[this.questionradio]))[1];
+    print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     if(correct){
       _overlay(false);
     }
     else{
-      _overlay(true);
+      _overlay(true, correctanser : _json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey]));
     }
   }
-  _overlay(bool wrong) {
+  _overlay(bool wrong, {var correctanser = true}) {
     late AnimationController _animationcontroller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -150,36 +154,70 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     overlayEntry = OverlayEntry(
         builder: (buildcontext){
           return  Container(
-              color: wrong ? Colors.red.withOpacity(0.1) : Colors.green.withOpacity(0.1),
+              color: wrong ? Colors.red.withOpacity(0.2) : Colors.green.withOpacity(0.1),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //Text(wrong ? "Leider falsch" : "Super richtig"),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: ElevatedButton(
-                        autofocus: false,
-                        style: ButtonStyle(
-                            fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
-                            textStyle: MaterialStateProperty.all<TextStyle>(
-                              TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 25,
+                    Material(
+                      child: Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
+                        children: [
+                          wrong
+                              ? SizedBox(
+                              width: 900,
+                              //height: MediaQuery.of(context).size.height / 2,
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.red.shade200,
+                                  ),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
+                                      child: HtmlWidget(
+                                          "$correctanser",
+                                          textStyle: TextStyle(
+                                            backgroundColor: Colors.red.shade200,
+                                            color: Colors.white,
+                                            fontSize: 30
+                                          ),
+
+                                        ),
+                                    ),
+
+                                  )
+                              )
+                          )
+                              : Text(""),
+                          //Text(wrong ? "Leider falsch" : "Super richtig"),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            child: ElevatedButton(
+                              autofocus: false,
+                              style: ButtonStyle(
+                                  fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
+                                  textStyle: MaterialStateProperty.all<TextStyle>(
+                                    TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7.0),
+                                      )
+                                  )
                               ),
+                              onPressed: (){
+                                overlayEntry.remove();
+                                _nextquest();
+                              },
+                              child: Text("Weiter"),
                             ),
-                            backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                )
-                            )
-                        ),
-                        onPressed: (){
-                          overlayEntry.remove();
-                          _nextquest();
-                        },
-                        child: Text("Weiter"),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 10,)
@@ -204,10 +242,34 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     }catch(e){
       try{
         this.subchapterkey += 1;
-      }catch(e){
-        Navigator.of(context).pop();
-      }
+      }catch(e){}
       Navigator.of(context).pop();
+/*
+      OverlayState? overlayState = Overlay.of(context);
+      late OverlayEntry overlayEntry;
+
+      overlayEntry = OverlayEntry(
+          builder: (BuildContext context) => ConfettiWidget(
+            confettiController: ConfettiController(duration: const Duration(seconds: 13)),
+            blastDirectionality: BlastDirectionality.explosive,
+            shouldLoop: true,
+            colors: const [
+              Colors.green,
+              Colors.blue,
+              Colors.pink,
+              Colors.orange,
+              Colors.purple
+            ],
+            emissionFrequency: 0.6,
+            gravity: 0.1,
+          )
+      );
+      overlayState!.insert(overlayEntry);
+      ConfettiWidget(
+        confettiController: ConfettiController(duration: const Duration(seconds: 3)),
+        child: Text("PARTY"),
+
+      );*/
     }
   }
 

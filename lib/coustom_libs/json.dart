@@ -33,7 +33,6 @@ class Json{
   correctanswer(int chapter, int subchapter, int question) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
 
   subchaptersize(int chapter, int subchapter) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
-  // Todo not tested
   chaptersize(int chapter) => this.data!["chapter"]["chapter"][chapter]["chapter"].length;
   mainchaptersize() => this.data!["chapter"]["chapter"].length;
   // Todo fix
