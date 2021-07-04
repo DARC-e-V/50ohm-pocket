@@ -33,6 +33,7 @@ dependencies:
   flutter_widget_from_html: ^0.6.1
   advance_pdf_viewer: ^2.0.0
   shared_preferences: ^2.0.6
+  hive: ^2.0.4
   # confetti: ^0.5.5
 
 
