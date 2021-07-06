@@ -2,45 +2,48 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:confetti/confetti.dart';
 
 import '../../constants.dart';
-import '../../coustom_libs/json.dart';
+import 'chapterpage.dart';
 
-// please let me know weather there is a bloat free variant of this
 
 class Question extends StatefulWidget {
-  var subchapter, chapter, questionnum;
+
+  var subchapter, chapter, json;
   final BuildContext context;
-  Question(this.context, this.subchapter,this.chapter,this.questionnum);
+
+  Question(this.context, this.json, this.subchapter,this.chapter);
+
   @override
-  createState() => _Questionstate(this.context, this.subchapter,this.chapter,this.questionnum);
+  createState() => _Questionstate(this.context, this.json, this.subchapter,this.chapter);
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var _json, answerorder, chapterorder;
+  var json, answerorder, /* desperate */chapterorder, questionorder;
   var questionkey, subchapterkey = 0;
   final context, chapter;
-  List subchapter, question;
+  List subchapter;
   var questionradio;
   bool correct = false;
 
+  _Questionstate(this.context, this.json, this.subchapter,this.chapter);
 
-  _Questionstate(this.context,this.subchapter,this.chapter,this.question);
   @override
   initState() {
     questionkey = 0;
     subchapterkey = 0;
-    print("subchapterlistlenghth " + "${subchapter.length}" + "${subchapter}");
     setState(() {
-      // To do: dynamic not 4 lol
-      chapterorder = subchapter.length == 1 ? subchapter : orderlist(subchapter.length ,true);
-      answerorder = orderlist(4,true);
-      _json = Json(JsonWidget.of(context).json);
-    });
-    print("chapterorder" + "$chapterorder");
-    super.initState();
+      print("$chapter and $subchapter");
+      questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
+      print("questionorder $questionorder");
+      // Todo: dynamic not 4 with json.answercount Note also needed when rebuilding window
+      chapterorder = subchapter;
+      print("$chapterorder");
 
+      answerorder = orderlist(4,true);
+    });
+    // print("chapterorder" + "$chapterorder");
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -53,12 +56,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         children: [
           ListView(
             children: [
-              LinearProgressIndicator(value: _json.procentofchapter(answerorder, questionkey),),
+              LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
               Padding(
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
                 child: Center(
                   child: HtmlWidget(
-                    "${_json.questionname(chapter,chapterorder[subchapterkey],question[questionkey])}",
+                    "${json.questionname(chapter,chapterorder[subchapterkey],questionorder[questionkey])}",
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 22
@@ -82,7 +85,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             value: i,
                             onChanged: (var value) {setState(() {questionradio = i;});},
                             title: HtmlWidget(
-                                "${_json.answer(chapter,chapterorder[subchapterkey],question[questionkey],answerorder[i])[0]}",
+                                "${json.answer(chapter,chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
                                 textStyle: TextStyle(
                                   fontSize: 19
                                 ),
@@ -98,7 +101,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+              padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
               child: ElevatedButton(
 
                 autofocus: false,
@@ -128,25 +131,17 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
   _questionhandler(){
-    var correct = (_json.answer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey],this.answerorder[this.questionradio]))[1];
-    print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
+    var correct = (json.answer(this.chapter,this.subchapter[this.subchapterkey],this.questionorder[this.questionkey],this.answerorder[this.questionradio]))[1];
+    // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     if(correct){
       _overlay(false);
     }
     else{
-      _overlay(true, correctanser : _json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey]));
+      print("subchapter $subchapter , chapter $chapter , question $questionorder[this.questionkey]");
+      _overlay(true, correctanser : json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.questionorder[this.questionkey]));
     }
   }
   _overlay(bool wrong, {var correctanser = true}) {
-    late AnimationController _animationcontroller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-
-    late Animation<double> _animation = CurvedAnimation(
-        parent: _animationcontroller,
-        curve: Curves.easeIn,
-    );
 
     OverlayState? overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
@@ -164,35 +159,38 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                         alignment: AlignmentDirectional.bottomCenter,
                         children: [
                           wrong
-                              ? SizedBox(
-                              width: 900,
-                              //height: MediaQuery.of(context).size.height / 2,
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors.red.shade200,
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
-                                      child: HtmlWidget(
-                                          "$correctanser",
-                                          textStyle: TextStyle(
-                                            backgroundColor: Colors.red.shade200,
-                                            color: Colors.white,
-                                            fontSize: 30
-                                          ),
-
-                                        ),
+                              ? Padding(
+                                padding: const EdgeInsets.only(left: 8, right: 8),
+                                child: SizedBox(
+                                width: 700,
+                                //height: MediaQuery.of(context).size.height / 2,
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors.red.shade200,
                                     ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
+                                        child: HtmlWidget(
+                                            "$correctanser",
+                                            textStyle: TextStyle(
+                                              backgroundColor: Colors.red.shade200,
+                                              color: Colors.white,
+                                              fontSize: 30
+                                            ),
 
-                                  )
+                                          ),
+                                      ),
+
+                                    )
+                                )
+                          ),
                               )
-                          )
                               : Text(""),
                           //Text(wrong ? "Leider falsch" : "Super richtig"),
                           Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: EdgeInsets.only(left: 8, right: 8),
                             child: ElevatedButton(
                               autofocus: false,
                               style: ButtonStyle(
@@ -230,46 +228,29 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   }
   _nextquest(){
     try{
-      this.question[questionkey + 1];
+      this.questionorder[this.questionkey + 1];
+      this.questionradio = null;
       setState(() {
         questionradio = null;
-        this.questionkey += 1;
+        questionkey += 1;
         // To do: dynamic not 4 lol
-        this.answerorder = orderlist(4,true);
+        answerorder = orderlist(4,true);
       });
-      ///Code that's executed when answer is correct
-      this.questionradio = null;
     }catch(e){
       try{
-        this.subchapterkey += 1;
-      }catch(e){}
-      Navigator.of(context).pop();
-/*
-      OverlayState? overlayState = Overlay.of(context);
-      late OverlayEntry overlayEntry;
-
-      overlayEntry = OverlayEntry(
-          builder: (BuildContext context) => ConfettiWidget(
-            confettiController: ConfettiController(duration: const Duration(seconds: 13)),
-            blastDirectionality: BlastDirectionality.explosive,
-            shouldLoop: true,
-            colors: const [
-              Colors.green,
-              Colors.blue,
-              Colors.pink,
-              Colors.orange,
-              Colors.purple
-            ],
-            emissionFrequency: 0.6,
-            gravity: 0.1,
-          )
-      );
-      overlayState!.insert(overlayEntry);
-      ConfettiWidget(
-        confettiController: ConfettiController(duration: const Duration(seconds: 3)),
-        child: Text("PARTY"),
-
-      );*/
+        print("\n Subchapter over");
+        var test = this.chapterorder[this.subchapterkey];
+          setState(() {
+            questionradio = null;
+            // To do: dynamic not 4 lol
+            subchapterkey += 1;
+            questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
+            questionkey = 0;
+          });
+      }catch(e){
+        print("\n Failed with $e");
+        Navigator.of(context).pop();
+      }
     }
   }
 
