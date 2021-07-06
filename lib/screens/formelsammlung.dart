@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
-import 'package:flutter/services.dart';
 
-class Formularypage extends StatefulWidget{
+class Formularpage extends StatefulWidget{
   @override
-  _formularystate createState() => _formularystate();
+  _formularstate createState() => _formularstate();
 }
 
-class _formularystate extends State<Formularypage> {
+class _formularstate extends State<Formularpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

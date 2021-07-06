@@ -98,7 +98,7 @@ class _AfutrainerState extends State<Afutrainer> {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularypage()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage()));
         break;
     }
   }
