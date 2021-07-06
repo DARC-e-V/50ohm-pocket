@@ -31,6 +31,7 @@ class Json{
     }
   }
   correctanswer(int chapter, int subchapter, int question) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
+  answercount(int chapter, int subchapter, int question) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question].length;
 
   subchaptersize(int chapter, int subchapter) => this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
   chaptersize(int chapter) => this.data!["chapter"]["chapter"][chapter]["chapter"].length;

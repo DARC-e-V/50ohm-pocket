@@ -16,7 +16,7 @@ Widget selectlesson(var data, var context) {
             itemBuilder: (context, i) {
               if(i < 1){
                 return Padding(
-                    padding: EdgeInsets.only(top:20, right: std_padding, left: std_padding),
+                    padding: EdgeInsets.only(top:20, right: std_padding + 6, left: std_padding + 6),
                     child:
                     Column(children: [
                       Text(
@@ -26,7 +26,7 @@ Widget selectlesson(var data, var context) {
                           fontSize: 35,
                           ),
                         ),
-                      Divider()
+                      Divider(height: 20,)
                     ],)
                 );
               }
@@ -39,39 +39,48 @@ Widget selectlesson(var data, var context) {
 
 
 Widget chapterwidget(var json, var s, var context){
-  var currentchapter = s - 1;
-  return Container(
-      margin: EdgeInsets.only(top: std_padding),
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Padding(
-          padding: EdgeInsets.all(std_padding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Chaptername displayed in every Chapter
-              Row(
-                  children: [
-                    Expanded(
-                      child: OutlineButton(
-                        padding: EdgeInsets.all(18),
-                        onPressed: ()=> Navigator.of(context).push(
-                          MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, orderlist(json.chaptersize(currentchapter), true), currentchapter, buildquestionlist(currentchapter, 1, json, true))),
+  var currentmainchapter = s - 1;
+  //print("${orderlist(json.chaptersize(currentmainchapter), true)}");
+  return SizedBox(
+    width: 100,
+    child: Container(
+        margin: EdgeInsets.only(top: std_padding),
+        decoration: BoxDecoration(
+          color: Colors.indigoAccent.withOpacity(0.2),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Padding(
+            padding: EdgeInsets.all(std_padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Chaptername displayed in every Chapter
+                Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.indigoAccent[100]),
+                          ),
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),// buildquestionlist(currentchapter, 1, json, true) //buildquestionlist(chapter, subchapter, json, true)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Text(
+                              json.chapter_names(currentmainchapter),
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                          ),
                         ),
-                        child: Text(
-                          json.chapter_names(currentchapter),
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                      ),
-                    )
-                  ]
-              ),
-              chapterleassons(currentchapter, json),
-            ],
-          )
-      )
+                      )
+                    ]
+                ),
+                chapterleassons(currentmainchapter, json),
+              ],
+            )
+        )
+    ),
   );
 }
 
@@ -87,7 +96,7 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
           children: [
             InkWell(
               onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter, buildquestionlist(chapter, subchapter, json, true))),
+                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, [subchapter], chapter)),
               ),
               child: ListTile(
                 leading: Icon(starticon(json.chaptericon(chapter, subchapter))),
@@ -108,7 +117,8 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
 //coustom libs
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
-
+  print("chapter : $chapter , subchapter $subchapter");
+  print("${json.subchaptersize(chapter,subchapter)}");
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
 
   if(!random) return orderlist;
