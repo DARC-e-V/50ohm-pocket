@@ -1,7 +1,7 @@
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/chapter.dart';
+import '../screens/learning/chapterpage.dart';
 import '../constants.dart';
 
 futurebuilder(var context) {
