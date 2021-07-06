@@ -121,3 +121,7 @@ app.*.symbols
 .flutter-plugins
 
 .dart_tool/
+
+pubspec.lock
+
+.packages
