@@ -36,7 +36,9 @@ jobs:
     
     - uses: actions/upload-artifact@v2.2.4
       with:
-        path: /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/*
+        path: | 
+          - /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/*
+          - build/app/outputs/*
     
     
 
