@@ -30,6 +30,5 @@ jobs:
       with:
         channel: 'stable' # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
-    - run: flutter lib
     - run: flutter build apk
 
