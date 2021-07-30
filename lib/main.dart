@@ -1,5 +1,6 @@
 import 'package:amateurfunktrainer/screens/formelsammlung.dart';
 import 'package:amateurfunktrainer/screens/settings.dart';
+import 'package:amateurfunktrainer/widgets/navbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -45,6 +46,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Bottomnavbar(),
       appBar: AppBar(
           title: Text('Afutrainer'),
         actions: [
