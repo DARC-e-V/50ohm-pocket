@@ -37,8 +37,9 @@ jobs:
     - uses: actions/upload-artifact@v2.2.4
       with:
         path: | 
-          - /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/*
-          - build/app/outputs/*
+          - build/app/outputs/flutter-apk/app-release.apk
+          - build/app/outputs/bundle/release/app-release.aab
+          - /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/ios/iphoneos
     
     
 
