@@ -64,7 +64,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
                 child: Center(
                   child: HtmlWidget(
-                    "${json.questionname(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
+                    "${json.questionname(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 22
@@ -88,7 +88,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             value: i,
                             onChanged: (var value) {setState(() {questionradio = i;});},
                             title: HtmlWidget(
-                                "${json.answer(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
+                                "${json.answer(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
                                 textStyle: TextStyle(
                                   fontSize: 19
                                 ),
@@ -134,14 +134,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
   _questionhandler(){
-    var correct = (json.answer(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[questionradio]))[1];
+    var correct =
+      (json.answer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey], answerorder[questionradio]))[1];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     if(correct){
       _overlay(false);
     }
     else{
       print("subchapter $subchapter , chapter $chapter , question $questionorder[this.questionkey]");
-      _overlay(true, correctanser : json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.questionorder[this.questionkey]));
+      _overlay(true, correctanser : json.correctanswer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey]));
     }
   }
   _overlay(bool wrong, {var correctanser = true}) {
