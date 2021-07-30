@@ -31,15 +31,15 @@ jobs:
         channel: 'stable' # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
     - run: flutter build apk
-    - run: flutter build appbundle
-    - run: flutter build ios --release --no-codesign
+    #- run: flutter build appbundle
+    #- run: flutter build ios --release --no-codesign
     
     - uses: actions/upload-artifact@v2.2.4
       with:
-        path: | 
-          - build/app/outputs/flutter-apk/app-release.apk
-          - build/app/outputs/bundle/release/app-release.aab
-          - /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/ios/iphoneos
+        path: build/app/outputs/flutter-apk/app-release.apk  
+        #  - build/app/outputs/flutter-apk/app-release.apk
+        #  - build/app/outputs/bundle/release/app-release.aab
+        #  - /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/ios/iphoneos
     
     
 
