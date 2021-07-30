@@ -26,36 +26,45 @@ class Json{
 
   questionname(var chapter, var subchapter, var question){
     try{
-      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter!]["question"][question]["textquestion"];
+      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textquestion"];
     }catch(e){
-      return this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textquestion"];
+      return this.data!["chapter"]["chapter"][chapter]["question"][question]["textquestion"];
     }
   }
 
   questonlylistleng(var chapter) => this.data!["chapter"]["chapter"][chapter]["question"].length;
 
 
-  answer(int chapter, int subchapter, int question, int answer){
+  answer(int chapter, var subchapter, int question, int answer){
     try{
       try{
         return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]["text"]), true ];
       }catch(e){
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textanswer"][answer]["text"]), true ];
+        return [(this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][answer]["text"]), true ];
       }
     }catch(e){
       try{
         return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]) , false];
       }catch(e){
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textanswer"][answer]) , false];
+        return [(this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][answer]) , false];
       }
 
     }
   }
-  correctanswer(int chapter, int subchapter, int question){
+  correctanswer(int chapter, var subchapter, int question){
     try{
-      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
+      try{
+        return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
+      }catch(e){
+        return this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][0]["text"];
+      }
     }catch(e){
-      return this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textanswer"][0]["text"];
+      try{
+        return this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textanswer"][0]["text"];
+      }catch(e){
+        return this.data!["chapter"]["chapter"]["question"][question]["textanswer"][0]["text"];
+      }
+
     }
   }
 

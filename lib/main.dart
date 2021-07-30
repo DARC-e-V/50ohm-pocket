@@ -24,7 +24,7 @@ void main() {
         primarySwatch: Colors.indigo,
         cardColor: main_col,
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       title: 'Afutrainer',
       initialRoute: "/",
       routes: {
@@ -76,8 +76,8 @@ class _LearningmoduleState extends State<Learningmodule> {
           appBar: AppBar(
             title: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.settings_input_antenna), text: "Technische Kenntnisse",),
-                Tab(icon: Icon(Icons.radio), text: "Betriebstechnische Kenntnisse",),
+                Tab(icon: Icon(Icons.settings_input_antenna), text: "Technik",),
+                Tab(icon: Icon(Icons.radio), text: "Betrieb",),
                 Tab(icon: Icon(Icons.book), text: "Vorschriften",)
               ],
             ),
