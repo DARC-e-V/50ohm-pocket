@@ -1,9 +1,9 @@
 import 'package:amateurfunktrainer/screens/formelsammlung.dart';
 import 'package:amateurfunktrainer/screens/settings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'widgets/loadcontent.dart';
-import 'widgets/navbar.dart';
 
 
 void main() {
@@ -61,10 +61,28 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: const Icon(Icons.shuffle_rounded, size: 30,),
           backgroundColor: Colors.amber,
         ),
-      body: Container(
-        child: futurebuilder(context)
-      ),
-      bottomNavigationBar: Bottomnavbar()
+      body: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          body: TabBarView(
+            children: [
+              futurebuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json'),
+              futurebuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json'),
+              futurebuilder(context, 'assets/questions/DL_Vorschriften_2007.json')
+            ],
+          ),
+          appBar: AppBar(
+            title: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.settings_input_antenna), text: "Technische Kenntnisse",),
+                Tab(icon: Icon(Icons.radio), text: "Betriebstechnische Kenntnisse",),
+                Tab(icon: Icon(Icons.book), text: "Vorschriften",)
+              ],
+            ),
+          ),
+        ),
+      )
+
     );
   }
 

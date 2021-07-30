@@ -31,9 +31,9 @@ dependencies:
   json_annotation: ^4.0.1
   #path_provider: ^2.0.2
   flutter_widget_from_html: ^0.6.1
-  advance_pdf_viewer: ^2.0.0
   shared_preferences: ^2.0.6
   hive: ^2.0.4
+  syncfusion_flutter_pdfviewer: ^19.2.49-beta
 
 
 dev_dependencies:
@@ -54,7 +54,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/DL_Technik_Klasse_E_2007/
+    - assets/questions/
     - assets/graphics/
 
   # An image asset can refer to one or more resolution-specific "variants", see
