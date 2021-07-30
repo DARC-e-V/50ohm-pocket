@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Formularpage extends StatefulWidget{
   @override
@@ -14,25 +14,7 @@ class _formularstate extends State<Formularpage> {
       appBar: AppBar(
         title: Text("Formelsammlung"),
       ),
-      body: FutureBuilder(
-        future: _loadpdf(),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if(snapshot.hasData){
-            return Text("$snapshot");
-        }
-          if(snapshot.hasError){
-            print("$snapshot");
-            return Text("Fehler" + "$snapshot");
-          }
-          return Text("läd");
-          },
-      ),
+      body: Text("Text"),
     );
   }
-
-  _loadpdf() async{
-    PDFDocument doc = await PDFDocument.fromAsset('assets/Formelsammlung.pdf');
-    return doc;
-  }
-
 }

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../screens/learning/chapterpage.dart';
 import '../constants.dart';
 
-futurebuilder(var context) {
+futurebuilder(var context, var path) {
   return FutureBuilder(
-      future: Json(null).load(),
+      future: Json(null).load(path),
       builder: (context, snapshot){
         if (snapshot.hasData) {
           return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>));

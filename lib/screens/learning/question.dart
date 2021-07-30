@@ -34,7 +34,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     subchapterkey = 0;
     setState(() {
       print("$chapter and $subchapter");
-      questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
+
+      if(subchapter.length == 0) questionorder = orderlist(json.questonlylistleng(chapter), true);
+      else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
+
       print("questionorder $questionorder");
       // Todo: dynamic not 4 with json.answercount Note also needed when rebuilding window
       chapterorder = subchapter;
@@ -56,12 +59,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         children: [
           ListView(
             children: [
-              LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
+              //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
               Padding(
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
                 child: Center(
                   child: HtmlWidget(
-                    "${json.questionname(chapter,chapterorder[subchapterkey],questionorder[questionkey])}",
+                    "${json.questionname(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 22
@@ -85,7 +88,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             value: i,
                             onChanged: (var value) {setState(() {questionradio = i;});},
                             title: HtmlWidget(
-                                "${json.answer(chapter,chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
+                                "${json.answer(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
                                 textStyle: TextStyle(
                                   fontSize: 19
                                 ),
@@ -131,7 +134,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
   _questionhandler(){
-    var correct = (json.answer(this.chapter,this.subchapter[this.subchapterkey],this.questionorder[this.questionkey],this.answerorder[this.questionradio]))[1];
+    var correct = (json.answer(chapter,chapterorder.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[questionradio]))[1];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     if(correct){
       _overlay(false);
