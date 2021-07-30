@@ -51,7 +51,7 @@
       "id": "V",
       "chapter": [
         {
-          "name": "Vollzugsordnung für den Funkdienst der Internationalen Fernmeldeunion (ITU)",
+          "name": "Vollzugsordnung für den Funkdienst der ITU",
           "id": "A",
           "chapter": [
             {
@@ -367,7 +367,7 @@
           ]
         },
         {
-          "name": "Regelungen der CEPT (Europäische Konferenz der Verwaltungen für Post und Telekommunikation)",
+          "name": "Regelungen der CEPT",
           "id": "B",
           "question": [
             {
@@ -3481,7 +3481,7 @@
           ]
         },
         {
-          "name": "EMVU (elektromagnetische Umweltverträglichkeit) / BEMFV (Verordnung über das Nachweisverfahren zur Begrenzung elektromagnetischer Felder",
+          "name": "EMVU & BEMFV ",
           "id": "I",
           "question": [
             {

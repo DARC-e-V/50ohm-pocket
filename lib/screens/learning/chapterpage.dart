@@ -38,15 +38,13 @@ Widget selectlesson(var data, var context) {
 }
 
 
-Widget chapterwidget(var json, var s, var context){
-  var currentmainchapter = s - 1;
-  //print("${orderlist(json.chaptersize(currentmainchapter), true)}");
+Widget chapterwidget(var json, var currentmainchapter, var context){
   return SizedBox(
     width: 100,
     child: Container(
-        margin: EdgeInsets.only(top: std_padding),
+        margin: json.chaptersize(currentmainchapter) == 0 ? EdgeInsets.all(0) : EdgeInsets.only(top: std_padding),
         decoration: BoxDecoration(
-          color: Colors.indigoAccent.withOpacity(0.2),
+          color: json.chaptersize(currentmainchapter) == 0 ? Colors.indigoAccent.withOpacity(0) : Colors.indigoAccent.withOpacity(0.2),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Padding(
