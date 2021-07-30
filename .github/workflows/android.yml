@@ -36,7 +36,7 @@ jobs:
     
     - uses: actions/upload-artifact@v2.2.4
       with:
-        path: build/app/outputs/flutter-apk/app-release.apk
+        path: /Users/runner/work/Amateurfunktrainer/Amateurfunktrainer/build/*
     
     
 
