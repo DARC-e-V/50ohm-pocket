@@ -242,8 +242,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       });
     }catch(e){
       try{
-        print("\n Subchapter over");
-        var test = this.chapterorder[this.subchapterkey];
+          print("\n Subchapter over");
+          this.chapterorder[this.subchapterkey];
           setState(() {
             questionradio = null;
             // To do: dynamic not 4 lol

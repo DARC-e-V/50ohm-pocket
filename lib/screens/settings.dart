@@ -13,7 +13,12 @@ class _settingsstate extends State<Settingspage> {
       appBar: AppBar(
         title: Text("Einstellungen"),
       ),
-      body: Text("Settings"),
+      body: ListView(
+        children: [
+          Text("hello World"),
+        ],
+        
+      ),
     );
   }
 
