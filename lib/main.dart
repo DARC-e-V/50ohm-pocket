@@ -3,6 +3,7 @@ import 'package:amateurfunktrainer/screens/learningmodule.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
+import 'learnprog/learnprog.dart';
 
 
 void main() {
@@ -32,10 +33,11 @@ void main() {
                 initialRoute: "/",
                 routes: {
                   "/" : (context) => Learningmodule(),
-                  "/examsimulator" : (context) => Scaffold(body: Text("Prüfungsimulation"),),
-                  "/profile" : (context) => Scaffold(body: Text("Profil"),),
+                  "/examsim" : (context) => Learnprog(),
+                  "/profile" : (context) => Learnprog(),
                 },
               ),
+              snapshot.data
             );
           if(snapshot.hasError) return Text("Error");
           return Center(child: CircularProgressIndicator());

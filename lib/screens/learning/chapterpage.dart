@@ -12,9 +12,9 @@ Widget selectlesson(var data, var context) {
   return Padding(
       padding: EdgeInsets.only(left: 5,right: 5),
       child: ListView.builder(
-            itemCount:json.mainchaptersize(),
+            itemCount:json.mainchaptersize() + 1 ,
             itemBuilder: (context, i) {
-              if(i < 1){
+              if(i == 0){
                 return Padding(
                     padding: EdgeInsets.only(top:20, right: std_padding + 6, left: std_padding + 6),
                     child:
@@ -30,7 +30,7 @@ Widget selectlesson(var data, var context) {
                     ],)
                 );
               }
-                return chapterwidget(json, i, context);
+                return chapterwidget(json, i - 2, context);
             }
     )
   );
@@ -38,7 +38,8 @@ Widget selectlesson(var data, var context) {
 }
 
 
-Widget chapterwidget(var json, var currentmainchapter, var context){
+Widget chapterwidget(var json, var s, var context){
+  var currentmainchapter = s + 1;
   return SizedBox(
     width: 100,
     child: Container(
