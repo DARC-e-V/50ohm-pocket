@@ -1,3 +1,4 @@
+import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -11,31 +12,39 @@ class Database{
     return database;
   }
  
-
 }
 
 class Databaseobj extends Database{
   BuildContext context;
-  var mainchapter, subchapter, chapter, question;
+  var mainchapter, subchapter, chapter, result;
   
   Databaseobj(
     this.context,
     this.mainchapter,
-    this.subchapter,
     this.chapter,
-    this.question
+    this.subchapter,
+    this.result,
   );
 
+
+
   write(){
-    try{
-      List list = DatabaseWidget.of(context).database.get("[$mainchapter][$subchapter][$chapter]");
-      list.every((element) => element + 1);
-      DatabaseWidget.of(context).database.delete("[$mainchapter][$subchapter][$chapter]");
-      DatabaseWidget.of(context).database.put("[$mainchapter][$subchapter][$chapter]", list);
+    print("result  $result");
+    result = result.map((x) => x ? 1 : 0).toList();
+          List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
+    print("liste :: $list");
+    try{  
+      List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
+
+      DatabaseWidget.of(context).database.put(
+          "[$mainchapter][$chapter][${subchapter[0]}]",
+          list.map((x) => x + 1).toList()
+        );
+    
     }catch(e){
       DatabaseWidget.of(context).database.put(
         // Todo generate the list at the first time 
-      "[$mainchapter][$subchapter][$chapter]", [0, 1, 2, 0, 2, 3, 1, 0]
+      "[$mainchapter][$chapter][${subchapter[0]}]", (result as List<dynamic>)
       );
     }
   }

@@ -32,7 +32,6 @@ class Json{
     }
   }
 
-  questonlylistleng(var chapter) => this.data!["chapter"]["chapter"][chapter]["question"].length;
 
 
   answer(int chapter, var subchapter, int question, int answer){
@@ -67,7 +66,9 @@ class Json{
 
     }
   }
-
+  // number of questions or answers 
+  
+  questonlylistleng(var chapter) => this.data!["chapter"]["chapter"][chapter]["question"].length;
   answercount(int chapter, int subchapter, int question) =>
       this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question].length;
   subchaptersize(int chapter, int subchapter) =>

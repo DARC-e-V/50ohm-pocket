@@ -1,5 +1,6 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/learningmodule.dart';
+import 'package:amateurfunktrainer/widgets/navbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';

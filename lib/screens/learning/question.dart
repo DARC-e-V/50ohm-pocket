@@ -20,7 +20,7 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var json, answerorder, /* desperate */chapterorder, questionorder;
+  var json, answerorder, /* desperate */chapterorder, questionorder, questreslist;
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter;
@@ -31,6 +31,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   @override
   initState() {
+    questreslist = [];
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
@@ -138,6 +139,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     var correct =
       (json.answer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey], answerorder[questionradio]))[1];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
+    questreslist.add(correct);
     if(correct){
       _overlay(false);
     }
@@ -255,7 +257,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         Navigator.of(context).pop();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Finish(chapter,0,0,0)),
+          MaterialPageRoute(builder: (context) => Finish(0,chapter,subchapter, questreslist)),
         );
         
       }
