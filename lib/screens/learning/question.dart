@@ -5,6 +5,7 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../constants.dart';
 import 'chapterpage.dart';
+import 'finish.dart';
 
 
 class Question extends StatefulWidget {
@@ -237,7 +238,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       setState(() {
         questionradio = null;
         questionkey += 1;
-        // To do: dynamic not 4 lol
         answerorder = orderlist(4,true);
       });
     }catch(e){
@@ -246,7 +246,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           this.chapterorder[this.subchapterkey];
           setState(() {
             questionradio = null;
-            // To do: dynamic not 4 lol
             subchapterkey += 1;
             questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
             questionkey = 0;
@@ -254,6 +253,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       }catch(e){
         print("\n Failed with $e");
         Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Finish(chapter,0,0,0)),
+        );
+        
       }
     }
   }

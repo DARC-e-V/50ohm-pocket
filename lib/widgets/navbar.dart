@@ -1,4 +1,3 @@
-import 'package:amateurfunktrainer/lerningprog/learningprog.dart';
 import 'package:amateurfunktrainer/screens/learningmodule.dart';
 import 'package:flutter/material.dart';
 
@@ -13,19 +12,21 @@ class _BottomnavbarState extends State<Bottomnavbar>{
   Widget build(BuildContext context) => BottomNavigationBar(
     currentIndex: currentindex,
     onTap: (currentindex){
+      print(currentindex);
       switch(currentindex){
         case 0:
-          print("0");
+          Navigator.of(context).pop();
+          Navigator.pushNamed(context, '/');
           Learningmodule();
           break;
         case 1:
-          print("1");
-          Lerningprog();
+          Navigator.of(context).pop();
+          Navigator.pushNamed(context, '/examsim');
           break;
         case 2:
-          print("2");
+          Navigator.of(context).pop();
+          Navigator.pushNamed(context, '/profile');
           break;
-
       }
     },
     items: const <BottomNavigationBarItem>[
