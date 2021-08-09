@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../screens/learning/chapterpage.dart';
 import '../constants.dart';
 
-futurebuilder(var context, var path) {
+futurebuilder(var context, var path, var mainchapter) {
   return FutureBuilder(
       future: Json(null).load(path),
       builder: (context, snapshot){
         if (snapshot.hasData) {
-          return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>));
+          return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>), mainchapter);
         }else if(snapshot.hasError){
           return Text("Konnte die Fragen nicht laden");
         } else{

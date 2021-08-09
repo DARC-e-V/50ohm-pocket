@@ -8,7 +8,7 @@ class Database{
 
   load() async{
     await Hive.initFlutter();
-    database = await Hive.openBox('testBox');
+    database = await Hive.openBox('progress');
     return database;
   }
  
@@ -31,8 +31,8 @@ class Databaseobj extends Database{
   write(){
     print("result  $result");
     result = result.map((x) => x ? 1 : 0).toList();
-          List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-    print("liste :: $list");
+    // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
+    //print("liste :: $list");
     try{  
       List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
 

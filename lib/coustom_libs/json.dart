@@ -93,8 +93,9 @@ class Json{
 
 class JsonWidget extends InheritedWidget{
   final Map<String, dynamic>? json;
+  final int mainchapter;
 
-  const JsonWidget(Widget child, this.json) : super(child:child);
+  const JsonWidget(Widget child, this.json, this.mainchapter) : super(child:child);
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) =>
