@@ -16,7 +16,6 @@ class _LearningmoduleState extends State<Learningmodule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: Bottomnavbar(),
         appBar: AppBar(
           title: Text('Afutrainer'),
           actions: [
@@ -38,9 +37,9 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: Scaffold(
             body: TabBarView(
               children: [
-                futurebuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json'),
-                futurebuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json'),
-                futurebuilder(context, 'assets/questions/DL_Vorschriften_2007.json')
+                futurebuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json', 0),
+                futurebuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json', 1),
+                futurebuilder(context, 'assets/questions/DL_Vorschriften_2007.json', 2)
               ],
             ),
             appBar: AppBar(

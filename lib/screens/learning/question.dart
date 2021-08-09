@@ -149,7 +149,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     }
   }
   _overlay(bool wrong, {var correctanser = true}) {
-
+    setState(() {
+      questionradio = null;
+    });
     OverlayState? overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
 
@@ -167,32 +169,32 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                         children: [
                           wrong
                               ? Padding(
-                                padding: const EdgeInsets.only(left: 8, right: 8),
-                                child: SizedBox(
-                                width: 700,
-                                //height: MediaQuery.of(context).size.height / 2,
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Colors.red.shade200,
-                                    ),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
-                                        child: HtmlWidget(
-                                            "$correctanser",
-                                            textStyle: TextStyle(
-                                              backgroundColor: Colors.red.shade200,
-                                              color: Colors.white,
-                                              fontSize: 30
-                                            ),
-
-                                          ),
+                                  padding: const EdgeInsets.only(left: 8, right: 8),
+                                  child: SizedBox(
+                                  width: 700,
+                                  //height: MediaQuery.of(context).size.height / 2,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.red.shade200,
                                       ),
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
+                                          child: HtmlWidget(
+                                              "$correctanser",
+                                              textStyle: TextStyle(
+                                                backgroundColor: Colors.red.shade200,
+                                                color: Colors.white,
+                                                fontSize: 30
+                                              ),
 
-                                    )
-                                )
-                          ),
+                                            ),
+                                        ),
+
+                                      )
+                                  )
+                            ),
                               )
                               : Text(""),
                           //Text(wrong ? "Leider falsch" : "Super richtig"),
@@ -257,7 +259,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         Navigator.of(context).pop();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Finish(0,chapter,subchapter, questreslist)),
+          MaterialPageRoute(builder: (context) => Finish(chapter,subchapter, questreslist)),
         );
         
       }
