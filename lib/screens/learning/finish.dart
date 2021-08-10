@@ -23,7 +23,7 @@ class _finishstate extends State<Finish>{
   Widget build(BuildContext context) {
     int mainchapter = 0;//JsonWidget.of(context).mainchapter;
     print("$mainchapter");
-    Databaseobj(context, mainchapter, chapter, subchapter, result).write();
+    Databaseobj(context).write(mainchapter, chapter, subchapter, result);
     return Scaffold(
       body: Column(
         children: [
