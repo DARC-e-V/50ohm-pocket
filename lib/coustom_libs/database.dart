@@ -14,39 +14,42 @@ class Database{
  
 }
 
-class Databaseobj extends Database{
+class Databaseobj{
   BuildContext context;
-  var mainchapter, subchapter, chapter, result;
   
-  Databaseobj(
-    this.context,
-    this.mainchapter,
-    this.chapter,
-    this.subchapter,
-    this.result,
-  );
+  Databaseobj(this.context,);
 
-
-
-  write(){
-    print("result  $result");
+  write(mainchapter, chapter, subchapter, result){
     result = result.map((x) => x ? 1 : 0).toList();
     // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
     //print("liste :: $list");
     try{  
       List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-
+      int x = 0;
+      List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
       DatabaseWidget.of(context).database.put(
           "[$mainchapter][$chapter][${subchapter[0]}]",
-          list.map((x) => x + 1).toList()
+          updatedres
         );
-    
     }catch(e){
       DatabaseWidget.of(context).database.put(
         // Todo generate the list at the first time 
       "[$mainchapter][$chapter][${subchapter[0]}]", (result as List<dynamic>)
       );
     }
+  }
+
+  read(mainchapter, chapter, subchapter){
+    try{
+
+      print("subchapter $subchapter");
+      List<dynamic> list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][$subchapter]");
+      print("liste $list");
+      return (list.fold(0, (var x, element) => element + x) (list.length * 5));
+    }catch(e){
+      return 0;
+    }
+    
   }
 
 
