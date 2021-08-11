@@ -45,7 +45,7 @@ class Databaseobj{
       print("subchapter $subchapter");
       List<dynamic> list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][$subchapter]");
       print("liste $list");
-      return (list.fold(0, (var x, element) => element + x) (list.length * 5));
+      return (list.fold(0, (var x, element) => element + x));// (list.length * 5));
     }catch(e){
       return 0;
     }

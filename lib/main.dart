@@ -26,10 +26,10 @@ void main() {
                 darkTheme: ThemeData(
                   primaryColorDark: Color(0xFF1C1F44),
                   brightness: Brightness.dark,
-                  primarySwatch: Colors.indigo,
+                  primarySwatch: Colors.lightBlue,
                   cardColor: main_col,
                 ),
-                themeMode: ThemeMode.system,
+                themeMode: ThemeMode.dark,
                 title: 'Afutrainer',
                 initialRoute: "/",
                 routes: {
