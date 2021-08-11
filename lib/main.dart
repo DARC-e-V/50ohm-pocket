@@ -1,9 +1,8 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/learningmodule.dart';
-import 'package:amateurfunktrainer/widgets/navbar.dart';
+import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
 import 'learnprog/learnprog.dart';
 
 
@@ -15,20 +14,8 @@ void main() {
           if(snapshot.hasData)
             return DatabaseWidget(
               MaterialApp(
-                theme: ThemeData(
-                    primaryColorLight: Color(0xFFE1E6FF),
-                    brightness: Brightness.light,
-                    primarySwatch: Colors.indigo,
-                    textTheme: TextTheme(
-                        headline5: TextStyle(color: Colors.white, fontWeight: FontWeight.w500,)
-                    )
-                ),
-                darkTheme: ThemeData(
-                  primaryColorDark: Color(0xFF1C1F44),
-                  brightness: Brightness.dark,
-                  primarySwatch: Colors.lightBlue,
-                  cardColor: main_col,
-                ),
+                theme: lightmode(),
+                darkTheme: darkmode(),
                 themeMode: ThemeMode.dark,
                 title: 'Afutrainer',
                 initialRoute: "/",

@@ -1,4 +1,5 @@
 
+import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -110,22 +111,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               child: ElevatedButton(
 
                 autofocus: false,
-                style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
-                    textStyle: MaterialStateProperty.all<TextStyle>(
-                      TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 25,
-                      ),
-                    ),
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7.0),
-                        )
-                    )
-                ),
-
+                style: buttonstyle(Colors.blueAccent),
                 onPressed: questionradio == null ? null :  () =>  _questionhandler(),
                 child: Text("Überprüfen"),
               ),
@@ -197,26 +183,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             ),
                               )
                               : Text(""),
-                          //Text(wrong ? "Leider falsch" : "Super richtig"),
                           Padding(
-                            padding: EdgeInsets.only(left: 8, right: 8),
+                            padding: EdgeInsets.only(left: 8, right: 8,),
                             child: ElevatedButton(
                               autofocus: false,
-                              style: ButtonStyle(
-                                  fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
-                                  textStyle: MaterialStateProperty.all<TextStyle>(
-                                    TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 25,
-                                    ),
-                                  ),
-                                  backgroundColor: MaterialStateProperty.all<Color>(wrong ? Colors.redAccent : Colors.green),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(7.0),
-                                      )
-                                  )
-                              ),
+                              style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
                               onPressed: (){
                                 overlayEntry.remove();
                                 _nextquest();
@@ -259,7 +230,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         Navigator.of(context).pop();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Finish(chapter,subchapter, questreslist)),
+          MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),
         );
         
       }
