@@ -1,6 +1,4 @@
 
-import 'dart:math';
-
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
 import 'package:amateurfunktrainer/screens/learning/question.dart';
@@ -96,7 +94,7 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
         margin: EdgeInsets.only(top: 24),
         child: Column(
           children: [
-            LinearProgressIndicator(value: Databaseobj(context).read(0, chapter, subchapter) * 0.1),
+            LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter)),
             InkWell(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, [subchapter], chapter)),
