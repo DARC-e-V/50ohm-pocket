@@ -77,7 +77,7 @@ Widget chapterwidget(var json, var s, var context){
                     ]
                 ),
                   json.chaptersize(currentmainchapter) == 0 
-                    ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, []))
+                    ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
                     : Text(""),
 
                 chapterleassons(currentmainchapter, json),
