@@ -1,4 +1,3 @@
-import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -19,41 +18,44 @@ class Databaseobj{
   
   Databaseobj(this.context,);
 
-  write(mainchapter, chapter, subchapter, result){
-    result = result.map((x) => x ? 1 : 0).toList();
-    // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-    //print("liste :: $list");
-    try{  
-      List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-      int x = 0;
-      List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
-      DatabaseWidget.of(context).database.put(
-          "[$mainchapter][$chapter][${subchapter[0]}]",
-          updatedres
+  write(mainchapter, chapter, subchapter, resultlist){
+    int i = 0;
+    print("resultlist resultlist $subchapter");
+    for(var result in resultlist){
+                print("resultlist resultlist $result");
+
+      result = result.map((x) => x ? 1 : 0).toList();
+          print("resultlist resultlist $result");
+
+      // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
+      //print("liste :: $list");
+      try{  
+        List list = DatabaseWidget.of(context).database.get(subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]");
+        int x = 0;
+        List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
+        DatabaseWidget.of(context).database.put(
+            subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]",
+            updatedres
+          );
+      }catch(e){
+        DatabaseWidget.of(context).database.put(
+        subchapter.length == 0  ? "[$mainchapter][$chapter]" :"[$mainchapter][$chapter][${subchapter[i]}]",
+        (result as List<dynamic>)
         );
-    }catch(e){
-      DatabaseWidget.of(context).database.put(
-        // Todo generate the list at the first time 
-      "[$mainchapter][$chapter][${subchapter[0]}]", (result as List<dynamic>)
-      );
+      }
+      i++;
     }
   }
 
   read(mainchapter, chapter, subchapter){
     try{
-
-      print("subchapter $subchapter");
-      List<dynamic> list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][$subchapter]");
+      List<dynamic> list = DatabaseWidget.of(context).database.get(subchapter.length == 0 ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
       print("liste $list");
       return (list.fold(0, (var x, element) => element + x) / (list.length * 5));
     }catch(e){
       return 0.0;
-    }
-     
-     
+    }  
   }
-
-
 }
 
 

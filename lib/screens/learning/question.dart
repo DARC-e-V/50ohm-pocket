@@ -32,7 +32,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   @override
   initState() {
-    questreslist = [];
+    questreslist = List.generate(subchapter.length == 0 ? 1 :subchapter.length, (index) => List.empty(growable: true));
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
@@ -125,7 +125,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     var correct =
       (json.answer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey], answerorder[questionradio]))[1];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
-    questreslist.add(correct);
+    questreslist[subchapterkey].add(correct);
     if(correct){
       _overlay(false);
     }
