@@ -41,14 +41,14 @@ dev_dependencies:
   hive_generator: ^1.1.0
   build_runner: ^2.0.6
   flutter_launcher_icons: "^0.9.1"
-
+  flutter_test:
+    sdk: flutter
 flutter_icons:
   android: true
   ios: true
   image_path: "assets/icons/icon.png"
+  remove_alpha_ios: true
 
-  flutter_test:
-    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
