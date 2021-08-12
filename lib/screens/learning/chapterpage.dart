@@ -76,6 +76,10 @@ Widget chapterwidget(var json, var s, var context){
                       )
                     ]
                 ),
+                  json.chaptersize(currentmainchapter) == 0 
+                    ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, []))
+                    : Text(""),
+
                 chapterleassons(currentmainchapter, json),
               ],
             )
@@ -118,8 +122,6 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
 //coustom libs
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
-  print("chapter : $chapter , subchapter $subchapter");
-  print("${json.subchaptersize(chapter,subchapter)}");
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
 
   if(!random) return orderlist;

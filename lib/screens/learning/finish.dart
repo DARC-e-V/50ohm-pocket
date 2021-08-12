@@ -24,6 +24,9 @@ class _finishstate extends State<Finish>{
   Widget build(BuildContext buildcontext) {
     Databaseobj(context).write(JsonWidget.of(context).mainchapter, chapter, subchapter, result);
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Auswertung"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
