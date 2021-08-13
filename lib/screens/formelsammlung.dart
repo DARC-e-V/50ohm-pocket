@@ -14,7 +14,8 @@ class _formularstate extends State<Formularpage> {
       appBar: AppBar(
         title: Text("Formelsammlung"),
       ),
-      body: Text("Text"),
-    );
+      body: Container(
+        child: SfPdfViewer.asset("assets/Formelsammlung.pdf"),
+    ));
   }
 }

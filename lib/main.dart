@@ -16,7 +16,7 @@ void main() {
               MaterialApp(
                 theme: lightmode(),
                 darkTheme: darkmode(),
-                themeMode: ThemeMode.dark,
+                themeMode: ThemeMode.system,
                 title: 'Afutrainer',
                 initialRoute: "/",
                 routes: {
