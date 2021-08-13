@@ -1,6 +1,7 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/style/style.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -32,19 +33,60 @@ class _finishstate extends State<Finish>{
         children: [
           Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text("Du hast die Lektion geschafft", style: TextStyle(fontSize: 30),),
+            child: Text("Du hast die Lektion geschafft!",
+             style: TextStyle(
+               fontSize: 30,
+               fontWeight: FontWeight.bold,
+               ),),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 8, right: 8, bottom: 10),
-            child: ElevatedButton(
-              style: buttonstyle(Colors.lightGreenAccent),
-              child: Text("Abschließen"),
-              onPressed: (){Navigator.of(context).pop();},
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 0.8,
+              child: PieChart(
+                PieChartData(
+                  sections: [
+                    PieChartSectionData(
+                      value: progres(),
+                      color: Colors.green,
+                      title: "richtig",
+                    ),
+                    PieChartSectionData(
+                      value: 100.0 - progres(),
+                      color: Colors.red,
+                      title: "falsch",
+                    ),
+                  ]
+                ),
+                swapAnimationDuration: Duration(milliseconds: 1500), // Optional
+                swapAnimationCurve: Curves.linear, 
               ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(left: 8, right: 8, bottom: 10),
+              child: ElevatedButton(
+                style: buttonstyle(Colors.lightGreenAccent),
+                child: Text("Abschließen"),
+                onPressed: (){Navigator.of(context).pop();},
+                ),
+            ),
           )
         ],
         )
     );
   }
-
+  progres(){
+    int x = 0;
+    int y = 0;
+    for(var item in this.result){
+      item = item.map((x) => x ? 1 : 0).toList();
+      print("IIITTTTEMMM $item");
+      x += (item.fold(0, (var i, element) => element + i) as int);
+      y = y + (item.length as int);
+      print("i $x y $y");
+    }
+    print( (x / y) * 100);
+    return (x / y) * 100;
+  }
 }
