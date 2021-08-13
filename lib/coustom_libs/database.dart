@@ -10,7 +10,6 @@ class Database{
     database = await Hive.openBox('progress');
     return database;
   }
- 
 }
 
 class Databaseobj{
@@ -49,7 +48,6 @@ class Databaseobj{
 
   read(mainchapter, chapter, subchapter){
     try{
-      print("subchapter $subchapter chapter $chapter");
       List<dynamic> list = DatabaseWidget.of(context).database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
       print("liste $list");
       return (list.fold(0, (var x, element) => element + x) / (list.length * 5));
