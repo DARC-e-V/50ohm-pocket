@@ -59,9 +59,10 @@ Widget chapterwidget(var json, var s, var context){
                     children: [
                       Expanded(
                         child: OutlinedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.indigoAccent[100]),
-                          ),
+                          
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.indigoAccent[100],
+                            shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),                          ),
                           onPressed: () => Navigator.of(context).push(
                             MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),// buildquestionlist(currentchapter, 1, json, true) //buildquestionlist(chapter, subchapter, json, true)
                           ),
