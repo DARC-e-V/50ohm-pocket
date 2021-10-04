@@ -16,16 +16,10 @@ class Databaseobj{
   BuildContext context;
   
   Databaseobj(this.context,);
-
   write(mainchapter, chapter, subchapter, resultlist){
     int i = 0;
-    print("resultlist resultlist $subchapter");
     for(var result in resultlist){
-                print("resultlist resultlist $result");
-
       result = result.map((x) => x ? 1 : 0).toList();
-          print("resultlist resultlist $result");
-
       // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
       //print("liste :: $list");
       try{  
@@ -49,12 +43,15 @@ class Databaseobj{
   read(mainchapter, chapter, subchapter){
     try{
       List<dynamic> list = DatabaseWidget.of(context).database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
-      print("liste $list");
       return (list.fold(0, (var x, element) => element + x) / (list.length * 5));
     }catch(e){
       return 0.0;
     }  
   }
+  savetofile(){
+
+  }
+
 }
 
 
@@ -69,6 +66,6 @@ class DatabaseWidget extends InheritedWidget{
   false;
 
   static DatabaseWidget of(BuildContext context) =>
-    context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;
+      context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;
 
 }
