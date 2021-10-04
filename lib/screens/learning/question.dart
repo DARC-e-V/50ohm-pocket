@@ -21,7 +21,7 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var json, answerorder, /* desperate */chapterorder, questionorder, questreslist;
+  var json, answerorder, /* desperrate */chapterorder, questionorder, questreslist;
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter;
