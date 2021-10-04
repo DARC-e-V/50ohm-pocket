@@ -1,5 +1,6 @@
+import 'dart:io' show Platform;
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/screens/learningmodule.dart';
+import 'package:amateurfunktrainer/screens/learning/learningmodule.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ void main() {
           if(snapshot.hasData)
             return DatabaseWidget(
               MaterialApp(
+                //todo no touch scroll on desktop
+                scrollBehavior: ScrollBehavior(),
                 theme: lightmode(),
                 darkTheme: darkmode(),
                 themeMode: ThemeMode.system,

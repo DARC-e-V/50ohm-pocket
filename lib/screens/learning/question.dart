@@ -36,21 +36,16 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
-      print("$chapter and $subchapter");
-
       if(subchapter.length == 0) questionorder = orderlist(json.questonlylistleng(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
-
-      print("questionorder $questionorder");
-      // Todo: dynamic not 4 with json.answercount Note also needed when rebuilding window
       chapterorder = subchapter;
       print("$chapterorder");
 
       answerorder = orderlist(4,true);
     });
-    // print("chapterorder" + "$chapterorder");
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     //!!change to false for non random answers
@@ -217,7 +212,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       });
     }catch(e){
       try{
-          print("\n Subchapter over");
           this.chapterorder[this.subchapterkey];
           setState(() {
             questionradio = null;
@@ -226,13 +220,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             questionkey = 0;
           });
       }catch(e){
-        print("\n Failed with $e");
         Navigator.of(context).pop();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),
         );
-        
       }
     }
   }
