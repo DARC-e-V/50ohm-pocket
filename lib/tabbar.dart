@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class Tabbar extends StatelessWidget{
@@ -8,5 +6,4 @@ class Tabbar extends StatelessWidget{
     // TODO: implement build
     throw UnimplementedError();
   }
-
 }
