@@ -1,4 +1,3 @@
-
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/coustom_libs/icons.dart';
 import 'package:amateurfunktrainer/screens/learning/question.dart';
@@ -35,9 +34,7 @@ Widget selectlesson(var data, var context) {
             }
     )
   );
-
 }
-
 
 Widget chapterwidget(var json, var s, var context){
   var currentmainchapter = s + 1;

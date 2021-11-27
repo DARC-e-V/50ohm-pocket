@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/learning/learningmodule.dart';
 import 'package:amateurfunktrainer/style/style.dart';
