@@ -39,8 +39,7 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: Scaffold(
             body: TabBarView(
               children: [
-                DatabaseWidget.of(context).settings_database.get("klasse_a") == null ||
-                DatabaseWidget.of(context).settings_database.get("klasse_a")
+                DatabaseWidget.of(context).settings_database.get("klasse_a") == null
                     ? chapterbuilder(context, 'assets/questions/DL_Technik_Klasse_A_2007.json', 0)
                     : chapterbuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json', 0),
                 chapterbuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json', 1),
@@ -48,8 +47,7 @@ class _LearningmoduleState extends State<Learningmodule> {
               ],
             ),
             appBar:
-            (DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") == null ||
-                DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") == false)
+            (DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") == null
             ? AppBar(
               title: TabBar(
                 tabs: [
@@ -58,7 +56,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                   Tab(icon: Icon(Icons.book), text: "Vorschriften",)
                 ],
               ),
-            ): null,
+            ): null
+            ),
           ),
         )
 
