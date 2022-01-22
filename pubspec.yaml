@@ -1,5 +1,5 @@
-name: amateurfunktrainer
-description: Helps you learn for your german ham exam.
+name: Darttrainer
+description: Blitzschneller und portabler Amateurfunktrainer.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -29,13 +29,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   # cupertino_icons: ^1.0.2
   json_annotation: ^4.0.1
-  #path_provider: ^2.0.2
   flutter_widget_from_html: ^0.6.1
-  shared_preferences: ^2.0.6
   hive: ^2.0.4
-  syncfusion_flutter_pdfviewer: ^19.2.49-beta
   hive_flutter: ^1.1.0
   fl_chart: ^0.36.3
+  settings_ui: ^2.0.1
+  native_pdf_view: ^5.0.0
 
 
 
