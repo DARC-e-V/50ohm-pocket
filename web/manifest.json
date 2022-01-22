@@ -1,6 +1,6 @@
 {
-    "name": "Amateurfunktrainer",
-    "short_name": "afutrainer",
+    "name": "Darttrainer",
+    "short_name": "Darttrainer",
     "start_url": "",
     "display": "standalone",
     "background_color": "#0175C2",
