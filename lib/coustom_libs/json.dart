@@ -32,6 +32,13 @@ class Json{
     }
   }
 
+  questionid(var chapter, var subchapter, var question){
+    try{
+      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["id"];
+    }catch(e){
+      return this.data!["chapter"]["chapter"][chapter]["question"][question]["id"];
+    }
+  }
 
 
   answer(int chapter, var subchapter, int question, int answer){

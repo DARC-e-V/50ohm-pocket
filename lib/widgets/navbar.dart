@@ -18,7 +18,6 @@ class _BottomnavbarState extends State<Bottomnavbar>{
     currentIndex: currentindex,
 
     onTap: (index){
-      print(index);
       setState(() {
         currentindex = index;
       });
