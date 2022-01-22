@@ -1,5 +1,5 @@
 import 'package:amateurfunktrainer/learnprog/learnprog.dart';
-import 'package:amateurfunktrainer/screens/learning/learningmodule.dart';
+import 'package:amateurfunktrainer/screens/learningmodule.dart';
 import 'package:flutter/material.dart';
 
 class Bottomnavbar extends StatefulWidget{
@@ -18,6 +18,7 @@ class _BottomnavbarState extends State<Bottomnavbar>{
     currentIndex: currentindex,
 
     onTap: (index){
+      print(index);
       setState(() {
         currentindex = index;
       });

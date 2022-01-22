@@ -81,9 +81,12 @@ class _finishstate extends State<Finish>{
     int y = 0;
     for(var item in this.result){
       item = item.map((x) => x ? 1 : 0).toList();
+      print("IIITTTTEMMM $item");
       x += (item.fold(0, (var i, element) => element + i) as int);
       y = y + (item.length as int);
+      print("i $x y $y");
     }
+    print( (x / y) * 100);
     return (x / y) * 100;
   }
 }
