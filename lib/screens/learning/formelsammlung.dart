@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Formularpage extends StatefulWidget{
   @override
@@ -13,10 +14,8 @@ class _formularstate extends State<Formularpage> {
       appBar: AppBar(
         title: Text("Formelsammlung"),
       ),
-      body:
-        Center(
-      child: Text("ji")
-      )
-    );
+      body: Container(
+        child: SfPdfViewer.asset("assets/Formelsammlung.pdf"),
+    ));
   }
 }
