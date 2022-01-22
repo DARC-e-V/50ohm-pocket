@@ -1,10 +1,12 @@
 
+import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../constants.dart';
+import '../formelsammlung.dart';
 import 'chapterpage.dart';
 import 'finish.dart';
 
@@ -21,7 +23,7 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var json, answerorder, /* desperate */chapterorder, questionorder, questreslist;
+  var json, answerorder, /* desperate */chapterorder, questionorder, questreslist, pdfController;
   var questionkey, subchapterkey = 0;
   final context, chapter;
   List subchapter;
@@ -36,15 +38,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
-      print("$chapter and $subchapter");
 
       if(subchapter.length == 0) questionorder = orderlist(json.questonlylistleng(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
-      print("questionorder $questionorder");
       // Todo: dynamic not 4 with json.answercount Note also needed when rebuilding window
       chapterorder = subchapter;
-      print("$chapterorder");
 
       answerorder = orderlist(4,true);
     });
@@ -53,10 +52,35 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
-    //!!change to false for non random answers
+    //!!todo change to false for non random answers
     return Scaffold(
       appBar: AppBar(
-        title: Text("Afutrainer"),
+
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Frage "
+                  + "${json.questionid(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
+            ),
+            Row(
+              children: [
+                IconButton(icon: Icon(Icons.book), onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Formularpage(1),
+                    )
+                  );
+                  },
+                ),
+                SizedBox(width: 5,),
+                IconButton(icon: Icon(Icons.flag), onPressed: () {
+
+                },),
+              ],
+            )
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -217,7 +241,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       });
     }catch(e){
       try{
-          print("\n Subchapter over");
           this.chapterorder[this.subchapterkey];
           setState(() {
             questionradio = null;
