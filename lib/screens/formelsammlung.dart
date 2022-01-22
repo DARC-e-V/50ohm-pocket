@@ -37,13 +37,6 @@ class _formularstate extends State<Formularpage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Formelsammlung"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.navigate_next),
-            onPressed: () {
-              },
-          ),
-        ],
       ),
       body:
           Stack(
@@ -61,44 +54,8 @@ class _formularstate extends State<Formularpage> {
                 controller: pdfController,
                 pageSnapping: false,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    color: Colors.white10.withOpacity(0.4),
-                    child: SizedBox(
-                      width: 80,
-                      height: MediaQuery.of(context).size.height,
-                      child: IconButton(
-                          onPressed: (){
-                            pdfController.previousPage(
-                              curve: Curves.easeInCirc,
-                              duration: Duration(milliseconds: 300),
-                            );
-                          },
-                          icon: Icon(Icons.arrow_back_ios)
-                      ),
-                    ),
-                  ),Container(
-                    color: Colors.white10.withOpacity(0.4),
-                    child: SizedBox(
-                      width: 80,
-                      height: MediaQuery.of(context).size.height,
-                      child: IconButton(
-                          onPressed: (){
-                            pdfController.nextPage(
-                              curve: Curves.easeInCirc,
-                              duration: Duration(milliseconds: 300),
-                            );
-                          },
-                          icon: Icon(Icons.arrow_forward_ios)
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
 
+            ]
           ),
         );
   }
