@@ -37,7 +37,11 @@ class _settingsstate extends State<Settingspage> {
               SettingsTile.switchTile(
                 onToggle: (value) {
                   print(value);
-                  DatabaseWidget.of(context).settings_database.put("klasse_a", value);
+                  if(value == false){
+                    DatabaseWidget.of(context).settings_database.delete("klasse_a");
+                  }else{
+                    DatabaseWidget.of(context).settings_database.put("klasse_a", value);
+                  }
                   setState(() {});
                 },
                 initialValue: DatabaseWidget.of(context).settings_database.get("klasse_a") as bool,
@@ -47,7 +51,12 @@ class _settingsstate extends State<Settingspage> {
               SettingsTile.switchTile(
                 onToggle: (value) {
                   print(value);
-                  DatabaseWidget.of(context).settings_database.put("betrieb_vorschriften", value);
+                  if(value == false){
+                    DatabaseWidget.of(context).settings_database.delete("betrieb_vorschriften");
+                  }else{
+                    DatabaseWidget.of(context).settings_database.put("betrieb_vorschriften", true);
+                  }
+
                   setState(() {});
                 },
                 initialValue: DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") as bool,

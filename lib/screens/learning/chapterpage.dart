@@ -9,7 +9,6 @@ import '../../constants.dart';
 import '../../coustom_libs/json.dart';
 
 Widget selectlesson(var data, var context) {
-  print(data);
   Json json = Json(data);
   return Padding(
       padding: EdgeInsets.only(left: 5,right: 5),
