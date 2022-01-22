@@ -1,6 +1,6 @@
+import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/settings.dart';
 import 'package:amateurfunktrainer/widgets/loadcontent.dart';
-import 'package:amateurfunktrainer/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 
 import 'formelsammlung.dart';
@@ -12,6 +12,8 @@ class Learningmodule extends StatefulWidget {
 }
 
 class _LearningmoduleState extends State<Learningmodule> {
+  late List<Tab> tabs;
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +39,17 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: Scaffold(
             body: TabBarView(
               children: [
-                futurebuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json', 0),
-                futurebuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json', 1),
-                futurebuilder(context, 'assets/questions/DL_Vorschriften_2007.json', 2)
+                DatabaseWidget.of(context).settings_database.get("klasse_a")
+                    ? chapterbuilder(context, 'assets/questions/DL_Technik_Klasse_A_2007.json', 0)
+                    : chapterbuilder(context, 'assets/questions/DL_Technik_Klasse_E_2007.json', 0),
+                chapterbuilder(context, 'assets/questions/DL_Betriebstechnik_2007.json', 1),
+                chapterbuilder(context, 'assets/questions/DL_Vorschriften_2007.json', 2)
               ],
             ),
-            appBar: AppBar(
+            appBar:
+            (DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") == null ||
+                DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") == false)
+            ? AppBar(
               title: TabBar(
                 tabs: [
                   Tab(icon: Icon(Icons.settings_input_antenna), text: "Technik",),
@@ -50,7 +57,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                   Tab(icon: Icon(Icons.book), text: "Vorschriften",)
                 ],
               ),
-            ),
+            ): null,
           ),
         )
 
@@ -60,10 +67,10 @@ class _LearningmoduleState extends State<Learningmodule> {
   SelectedItem(BuildContext context, Object item) {
     switch(item){
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
         break;
     }
   }

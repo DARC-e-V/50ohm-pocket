@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../screens/learning/chapterpage.dart';
 import '../constants.dart';
 
-futurebuilder(var context, var path, var mainchapter) {
+chapterbuilder(var context, var path, var mainchapter) {
   return FutureBuilder(
       future: Json(null).load(path),
       builder: (context, snapshot){

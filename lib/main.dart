@@ -13,11 +13,13 @@ void main() {
         builder: (context, snapshot){
           if(snapshot.hasData)
             return DatabaseWidget(
-              MaterialApp(
+              prog_database: (snapshot.data as List )[0],
+              settings_database: (snapshot.data as List )[1],
+              child: MaterialApp(
                 theme: lightmode(),
                 darkTheme: darkmode(),
                 themeMode: ThemeMode.system,
-                title: 'Afutrainer',
+                title: 'Darttrainer',
                 initialRoute: "/",
                 routes: {
                   "/" : (context) => Learningmodule(),
@@ -25,7 +27,6 @@ void main() {
                   "/profile" : (context) => Learnprog(),
                 },
               ),
-              snapshot.data
             );
           if(snapshot.hasError) return Text("Error");
           return Center(child: CircularProgressIndicator());
