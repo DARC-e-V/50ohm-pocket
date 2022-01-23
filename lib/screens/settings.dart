@@ -44,7 +44,7 @@ class _settingsstate extends State<Settingspage> {
                   }
                   setState(() {});
                 },
-                initialValue: DatabaseWidget.of(context).settings_database.get("klasse_a") as bool,
+                initialValue: DatabaseWidget.of(context).settings_database.get("klasse_a") != null as bool,
                 leading: Icon(Icons.school_sharp),
                 title: Text('Klasse A'),
               ),
@@ -59,7 +59,7 @@ class _settingsstate extends State<Settingspage> {
 
                   setState(() {});
                 },
-                initialValue: DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") as bool,
+                initialValue: DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") != null as bool,
                 leading: Icon(Icons.radio),
                 title: Text('Betriebstechnik und Vorschriften verstecken'),
               ),
