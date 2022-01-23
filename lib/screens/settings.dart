@@ -10,6 +10,11 @@ class Settingspage extends StatefulWidget{
 
 class _settingsstate extends State<Settingspage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +49,7 @@ class _settingsstate extends State<Settingspage> {
                   }
                   setState(() {});
                 },
-                initialValue: DatabaseWidget.of(context).settings_database.get("klasse_a") != null as bool,
+                initialValue: DatabaseWidget.of(context).settings_database.containsKey("klasse_a"),
                 leading: Icon(Icons.school_sharp),
                 title: Text('Klasse A'),
               ),
@@ -59,7 +64,7 @@ class _settingsstate extends State<Settingspage> {
 
                   setState(() {});
                 },
-                initialValue: DatabaseWidget.of(context).settings_database.get("betrieb_vorschriften") != null as bool,
+                initialValue: DatabaseWidget.of(context).settings_database.containsKey("betrieb_vorschriften"),
                 leading: Icon(Icons.radio),
                 title: Text('Betriebstechnik und Vorschriften verstecken'),
               ),
