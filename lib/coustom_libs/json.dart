@@ -14,19 +14,19 @@ class Json{
   }
 
   main_chapter_name() =>
-      this.data!["exam"]["name"];
+      this.data!["sections"]["title"];
 
   chapter_names(var chapter) =>
-      this.data!["chapter"]["chapter"][chapter]["name"];
+      this.data!["sections"]["sections"][chapter]["title"];
   chaptericon(int chapter, int subchapter) =>
       this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["icon"];
 
   subchapter_name(int chapter, int subchapter) =>
-      this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["name"];
+      this.data!["sections"]["sections"][chapter]["sections"][subchapter]["title"];
 
   questionname(var chapter, var subchapter, var question){
     try{
-      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textquestion"];
+      return this.data!["sections"]["sections"][chapter]["sections"][subchapter]["questions"][question];
     }catch(e){
       return this.data!["chapter"]["chapter"][chapter]["question"][question]["textquestion"];
     }
@@ -34,7 +34,7 @@ class Json{
 
   questionid(var chapter, var subchapter, var question){
     try{
-      return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["id"];
+      return this.data!["sections"]["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
     }catch(e){
       return this.data!["chapter"]["chapter"][chapter]["question"][question]["id"];
     }

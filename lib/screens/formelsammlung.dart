@@ -1,10 +1,9 @@
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:native_pdf_view/native_pdf_view.dart';
+import 'package:pdfx/pdfx.dart';
 
 class Formularpage extends StatefulWidget{
-  var start_at;
+  final start_at;
   Formularpage(this.start_at);
   @override
   _formularstate createState() => _formularstate(start_at);
