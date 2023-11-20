@@ -10,90 +10,46 @@ class Json{
   Future load(final questionpath) async {
     var rawdata = await rootBundle.loadString(questionpath);
     this.data = jsonDecode(rawdata);
-    return this.data;
+    return this.data!["sections"][0];
   }
 
   main_chapter_name() =>
-      this.data!["sections"]["title"];
+      this.data!["title"];
 
   chapter_names(var chapter) =>
-      this.data!["sections"]["sections"][chapter]["title"];
-  chaptericon(int chapter, int subchapter) =>
-      this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["icon"];
+      this.data!["sections"][chapter]["title"];
+
+  chaptericon(int chapter, int subchapter) => null;
 
   subchapter_name(int chapter, int subchapter) =>
-      this.data!["sections"]["sections"][chapter]["sections"][subchapter]["title"];
+      this.data!["sections"][chapter]["sections"][subchapter]["title"];
 
   questionname(var chapter, var subchapter, var question){
-    try{
-      return this.data!["sections"]["sections"][chapter]["sections"][subchapter]["questions"][question];
-    }catch(e){
-      return this.data!["chapter"]["chapter"][chapter]["question"][question]["textquestion"];
-    }
+    return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["question"];
+
   }
 
   questionid(var chapter, var subchapter, var question){
-    try{
-      return this.data!["sections"]["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
-    }catch(e){
-      return this.data!["chapter"]["chapter"][chapter]["question"][question]["id"];
-    }
+    return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
   }
 
-
-  answer(int chapter, var subchapter, int question, int answer){
-    try{
-      try{
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]["text"]), true ];
-      }catch(e){
-        return [(this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][answer]["text"]), true ];
-      }
-    }catch(e){
-      try{
-        return [(this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][answer]) , false];
-      }catch(e){
-        return [(this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][answer]) , false];
-      }
-
-    }
+  List<String> answerList(int chapter, var subchapter, int question){
+    Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
+    return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
   }
-  correctanswer(int chapter, var subchapter, int question){
-    try{
-      try{
-        return this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question]["textanswer"][0]["text"];
-      }catch(e){
-        return this.data!["chapter"]["chapter"][chapter]["question"][question]["textanswer"][0]["text"];
-      }
-    }catch(e){
-      try{
-        return this.data!["chapter"]["chapter"][chapter]["chapter"]["question"][question]["textanswer"][0]["text"];
-      }catch(e){
-        return this.data!["chapter"]["chapter"]["question"][question]["textanswer"][0]["text"];
-      }
-
-    }
-  }
-  // number of questions or answers 
   
-  questonlylistleng(var chapter) => this.data!["chapter"]["chapter"][chapter]["question"].length;
-  answercount(int chapter, int subchapter, int question) =>
-      this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"][question].length;
   subchaptersize(int chapter, int subchapter) =>
-      this.data!["chapter"]["chapter"][chapter]["chapter"][subchapter]["question"].length;
+      this.data!["sections"][chapter]["sections"][subchapter]["questions"].length;
 
-  // can be that there are none subchapters just the list of questions
+
   chaptersize(int chapter) {
-    try{
-      return this.data!["chapter"]["chapter"][chapter]["chapter"].length;
-    }catch(e){
-      return 0;
-    }
+      return this.data!["sections"][chapter]["sections"].length;
   }
 
   mainchaptersize() =>
-      this.data!["chapter"]["chapter"].length;
+      this.data!["sections"].length + 1;
   // Todo fix
-  procentofchapter(List questionlist, int currentprog) =>
+  percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
 
 }

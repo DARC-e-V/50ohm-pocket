@@ -19,7 +19,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Afutrainer'),
+          title: Text('50ohm-pocket'),
           actions: [
             PopupMenuButton(itemBuilder: (context) => [
               PopupMenuItem(value: 1, child: Text("Formelsammlung")),

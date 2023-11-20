@@ -10,14 +10,15 @@ import '../../coustom_libs/json.dart';
 
 Widget selectlesson(var data, var context) {
   Json json = Json(data);
+  print(json.mainchaptersize());
   return Padding(
       padding: EdgeInsets.only(left: 5,right: 5),
       child: ListView.builder(
-            itemCount:json.mainchaptersize() + 1 ,
+            itemCount: json.mainchaptersize(),
             itemBuilder: (context, i) {
               if(i == 0){
                 return Padding(
-                    padding: EdgeInsets.only(top:20, right: std_padding + 6, left: std_padding + 6),
+                    padding: EdgeInsets.only(top:10, right: std_padding + 6, left: std_padding + 6),
                     child:
                     Column(children: [
                       Text(
@@ -64,7 +65,7 @@ Widget chapterwidget(var json, var s, var context){
                             backgroundColor: Colors.indigoAccent[100],
                             shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),                          ),
                           onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),// buildquestionlist(currentchapter, 1, json, true) //buildquestionlist(chapter, subchapter, json, true)
+                            MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(14.0),
@@ -81,7 +82,7 @@ Widget chapterwidget(var json, var s, var context){
                     ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
                     : Text(""),
 
-                chapterleassons(currentmainchapter, json),
+                chapterLesson(currentmainchapter, json),
               ],
             )
         )
@@ -89,7 +90,7 @@ Widget chapterwidget(var json, var s, var context){
   );
 }
 
-Widget chapterleassons(var chapter, var json) => ListView.builder(
+Widget chapterLesson(var chapter, var json) => ListView.builder(
     physics: NeverScrollableScrollPhysics(),
     addAutomaticKeepAlives: true,
     shrinkWrap: true,
@@ -102,7 +103,7 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
             LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter)),
             InkWell(
               onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, json, [subchapter], chapter)),
+                MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
               ),
               child: ListTile(
                 leading: Icon(starticon(json.chaptericon(chapter, subchapter))),
@@ -120,7 +121,6 @@ Widget chapterleassons(var chapter, var json) => ListView.builder(
     }
 );
 
-//coustom libs
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
