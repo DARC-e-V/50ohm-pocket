@@ -1,9 +1,8 @@
 
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
+import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../constants.dart';
 import '../formelsammlung.dart';
@@ -13,24 +12,29 @@ import 'finish.dart';
 
 class Question extends StatefulWidget {
 
-  var subchapter, chapter, json;
+  var subchapter, chapter;
   final BuildContext context;
 
-  Question(this.context, this.json, this.subchapter,this.chapter);
+  Question(this.context, this.subchapter,this.chapter);
 
   @override
-  createState() => _Questionstate(this.context, this.json, this.subchapter,this.chapter);
+  createState() => _Questionstate(this.context, this.subchapter,this.chapter);
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var json, answerorder, /* desperate */chapterorder, questionorder, questreslist, pdfController;
-  var questionkey, subchapterkey = 0;
+  var answerorder, questionorder, questreslist, pdfController, questionradio;
+  
+  
+  late int questionkey, subchapterkey;
+  late List<String> ShuffledAnswers, Answers;
+  
+  final List subchapter;
   final context, chapter;
-  List subchapter;
-  var questionradio;
+
+  late Json json;
   bool correct = false;
 
-  _Questionstate(this.context, this.json, this.subchapter,this.chapter);
+  _Questionstate(this.context, this.subchapter,this.chapter);
 
   @override
   initState() {
@@ -38,21 +42,27 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
+      json = Json(JsonWidget.of(context).json);
 
-      if(subchapter.length == 0) questionorder = orderlist(json.questonlylistleng(chapter), true);
+      if(subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
-      // Todo: dynamic not 4 with json.answercount Note also needed when rebuilding window
-      chapterorder = subchapter;
-
       answerorder = orderlist(4,true);
+
+      Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
+      
+
+      ShuffledAnswers = [];
+      ShuffledAnswers.addAll(Answers);
+      ShuffledAnswers.shuffle();
+
+
     });
     // print("chapterorder" + "$chapterorder");
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    //!!todo change to false for non random answers
     return Scaffold(
       appBar: AppBar(
 
@@ -61,7 +71,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           children: [
             Text(
               "Frage "
-                  + "${json.questionid(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
+                  + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
             ),
             Row(
               children: [
@@ -90,9 +100,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               Padding(
                 padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
                 child: Center(
-                  child: HtmlWidget(
-                    "${json.questionname(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey])}",
-                    textStyle: TextStyle(
+                  child: Text(
+                    "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                    style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 22
                     ),
@@ -114,9 +124,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             groupValue: questionradio,
                             value: i,
                             onChanged: (var value) {setState(() {questionradio = i;});},
-                            title: HtmlWidget(
-                                "${json.answer(chapter,subchapter.length == 0 ? Null : chapterorder[subchapterkey],questionorder[questionkey],answerorder[i])[0]}",
-                                textStyle: TextStyle(
+                            title: Text(
+                                "${ShuffledAnswers[i]}",
+                                style: TextStyle(
                                   fontSize: 19
                                 ),
                             ),
@@ -133,10 +143,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             child: Padding(
               padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
               child: ElevatedButton(
-
                 autofocus: false,
                 style: buttonstyle(Colors.blueAccent),
-                onPressed: questionradio == null ? null :  () =>  _questionhandler(),
+                onPressed: questionradio == null ? null :  () =>  _questionhandler(ShuffledAnswers, Answers, questionradio),
                 child: Text("Überprüfen"),
               ),
             ),
@@ -145,23 +154,22 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       )
     );
   }
-  _questionhandler(){
-    var correct =
-      (json.answer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey], answerorder[questionradio]))[1];
+  _questionhandler(ShuffledAnswers, Answers, i){
+    print(ShuffledAnswers);
+    print(Answers);
+    bool correct = ShuffledAnswers[i] == Answers[0];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
     if(correct){
       _overlay(false);
     }
     else{
-      print("subchapter $subchapter , chapter $chapter , question $questionorder[this.questionkey]");
-      _overlay(true, correctanser : json.correctanswer(chapter, subchapter.length == 0 ? Null : chapterorder[subchapterkey], questionorder[questionkey]));
+      print("subchapter $subchapter , chapter $chapter , question ${questionorder[this.questionkey]}");
+      _overlay(true, correctAnswer : Answers[0]);
     }
   }
-  _overlay(bool wrong, {var correctanser = true}) {
-    setState(() {
-      questionradio = null;
-    });
+  _overlay(bool wrong, {var correctAnswer = true}) {
+
     OverlayState? overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
 
@@ -191,9 +199,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                                       child: Center(
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
-                                          child: HtmlWidget(
-                                              "$correctanser",
-                                              textStyle: TextStyle(
+                                          child: Text(
+                                              "$correctAnswer",
+                                              style: TextStyle(
                                                 backgroundColor: Colors.red.shade200,
                                                 color: Colors.white,
                                                 fontSize: 30
@@ -241,7 +249,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       });
     }catch(e){
       try{
-          this.chapterorder[this.subchapterkey];
+          this.subchapter[this.subchapterkey];
           setState(() {
             questionradio = null;
             subchapterkey += 1;

@@ -19,7 +19,7 @@ void main() {
                 theme: lightmode(),
                 darkTheme: darkmode(),
                 themeMode: ThemeMode.system,
-                title: 'Darttrainer',
+                title: '50ohm-pocket',
                 initialRoute: "/",
                 routes: {
                   "/" : (context) => Learningmodule(),
