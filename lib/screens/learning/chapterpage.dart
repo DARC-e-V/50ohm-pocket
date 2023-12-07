@@ -10,7 +10,6 @@ import '../../coustom_libs/json.dart';
 
 Widget selectlesson(var data, var context) {
   Json json = Json(data);
-  print(json.mainchaptersize());
   return Padding(
       padding: EdgeInsets.only(left: 5,right: 5),
       child: ListView.builder(
@@ -18,7 +17,7 @@ Widget selectlesson(var data, var context) {
             itemBuilder: (context, i) {
               if(i == 0){
                 return Padding(
-                    padding: EdgeInsets.only(top:10, right: std_padding + 6, left: std_padding + 6),
+                    padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
                     child:
                     Column(children: [
                       Text(
@@ -60,7 +59,6 @@ Widget chapterwidget(var json, var s, var context){
                     children: [
                       Expanded(
                         child: OutlinedButton(
-                          
                           style: OutlinedButton.styleFrom(
                             backgroundColor: Colors.indigoAccent[100],
                             shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),                          ),
@@ -68,7 +66,7 @@ Widget chapterwidget(var json, var s, var context){
                             MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(14.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               json.chapter_names(currentmainchapter),
                               style: Theme.of(context).textTheme.headline5,
@@ -97,7 +95,10 @@ Widget chapterLesson(var chapter, var json) => ListView.builder(
     itemCount: json.chaptersize(chapter),
     itemBuilder: (context, subchapter) {
       return Card(
-        margin: EdgeInsets.only(top: 24),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)), // Adjust the radius as needed
+        ),
+        margin: EdgeInsets.only(top: 10),
         child: Column(
           children: [
             LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter)),

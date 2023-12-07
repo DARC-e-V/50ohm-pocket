@@ -17,8 +17,7 @@ class _settingsstate extends State<Settingspage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
+      appBar: AppBar( 
         title: Row(
           children: [
             IconButton(
@@ -41,7 +40,6 @@ class _settingsstate extends State<Settingspage> {
             tiles: <SettingsTile>[
               SettingsTile.switchTile(
                 onToggle: (value) {
-                  print(value);
                   if(value == false){
                     DatabaseWidget.of(context).settings_database.delete("klasse_a");
                   }else{
@@ -55,7 +53,6 @@ class _settingsstate extends State<Settingspage> {
               ),
               SettingsTile.switchTile(
                 onToggle: (value) {
-                  print(value);
                   if(value == false){
                     DatabaseWidget.of(context).settings_database.delete("betrieb_vorschriften");
                   }else{
