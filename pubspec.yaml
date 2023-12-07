@@ -34,8 +34,15 @@ dependencies:
   hive_flutter: ^1.1.0
   fl_chart: ^0.63.0
   settings_ui: ^2.0.2
-  pdfx: ^1.0.0
-  flutter_tex: ^4.0.3+4
+  #pdfx: ^2.5.0
+  pdfx: 
+    git:
+      url: 'https://github.com/ScerIO/packages.flutter'
+      ref: '4be9de9ffed5398fd7d5f44bbb07dcd3d3f1711b'
+      path: packages/pdfx
+  flutter_math_fork:
+    git:
+      url: https://github.com/simpleclub-extended/flutter_math_fork
 
 
 
@@ -67,7 +74,7 @@ flutter:
   assets:
     - assets/
     - assets/questions/
-    - assets/graphics/
+    - assets/svgs/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -6,11 +6,12 @@ import '../constants.dart';
 
 chapterbuilder(var context, var path, var mainchapter) {
   return FutureBuilder(
-      future: Json(null).load(path),
+      future: Json(null).load(path, mainchapter),
       builder: (context, snapshot){
         if (snapshot.hasData) {
           return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>), mainchapter);
         }else if(snapshot.hasError){
+          print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
         } else{
           return Padding(padding: EdgeInsets.all(std_padding), child: Row(

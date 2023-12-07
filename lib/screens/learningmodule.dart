@@ -19,7 +19,6 @@ class _LearningmoduleState extends State<Learningmodule> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('50ohm-pocket'),
           actions: [
             PopupMenuButton(itemBuilder: (context) => [
               PopupMenuItem(value: 1, child: Text("Formelsammlung")),
@@ -37,10 +36,20 @@ class _LearningmoduleState extends State<Learningmodule> {
         body: DefaultTabController(
           length: 3,
           child: Scaffold(
-            body: chapterbuilder(context, 'assets/questions/DE_Questions.json', 0)
+            body: PageView.builder(
+              itemBuilder: (content, index){
+                if(index == 0){
+                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 0);
+                }else if(index == 1){
+                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 1);
+                }else{
+                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 2);
+                }
+              },
+              itemCount: 3,
+              )
             ),
           ),
-
     );
   }
 

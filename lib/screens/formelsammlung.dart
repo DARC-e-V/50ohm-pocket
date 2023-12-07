@@ -43,8 +43,6 @@ class _formularstate extends State<Formularpage> {
             children: [
 
               PdfView(
-                documentLoader: Center(child: CircularProgressIndicator()),
-                pageLoader: Center(child: CircularProgressIndicator()),
                 onDocumentLoaded: (document) {
                   setState(() {
                     _allPagesCount = document.pagesCount;

@@ -7,10 +7,10 @@ class Json{
   Map<String, dynamic>? data;
   Json(this.data);
 
-  Future load(final questionpath) async {
+  Future load(final questionpath, mainchapter) async {
     var rawdata = await rootBundle.loadString(questionpath);
     this.data = jsonDecode(rawdata);
-    return this.data!["sections"][0];
+    return this.data!["sections"][mainchapter];
   }
 
   main_chapter_name() =>
@@ -21,29 +21,65 @@ class Json{
 
   chaptericon(int chapter, int subchapter) => null;
 
-  subchapter_name(int chapter, int subchapter) =>
-      this.data!["sections"][chapter]["sections"][subchapter]["title"];
+  subchapter_name(int chapter, int subchapter) {
+    try{
+        return this.data!["sections"][chapter]["sections"][subchapter]["title"];
+    }catch(e){
+        return this.data!["sections"][chapter]["title"];
+    }
+  }
 
   questionname(var chapter, var subchapter, var question){
-    return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["question"];
+    try{
+      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["question"];
+    }catch(e){
+      return this.data!["sections"][chapter]["questions"][question]["question"];
+    }
+  }
 
+  String? questionimage(int chapter, var subchapter, int question){
+    try{
+      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_question"];
+    }catch(e){
+      return this.data!["sections"][chapter]["questions"][question]["picture_question"];
+
+    }
   }
 
   questionid(var chapter, var subchapter, var question){
-    return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
+    try{
+      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
+    }catch(e){
+      return this.data!["sections"][chapter]["questions"][question]["number"];
+    }
   }
 
   List<String> answerList(int chapter, var subchapter, int question){
-    Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
-    return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
+    try{
+      Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
+      return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
+    }catch(e){
+      Map answerSection = this.data!["sections"][chapter]["questions"][question];
+      return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
+    }
   }
   
-  subchaptersize(int chapter, int subchapter) =>
-      this.data!["sections"][chapter]["sections"][subchapter]["questions"].length;
-
+  subchaptersize(int chapter, int subchapter){
+    try{
+      return this.data!["sections"][chapter]["sections"][subchapter]["questions"].length;
+    }catch(e){
+      return this.data!["sections"][chapter]["questions"].length;
+    }
+  }
+    
 
   chaptersize(int chapter) {
+    try{
       return this.data!["sections"][chapter]["sections"].length;
+    }catch(e){
+      return this.data!["sections"][chapter].length;
+    }
+      
   }
 
   mainchaptersize() =>

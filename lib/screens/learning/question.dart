@@ -1,8 +1,9 @@
 
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/style/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+
 
 import '../../constants.dart';
 import '../formelsammlung.dart';
@@ -49,6 +50,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
       answerorder = orderlist(4,true);
 
+      refreshAnswers();
+
+    });
+    // print("chapterorder" + "$chapterorder");
+    super.initState();
+  }
+
+  refreshAnswers(){
+    setState(() {
       Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
       
 
@@ -56,16 +66,14 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       ShuffledAnswers.addAll(Answers);
       ShuffledAnswers.shuffle();
 
-
     });
-    // print("chapterorder" + "$chapterorder");
-    super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        backgroundColor: const Color.fromARGB(10, 0, 0, 0),
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -92,71 +100,83 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           ],
         ),
       ),
-      body: Stack(
-        children: [
-          ListView(
-            children: [
-              //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
-              Padding(
-                padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
-                child: Center(
-                  child: Text(
-                    "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 22
+      body: SafeArea(
+        child: Stack(
+          children: [
+            ListView(
+              children: [
+                //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
+                Padding(
+                  padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+                  child: Center(
+                    child: RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                        children: parseTextWithMath(
+                          "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                          TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 22
+                          ),
+                        )
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Divider(height: std_padding * 2,),
-              ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  addAutomaticKeepAlives: true,
-                  shrinkWrap: true,
-                  itemCount: answerorder.length,
-                  itemBuilder: (context, i){
-                    return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          RadioListTile(
-                            groupValue: questionradio,
-                            value: i,
-                            onChanged: (var value) {setState(() {questionradio = i;});},
-                            title: Text(
-                                "${ShuffledAnswers[i]}",
-                                style: TextStyle(
-                                  fontSize: 19
+                Divider(height: std_padding * 2,),
+                ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    addAutomaticKeepAlives: true,
+                    shrinkWrap: true,
+                    itemCount: answerorder.length,
+                    itemBuilder: (context, i){
+                      return Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            RadioListTile(
+                              groupValue: questionradio,
+                              value: i,
+                              onChanged: (var value) {setState(() {questionradio = i;});},
+                              title: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                  children: parseTextWithMath(
+                                    "${ShuffledAnswers[i]}",
+                                    TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 22
+                                    ),
+                                  )
                                 ),
+                              )
                             ),
-                          ),
-                        ]
-                    );
-                  }
-              ),
-              SizedBox(height: 60),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
-              child: ElevatedButton(
-                autofocus: false,
-                style: buttonstyle(Colors.blueAccent),
-                onPressed: questionradio == null ? null :  () =>  _questionhandler(ShuffledAnswers, Answers, questionradio),
-                child: Text("Überprüfen"),
+                          ]
+                      );
+                    }
+                ),
+                SizedBox(height: 60),
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                child: ElevatedButton(
+                  autofocus: false,
+                  style: buttonstyle(Colors.blueAccent),
+                  onPressed: questionradio == null ? null :  () =>  _questionhandler(ShuffledAnswers, Answers, questionradio),
+                  child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )
     );
   }
   _questionhandler(ShuffledAnswers, Answers, i){
-    print(ShuffledAnswers);
-    print(Answers);
+
     bool correct = ShuffledAnswers[i] == Answers[0];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
@@ -164,7 +184,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       _overlay(false);
     }
     else{
-      print("subchapter $subchapter , chapter $chapter , question ${questionorder[this.questionkey]}");
       _overlay(true, correctAnswer : Answers[0]);
     }
   }
@@ -177,61 +196,62 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         builder: (buildcontext){
           return  Container(
               color: wrong ? Colors.red.withOpacity(0.2) : Colors.green.withOpacity(0.1),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Material(
-                      child: Stack(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        children: [
-                          wrong
-                              ? Padding(
-                                  padding: const EdgeInsets.only(left: 8, right: 8),
-                                  child: SizedBox(
-                                  width: 700,
-                                  //height: MediaQuery.of(context).size.height / 2,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Colors.red.shade200,
-                                      ),
-                                      child: Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(top: 30, bottom: 80, right: 24, left: 24),
-                                          child: Text(
-                                              "$correctAnswer",
-                                              style: TextStyle(
-                                                backgroundColor: Colors.red.shade200,
-                                                color: Colors.white,
-                                                fontSize: 30
-                                              ),
-
-                                            ),
+                child: SafeArea(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Material(
+                        child: Stack(
+                          alignment: AlignmentDirectional.bottomCenter,
+                          children: [
+                            wrong
+                                ? Padding(
+                                    padding: const EdgeInsets.only(left: 0, right: 0),
+                                    child: SizedBox(
+                                    width: 700,
+                                    //height: MediaQuery.of(context).size.height / 2,
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.red.shade200,
                                         ),
-
-                                      )
-                                  )
+                                        child: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(top: 30, bottom: 80, right: 0, left: 0),
+                                            child: Text(
+                                                "$correctAnswer",
+                                                style: TextStyle(
+                                                  backgroundColor: Colors.red.shade200,
+                                                  color: Colors.white,
+                                                  fontSize: 30
+                                                ),
+                            
+                                              ),
+                                          ),
+                            
+                                        )
+                                    )
+                              ),
+                                )
+                                : Text(""),
+                            Padding(
+                              padding: EdgeInsets.only(left: 8, right: 8,),
+                              child: ElevatedButton(
+                                autofocus: false,
+                                style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
+                                onPressed: (){
+                                  overlayEntry.remove();
+                                  _nextquest();
+                                },
+                                child: Text("Weiter"),
+                              ),
                             ),
-                              )
-                              : Text(""),
-                          Padding(
-                            padding: EdgeInsets.only(left: 8, right: 8,),
-                            child: ElevatedButton(
-                              autofocus: false,
-                              style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
-                              onPressed: (){
-                                overlayEntry.remove();
-                                _nextquest();
-                              },
-                              child: Text("Weiter"),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10,)
-                  ],
+                      SizedBox(height: 10,)
+                    ],
+                  ),
                 )
           );
       },
@@ -246,6 +266,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         questionradio = null;
         questionkey += 1;
         answerorder = orderlist(4,true);
+        refreshAnswers();
       });
     }catch(e){
       try{
@@ -255,9 +276,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             subchapterkey += 1;
             questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
             questionkey = 0;
+            refreshAnswers();
           });
       }catch(e){
-        print("\n Failed with $e");
         Navigator.of(context).pop();
         Navigator.push(
           context,
@@ -275,4 +296,26 @@ orderlist(var elements, bool random){
 
   if(!random) return orderlist;
   else orderlist.shuffle(); return orderlist;
+}
+
+
+List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
+  List<WidgetSpan> widgets = [];
+  List<String> parts = input.split('\$');
+
+  for (int i = 0; i < parts.length; i++) {
+    if (i % 2 == 0) {
+      widgets.add(WidgetSpan(
+          child: Text(parts[i], style: Textstyle,),
+          alignment: PlaceholderAlignment.middle,
+      ));
+    } else {
+      widgets.add(WidgetSpan(
+        child: Math.tex(parts[i], textStyle: Textstyle, settings: TexParserSettings(maxExpand: 100 )),
+        alignment: PlaceholderAlignment.middle,
+      ));
+    }
+  }
+
+  return widgets;
 }
