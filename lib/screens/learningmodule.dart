@@ -39,11 +39,11 @@ class _LearningmoduleState extends State<Learningmodule> {
             body: PageView.builder(
               itemBuilder: (content, index){
                 if(index == 0){
-                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 0);
+                  return chapterbuilder(context, 'assets/questions/Questions.json', 0);
                 }else if(index == 1){
-                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 1);
+                  return chapterbuilder(context, 'assets/questions/Questions.json', 1);
                 }else{
-                  return chapterbuilder(context, 'assets/questions/E_Questions.json', 2);
+                  return chapterbuilder(context, 'assets/questions/Questions.json', 2);
                 }
               },
               itemCount: 3,

@@ -3,6 +3,7 @@ import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 import '../../constants.dart';
@@ -33,6 +34,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   final context, chapter;
 
   late Json json;
+  bool imageQuestion = false; 
   bool correct = false;
 
   _Questionstate(this.context, this.subchapter,this.chapter);
@@ -59,9 +61,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   refreshAnswers(){
     setState(() {
-      Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
+      imageQuestion = json.imageQuestion(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+      if(imageQuestion){
+        Answers = json.imageList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+      }else{
+        Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
+      }
       
-
       ShuffledAnswers = [];
       ShuffledAnswers.addAll(Answers);
       ShuffledAnswers.shuffle();
@@ -123,38 +129,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null ?
+                SvgPicture.asset("assets/svgs/${json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!}.svg"): SizedBox(),
                 Divider(height: std_padding * 2,),
-                ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    addAutomaticKeepAlives: true,
-                    shrinkWrap: true,
-                    itemCount: answerorder.length,
-                    itemBuilder: (context, i){
-                      return Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            RadioListTile(
-                              groupValue: questionradio,
-                              value: i,
-                              onChanged: (var value) {setState(() {questionradio = i;});},
-                              title: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                  children: parseTextWithMath(
-                                    "${ShuffledAnswers[i]}",
-                                    TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 22
-                                    ),
-                                  )
-                                ),
-                              )
-                            ),
-                          ]
-                      );
-                    }
-                ),
+                imageQuestion 
+                ? radioSvgListBuilder() 
+                : radioTextListBuilder(),
                 SizedBox(height: 60),
               ],
             ),
@@ -173,6 +153,62 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           ],
         ),
       )
+    );
+  }
+ListView radioSvgListBuilder() {
+    return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        addAutomaticKeepAlives: true,
+        shrinkWrap: true,
+        itemCount: answerorder.length,
+        itemBuilder: (context, i){
+          return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                RadioListTile(
+                  groupValue: questionradio,
+                  value: i,
+                  onChanged: (var value) {setState(() {questionradio = i;});},
+                  title: SvgPicture.asset("assets/svgs/${Answers[i]}.svg"),
+                ),
+              ]
+          );
+        }
+    );
+  }
+  
+  ListView radioTextListBuilder() {
+    return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        addAutomaticKeepAlives: true,
+        shrinkWrap: true,
+        itemCount: answerorder.length,
+        itemBuilder: (context, i){
+          return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                RadioListTile(
+                  groupValue: questionradio,
+                  value: i,
+                  onChanged: (var value) {setState(() {questionradio = i;});},
+                  title: RichText(
+                    textAlign: TextAlign.left,
+                    text: TextSpan(
+                      children: parseTextWithMath(
+                        "${ShuffledAnswers[i]}",
+                        TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 22
+                        ),
+                      )
+                    ),
+                  )
+                ),
+              ]
+          );
+        }
     );
   }
   _questionhandler(ShuffledAnswers, Answers, i){

@@ -40,10 +40,10 @@ class Json{
   String? questionimage(int chapter, var subchapter, int question){
     try{
       return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_question"];
-    }catch(e){
+    }on NoSuchMethodError catch(_){
       return this.data!["sections"][chapter]["questions"][question]["picture_question"];
-
     }
+
   }
 
   questionid(var chapter, var subchapter, var question){
@@ -51,6 +51,20 @@ class Json{
       return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
     }catch(e){
       return this.data!["sections"][chapter]["questions"][question]["number"];
+    }
+  }
+
+  bool imageQuestion(int chapter, var subchapter, int question){
+    try{
+      if(this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_a"] != null){
+        return true;
+      }
+      return false;
+    }catch(_){
+      if(this.data!["sections"][chapter]["questions"][question]["picture_a"] != null){
+        return true;
+      }
+      return false;
     }
   }
 
@@ -63,7 +77,17 @@ class Json{
       return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
     }
   }
-  
+
+  List<String> imageList(int chapter, var subchapter, int question){
+    try{
+      Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
+      return [answerSection["picture_a"], answerSection["picture_b"], answerSection["picture_c"], answerSection["picture_d"]];
+    }catch(e){
+      Map answerSection = this.data!["sections"][chapter]["questions"][question];
+      return [answerSection["picture_a"], answerSection["picture_b"], answerSection["picture_c"], answerSection["picture_d"]];
+    }
+  }
+
   subchaptersize(int chapter, int subchapter){
     try{
       return this.data!["sections"][chapter]["sections"][subchapter]["questions"].length;
