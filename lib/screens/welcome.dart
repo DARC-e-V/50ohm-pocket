@@ -1,12 +1,206 @@
 
+import 'package:amateurfunktrainer/coustom_libs/database.dart';
+import 'package:amateurfunktrainer/screens/learningmodule.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class Welcome extends StatelessWidget{
+
+class Welcome extends StatefulWidget{
+
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [Text("hi")],
-    );
-  }
-  
+      bool welcomePage = DatabaseWidget.of(context).settings_database.containsKey("welcomePage");
+      if(welcomePage) return Learningmodule();
+      final PageController _pageController = PageController();
+      return Scaffold(
+        body: PageView.builder(
+          itemCount: 2,
+          controller: _pageController,
+          itemBuilder: (content, index){
+            if(index == 0){
+              return SafeArea(
+                bottom: true,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: -20,
+                      top: 120,
+                      child: SvgPicture.asset(
+                        "assets/welcome/Icons.svg",
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.topCenter,
+                        clipBehavior: Clip.hardEdge,
+                        ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Wilkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
+                              Text(
+                                "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
+                                style: TextStyle(fontSize: 20, color: Color(0xFF5E5E5E), fontWeight: FontWeight.w600)
+                              ),
+                            ] 
+                          ),
+                        ),
+                        Center(
+                          child: InkWell(
+                            onTap: () {
+                              _pageController.animateToPage(1, duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+                            },
+                            child: Container(
+                              width: 364,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF00A0E3),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Start',
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }else if(index == 1){
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Womit möchtest du beginnen?", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xff47ABE8),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Klasse N", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xff00008B),
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "Neu",
+                                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
+                                            ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        "Entdecke die neue Amateurfunkklasse N – mit einem mühelosen Einstieg, Fokus auf Selbstbau und exklusivem Zugang zur Kurzwelle. Tauche ein in die Welt des Amateurfunks und erlebe Kommunikation auf eine ganz neue, selbstgestaltete Art!",
+                                        style: TextStyle(fontSize: 17),
+                                        )),
+                                    Icon(Icons.arrow_forward_ios)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xffFE756C),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Klasse E", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                        style: TextStyle(fontSize: 17),
+                                        )),
+                                    Icon(Icons.arrow_forward_ios)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xff3BB583),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                          style: TextStyle(fontSize: 17),
+                                          )),
+                                      Icon(Icons.arrow_forward_ios)
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ) 
+                    ],
+                  ),
+                ),
+              );
+            }
+        }),
+      );
+    }
 } 

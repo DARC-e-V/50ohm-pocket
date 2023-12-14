@@ -1,5 +1,6 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/learningmodule.dart';
+import 'package:amateurfunktrainer/screens/welcome.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +21,7 @@ void main() {
                 darkTheme: darkmode(),
                 themeMode: ThemeMode.system,
                 title: '50ohm-pocket',
-                initialRoute: "/",
-                routes: {
-                  "/" : (context) => Learningmodule(),
-                  "/examsim" : (context) => Learnprog(),
-                  "/profile" : (context) => Learnprog(),
-                },
+                home: Welcome(),
               ),
             );
           if(snapshot.hasError) return Text("Error");
