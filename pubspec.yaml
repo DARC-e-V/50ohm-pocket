@@ -36,11 +36,7 @@ dependencies:
   settings_ui: ^2.0.2
   #pdfx: ^2.5.0
   flutter_svg: ^2.0.9
-  pdfx: 
-    git:
-      url: 'https://github.com/ScerIO/packages.flutter'
-      ref: '4be9de9ffed5398fd7d5f44bbb07dcd3d3f1711b'
-      path: packages/pdfx
+  flutter_pdfview: ^1.2.7
   flutter_math_fork:
     git:
       url: https://github.com/simpleclub-extended/flutter_math_fork

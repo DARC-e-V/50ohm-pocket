@@ -130,9 +130,7 @@ void handleStart(List<int> klasse, BuildContext context){
   DatabaseWidget.of(context).settings_database.put("Klasse", klasse);
   Navigator.of(context).pop();
   Navigator.of(context).pop();
-
   Navigator.of(context).pushNamed("/learn");
-  
 }
 
 
