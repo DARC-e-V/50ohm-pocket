@@ -56,7 +56,7 @@ class _WelcomeState extends State<Welcome> {
                         Center(
                           child: InkWell(
                             onTap: () {
-                              _pageController.animateToPage(1, duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+                              _pageController.animateToPage(1, duration: Duration(milliseconds: 200), curve: Curves.linear);
                             },
                             child: Container(
                               width: 364,
@@ -92,86 +92,67 @@ class _WelcomeState extends State<Welcome> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text("Womit möchtest du beginnen?", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xff47ABE8),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Klasse N", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xff00008B),
-                                        borderRadius: BorderRadius.circular(15.0),
-                                      ),
-                                      child: Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Neu",
-                                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
-                                            ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        "Entdecke die neue Amateurfunkklasse N – mit einem mühelosen Einstieg, Fokus auf Selbstbau und exklusivem Zugang zur Kurzwelle. Tauche ein in die Welt des Amateurfunks und erlebe Kommunikation auf eine ganz neue, selbstgestaltete Art!",
-                                        style: TextStyle(fontSize: 17),
-                                        )),
-                                    Icon(Icons.arrow_forward_ios)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xffFE756C),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Klasse E", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
-                                        style: TextStyle(fontSize: 17),
-                                        )),
-                                    Icon(Icons.arrow_forward_ios)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
+                      InkWell(
+                        onTap: (){
+                          handleStart([1], context);
+                        },
+                        child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff3BB583),
+                              color: Color(0xff47ABE8),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Klasse N", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff00008B),
+                                          borderRadius: BorderRadius.circular(15.0),
+                                        ),
+                                        child: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Neu",
+                                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
+                                              ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          "Entdecke die neue Amateurfunkklasse N – mit einem mühelosen Einstieg, Fokus auf Selbstbau und exklusivem Zugang zur Kurzwelle. Tauche ein in die Welt des Amateurfunks und erlebe Kommunikation auf eine ganz neue, selbstgestaltete Art!",
+                                          style: TextStyle(fontSize: 17),
+                                          )),
+                                      Icon(Icons.arrow_forward_ios)
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: (){
+                          handleStart([2], context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffFE756C),
                               borderRadius: BorderRadius.circular(15.0),
                             ),
                             child: Padding(
@@ -179,7 +160,7 @@ class _WelcomeState extends State<Welcome> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                  Text("Klasse E", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
                                   Row(
                                     children: [
                                       Expanded(
@@ -194,7 +175,41 @@ class _WelcomeState extends State<Welcome> {
                               ),
                             ),
                           ),
-                        ) 
+                        ),
+                      ),
+                      InkWell(
+                        onTap: (){
+                          handleStart([3], context);
+                        },
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xff3BB583),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(18.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                            style: TextStyle(fontSize: 17),
+                                            )),
+                                        Icon(Icons.arrow_forward_ios)
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                      ) 
                     ],
                   ),
                 ),
@@ -204,3 +219,11 @@ class _WelcomeState extends State<Welcome> {
       );
     }
 } 
+
+void handleStart(List<int> klasse, BuildContext context){
+  DatabaseWidget.of(context).settings_database.put("welcomePage", true);
+  DatabaseWidget.of(context).settings_database.put("Klasse", klasse);
+  Navigator.of(context).pop();
+  Navigator.of(context).pushNamed("/learn");
+  
+}

@@ -2,6 +2,7 @@ import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/settings.dart';
 import 'package:amateurfunktrainer/widgets/loadcontent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'formelsammlung.dart';
 
@@ -19,6 +20,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: SvgPicture.asset("/assets/ohm2.svg"),
           actions: [
             PopupMenuButton(itemBuilder: (context) => [
               PopupMenuItem(value: 1, child: Text("Formelsammlung")),
@@ -27,11 +29,6 @@ class _LearningmoduleState extends State<Learningmodule> {
               onSelected: (item) => SelectedItem(context, item!),
             ),
           ],
-        ),//Color(0xff253478),),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child: const Icon(Icons.shuffle_rounded, size: 30,),
-          backgroundColor: Colors.amber,
         ),
         body: DefaultTabController(
           length: 3,

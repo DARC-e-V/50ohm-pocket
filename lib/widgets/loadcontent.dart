@@ -1,3 +1,4 @@
+import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:flutter/material.dart';
 
@@ -5,8 +6,10 @@ import '../screens/learning/chapterpage.dart';
 import '../constants.dart';
 
 chapterbuilder(var context, var path, var mainchapter) {
+  List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
+  print(klassen);
   return FutureBuilder(
-      future: Json(null).load(path, mainchapter),
+      future: Json(null).load(path, mainchapter, context),
       builder: (context, snapshot){
         if (snapshot.hasData) {
           return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>), mainchapter);

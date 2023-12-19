@@ -6,7 +6,7 @@ import '../constants.dart';
 lightmode() => ThemeData(
                 primaryColorLight: Color(0xFFE1E6FF),
                 brightness: Brightness.light,
-                primarySwatch: Colors.indigo,
+                primaryColor: main_col,
                 textTheme: TextTheme(
                     headline5: TextStyle(color: Colors.white, fontWeight: FontWeight.w500,)
                 )
@@ -15,7 +15,7 @@ lightmode() => ThemeData(
 darkmode() => ThemeData(
                 primaryColorDark: Color(0xFF1C1F44),
                 brightness: Brightness.dark,
-                primarySwatch: Colors.lightBlue,
+                primaryColor: main_col,
                 cardColor: main_col,
               );
 
