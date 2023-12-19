@@ -18,18 +18,7 @@ class _settingsstate extends State<Settingspage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar( 
-        title: Row(
-          children: [
-            IconButton(
-                onPressed: (){
-                  Navigator.of(context).popAndPushNamed("/");
-                },
-                icon: const Icon(Icons.arrow_back_rounded)
-            ),
-            SizedBox(width: 5,),
-            Text("Einstellungen"),
-          ],
-        ),
+        title: Text("Einstellungen"),
 
       ),
       body: SettingsList(
@@ -40,7 +29,7 @@ class _settingsstate extends State<Settingspage> {
             tiles: <SettingsTile>[
               SettingsTile.navigation(
                 title: Text("Zu trainierende Fragen"),
-                description: Text("Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast kannst du hier einzelne Teile abwählen."),
+                description: Text("Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast, kannst du hier einzelne Teile abwählen."),
                 trailing: Icon(Icons.keyboard_arrow_right), 
                 onPressed: (BuildContext context){
                   DatabaseWidget.of(context).settings_database.delete("welcomePage");

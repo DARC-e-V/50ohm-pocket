@@ -53,7 +53,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   SelectedItem(BuildContext context, Object item) {
     switch(item){
       case 0:
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Settingspage()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
