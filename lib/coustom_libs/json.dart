@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
@@ -7,10 +8,44 @@ class Json{
   Map<String, dynamic>? data;
   Json(this.data);
 
-  Future load(final questionpath, mainchapter) async {
+  Future<Map<String, dynamic>?> load(final String questionpath, int mainchapter, BuildContext context) async {
     var rawdata = await rootBundle.loadString(questionpath);
-    this.data = jsonDecode(rawdata);
-    return this.data!["sections"][mainchapter];
+    Map<String, dynamic>? importedData  = jsonDecode(rawdata);
+    List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
+    //List<int> klassen = [3];
+    if(importedData != Null){
+      this.data = importedData!["sections"][mainchapter];
+      if(mainchapter == 0){
+        for(var i in this.data!["sections"]){
+          for(var y in i["sections"]){
+            (y["questions"] as List).removeWhere(
+              (z){
+                for(int klasse in klassen){
+                  if(z["class"] != klasse.toString()){
+                    return true;
+                  }else{
+                    return false;
+                  }
+                }
+                return false;
+              }
+            );
+          }
+        }
+        (this.data!["sections"] as List).removeWhere(
+          (element){
+            for(var y in element["sections"]){
+              if((y["questions"] as List).isEmpty){
+                return true;
+              }
+            }
+            return false;
+          }
+        );
+      }
+      return this.data;
+    }
+    
   }
 
   main_chapter_name() =>

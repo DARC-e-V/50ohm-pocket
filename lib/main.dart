@@ -22,6 +22,9 @@ void main() {
                 themeMode: ThemeMode.system,
                 title: '50ohm-pocket',
                 home: Welcome(),
+                routes:{
+                  '/learn': (context) => Learningmodule(),
+                },
               ),
             );
           if(snapshot.hasError) return Text("Error");

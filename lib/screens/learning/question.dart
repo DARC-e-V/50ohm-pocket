@@ -190,6 +190,7 @@ ListView radioSvgListBuilder() {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 RadioListTile(
+                  activeColor: Colors.blue,
                   groupValue: questionradio,
                   value: i,
                   onChanged: (var value) {setState(() {questionradio = i;});},
