@@ -24,6 +24,7 @@ void main() {
                 home: Welcome(),
                 routes:{
                   '/learn': (context) => Learningmodule(),
+                  '/welcome': (context) => Welcome(),
                 },
               ),
             );

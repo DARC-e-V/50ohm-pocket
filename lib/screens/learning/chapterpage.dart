@@ -46,39 +46,33 @@ Widget chapterwidget(var json, var s, var context){
     child: Container(
         margin: json.chaptersize(currentmainchapter) == 0 ? EdgeInsets.all(0) : EdgeInsets.only(top: std_padding),
         decoration: BoxDecoration(
-          color: json.chaptersize(currentmainchapter) == 0 ? Colors.indigoAccent.withOpacity(0) : Colors.indigoAccent.withOpacity(0.2),
+          color: json.chaptersize(currentmainchapter) == 0 ? main_col.withOpacity(0.4) : main_col.withOpacity(0.4),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Padding(
             padding: EdgeInsets.all(std_padding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // Chaptername displayed in every Chapter
-                Row(
-                    children: [
-                      Expanded(
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.indigoAccent[100],
-                            shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),                          ),
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              json.chapter_names(currentmainchapter),
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                          ),
-                        ),
-                      )
-                    ]
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: main_col.withOpacity(0.7),
+                    shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),),
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      json.chapter_names(currentmainchapter),
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
                 ),
                   json.chaptersize(currentmainchapter) == 0 
                     ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
-                    : Text(""),
+                    : SizedBox(height: 8,),
 
                 chapterLesson(currentmainchapter, json),
               ],
@@ -101,7 +95,7 @@ Widget chapterLesson(var chapter, var json) => ListView.builder(
         margin: EdgeInsets.only(top: 10),
         child: Column(
           children: [
-            LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter)),
+            LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
             InkWell(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),

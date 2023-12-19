@@ -20,7 +20,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: SvgPicture.asset("/assets/ohm2.svg"),
+          title: SvgPicture.asset("assets/svgs/ohm2.svg"),
           actions: [
             PopupMenuButton(itemBuilder: (context) => [
               PopupMenuItem(value: 1, child: Text("Formelsammlung")),

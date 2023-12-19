@@ -97,10 +97,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   );
                   },
                 ),
-                SizedBox(width: 5,),
-                IconButton(icon: Icon(Icons.flag), onPressed: () {
-
-                },),
               ],
             )
           ],
@@ -254,15 +250,20 @@ ListView radioSvgListBuilder() {
                                         ),
                                         child: Center(
                                           child: Padding(
-                                            padding: const EdgeInsets.only(top: 30, bottom: 80, right: 0, left: 0),
-                                            child: Text(
-                                                "$correctAnswer",
-                                                style: TextStyle(
-                                                  backgroundColor: Colors.red.shade200,
-                                                  color: Colors.white,
-                                                  fontSize: 30
+                                            padding: const EdgeInsets.only(top: 30, bottom: 80, right: 20, left: 20),
+                                            child: 
+                                              RichText(
+                                                textAlign: TextAlign.left,
+                                                text: TextSpan(
+                                                  children: parseTextWithMath(
+                                                    "$correctAnswer",
+                                                    TextStyle(
+                                                    backgroundColor: Colors.red.shade200,
+                                                    color: Colors.white,
+                                                    fontSize: 30
+                                                    ),
+                                                  )
                                                 ),
-                            
                                               ),
                                           ),
                             
@@ -270,7 +271,7 @@ ListView radioSvgListBuilder() {
                                     )
                               ),
                                 )
-                                : Text(""),
+                                : SizedBox(height: 20),
                             Padding(
                               padding: EdgeInsets.only(left: 8, right: 8,),
                               child: ElevatedButton(
@@ -280,7 +281,7 @@ ListView radioSvgListBuilder() {
                                   overlayEntry.remove();
                                   _nextquest();
                                 },
-                                child: Text("Weiter"),
+                                child: Text("Weiter", style: TextStyle(color: Colors.black),),
                               ),
                             ),
                           ],

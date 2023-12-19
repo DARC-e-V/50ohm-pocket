@@ -36,34 +36,16 @@ class _settingsstate extends State<Settingspage> {
         sections: [
           SettingsSection(
             margin: EdgeInsetsDirectional.all(8.0),
-            title: Text('Lerneinstellungen'),
+            title: Text('Einstellungen zu Fragen'),
             tiles: <SettingsTile>[
-              SettingsTile.switchTile(
-                onToggle: (value) {
-                  if(value == false){
-                    DatabaseWidget.of(context).settings_database.delete("klasse_a");
-                  }else{
-                    DatabaseWidget.of(context).settings_database.put("klasse_a", value);
-                  }
-                  setState(() {});
+              SettingsTile.navigation(
+                title: Text("Zu trainierende Fragen"),
+                description: Text("Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast kannst du hier einzelne Teile abwählen."),
+                trailing: Icon(Icons.keyboard_arrow_right), 
+                onPressed: (BuildContext context){
+                  DatabaseWidget.of(context).settings_database.delete("welcomePage");
+                  Navigator.of(context).popAndPushNamed("/welcome");
                 },
-                initialValue: DatabaseWidget.of(context).settings_database.containsKey("klasse_a"),
-                leading: Icon(Icons.school_sharp),
-                title: Text('Klasse A'),
-              ),
-              SettingsTile.switchTile(
-                onToggle: (value) {
-                  if(value == false){
-                    DatabaseWidget.of(context).settings_database.delete("betrieb_vorschriften");
-                  }else{
-                    DatabaseWidget.of(context).settings_database.put("betrieb_vorschriften", true);
-                  }
-
-                  setState(() {});
-                },
-                initialValue: DatabaseWidget.of(context).settings_database.containsKey("betrieb_vorschriften"),
-                leading: Icon(Icons.radio),
-                title: Text('Betriebstechnik und Vorschriften verstecken'),
               ),
             ],
           ),
