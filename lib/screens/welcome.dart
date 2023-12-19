@@ -1,6 +1,6 @@
-
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
 import 'package:amateurfunktrainer/screens/learningmodule.dart';
+import 'package:amateurfunktrainer/screens/selectClass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,11 +12,18 @@ class Welcome extends StatefulWidget{
 }
 
 class _WelcomeState extends State<Welcome> {
+  var _pageController;   
+
   @override
   Widget build(BuildContext context) {
+      if(DatabaseWidget.of(context).settings_database.containsKey("Klasse")){
+        _pageController = PageController(initialPage: 1);
+      } else{
+        _pageController = PageController(initialPage: 0); 
+      }
+
       bool welcomePage = DatabaseWidget.of(context).settings_database.containsKey("welcomePage");
       if(welcomePage) return Learningmodule();
-      final PageController _pageController = PageController();
       return Scaffold(
         body: PageView.builder(
           itemCount: 2,
@@ -92,6 +99,14 @@ class _WelcomeState extends State<Welcome> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text("Womit möchtest du beginnen?", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                       ),
+                      TextButton(onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => selectClass()),
+                          );
+                      },
+                        child: Text("Ich habe schon eine Prüfung abgelegt.", style: TextStyle(fontSize: 18),)
+                      ),
                       InkWell(
                         onTap: (){
                           handleStart([1], context);
@@ -146,7 +161,7 @@ class _WelcomeState extends State<Welcome> {
                       ),
                       InkWell(
                         onTap: (){
-                          handleStart([2], context);
+                          handleStart([1, 2], context);
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -179,7 +194,7 @@ class _WelcomeState extends State<Welcome> {
                       ),
                       InkWell(
                         onTap: (){
-                          handleStart([3], context);
+                          handleStart([1, 2, 3], context);
                         },
                         child: Padding(
                             padding: const EdgeInsets.all(8.0),
