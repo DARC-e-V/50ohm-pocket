@@ -38,7 +38,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
-        versionName 50ohm-pocket
+        versionName "50ohm-pocket"
         multiDexEnabled true
 
     }
