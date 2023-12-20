@@ -238,7 +238,6 @@ class _WelcomeState extends State<Welcome> {
 void handleStart(List<int> klasse, BuildContext context){
   DatabaseWidget.of(context).settings_database.put("welcomePage", true);
   DatabaseWidget.of(context).settings_database.put("Klasse", klasse);
-  Navigator.of(context).pop();
-  Navigator.of(context).pushNamed("/learn");
+  Navigator.pushNamedAndRemoveUntil(context, "/learn", (r) => false);
   
 }
