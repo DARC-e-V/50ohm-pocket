@@ -26,6 +26,7 @@ void main() {
                   '/learn': (context) => Learningmodule(),
                   '/welcome': (context) => Welcome(),
                 },
+                debugShowCheckedModeBanner: false,
               ),
             );
           if(snapshot.hasError) return Text("Error");
