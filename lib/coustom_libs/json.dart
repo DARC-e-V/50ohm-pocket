@@ -21,13 +21,11 @@ class Json{
             (y["questions"] as List).removeWhere(
               (z){
                 for(int klasse in klassen){
-                  if(z["class"] != klasse.toString()){
-                    return true;
-                  }else{
+                  if(z["class"] == klasse.toString()){
                     return false;
                   }
                 }
-                return false;
+                return true;
               }
             );
           }
