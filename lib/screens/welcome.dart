@@ -52,7 +52,7 @@ class _WelcomeState extends State<Welcome> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Wilkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
+                              Text("Willkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
                               Text(
                                 "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
                                 style: TextStyle(fontSize: 20, color: Color(0xFF5E5E5E), fontWeight: FontWeight.w600)
