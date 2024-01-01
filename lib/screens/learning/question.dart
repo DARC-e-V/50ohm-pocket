@@ -79,7 +79,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(10, 0, 0, 0),
-        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -125,8 +124,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null ?
-                SvgPicture.asset("assets/svgs/${json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!}.svg"): SizedBox(),
+                json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null 
+                ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
+                : SizedBox(),
                 Divider(height: std_padding * 2,),
                 imageQuestion 
                 ? radioSvgListBuilder() 
@@ -151,6 +151,25 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       )
     );
   }
+
+  SvgPicture questionImage(BuildContext context, String url) {
+    return SvgPicture.asset(
+      "assets/svgs/$url.svg",
+      colorFilter: MediaQuery.of(context).platformBrightness == Brightness.dark 
+      ? ColorFilter.matrix(<double>[
+          -1.0, 0.0, 0.0, 0.0, 255.0, //
+          0.0, -1.0, 0.0, 0.0, 255.0, //
+          0.0, 0.0, -1.0, 0.0, 255.0, //
+          0.0, 0.0, 0.0, 1.0, 0.0, //
+        ])
+      : ColorFilter.matrix(<double>[
+          1.0, 0.0, 0.0, 0.0, 0.0, //
+          0.0, 1.0, 0.0, 0.0, 0.0, //
+          0.0, 0.0, 1.0, 0.0, 0.0, //
+          0.0, 0.0, 0.0, 1.0, 0.0, //
+        ]),
+      );
+  }
 ListView radioSvgListBuilder() {
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
@@ -166,7 +185,7 @@ ListView radioSvgListBuilder() {
                   groupValue: questionradio,
                   value: i,
                   onChanged: (var value) {setState(() {questionradio = i;});},
-                  title: SvgPicture.asset("assets/svgs/${Answers[i]}.svg"),
+                  title: questionImage(context, Answers[i]),
                 ),
               ]
           );
