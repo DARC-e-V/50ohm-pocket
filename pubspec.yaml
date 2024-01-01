@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+2
+version: 1.0.0+4
 
 environment:
   sdk: ">3.0.0"
@@ -29,7 +29,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   # cupertino_icons: ^1.0.2
   json_annotation: ^4.8.1
-  audio_session: ^0.1.17
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   fl_chart: ^0.63.0
@@ -49,10 +48,11 @@ dev_dependencies:
   flutter_launcher_icons: "^0.9.1"
   flutter_test:
     sdk: flutter
+
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icons/icon_update.png"
+  image_path: "icon.png"
   remove_alpha_ios: true
 # ~/git/flutter/bin/flutter pub run flutter_launcher_icons:main
 
