@@ -1,6 +1,6 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/screens/learningmodule.dart';
-import 'package:amateurfunktrainer/screens/selectClass.dart';
+import 'package:amateurfunktrainer/screens/learn.dart';
+import 'package:amateurfunktrainer/screens/selectLearningPath.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -239,5 +239,4 @@ void handleStart(List<int> klasse, BuildContext context){
   DatabaseWidget.of(context).settings_database.put("welcomePage", true);
   DatabaseWidget.of(context).settings_database.put("Klasse", klasse);
   Navigator.pushNamedAndRemoveUntil(context, "/learn", (r) => false);
-  
 }

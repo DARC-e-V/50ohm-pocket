@@ -70,7 +70,10 @@ class _finishstate extends State<Finish>{
                 child: ElevatedButton(
                   style: buttonstyle(Colors.lightGreenAccent),
                   child: Text("Abschließen"),
-                  onPressed: (){Navigator.of(context).pop();},
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(true);
+                    },
                   ),
               ),
             )
