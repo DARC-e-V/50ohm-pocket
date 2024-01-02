@@ -12,7 +12,7 @@ class Json{
     var rawdata = await rootBundle.loadString(questionpath);
     Map<String, dynamic>? importedData  = jsonDecode(rawdata);
     List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
-    //List<int> klassen = [3];
+
     if(importedData != Null){
       this.data = importedData!["sections"][mainchapter];
       if(mainchapter == 0){

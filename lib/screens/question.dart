@@ -1,15 +1,12 @@
-
+import 'package:amateurfunktrainer/constants.dart';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
+import 'package:amateurfunktrainer/screens/completeLesson.dart';
+import 'package:amateurfunktrainer/screens/formelsammlung.dart';
+import 'package:amateurfunktrainer/screens/learn.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-
-import '../../constants.dart';
-import '../formelsammlung.dart';
-import 'chapterpage.dart';
-import 'finish.dart';
 
 
 class Question extends StatefulWidget {
@@ -336,7 +333,6 @@ ListView radioSvgListBuilder() {
             refreshAnswers();
           });
       }catch(e){
-        Navigator.of(context).pop();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),

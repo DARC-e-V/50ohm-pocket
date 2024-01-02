@@ -33,9 +33,12 @@ dependencies:
   hive_flutter: ^1.1.0
   fl_chart: ^0.63.0
   settings_ui: ^2.0.2
-  #pdfx: ^2.5.0
+  pdfx:
+    git:
+      url: https://github.com/ScerIO/packages.flutter
+      ref: 8b105a7dfc6b90220c1d79fcb805fb764cab00c5
+      path: packages/pdfx
   flutter_svg: ^2.0.9
-  flutter_pdfview: ^1.2.7
   flutter_math_fork:
     git:
       url: https://github.com/simpleclub-extended/flutter_math_fork
