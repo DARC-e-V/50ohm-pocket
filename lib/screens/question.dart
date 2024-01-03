@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+enum QuestionState{
+  answering, 
+  evaluating
+}
 
 class Question extends StatefulWidget {
 
@@ -21,9 +25,12 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var answerorder, questionorder, questreslist, pdfController, questionradio;
+  var questionorder, questreslist, pdfController, questionradio;
   
-  
+  QuestionState state = QuestionState.answering;
+
+  int highlighting = -1;
+
   late int questionkey, subchapterkey;
   late List<String> ShuffledAnswers, Answers;
   
@@ -47,8 +54,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       if(subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
-      answerorder = orderlist(4,true);
-
       refreshAnswers();
 
     });
@@ -69,6 +74,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       ShuffledAnswers.addAll(Answers);
       ShuffledAnswers.shuffle();
 
+      highlighting = -1;
+
+      state = QuestionState.answering;
     });
   }
   @override
@@ -128,7 +136,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 imageQuestion 
                 ? radioSvgListBuilder() 
                 : radioTextListBuilder(),
-                SizedBox(height: 60),
+                SizedBox(height: 200),
               ],
             ),
             Align(
@@ -137,8 +145,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                 child: ElevatedButton(
                   autofocus: false,
-                  style: buttonstyle(Colors.blueAccent),
-                  onPressed: questionradio == null ? null :  () =>  _questionhandler(ShuffledAnswers, Answers, questionradio),
+                  style: buttonstyle(main_col),
+                  onPressed: () {
+                    if(state == QuestionState.answering){
+                      _questionhandler(ShuffledAnswers, Answers, questionradio);
+                    }
+                  },
                   child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
                 ),
               ),
@@ -154,16 +166,16 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       "assets/svgs/$url.svg",
       colorFilter: MediaQuery.of(context).platformBrightness == Brightness.dark 
       ? ColorFilter.matrix(<double>[
-          -1.0, 0.0, 0.0, 0.0, 255.0, //
-          0.0, -1.0, 0.0, 0.0, 255.0, //
-          0.0, 0.0, -1.0, 0.0, 255.0, //
-          0.0, 0.0, 0.0, 1.0, 0.0, //
+          -1.0, 0.0, 0.0, 0.0, 255.0, 
+          0.0, -1.0, 0.0, 0.0, 255.0, 
+          0.0, 0.0, -1.0, 0.0, 255.0, 
+          0.0, 0.0, 0.0, 1.0, 0.0, 
         ])
       : ColorFilter.matrix(<double>[
-          1.0, 0.0, 0.0, 0.0, 0.0, //
-          0.0, 1.0, 0.0, 0.0, 0.0, //
-          0.0, 0.0, 1.0, 0.0, 0.0, //
-          0.0, 0.0, 0.0, 1.0, 0.0, //
+          1.0, 0.0, 0.0, 0.0, 0.0, 
+          0.0, 1.0, 0.0, 0.0, 0.0, 
+          0.0, 0.0, 1.0, 0.0, 0.0, 
+          0.0, 0.0, 0.0, 1.0, 0.0, 
         ]),
       );
   }
@@ -172,19 +184,28 @@ ListView radioSvgListBuilder() {
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
         shrinkWrap: true,
-        itemCount: answerorder.length,
+        itemCount: 4,
         itemBuilder: (context, i){
-          return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RadioListTile(
-                  groupValue: questionradio,
-                  value: i,
-                  onChanged: (var value) {setState(() {questionradio = i;});},
-                  title: questionImage(context, Answers[i]),
-                ),
-              ]
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: i == highlighting ? Colors.blue.shade100  : Colors.transparent,
+            ),
+            child: RadioListTile(
+              fillColor: MaterialStateColor.resolveWith((states) => main_col),
+              activeColor: main_col,
+              enableFeedback: true,
+              groupValue: questionradio,
+              value: i,
+              onChanged: (var value) {
+                if(state == QuestionState.answering){
+                  setState(() {
+                    questionradio = i;
+                  });
+                }
+              },
+              title: questionImage(context, ShuffledAnswers[i]),
+            ),
           );
         }
     );
@@ -195,29 +216,43 @@ ListView radioSvgListBuilder() {
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
         shrinkWrap: true,
-        itemCount: answerorder.length,
+        itemCount: 4,
         itemBuilder: (context, i){
           return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                RadioListTile(
-                  activeColor: Colors.blue,
-                  groupValue: questionradio,
-                  value: i,
-                  onChanged: (var value) {setState(() {questionradio = i;});},
-                  title: RichText(
-                    textAlign: TextAlign.left,
-                    text: TextSpan(
-                      children: parseTextWithMath(
-                        "${ShuffledAnswers[i]}",
-                        TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 22
-                        ),
-                      )
-                    ),
-                  )
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: i == highlighting ? Colors.blue.shade100  : Colors.transparent,
+                  ),
+                  child: RadioListTile(
+                    enableFeedback: true,
+                    fillColor: MaterialStateColor.resolveWith((states) => main_col),
+                    activeColor: main_col,
+                    groupValue: questionradio,
+                    value: i,
+                    onChanged: (var value) {
+                      if(state == QuestionState.answering){
+                        setState(() {
+                          questionradio = i;
+                        });
+                      }
+                    },
+                    title: RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                        children: parseTextWithMath(
+                          "${ShuffledAnswers[i]}",
+                          TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 22
+                          ),
+                        )
+                      ),
+                    )
+                  ),
                 ),
               ]
           );
@@ -225,18 +260,29 @@ ListView radioSvgListBuilder() {
     );
   }
   _questionhandler(ShuffledAnswers, Answers, i){
-
+    setState(() {
+      state = QuestionState.evaluating;
+    });
     bool correct = ShuffledAnswers[i] == Answers[0];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
+    
+    for(int i = 0; i < ShuffledAnswers.length; i++){
+      if(ShuffledAnswers[i] == Answers[0]){
+        setState(() {
+          highlighting = i;          
+        });
+        break;
+      };
+    }
     if(correct){
       _overlay(false);
     }
     else{
-      _overlay(true, correctAnswer : Answers[0]);
+      _overlay(true);
     }
   }
-  _overlay(bool wrong, {var correctAnswer = true}) {
+  _overlay(bool wrong) {
 
     OverlayState? overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
@@ -244,70 +290,52 @@ ListView radioSvgListBuilder() {
     overlayEntry = OverlayEntry(
         builder: (buildcontext){
           return  Container(
-              color: wrong ? Colors.red.withOpacity(0.2) : Colors.green.withOpacity(0.1),
-                child: SafeArea(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Material(
-                        child: Stack(
-                          alignment: AlignmentDirectional.bottomCenter,
-                          children: [
-                            wrong
-                                ? Padding(
-                                    padding: const EdgeInsets.only(left: 0, right: 0),
-                                    child: SizedBox(
-                                    width: 700,
-                                    //height: MediaQuery.of(context).size.height / 2,
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.red.shade200,
-                                        ),
-                                        child: Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(top: 30, bottom: 80, right: 20, left: 20),
-                                            child: 
-                                              RichText(
-                                                textAlign: TextAlign.left,
-                                                text: TextSpan(
-                                                  children: parseTextWithMath(
-                                                    "$correctAnswer",
-                                                    TextStyle(
-                                                    backgroundColor: Colors.red.shade200,
-                                                    color: Colors.white,
-                                                    fontSize: 30
-                                                    ),
-                                                  )
-                                                ),
-                                              ),
-                                          ),
-                            
-                                        )
-                                    )
-                              ),
-                                )
-                                : SizedBox(height: 20),
-                            Padding(
-                              padding: EdgeInsets.only(left: 8, right: 8,),
-                              child: ElevatedButton(
-                                autofocus: false,
-                                style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
-                                onPressed: (){
-                                  overlayEntry.remove();
-                                  _nextquest();
-                                },
-                                child: Text("Weiter", style: TextStyle(color: Colors.black),),
-                              ),
+            child: Stack(                
+              alignment: AlignmentDirectional.bottomCenter,
+              children: [
+                Container(
+                  height: 200,
+                    decoration: BoxDecoration(
+                      color: wrong ? Colors.red.shade200: Colors.green.shade200,
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 90, right: 20, left: 20),
+                        child: 
+                          RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              children: parseTextWithMath(
+                                wrong ? "Die Antwort ist falsch!" : "Richtig!",
+                                TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  decoration: TextDecoration.none
+                                ),
+                              )
                             ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10,)
-                    ],
+                          ),
+                      ),         
+                    )
+                ),
+              SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 10, left: 8,),
+                  child: ElevatedButton(
+                    autofocus: false,
+                    style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
+                    onPressed: (){
+                      overlayEntry.remove();
+                      _nextquest();
+                    },
+                    child: Text("Weiter", style: TextStyle(color: Colors.black),),
                   ),
-                )
-          );
+                ),
+              ),
+            ],
+          )
+        );
       },
     );
     overlayState!.insert(overlayEntry);
@@ -319,7 +347,6 @@ ListView radioSvgListBuilder() {
       setState(() {
         questionradio = null;
         questionkey += 1;
-        answerorder = orderlist(4,true);
         refreshAnswers();
       });
     }catch(e){
@@ -364,7 +391,7 @@ List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
       ));
     } else {
       widgets.add(WidgetSpan(
-        child: Math.tex(parts[i], textStyle: Textstyle, settings: TexParserSettings(maxExpand: 100 )),
+        child: Expanded(child: Math.tex(parts[i], textStyle: Textstyle)),
         alignment: PlaceholderAlignment.middle,
       ));
     }

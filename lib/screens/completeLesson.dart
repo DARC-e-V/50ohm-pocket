@@ -27,40 +27,42 @@ class _finishstate extends State<Finish>{
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Auswertung"),
       ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.only(bottom: 18.0, left: 18),
               child: Text("Du hast die Lektion geschafft!",
                style: TextStyle(
                  fontSize: 30,
                  fontWeight: FontWeight.bold,
                  ),),
             ),
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 0.8,
-                child: PieChart(
-                  PieChartData(
-                    sections: [
-                      PieChartSectionData(
-                        value: progress(),
-                        color: Colors.green,
-                        title: "richtig",
-                      ),
-                      PieChartSectionData(
-                        value: 100.0 - progress(),
-                        color: Colors.red,
-                        title: "falsch",
-                      ),
-                    ]
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Expanded(
+                child: AspectRatio(
+                  aspectRatio: 0.8,
+                  child: PieChart(
+                    PieChartData(
+                      sections: [
+                        PieChartSectionData(
+                          value: progress(),
+                          color: Colors.green,
+                          title: "richtig",
+                        ),
+                        PieChartSectionData(
+                          value: 100.0 - progress(),
+                          color: Colors.red,
+                          title: "falsch",
+                        ),
+                      ]
+                    ),
+                    swapAnimationDuration: Duration(milliseconds: 1500), // Optional
+                    swapAnimationCurve: Curves.linear, 
                   ),
-                  swapAnimationDuration: Duration(milliseconds: 1500), // Optional
-                  swapAnimationCurve: Curves.linear, 
                 ),
               ),
             ),
