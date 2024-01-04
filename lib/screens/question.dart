@@ -2,7 +2,7 @@ import 'package:amateurfunktrainer/constants.dart';
 import 'package:amateurfunktrainer/coustom_libs/json.dart';
 import 'package:amateurfunktrainer/screens/completeLesson.dart';
 import 'package:amateurfunktrainer/screens/formelsammlung.dart';
-import 'package:amateurfunktrainer/screens/learn.dart';
+import 'package:amateurfunktrainer/screens/chapterSelection.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
@@ -180,6 +180,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       );
   }
 ListView radioSvgListBuilder() {
+  Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
@@ -188,8 +189,7 @@ ListView radioSvgListBuilder() {
         itemBuilder: (context, i){
           return Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: i == highlighting ? Colors.blue.shade100  : Colors.transparent,
+              color: i == highlighting ? questionColor : Colors.transparent,
             ),
             child: RadioListTile(
               fillColor: MaterialStateColor.resolveWith((states) => main_col),
@@ -212,6 +212,8 @@ ListView radioSvgListBuilder() {
   }
   
   ListView radioTextListBuilder() {
+    Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
+
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
@@ -224,8 +226,7 @@ ListView radioSvgListBuilder() {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: i == highlighting ? Colors.blue.shade100  : Colors.transparent,
+                    color: i == highlighting ? questionColor  : Colors.transparent,
                   ),
                   child: RadioListTile(
                     enableFeedback: true,

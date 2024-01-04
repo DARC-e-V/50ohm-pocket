@@ -12,10 +12,11 @@ class Json{
     var rawdata = await rootBundle.loadString(questionpath);
     Map<String, dynamic>? importedData  = jsonDecode(rawdata);
     List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
-
     if(importedData != Null){
-      this.data = importedData!["sections"][mainchapter];
-      if(mainchapter == 0){
+
+      if(mainchapter == -1){
+        this.data = importedData!;
+
         for(var i in this.data!["sections"]){
           for(var y in i["sections"]){
             (y["questions"] as List).removeWhere(
@@ -40,10 +41,38 @@ class Json{
             return false;
           }
         );
-      }
-      return this.data;
+        return this.data;
+      } else {
+          this.data = importedData!["sections"][mainchapter];
+          if(mainchapter == 0){
+            for(var i in this.data!["sections"]){
+              for(var y in i["sections"]){
+                (y["questions"] as List).removeWhere(
+                  (z){
+                    for(int klasse in klassen){
+                      if(z["class"] == klasse.toString()){
+                        return false;
+                      }
+                    }
+                    return true;
+                  }
+                );
+              }
+            }
+            (this.data!["sections"] as List).removeWhere(
+              (element){
+                for(var y in element["sections"]){
+                  if((y["questions"] as List).isEmpty){
+                    return true;
+                  }
+                }
+                return false;
+              }
+            );
+          }
+          return this.data;
+        }
     }
-    
   }
 
   main_chapter_name() =>

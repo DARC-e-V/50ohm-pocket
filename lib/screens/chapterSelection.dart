@@ -22,6 +22,7 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   @override
   Widget build(BuildContext context) {
+    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
         appBar: AppBar(
           title: SvgPicture.asset("assets/svgs/ohm2.svg"),
@@ -37,18 +38,20 @@ class _LearningmoduleState extends State<Learningmodule> {
         body: DefaultTabController(
           length: 3,
           child: Scaffold(
-            body: PageView.builder(
-              itemBuilder: (content, index){
-                if(index == 0){
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 0);
-                }else if(index == 1){
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 1);
-                }else{
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 2);
-                }
-              },
-              itemCount: 3,
-              )
+            body: courseOrdering
+            ? chapterbuilder(context, 'assets/questions/ausbildungsmaterial.json', -1)
+            : PageView.builder(
+                itemBuilder: (content, index){
+                  if(index == 0){
+                    return chapterbuilder(context, 'assets/questions/Questions.json', 0);
+                  }else if(index == 1){
+                    return chapterbuilder(context, 'assets/questions/Questions.json', 1);
+                  }else{
+                    return chapterbuilder(context, 'assets/questions/Questions.json', 2);
+                  }
+                },
+                itemCount: 3,
+                )
             ),
           ),
     );
@@ -137,18 +140,25 @@ class _LearningmoduleState extends State<Learningmodule> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextButton(
+                    onPressed: () {},
                     style: TextButton.styleFrom(
+                      minimumSize: Size.fromHeight(100),
                       backgroundColor: main_col.withOpacity(0.7),
-                      shape: RoundedRectangleBorder(borderRadius: json.chaptersize(currentmainchapter) == 0 ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) :BorderRadius.all(Radius.circular(5))),),
-                    onPressed: () async {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (BuildContext context) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
-                      ).then((value){
-                        if(value ?? false){
-                          setState(() {});
-                        }
-                      });
-                    },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: json.chaptersize(currentmainchapter) == 0 
+                          ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) 
+                          : BorderRadius.all(Radius.circular(5))
+                      ),
+                    ),
+                    // onPressed: () async {
+                    //   Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (BuildContext context) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
+                    //   ).then((value){
+                    //     if(value ?? false){
+                    //       setState(() {});
+                    //     }
+                    //   });
+                    // },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
@@ -177,7 +187,7 @@ class _LearningmoduleState extends State<Learningmodule> {
     itemBuilder: (context, subchapter) {
       return Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)), // Adjust the radius as needed
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
         ),
         margin: EdgeInsets.only(top: 10),
         child: Column(
