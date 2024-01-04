@@ -29,58 +29,60 @@ class _finishstate extends State<Finish>{
         automaticallyImplyLeading: false,
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 18.0, left: 18),
-              child: Text("Du hast die Lektion geschafft!",
-               style: TextStyle(
-                 fontSize: 30,
-                 fontWeight: FontWeight.bold,
-                 ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Expanded(
-                child: AspectRatio(
-                  aspectRatio: 0.8,
-                  child: PieChart(
-                    PieChartData(
-                      sections: [
-                        PieChartSectionData(
-                          value: progress(),
-                          color: Colors.green,
-                          title: "richtig",
-                        ),
-                        PieChartSectionData(
-                          value: 100.0 - progress(),
-                          color: Colors.red,
-                          title: "falsch",
-                        ),
-                      ]
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0, left: 18),
+                child: Text("Du hast die Lektion geschafft!",
+                 style: TextStyle(
+                   fontSize: 30,
+                   fontWeight: FontWeight.bold,
+                   ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 0.8,
+                    child: PieChart(
+                      PieChartData(
+                        sections: [
+                          PieChartSectionData(
+                            value: progress(),
+                            color: Colors.green,
+                            title: "richtig",
+                          ),
+                          PieChartSectionData(
+                            value: 100.0 - progress(),
+                            color: Colors.red,
+                            title: "falsch",
+                          ),
+                        ]
+                      ),
+                      swapAnimationDuration: Duration(milliseconds: 1500), // Optional
+                      swapAnimationCurve: Curves.linear, 
                     ),
-                    swapAnimationDuration: Duration(milliseconds: 1500), // Optional
-                    swapAnimationCurve: Curves.linear, 
                   ),
                 ),
               ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 8, right: 8, bottom: 10),
+                  child: ElevatedButton(
+                    style: buttonstyle(Colors.lightGreenAccent),
+                    child: Text("Abschließen"),
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop(true);
+                      },
+                    ),
+                ),
+              )
+            ],
             ),
-            Center(
-              child: Padding(
-                padding: EdgeInsets.only(left: 8, right: 8, bottom: 10),
-                child: ElevatedButton(
-                  style: buttonstyle(Colors.lightGreenAccent),
-                  child: Text("Abschließen"),
-                  onPressed: (){
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop(true);
-                    },
-                  ),
-              ),
-            )
-          ],
-          ),
+        ),
       )
     );
   }

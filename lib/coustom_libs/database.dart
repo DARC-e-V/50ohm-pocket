@@ -48,7 +48,7 @@ class Databaseobj{
   read(mainchapter, chapter, subchapter){
     try{
       List<dynamic> list = DatabaseWidget.of(context).prog_database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
-      return (list.fold(0, (var x, element) => element + x) / (list.length * 5));
+      return (list.fold(0, (var x, element) => element + x) / (list.length * 3));
     }catch(e){
       return 0.0;
     }  

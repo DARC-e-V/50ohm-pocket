@@ -1,5 +1,5 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/screens/learn.dart';
+import 'package:amateurfunktrainer/screens/chapterSelection.dart';
 import 'package:amateurfunktrainer/screens/intro.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
