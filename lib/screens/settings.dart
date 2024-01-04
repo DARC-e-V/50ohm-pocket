@@ -20,7 +20,6 @@ class _settingsstate extends State<Settingspage> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
           onPressed: (){
             Navigator.of(context).pop();
             Navigator.of(context).pop();
