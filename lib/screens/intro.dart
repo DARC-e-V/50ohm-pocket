@@ -39,8 +39,9 @@ class _WelcomeState extends State<Welcome> {
                       top: 120,
                       child: SvgPicture.asset(
                         "assets/welcome/Icons.svg",
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.topCenter,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+                                  alignment: Alignment.topCenter,
                         clipBehavior: Clip.hardEdge,
                         ),
                     ),

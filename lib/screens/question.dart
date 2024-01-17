@@ -40,6 +40,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   late Json json;
   bool imageQuestion = false; 
   bool correct = false;
+  OverlayEntry? overlayEntry;
+
 
   _Questionstate(this.context, this.subchapter,this.chapter);
 
@@ -83,6 +85,14 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: (){
+            try{
+              overlayEntry!.remove();
+            }catch(e){}
+            Navigator.of(context).pop();
+          },
+        ),
         backgroundColor: const Color.fromARGB(10, 0, 0, 0),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -161,23 +171,44 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
 
-  SvgPicture questionImage(BuildContext context, String url) {
-    return SvgPicture.asset(
-      "assets/svgs/$url.svg",
-      colorFilter: MediaQuery.of(context).platformBrightness == Brightness.dark 
-      ? ColorFilter.matrix(<double>[
-          -1.0, 0.0, 0.0, 0.0, 255.0, 
-          0.0, -1.0, 0.0, 0.0, 255.0, 
-          0.0, 0.0, -1.0, 0.0, 255.0, 
-          0.0, 0.0, 0.0, 1.0, 0.0, 
-        ])
-      : ColorFilter.matrix(<double>[
-          1.0, 0.0, 0.0, 0.0, 0.0, 
-          0.0, 1.0, 0.0, 0.0, 0.0, 
-          0.0, 0.0, 1.0, 0.0, 0.0, 
-          0.0, 0.0, 0.0, 1.0, 0.0, 
-        ]),
+  InteractiveViewer questionImage(BuildContext context, String url) {
+    List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
+    Widget image;
+    ColorFilter colorFilter = 
+      MediaQuery.of(context).platformBrightness == Brightness.dark 
+        ? ColorFilter.matrix(<double>[
+            -1.0, 0.0, 0.0, 0.0, 255.0, 
+            0.0, -1.0, 0.0, 0.0, 255.0, 
+            0.0, 0.0, -1.0, 0.0, 255.0, 
+            0.0, 0.0, 0.0, 1.0, 0.0, 
+          ])
+        : ColorFilter.matrix(<double>[
+            1.0, 0.0, 0.0, 0.0, 0.0, 
+            0.0, 1.0, 0.0, 0.0, 0.0, 
+            0.0, 0.0, 1.0, 0.0, 0.0, 
+            0.0, 0.0, 0.0, 1.0, 0.0, 
+          ]);
+
+    if(illegalImages.contains(url)){
+      image = Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ColorFiltered(
+          colorFilter: colorFilter,
+          child: Image.asset("assets/svgs/$url.png")
+          ),
       );
+    } else {
+      image = SvgPicture.asset(
+        "assets/svgs/$url.svg",
+        colorFilter: colorFilter,        
+        );
+    };
+    return InteractiveViewer(
+      boundaryMargin: const EdgeInsets.all(20.0),
+      maxScale: 1.6,
+      panEnabled: false,
+      child: image,
+    );
   }
 ListView radioSvgListBuilder() {
   Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
@@ -286,7 +317,6 @@ ListView radioSvgListBuilder() {
   _overlay(bool wrong) {
 
     OverlayState? overlayState = Overlay.of(context);
-    late OverlayEntry overlayEntry;
 
     overlayEntry = OverlayEntry(
         builder: (buildcontext){
@@ -327,7 +357,7 @@ ListView radioSvgListBuilder() {
                     autofocus: false,
                     style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
                     onPressed: (){
-                      overlayEntry.remove();
+                      overlayEntry!.remove();
                       _nextquest();
                     },
                     child: Text("Weiter", style: TextStyle(color: Colors.black),),
@@ -339,7 +369,7 @@ ListView radioSvgListBuilder() {
         );
       },
     );
-    overlayState!.insert(overlayEntry);
+    overlayState!.insert(overlayEntry!);
   }
   _nextquest(){
     try{
