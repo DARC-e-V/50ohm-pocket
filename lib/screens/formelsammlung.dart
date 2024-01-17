@@ -14,6 +14,11 @@ class Formularpage extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        ),
         title: Text("Formelsammlung"),
       ),
       body: PdfViewPinch(

@@ -43,27 +43,25 @@ class _finishstate extends State<Finish>{
               ),
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: Expanded(
-                  child: AspectRatio(
-                    aspectRatio: 0.8,
-                    child: PieChart(
-                      PieChartData(
-                        sections: [
-                          PieChartSectionData(
-                            value: progress(),
-                            color: Colors.green,
-                            title: "richtig",
-                          ),
-                          PieChartSectionData(
-                            value: 100.0 - progress(),
-                            color: Colors.red,
-                            title: "falsch",
-                          ),
-                        ]
-                      ),
-                      swapAnimationDuration: Duration(milliseconds: 1500), // Optional
-                      swapAnimationCurve: Curves.linear, 
+                child: AspectRatio(
+                  aspectRatio: 0.8,
+                  child: PieChart(
+                    PieChartData(
+                      sections: [
+                        PieChartSectionData(
+                          value: progress(),
+                          color: Colors.green,
+                          title: "richtig",
+                        ),
+                        PieChartSectionData(
+                          value: 100.0 - progress(),
+                          color: Colors.red,
+                          title: "falsch",
+                        ),
+                      ]
                     ),
+                    swapAnimationDuration: Duration(milliseconds: 1500), // Optional
+                    swapAnimationCurve: Curves.linear, 
                   ),
                 ),
               ),

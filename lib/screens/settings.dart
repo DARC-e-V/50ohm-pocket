@@ -16,7 +16,7 @@ class _settingsstate extends State<Settingspage> {
 
   @override
   Widget build(BuildContext context) {
-    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering");
+    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
