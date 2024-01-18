@@ -1,10 +1,9 @@
 import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/screens/learningmodule.dart';
-import 'package:amateurfunktrainer/screens/welcome.dart';
+import 'package:amateurfunktrainer/screens/chapterSelection.dart';
+import 'package:amateurfunktrainer/screens/intro.dart';
 import 'package:amateurfunktrainer/style/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'learnprog/learnprog.dart';
 
 
 void main() {

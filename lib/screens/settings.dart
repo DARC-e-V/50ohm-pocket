@@ -16,8 +16,16 @@ class _settingsstate extends State<Settingspage> {
 
   @override
   Widget build(BuildContext context) {
+    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
-      appBar: AppBar( 
+      appBar: AppBar(
+        leading: BackButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).pushNamed("/learn");
+          },
+        ), 
         title: Text("Einstellungen"),
 
       ),
@@ -36,6 +44,16 @@ class _settingsstate extends State<Settingspage> {
                   Navigator.of(context).popAndPushNamed("/welcome");
                 },
               ),
+              SettingsTile.switchTile(
+                initialValue: courseOrdering,
+                onToggle: (bool value){
+                  setState(() {
+                    courseOrdering = value;
+                  });
+                  DatabaseWidget.of(context).settings_database.put("courseOrdering", value);
+                },
+                title: Text("Ausbildungsmaterial nach 50Ohm.de")
+                )
             ],
           ),
         ],
