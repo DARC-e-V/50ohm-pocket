@@ -1,4 +1,4 @@
-package me.konradrundfunk.amateurfunktrainer
+package de.darc.fragentrainer
 
 import io.flutter.embedding.android.FlutterActivity
 
