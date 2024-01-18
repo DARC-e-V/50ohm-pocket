@@ -157,7 +157,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   autofocus: false,
                   style: buttonstyle(main_col),
                   onPressed: () {
-                    if(state == QuestionState.answering){
+                    if(state == QuestionState.answering && questionradio != null){
                       _questionhandler(ShuffledAnswers, Answers, questionradio);
                     }
                   },
