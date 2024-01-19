@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "amateurfunktrainer")
-set(APPLICATION_ID "me.konradrundfunk.amateurfunktrainer")
+set(APPLICATION_ID "de.darc.50ohm")
 
 cmake_policy(SET CMP0063 NEW)
 
