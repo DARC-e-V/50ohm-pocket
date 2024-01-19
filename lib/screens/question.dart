@@ -339,6 +339,7 @@ ListView radioSvgListBuilder() {
                               children: parseTextWithMath(
                                 wrong ? "Die Antwort ist falsch!" : "Richtig!",
                                 TextStyle(
+                                  fontFamily: "Roboto",
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
                                   fontSize: 30,
@@ -422,7 +423,7 @@ List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
       ));
     } else {
       widgets.add(WidgetSpan(
-        child: Expanded(child: Math.tex(parts[i], textStyle: Textstyle)),
+        child: Math.tex(parts[i], textStyle: Textstyle),
         alignment: PlaceholderAlignment.middle,
       ));
     }
