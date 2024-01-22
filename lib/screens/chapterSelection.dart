@@ -1,9 +1,9 @@
-import 'package:amateurfunktrainer/constants.dart';
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/coustom_libs/icons.dart';
-import 'package:amateurfunktrainer/coustom_libs/json.dart';
-import 'package:amateurfunktrainer/screens/question.dart';
-import 'package:amateurfunktrainer/screens/settings.dart';
+import 'package:fuenfzigohm/constants.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
+import 'package:fuenfzigohm/coustom_libs/icons.dart';
+import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/screens/question.dart';
+import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

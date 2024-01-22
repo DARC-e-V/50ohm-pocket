@@ -1,7 +1,7 @@
 
 
 
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:flutter/material.dart';
 
 class selectClass extends StatelessWidget{
