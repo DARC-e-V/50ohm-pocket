@@ -1,4 +1,4 @@
-package de.darc.fuenfizigohm_pocket
+package de.darc.fuenfizigohm
 
 import io.flutter.embedding.android.FlutterActivity
 
