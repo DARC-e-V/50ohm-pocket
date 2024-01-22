@@ -31,16 +31,22 @@ class Json{
             );
           }
         }
-        (this.data!["sections"] as List).removeWhere(
-          (element){
-            for(var y in element["sections"]){
-              if((y["questions"] as List).isEmpty){
-                return true;
-              }
+        for(int i = 0; i < (this.data!["sections"] as List).length; i++){
+          print(this.data!["sections"][i]["title"]);
+          print("--------------");
+          this.data!["sections"][i]["sections"].removeWhere((element) {
+            print(element["title"]);
+            if((element["questions"] as List).isEmpty){
+              //print(element["title"]);
+              return true;
             }
             return false;
+          });
+          if((this.data!["sections"][i]["sections"] as List).isEmpty){
+            (this.data!["sections"] as List).removeAt(i);
+            i--;
           }
-        );
+        }
         return this.data;
       } else {
           this.data = importedData!["sections"][mainchapter];

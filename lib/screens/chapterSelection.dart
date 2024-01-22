@@ -95,30 +95,34 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
   Widget selectlesson(var data, var context) {
     Json json = Json(data);
-    return Padding(
-      padding: EdgeInsets.only(left: 5,right: 5),
-      child: ListView.builder(
-        itemCount: json.mainchaptersize(),
-        itemBuilder: (context, i) {
-          if(i == 0){
-            return Padding(
-                padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
-                child:
-                Column(children: [
-                  Text(
-                    "${json.main_chapter_name()}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
+    
+      child: Padding(
+        padding: EdgeInsets.only(left: 5,right: 5),
+        child: ListView.builder(
+          itemCount: json.mainchaptersize(),
+          itemBuilder: (context, i) {
+            if(i == 0){
+              return Padding(
+                  padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
+                  child:
+                  Column(children: [
+                    Text(
+                      "${json.main_chapter_name()}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        ),
                       ),
-                    ),
-                  Divider(height: 20,)
-                ],)
-            );
+                    Divider(height: 20,)
+                  ],)
+              );
+            }
+              return chapterwidget(json, i - 2, context);
           }
-            return chapterwidget(json, i - 2, context);
-        }
-      )
+        )
+      ),
     );
   }
 
