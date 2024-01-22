@@ -1,9 +1,9 @@
-import 'package:amateurfunktrainer/constants.dart';
-import 'package:amateurfunktrainer/coustom_libs/json.dart';
-import 'package:amateurfunktrainer/screens/completeLesson.dart';
-import 'package:amateurfunktrainer/screens/formelsammlung.dart';
-import 'package:amateurfunktrainer/screens/chapterSelection.dart';
-import 'package:amateurfunktrainer/style/style.dart';
+import 'package:fuenfzigohm/constants.dart';
+import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/screens/completeLesson.dart';
+import 'package:fuenfzigohm/screens/formelsammlung.dart';
+import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';

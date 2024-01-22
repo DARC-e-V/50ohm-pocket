@@ -1,9 +1,9 @@
-import 'package:amateurfunktrainer/constants.dart';
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/coustom_libs/icons.dart';
-import 'package:amateurfunktrainer/coustom_libs/json.dart';
-import 'package:amateurfunktrainer/screens/question.dart';
-import 'package:amateurfunktrainer/screens/settings.dart';
+import 'package:fuenfzigohm/constants.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
+import 'package:fuenfzigohm/coustom_libs/icons.dart';
+import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/screens/question.dart';
+import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -95,30 +95,34 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
   Widget selectlesson(var data, var context) {
     Json json = Json(data);
-    return Padding(
-      padding: EdgeInsets.only(left: 5,right: 5),
-      child: ListView.builder(
-        itemCount: json.mainchaptersize(),
-        itemBuilder: (context, i) {
-          if(i == 0){
-            return Padding(
-                padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
-                child:
-                Column(children: [
-                  Text(
-                    "${json.main_chapter_name()}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
+    
+      child: Padding(
+        padding: EdgeInsets.only(left: 5,right: 5),
+        child: ListView.builder(
+          itemCount: json.mainchaptersize(),
+          itemBuilder: (context, i) {
+            if(i == 0){
+              return Padding(
+                  padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
+                  child:
+                  Column(children: [
+                    Text(
+                      "${json.main_chapter_name()}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        ),
                       ),
-                    ),
-                  Divider(height: 20,)
-                ],)
-            );
+                    Divider(height: 20,)
+                  ],)
+              );
+            }
+              return chapterwidget(json, i - 2, context);
           }
-            return chapterwidget(json, i - 2, context);
-        }
-      )
+        )
+      ),
     );
   }
 

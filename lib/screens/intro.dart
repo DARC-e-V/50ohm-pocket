@@ -1,6 +1,6 @@
-import 'package:amateurfunktrainer/coustom_libs/database.dart';
-import 'package:amateurfunktrainer/screens/chapterSelection.dart';
-import 'package:amateurfunktrainer/screens/selectLearningPath.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
+import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/selectLearningPath.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -34,17 +34,12 @@ class _WelcomeState extends State<Welcome> {
                 bottom: true,
                 child: Stack(
                   children: [
-                    Positioned(
-                      left: -20,
-                      top: 120,
-                      child: SvgPicture.asset(
-                        "assets/welcome/Icons.svg",
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-                                  alignment: Alignment.topCenter,
-                        clipBehavior: Clip.hardEdge,
-                        ),
-                    ),
+                    SvgPicture.asset(
+                      "assets/welcome/Icons.svg",
+                      width: MediaQuery.of(context).size.width,
+                      alignment: Alignment.center,
+                      clipBehavior: Clip.hardEdge,
+                      ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -56,7 +51,7 @@ class _WelcomeState extends State<Welcome> {
                               Text("Willkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
                               Text(
                                 "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
-                                style: TextStyle(fontSize: 20, color: Color(0xFF5E5E5E), fontWeight: FontWeight.w600)
+                                style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.w600)
                               ),
                             ] 
                           ),
