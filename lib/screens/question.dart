@@ -415,9 +415,7 @@ orderlist(var elements, bool random){
 
 List<WidgetSpan> parseTextWithMathAndMarkdown(String input, TextStyle textStyle) {
   final customStyleSheet = MarkdownStyleSheet(
-    textScaleFactor: 1.5,
-    h1: textStyle.copyWith(fontSize: textStyle.fontSize! * 1.8),
-    h2: textStyle.copyWith(fontSize: textStyle.fontSize! * 1.6),
+    textScaleFactor: 1.6,
     strong: textStyle.copyWith(fontWeight: FontWeight.bold),
   );
 
