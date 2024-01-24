@@ -1,3 +1,4 @@
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
@@ -128,7 +129,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     child: RichText(
                       textAlign: TextAlign.left,
                       text: TextSpan(
-                        children: parseTextWithMath(
+                        children: parseTextWithMathAndMarkdown(
                           "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
                           TextStyle(
                             fontWeight: FontWeight.w400,
@@ -275,7 +276,7 @@ ListView radioSvgListBuilder() {
                     title: RichText(
                       textAlign: TextAlign.left,
                       text: TextSpan(
-                        children: parseTextWithMath(
+                        children: parseTextWithMathAndMarkdown(
                           "${ShuffledAnswers[i]}",
                           TextStyle(
                             fontWeight: FontWeight.w400,
@@ -336,7 +337,7 @@ ListView radioSvgListBuilder() {
                           RichText(
                             textAlign: TextAlign.left,
                             text: TextSpan(
-                              children: parseTextWithMath(
+                              children: parseTextWithMathAndMarkdown(
                                 wrong ? "Die Antwort ist falsch!" : "Richtig!",
                                 TextStyle(
                                   fontFamily: "Roboto",
@@ -411,19 +412,32 @@ orderlist(var elements, bool random){
 }
 
 
-List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
+
+List<WidgetSpan> parseTextWithMathAndMarkdown(String input, TextStyle textStyle) {
+  final customStyleSheet = MarkdownStyleSheet(
+    textScaleFactor: 1.5,
+    h1: textStyle.copyWith(fontSize: textStyle.fontSize! * 1.8),
+    h2: textStyle.copyWith(fontSize: textStyle.fontSize! * 1.6),
+    strong: textStyle.copyWith(fontWeight: FontWeight.bold),
+  );
+
   List<WidgetSpan> widgets = [];
   List<String> parts = input.split('\$');
 
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
+      // Plain text or Markdown
       widgets.add(WidgetSpan(
-          child: Text(parts[i], style: Textstyle,),
-          alignment: PlaceholderAlignment.middle,
+        child: MarkdownBody(
+          data: parts[i],
+          styleSheet: customStyleSheet,
+        ),
+        alignment: PlaceholderAlignment.middle,
       ));
     } else {
+      // Math expression
       widgets.add(WidgetSpan(
-        child: Math.tex(parts[i], textStyle: Textstyle),
+        child: Math.tex(parts[i], textStyle: textStyle),
         alignment: PlaceholderAlignment.middle,
       ));
     }

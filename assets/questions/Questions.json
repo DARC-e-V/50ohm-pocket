@@ -12,7 +12,7 @@
                                 {
                                     "number": "NA103",
                                     "class": "1",
-                                    "question": "Laut Datenblatt wiegen 100 m eines bestimmten Drahtes 210 g. Ein vorliegendes Drahtst\u00fcck des selben Materials wiegt 55 g. Wie lang ist das Drahtst\u00fcck in etwa?",
+                                    "question": "Laut Datenblatt **wiegen** 100 m eines __bestimmten Drahtes__ 210 g. Ein vorliegendes Drahtst\u00fcck des selben Materials wiegt 55 g. Wie lang ist das Drahtst\u00fcck in etwa?",
                                     "answer_a": "26,2 m",
                                     "answer_b": "382 m",
                                     "answer_c": "115 m",
@@ -21,7 +21,7 @@
                                 {
                                     "number": "NA102",
                                     "class": "1",
-                                    "question": "Aus 250 m Draht sollen Antennen hergestellt werden. Pro Antenne werden 18,5 m ben\u00f6tigt. Wie viele Antennen k\u00f6nnen maximal aus dem vorhandenen Draht hergestellt werden?",
+                                    "question": "Aus 250 m **Draht** sollen Antennen __hergestellt__ werden. Pro Antenne ==werden== 18,5 m ben\u00f6tigt. Wie viele Antennen k\u00f6nnen maximal aus dem vorhandenen Draht hergestellt werden?",
                                     "answer_a": "13",
                                     "answer_b": "14",
                                     "answer_c": "12",
@@ -30,7 +30,7 @@
                                 {
                                     "number": "NA101",
                                     "class": "1",
-                                    "question": "Ein 20 m langer Draht wird bei 2/3 seiner L\u00e4nge zertrennt. Wie lang sind die resultierenden St\u00fccke in etwa?",
+                                    "question": "Ein 20 m **langer Draht** wird bei 2/3 __seiner__ L\u00e4nge zertrennt. Wie lang sind die ==resultierenden== St\u00fccke in etwa?",
                                     "answer_a": "13,33 m und 6,67 m",
                                     "answer_b": "12,22 m und 7,78 m",
                                     "answer_c": "11,11 m und 8,89 m",
