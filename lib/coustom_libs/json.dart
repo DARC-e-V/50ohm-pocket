@@ -32,10 +32,7 @@ class Json{
           }
         }
         for(int i = 0; i < (this.data!["sections"] as List).length; i++){
-          print(this.data!["sections"][i]["title"]);
-          print("--------------");
           this.data!["sections"][i]["sections"].removeWhere((element) {
-            print(element["title"]);
             if((element["questions"] as List).isEmpty){
               //print(element["title"]);
               return true;
