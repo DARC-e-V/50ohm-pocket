@@ -7,6 +7,13 @@ class AboutAppPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Über die App'),
+        leading: BackButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).pushNamed("/learn");
+          },
+        ),
       ),
       body: SettingsList(
         sections: [
@@ -21,6 +28,9 @@ class AboutAppPage extends StatelessWidget {
               SettingsTile(
                 title: Text("Quellcode"),
                 leading: Icon(Icons.code),
+                onPressed: (BuildContext context){
+                  Navigator.of(context).pushNamed("/sourceCode");
+                },
               ),
               SettingsTile(
                 title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON"),
@@ -35,10 +45,16 @@ class AboutAppPage extends StatelessWidget {
               SettingsTile(
                 title: Text("app@darc.de"),
                 leading: Icon(Icons.email),
+                onPressed: (BuildContext context){
+                  Navigator.of(context).pushNamed("/mail");
+                },
               ),
               SettingsTile(
                 title: Text("app.darc.de"),
                 leading: Icon(Icons.web),
+                onPressed: (BuildContext context){
+                  Navigator.of(context).pushNamed("/website");
+                },
               ),
             ],
           ),

@@ -32,31 +32,24 @@ class _LearningmoduleState extends State<Learningmodule> {
             PopupMenuButton(
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  value: 3,
+                  value: 2,
                   child: ListTile(
                     leading: Icon(Icons.functions), // Icon for Formelsammlung
                     title: Text("Formelsammlung"),
                   ),
                 ),
                 PopupMenuItem(
-                  value: 2,
+                  value: 1,
                   child: ListTile(
                     leading: Icon(Icons.settings), // Icon for Einstellungen
                     title: Text("Einstellungen"),
                   ),
                 ),
                 PopupMenuItem(
-                  value: 1,
-                  child: ListTile(
-                    leading: Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
-                    title: Text("Datenschutzerklärung"),
-                  ),
-                ),
-                PopupMenuItem(
                   value: 0,
                   child: ListTile(
-                    leading: Icon(Icons.info), // Icon for Datenschutzerklärung
-                    title: Text("Über die App"),
+                    leading: Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
+                    title: Text("Über diese App"),
                   ),
                 ),
               ],
@@ -88,14 +81,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch(item){
-      case 3:
+      case 2:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
         break;
-      case 2:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
-        break;
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyPage()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 0:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutAppPage()));

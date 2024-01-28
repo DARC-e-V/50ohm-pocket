@@ -55,29 +55,6 @@ class _settingsstate extends State<Settingspage> {
                 ),
             ],
           ),
-          SettingsSection(
-              margin: EdgeInsetsDirectional.all(8.0),
-              title: Text("Lizenzinformationen zur App und ihrer Inhalte"),
-              tiles: <SettingsTile>[
-
-                SettingsTile(
-                  title: Text("Lizenzen der verwendeten Bibliotheken"),
-                  description: Text("Dies ist eine automatisch generierte Auflistung aller verwendeter externer Komponenten zur Bereitstellung dieser App."),
-                  leading: Icon(Icons.library_books),
-                  onPressed: (BuildContext context){
-                    Navigator.of(context).pushNamed("/appPackages");
-                  },
-                ),
-                SettingsTile(
-                  title: Text("Lizenzhinweis zu den Prüfungsfragen"),
-                  description: Text("Die Prüfungsfragen wurden vom DARC im Auftrag der Bundesnetzagentur erstellt."),
-                  leading: Icon(Icons.library_books),
-                  onPressed: (BuildContext context){
-                    Navigator.of(context).pushNamed("/questionsLicenseNotice");
-                  },
-                ),
-              ]
-          ),
         ],
       ),
     );

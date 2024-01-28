@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PrivacyPage extends StatefulWidget {
+class MailPage extends StatefulWidget {
   @override
-  _PrivacyPageState createState() => _PrivacyPageState();
+  _MailPageState createState() => _MailPageState();
 }
 
-class _PrivacyPageState extends State<PrivacyPage> {
-  final String url = "https://app.darc.de/privacy_50ohm.html";
+class _MailPageState extends State<MailPage> {
+  final String url = "mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A";
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Datenschutzerklärung'),
+        title: Text('E-Mail'),
         leading: BackButton(
           onPressed: (){
             Navigator.of(context).pop();

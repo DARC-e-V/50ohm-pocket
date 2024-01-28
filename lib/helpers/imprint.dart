@@ -28,6 +28,13 @@ class _ImprintPageState extends State<ImprintPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Impressum'),
+        leading: BackButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).pushNamed("/aboutApp");
+          },
+        ),
       ),
       body: Center(
         child: CircularProgressIndicator(),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PrivacyPage extends StatefulWidget {
+class SourceCodePage extends StatefulWidget {
   @override
-  _PrivacyPageState createState() => _PrivacyPageState();
+  _SourceCodePageState createState() => _SourceCodePageState();
 }
 
-class _PrivacyPageState extends State<PrivacyPage> {
-  final String url = "https://app.darc.de/privacy_50ohm.html";
+class _SourceCodePageState extends State<SourceCodePage> {
+  final String url = "https://github.com/DARC-e-V/50ohm-pocket";
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Datenschutzerklärung'),
+        title: Text('Quellcode'),
         leading: BackButton(
           onPressed: (){
             Navigator.of(context).pop();
