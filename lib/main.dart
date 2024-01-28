@@ -1,8 +1,9 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/intro.dart';
+import 'package:fuenfzigohm/screens/packagesListing.dart';
+import 'package:fuenfzigohm/screens/questionsLicenseNotice.dart';
 import 'package:fuenfzigohm/style/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,6 +25,8 @@ void main() {
                 routes:{
                   '/learn': (context) => Learningmodule(),
                   '/welcome': (context) => Welcome(),
+                  '/appPackages': (context) => OssLicensesPage(),
+                  '/questionsLicenseNotice': (context) => QuestionsLicensePage(),
                 },
                 debugShowCheckedModeBanner: false,
               ),

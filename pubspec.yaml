@@ -48,6 +48,7 @@ dependencies:
 
 dev_dependencies:
   hive_generator: ^1.1.0
+  flutter_oss_licenses: ^2.0.1
   build_runner: ^2.0.6
   flutter_launcher_icons: "^0.9.1"
   flutter_test:
