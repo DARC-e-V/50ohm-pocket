@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PrivacyPage(),
-    );
-  }
-}
-
 class PrivacyPage extends StatefulWidget {
   @override
   _PrivacyPageState createState() => _PrivacyPageState();
@@ -40,10 +27,10 @@ class _PrivacyPageState extends State<PrivacyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Privacy Page'),
+        title: Text('Datenschutzerklärung'),
       ),
       body: Center(
-        child: CircularProgressIndicator(), // You can replace this with your UI
+        child: CircularProgressIndicator(),
       ),
     );
   }

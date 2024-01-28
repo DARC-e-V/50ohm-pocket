@@ -35,7 +35,7 @@ class OssLicensesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Open Source Licenses'),
+          title: const Text('Lizenzen'),
         ),
         body: FutureBuilder<List<Package>>(
             future: _licenses,

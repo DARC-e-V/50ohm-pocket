@@ -1,5 +1,4 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -53,8 +52,31 @@ class _settingsstate extends State<Settingspage> {
                   DatabaseWidget.of(context).settings_database.put("courseOrdering", value);
                 },
                 title: Text("Ausbildungsmaterial nach 50Ohm.de")
-                )
+                ),
             ],
+          ),
+          SettingsSection(
+              margin: EdgeInsetsDirectional.all(8.0),
+              title: Text("Lizenzinformationen zur App und ihrer Inhalte"),
+              tiles: <SettingsTile>[
+
+                SettingsTile(
+                  title: Text("Lizenzen der verwendeten Bibliotheken"),
+                  description: Text("Dies ist eine automatisch generierte Auflistung aller verwendeter externer Komponenten zur Bereitstellung dieser App."),
+                  leading: Icon(Icons.library_books),
+                  onPressed: (BuildContext context){
+                    Navigator.of(context).pushNamed("/appPackages");
+                  },
+                ),
+                SettingsTile(
+                  title: Text("Lizenzhinweis zu den Prüfungsfragen"),
+                  description: Text("Die Prüfungsfragen wurden vom DARC im Auftrag der Bundesnetzagentur erstellt."),
+                  leading: Icon(Icons.library_books),
+                  onPressed: (BuildContext context){
+                    Navigator.of(context).pushNamed("/questionsLicenseNotice");
+                  },
+                ),
+              ]
           ),
         ],
       ),
