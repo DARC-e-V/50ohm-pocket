@@ -2,6 +2,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/icons.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/screens/privacy.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,9 @@ class _LearningmoduleState extends State<Learningmodule> {
           title: SvgPicture.asset("assets/svgs/ohm2.svg"),
           actions: [
             PopupMenuButton(itemBuilder: (context) => [
-              PopupMenuItem(value: 1, child: Text("Formelsammlung")),
-              PopupMenuItem(value: 0, child: Text("Einstellungen")),
+              PopupMenuItem(value: 2, child: Text("Formelsammlung")),
+              PopupMenuItem(value: 1, child: Text("Einstellungen")),
+              PopupMenuItem(value: 0, child: Text("Datenschutzerklärung")),
             ],
               onSelected: (item) => _selectItem(context, item),
             ),
@@ -59,12 +61,14 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch(item){
-      case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
-        break;
-      case 1:
+      case 2:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
         break;
+      case 1:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+        break;
+      case 0:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyPage()));
     }
   }
 
