@@ -1,18 +1,11 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/helpers/mail.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
-import 'package:fuenfzigohm/helpers/imprint.dart';
 import 'package:fuenfzigohm/screens/intro.dart';
 import 'package:fuenfzigohm/helpers/packagesListing.dart';
-import 'package:fuenfzigohm/helpers/privacy.dart';
 import 'package:fuenfzigohm/helpers/questionsLicenseNotice.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
-
-import 'helpers/sourcecode.dart';
-import 'helpers/website.dart';
-
 
 void main() {
   runApp(
@@ -34,12 +27,7 @@ void main() {
                   '/welcome': (context) => Welcome(),
                   '/appPackages': (context) => OssLicensesPage(),
                   '/questionsLicenseNotice': (context) => QuestionsLicensePage(),
-                  '/privacyPolicy' : (context) => PrivacyPage(),
-                  '/imprint' : (context) => ImprintPage(),
                   '/aboutApp' : (context) => AboutAppPage(),
-                  '/mail' : (context) => MailPage(),
-                  '/website' : (context) => WebsitePage(),
-                  '/sourceCode' : (context) => SourceCodePage(),
                 },
                 debugShowCheckedModeBanner: false,
               ),

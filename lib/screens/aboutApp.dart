@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppPage extends StatelessWidget {
   @override
@@ -29,11 +30,11 @@ class AboutAppPage extends StatelessWidget {
                 title: Text("Quellcode"),
                 leading: Icon(Icons.code),
                 onPressed: (BuildContext context){
-                  Navigator.of(context).pushNamed("/sourceCode");
+                  launch("https://github.com/DARC-e-V/50ohm-pocket");
                 },
               ),
               SettingsTile(
-                title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON"),
+                title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON \n Felix Pfannkuch, DO6FP"),
                 leading: Icon(Icons.flutter_dash),
               ),
             ],
@@ -46,14 +47,14 @@ class AboutAppPage extends StatelessWidget {
                 title: Text("app@darc.de"),
                 leading: Icon(Icons.email),
                 onPressed: (BuildContext context){
-                  Navigator.of(context).pushNamed("/mail");
+                  launch("mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A");
                 },
               ),
               SettingsTile(
                 title: Text("app.darc.de"),
                 leading: Icon(Icons.web),
                 onPressed: (BuildContext context){
-                  Navigator.of(context).pushNamed("/website");
+                  launch("https://app.darc.de");
                 },
               ),
             ],
@@ -66,14 +67,14 @@ class AboutAppPage extends StatelessWidget {
                   title: Text("Datenschutzerklärung"),
                   leading: Icon(Icons.policy),
                   onPressed: (BuildContext context){
-                    Navigator.of(context).pushNamed("/privacyPolicy");
+                    launch("https://app.darc.de/privacy_50ohm.html");
                   },
                 ),
                 SettingsTile(
                   title: Text("Impressum"),
                   leading: Icon(Icons.menu_book),
                   onPressed: (BuildContext context){
-                    Navigator.of(context).pushNamed("/imprint");
+                    launch("https://www.darc.de/impressum/");
                   },
                 ),
               ]
