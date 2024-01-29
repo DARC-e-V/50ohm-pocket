@@ -43,6 +43,7 @@ dependencies:
   flutter_math_fork:
     git:
       url: https://github.com/simpleclub-extended/flutter_math_fork
+  package_info_plus: ^5.0.1
 
 
 
