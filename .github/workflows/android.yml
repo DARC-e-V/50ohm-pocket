@@ -30,7 +30,7 @@ jobs:
         env:
           KEYSTORE_PROPERTIES_PATH: android/keystore.properties
         run: |
-          echo 'StoreFile=./android-keystore.jks' > $KEYSTORE_PROPERTIES_PATH
+          echo 'StoreFile=android-keystore.jks' > $KEYSTORE_PROPERTIES_PATH
           echo 'KeyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
           echo 'StorePassword=${{ secrets.STORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
           echo 'KeyPassword=${{ secrets.KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
@@ -39,7 +39,7 @@ jobs:
           mkdir debug-symbols
           flutter pub get
           flutter build appbundle \
-            --release --debug
+            --release
       - name: 📤 Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
