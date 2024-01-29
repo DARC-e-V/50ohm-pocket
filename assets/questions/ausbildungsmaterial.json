@@ -371,7 +371,7 @@
                         {
                             "number": "VD103",
                             "class": "1",
-                            "question": "Im Amateurfunkverkehr darf nur offene Sprache verwendet werden. Was gilt <u>nicht</u> als offene Sprache und ist daher unzul\u00e4ssig?",
+                            "question": "Im Amateurfunkverkehr darf nur offene Sprache verwendet werden. Was gilt nicht als offene Sprache und ist daher unzul\u00e4ssig?",
                             "answer_a": "Sprachverschl\u00fcsselung zur Verschleierung des Inhalts",
                             "answer_b": "Q-Gruppen und Amateurfunkabk\u00fcrzungen",
                             "answer_c": "Digitale \u00dcbertragungsverfahren, die einen Decoder ben\u00f6tigen",
@@ -417,7 +417,7 @@
                         {
                             "number": "VC115",
                             "class": "1",
-                            "question": "Zu welchem Zweck darf eine Amateurfunkstelle laut Amateurfunkgesetz (AFuG) <u>nicht</u> betrieben werden?",
+                            "question": "Zu welchem Zweck darf eine Amateurfunkstelle laut Amateurfunkgesetz (AFuG) nicht betrieben werden?",
                             "answer_a": "zum gesch\u00e4ftsm\u00e4\u00dfigen Erbringen von Telekommunikationsdiensten",
                             "answer_b": "zur Erforschung der atmosph\u00e4rischen Wellenausbreitung",
                             "answer_c": "zur Kommunikation mit Weltraumfunkstellen",
@@ -1820,7 +1820,7 @@
                         {
                             "number": "BC213",
                             "class": "1",
-                            "question": "Warum sollten Sie RTTY, PSK31 oder FT8 <u>nicht</u> auf 144,075 MHz  verwenden?\u00a0Der IARU-Bandplan empfiehlt ...",
+                            "question": "Warum sollten Sie RTTY, PSK31 oder FT8 nicht auf 144,075 MHz  verwenden?\u00a0Der IARU-Bandplan empfiehlt ...",
                             "answer_a": "diesen Bereich bevorzugt f\u00fcr Morsetelegrafie zu nutzen.",
                             "answer_b": "in diesem Bereich maximal 500 Hz Bandbreite zu belegen, damit der Bereich besser genutzt werden kann.",
                             "answer_c": "den Einsatz von Computern f\u00fcr die Signalerzeugung zu vermeiden.",
@@ -1865,7 +1865,7 @@
                         {
                             "number": "BC215",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 144,450 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 144,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
                             "answer_a": "Baken vor.",
                             "answer_b": "Repeater vor.",
                             "answer_c": "Weltraumkommunikation vor.",
@@ -1874,7 +1874,7 @@
                         {
                             "number": "BC214",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 144,125 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 144,125 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                             "answer_b": "Repeater.",
                             "answer_c": "Weltraumkommunikation.",
@@ -1883,7 +1883,7 @@
                         {
                             "number": "BC218",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 145,800 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 145,800 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Weltraumkommunikation.",
                             "answer_b": "Repeater.",
                             "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
@@ -1892,7 +1892,7 @@
                         {
                             "number": "BC217",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 145,600 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 145,600 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Repeater.",
                             "answer_b": "Weltraumkommunikation.",
                             "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
@@ -1960,7 +1960,7 @@
                         {
                             "number": "BC220",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 432,450 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 432,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
                             "answer_a": "Baken vor.",
                             "answer_b": "Satellitenfunk vor.",
                             "answer_c": "Repeater vor.",
@@ -1969,7 +1969,7 @@
                         {
                             "number": "BC219",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 432,040 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 432,040 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                             "answer_b": "Satellitenfunk.",
                             "answer_c": "Weltraumkommunikation.",
@@ -1978,7 +1978,7 @@
                         {
                             "number": "BC222",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 439,200 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 439,200 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Repeater.",
                             "answer_b": "Satellitenfunk.",
                             "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
@@ -1987,7 +1987,7 @@
                         {
                             "number": "BC221",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 435,500 MHz <u>keine</u> Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
+                            "question": "Warum sollten Sie auf 435,500 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                             "answer_a": "Satellitenfunk.",
                             "answer_b": "Repeater.",
                             "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
@@ -2613,7 +2613,7 @@
                         {
                             "number": "AH212",
                             "class": "3",
-                            "question": "Was hat <u>keine</u> Auswirkungen auf die Sprungentfernung?",
+                            "question": "Was hat keine Auswirkungen auf die Sprungentfernung?",
                             "answer_a": "Die \u00c4nderung der Strahlungsleistung.",
                             "answer_b": "Die \u00c4nderung der Frequenz des ausgesendeten Signals.",
                             "answer_c": "Die Tageszeit.",
@@ -5558,7 +5558,7 @@
                         {
                             "number": "EC205",
                             "class": "2",
-                            "question": "Von welcher der nachfolgenden Gr\u00f6\u00dfen ist die Kapazit\u00e4t eines Plattenkondensators <u>nicht</u> abh\u00e4ngig?",
+                            "question": "Von welcher der nachfolgenden Gr\u00f6\u00dfen ist die Kapazit\u00e4t eines Plattenkondensators nicht abh\u00e4ngig?",
                             "answer_a": "Spannung",
                             "answer_b": "Plattenabstand",
                             "answer_c": "Plattenfl\u00e4che",
@@ -9308,7 +9308,7 @@
                         {
                             "number": "AJ218",
                             "class": "3",
-                            "question": "In welcher Arbeitspunkteinstellung darf die Endstufe eines SSB-Senders <u>nicht</u> betrieben werden?",
+                            "question": "In welcher Arbeitspunkteinstellung darf die Endstufe eines SSB-Senders nicht betrieben werden?",
                             "answer_a": "C-Betrieb",
                             "answer_b": "A-Betrieb",
                             "answer_c": "B-Betrieb",
@@ -11029,7 +11029,7 @@
                         {
                             "number": "AE412",
                             "class": "3",
-                            "question": "Eine digitale \u00dcbertragung wird durch ein einzelnes Pr\u00fcfbit (Parity Bit) abgesichert. Der Empf\u00e4nger stellt bei der Parit\u00e4tspr\u00fcfung <u>keinen</u> \u00dcbertragungsfehler fest. Was sagt dies \u00fcber die Fehlerfreiheit der \u00fcbertragenen Nutzdaten und des Pr\u00fcfbits aus?",
+                            "question": "Eine digitale \u00dcbertragung wird durch ein einzelnes Pr\u00fcfbit (Parity Bit) abgesichert. Der Empf\u00e4nger stellt bei der Parit\u00e4tspr\u00fcfung keinen \u00dcbertragungsfehler fest. Was sagt dies \u00fcber die Fehlerfreiheit der \u00fcbertragenen Nutzdaten und des Pr\u00fcfbits aus?",
                             "answer_a": "Die \u00dcbertragung war fehlerfrei oder es ist eine gerade Anzahl an Bitfehlern aufgetreten.",
                             "answer_b": "Die \u00dcbertragung war fehlerfrei oder es ist eine ungerade Anzahl an Bitfehlern aufgetreten.",
                             "answer_c": "Die \u00dcbertragung war fehlerfrei.",
@@ -11070,7 +11070,7 @@
                         {
                             "number": "AE413",
                             "class": "3",
-                            "question": "Sie verwenden ein Daten\u00fcbertragungsverfahren <u>ohne</u> Vorw\u00e4rtsfehlerkorrektur. Wodurch k\u00f6nnen Datenpakete trotz Pr\u00fcfsummenfehlern korrigiert werden?",
+                            "question": "Sie verwenden ein Daten\u00fcbertragungsverfahren ohne Vorw\u00e4rtsfehlerkorrektur. Wodurch k\u00f6nnen Datenpakete trotz Pr\u00fcfsummenfehlern korrigiert werden?",
                             "answer_a": "Erneute \u00dcbertragung",
                             "answer_b": "Wiederholte Pr\u00fcfung",
                             "answer_c": "Duplizieren der Pr\u00fcfsumme",
@@ -14062,7 +14062,7 @@
                         {
                             "number": "BG105",
                             "class": "1",
-                            "question": "Welche Angaben sollten QSL-Karten <u>mindestens</u> enthalten?",
+                            "question": "Welche Angaben sollten QSL-Karten mindestens enthalten?",
                             "answer_a": "Verwendetes Rufzeichen, Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Band, \u00dcbertragungsverfahren und der Signal-Rapport.",
                             "answer_b": "Verwendetes Rufzeichen, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, \u00dcbertragungsverfahren, Signal-Rapport sowie den eigenen Namen, Standort, Locator, die eigene Sendeleistung und Angaben zur eingesetzten technischen Ausr\u00fcstung.",
                             "answer_c": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, genaue Frequenz, \u00dcbertragungsverfahren, Signal-Rapport und weitere \u00fcbliche Angaben wie den eigenen Namen, Standort, Locator und die eigene Sendeleistung.",
@@ -14532,7 +14532,7 @@
                         {
                             "number": "AF636",
                             "class": "3",
-                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von <u>jeweils</u> 10 Millionen Samples pro Sekunde besteht? Den Bereich zwischen ...",
+                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von jeweils 10 Millionen Samples pro Sekunde besteht? Den Bereich zwischen ...",
                             "answer_a": "-5 MHz und +5 MHz.",
                             "answer_b": "-10 MHz und +10 MHz.",
                             "answer_c": "0 Hz und 512 kHz.",
@@ -14541,7 +14541,7 @@
                         {
                             "number": "AF635",
                             "class": "3",
-                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von <u>jeweils</u> 96000 Samples pro Sekunde besteht? Den Bereich zwischen ...",
+                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von jeweils 96000 Samples pro Sekunde besteht? Den Bereich zwischen ...",
                             "answer_a": "-48 kHz und +48 kHz.",
                             "answer_b": "-24 kHz und +24 kHz.",
                             "answer_c": "0 Hz und 192 kHz.",
@@ -14568,7 +14568,7 @@
                         {
                             "number": "AF634",
                             "class": "3",
-                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von <u>jeweils</u> 48000 Samples pro Sekunde besteht? Den Bereich zwischen ...",
+                            "question": "Welchen Frequenzbereich (z. B. in Bezug auf eine Mitten- oder Tr\u00e4gerfrequenz) kann ein digitaler Datenstrom entsprechend dem Abtasttheorem maximal eindeutig abbilden, der aus einem I- und einem Q-Anteil mit einer Abtastrate von jeweils 48000 Samples pro Sekunde besteht? Den Bereich zwischen ...",
                             "answer_a": "-24 kHz und +24 kHz.",
                             "answer_b": "-48 kHz und +48 kHz.",
                             "answer_c": "0 Hz und 96 kHz.",
@@ -15014,7 +15014,7 @@
                         {
                             "number": "NG109",
                             "class": "1",
-                            "question": "Welche Antennenform wird von Funkamateuren in der Regel nur im Kurzwellenbereich und <u>nicht</u> im VHF/UHF-Bereich verwendet?",
+                            "question": "Welche Antennenform wird von Funkamateuren in der Regel nur im Kurzwellenbereich und nicht im VHF/UHF-Bereich verwendet?",
                             "answer_a": "Langdraht-Antenne",
                             "answer_b": "Yagi-Uda-Antenne",
                             "answer_c": "Quad-Antenne",
@@ -15160,7 +15160,7 @@
                         {
                             "number": "EG213",
                             "class": "2",
-                            "question": "Welche Antenne geh\u00f6rt <u>nicht</u> zu den symmetrischen Antennen?",
+                            "question": "Welche Antenne geh\u00f6rt nicht zu den symmetrischen Antennen?",
                             "answer_a": "Groundplane",
                             "answer_b": "Faltdipol",
                             "answer_c": "Lang-Yagi-Uda",
@@ -18286,7 +18286,7 @@
                         {
                             "number": "VC113",
                             "class": "1",
-                            "question": "Nach dem Amateurfunkgesetz ist ein Funkamateur der Inhaber eines Amateurfunkzeugnisses oder einer harmonisierten Pr\u00fcfungsbescheinigung, der sich aus pers\u00f6nlicher Neigung und <u>nicht</u> ...",
+                            "question": "Nach dem Amateurfunkgesetz ist ein Funkamateur der Inhaber eines Amateurfunkzeugnisses oder einer harmonisierten Pr\u00fcfungsbescheinigung, der sich aus pers\u00f6nlicher Neigung und nicht ...",
                             "answer_a": "aus gewerblich-wirtschaftlichem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_b": "aus politischem oder religi\u00f6sem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_c": "aus technisch-wissenschaftlichen Interesse mit dem Amateurfunkdienst befasst.",
@@ -18405,7 +18405,7 @@
                         {
                             "number": "VE203",
                             "class": "1",
-                            "question": "Wie hat sich ein Funkamateur zu verhalten, der Nachrichten empf\u00e4ngt, die <u>nicht</u> f\u00fcr Funkamateure, die Allgemeinheit oder einen unbestimmten Personenkreis bestimmt sind?",
+                            "question": "Wie hat sich ein Funkamateur zu verhalten, der Nachrichten empf\u00e4ngt, die nicht f\u00fcr Funkamateure, die Allgemeinheit oder einen unbestimmten Personenkreis bestimmt sind?",
                             "answer_a": "Er darf den Inhalt der Nachrichten sowie die Tatsache ihres Empfangs anderen nicht mitteilen. Das gilt nicht in Not- und Katastrophenf\u00e4llen.",
                             "answer_b": "Er darf Dritten zwar die Tatsache des Empfangs mitteilen, aber nicht den Inhalt und die n\u00e4heren Umst\u00e4nde. Das gilt auch in Not- und Katastrophenf\u00e4llen.",
                             "answer_c": "Er darf anderen Funkamateuren zwar die Tatsache des Empfangs mitteilen, aber nicht den Inhalt.",
