@@ -39,7 +39,7 @@ jobs:
           mkdir debug-symbols
           flutter pub get
           flutter build appbundle \
-            --release
+            --release --debug
       - name: 📤 Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
