@@ -1,5 +1,5 @@
 name: 📦🚀 Build & deploy Android app
-# based on https://github.com/orevial/flutter-ci-cd-demo/blob/main/.github/workflows/_deploy-android-app.yml
+# based on https://github.com/orevial/flutter-ci-cd-demo/blob/main/.github/workflows/_deploy-android-app.yml no license provided
 on:
   push:
     branches: '*'
