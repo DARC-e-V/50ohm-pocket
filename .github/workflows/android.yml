@@ -21,7 +21,6 @@ jobs:
       - name: ⚙️ Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.7.0"
           channel: 'stable'
       - name: 🔐 Retrieve base64 keystore and decode it to a file
         env:
