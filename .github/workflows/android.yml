@@ -25,7 +25,7 @@ jobs:
       - name: 🔐 Retrieve base64 keystore and decode it to a file
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
-        run: echo $KEYSTORE_BASE64 | base64 --decode > "android/android-keystore.jks"
+        run: echo $KEYSTORE_BASE64 | base64 --decode > "android/upload-keystore.jks"
       - name: 📝🔐 Create keystore.properties file
         env:
           KEYSTORE_PROPERTIES_PATH: android/keystore.properties
