@@ -30,10 +30,10 @@ jobs:
         env:
           KEYSTORE_PROPERTIES_PATH: android/keystore.properties
         run: |
-          echo 'StoreFile=android-keystore.jks' > $KEYSTORE_PROPERTIES_PATH
-          echo 'KeyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
-          echo 'StorePassword=${{ secrets.STORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
-          echo 'KeyPassword=${{ secrets.KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
+          echo 'storeFile=android-keystore.jks' > $KEYSTORE_PROPERTIES_PATH
+          echo 'keyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
+          echo 'storePassword=${{ secrets.STORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
+          echo 'keyPassword=${{ secrets.KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
       - name: 🤖📦 Create Android appbundle release
         run: |
           mkdir debug-symbols
