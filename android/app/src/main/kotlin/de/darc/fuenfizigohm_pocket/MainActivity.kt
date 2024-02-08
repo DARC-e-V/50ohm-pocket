@@ -1,4 +1,4 @@
-package de.darc.fuenfizigohm
+package de.darc.fuenfzigohm
 
 import io.flutter.embedding.android.FlutterActivity
 
