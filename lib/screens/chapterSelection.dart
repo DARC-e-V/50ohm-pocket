@@ -4,6 +4,7 @@ import 'package:fuenfzigohm/coustom_libs/icons.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
+import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -28,11 +29,30 @@ class _LearningmoduleState extends State<Learningmodule> {
         appBar: AppBar(
           title: SvgPicture.asset("assets/svgs/ohm2.svg"),
           actions: [
-            PopupMenuButton(itemBuilder: (context) => [
-              PopupMenuItem(value: 2, child: Text("Formelsammlung")),
-              PopupMenuItem(value: 1, child: Text("Einstellungen")),
-              PopupMenuItem(value: 0, child: Text("Datenschutzerklärung")),
-            ],
+            PopupMenuButton(
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 2,
+                  child: ListTile(
+                    leading: Icon(Icons.functions), // Icon for Formelsammlung
+                    title: Text("Formelsammlung"),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 1,
+                  child: ListTile(
+                    leading: Icon(Icons.settings), // Icon for Einstellungen
+                    title: Text("Einstellungen"),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 0,
+                  child: ListTile(
+                    leading: Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
+                    title: Text("Über diese App"),
+                  ),
+                ),
+              ],
               onSelected: (item) => _selectItem(context, item),
             ),
           ],
@@ -68,9 +88,8 @@ class _LearningmoduleState extends State<Learningmodule> {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 0:
-        final Uri url = Uri.parse("https://app.darc.de/privacy_50ohm.html");
-        launchURL(url);
-
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutAppPage()));
+        break;
     }
   }
 

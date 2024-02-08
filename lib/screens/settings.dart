@@ -1,5 +1,4 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -53,7 +52,7 @@ class _settingsstate extends State<Settingspage> {
                   DatabaseWidget.of(context).settings_database.put("courseOrdering", value);
                 },
                 title: Text("Ausbildungsmaterial nach 50Ohm.de")
-                )
+                ),
             ],
           ),
         ],

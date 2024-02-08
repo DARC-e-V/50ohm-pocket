@@ -9,3 +9,7 @@ Nachdem alles erledigt ist einen Pull Request erstellen und fertig. :sparkles:
 
 ![Screenshot.](https://github.com/Konradrundfunk/Amateurfunktrainer/blob/main/assets/screenshots/questionscreen.png)
 ![Screenshot.](https://github.com/Konradrundfunk/Amateurfunktrainer/blob/main/assets/screenshots/chapterscreen.png)
+
+## Update der Lizenzhinweise für verwendete Pakete
+
+`flutter pub run flutter_oss_licenses:generate.dart`

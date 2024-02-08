@@ -46,8 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>https</string>
-    </array>
+	<array>
+		<string>https</string>
+		<string>mailto</string>
+	</array>
 </dict>
 </plist>
