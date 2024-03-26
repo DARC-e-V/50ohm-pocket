@@ -72,7 +72,6 @@ class _finishstate extends State<Finish>{
                     style: buttonstyle(Colors.lightGreenAccent),
                     child: Text("Abschließen"),
                     onPressed: (){
-                      Navigator.of(context).pop();
                       Navigator.of(context).pop(true);
                       },
                     ),

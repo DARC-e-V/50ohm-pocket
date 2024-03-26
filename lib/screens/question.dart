@@ -1,12 +1,14 @@
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
-import 'package:fuenfzigohm/screens/completeLesson.dart';
+import 'package:fuenfzigohm/helpers/question_controller.dart';
+import 'package:fuenfzigohm/screens/practise/completeLesson.dart';
 import 'package:fuenfzigohm/screens/formelsammlung.dart';
-import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/practise/chapterSelection.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 enum QuestionState{
   answering, 
@@ -21,7 +23,7 @@ class Question extends StatefulWidget {
   Question(this.context, this.subchapter,this.chapter);
 
   @override
-  createState() => _Questionstate(this.context, this.subchapter,this.chapter);
+  createState() => _Questionstate();
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
@@ -31,58 +33,29 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   int highlighting = -1;
 
-  late int questionkey, subchapterkey;
-  late List<String> ShuffledAnswers, Answers;
+  int questionkey = 0;
+  int subchapterkey = 0 ;
+  late List<String> Answers;
   
-  final List subchapter;
-  final context, chapter;
 
   late Json json;
-  bool imageQuestion = false; 
   bool correct = false;
   OverlayEntry? overlayEntry;
+  late QuestionController questionManager; 
 
-
-  _Questionstate(this.context, this.subchapter,this.chapter);
+  _Questionstate();
 
   @override
   initState() {
-    questreslist = List.generate(subchapter.length == 0 ? 1 :subchapter.length, (index) => List.empty(growable: true));
-    questionkey = 0;
-    subchapterkey = 0;
-    setState(() {
-      json = Json(JsonWidget.of(context).json);
+    questionManager = this.context.read<QuestionController>();
+    questionManager.initialize(widget.context, PractiseTypes.subchapter, widget.chapter, widget.subchapter[0]);
 
-      if(subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
-      else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
-
-      refreshAnswers();
-
-    });
-    // print("chapterorder" + "$chapterorder");
     super.initState();
   }
 
-  refreshAnswers(){
-    setState(() {
-      imageQuestion = json.imageQuestion(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
-      if(imageQuestion){
-        Answers = json.imageList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
-      }else{
-        Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
-      }
-      
-      ShuffledAnswers = [];
-      ShuffledAnswers.addAll(Answers);
-      ShuffledAnswers.shuffle();
-
-      highlighting = -1;
-
-      state = QuestionState.answering;
-    });
-  }
   @override
   Widget build(BuildContext context) {
+    QuestionElement questionContent = questionManager!.getCurrentQuestion();
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
@@ -99,7 +72,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           children: [
             Text(
               "Frage "
-                  + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                  + "${questionContent.number}",
             ),
             Row(
               children: [
@@ -129,7 +102,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       textAlign: TextAlign.left,
                       text: TextSpan(
                         children: parseTextWithMath(
-                          "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                          "${questionContent.question}",
                           TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 22
@@ -139,13 +112,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null 
-                ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
+                questionContent.imageType == ImageType.headerImage 
+                ? questionImage(context, json.questionimage(widget.chapter,widget.subchapter.length == 0 ? Null : widget.subchapter[subchapterkey], questionorder[questionkey])!)
                 : SizedBox(),
                 Divider(height: std_padding * 2,),
-                imageQuestion 
-                ? radioSvgListBuilder() 
-                : radioTextListBuilder(),
+                questionContent.imageType == ImageType.imageAnswers 
+                ? radioSvgListBuilder(questionContent)
+                : radioTextListBuilder(questionContent),
                 SizedBox(height: 200),
               ],
             ),
@@ -158,7 +131,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   style: buttonstyle(main_col),
                   onPressed: () {
                     if(state == QuestionState.answering && questionradio != null){
-                      _questionhandler(ShuffledAnswers, Answers, questionradio);
+                      _questionhandler(questionradio, questionContent);
                     }
                   },
                   child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
@@ -210,7 +183,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       child: image,
     );
   }
-ListView radioSvgListBuilder() {
+ListView radioSvgListBuilder(QuestionElement questionContent) {
   Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
@@ -235,14 +208,14 @@ ListView radioSvgListBuilder() {
                   });
                 }
               },
-              title: questionImage(context, ShuffledAnswers[i]),
+              title: questionImage(context, questionContent.headerImage!),
             ),
           );
         }
     );
   }
   
-  ListView radioTextListBuilder() {
+  ListView radioTextListBuilder(QuestionElement questionContent) {
     Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
 
     return ListView.builder(
@@ -276,7 +249,9 @@ ListView radioSvgListBuilder() {
                       textAlign: TextAlign.left,
                       text: TextSpan(
                         children: parseTextWithMath(
-                          "${ShuffledAnswers[i]}",
+                          "${
+                            questionContent.answers.firstWhere((AnswerElement answer) => answer.shuffledIndex == i).element
+                            }",
                           TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 22
@@ -291,22 +266,19 @@ ListView radioSvgListBuilder() {
         }
     );
   }
-  _questionhandler(ShuffledAnswers, Answers, i){
+  _questionhandler(i, QuestionElement questionContent){
     setState(() {
       state = QuestionState.evaluating;
     });
-    bool correct = ShuffledAnswers[i] == Answers[0];
-    // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
-    questreslist[subchapterkey].add(correct);
+    bool correct = questionContent.answers.firstWhere((AnswerElement answer) => answer.shuffledIndex == i).correct;
+
+    questionManager.saveCurrentResult(correct);
     
-    for(int i = 0; i < ShuffledAnswers.length; i++){
-      if(ShuffledAnswers[i] == Answers[0]){
-        setState(() {
-          highlighting = i;          
-        });
-        break;
-      };
-    }
+    
+    setState(() {
+      highlighting = questionContent.answers[0].shuffledIndex;
+    });
+    
     if(correct){
       _overlay(false);
     }
@@ -374,31 +346,21 @@ ListView radioSvgListBuilder() {
   }
   _nextquest(){
     try{
-      this.questionorder[this.questionkey + 1];
-      this.questionradio = null;
-      setState(() {
-        questionradio = null;
-        questionkey += 1;
-        refreshAnswers();
-      });
-    }catch(e){
-      try{
-          this.subchapter[this.subchapterkey];
-          setState(() {
-            questionradio = null;
-            subchapterkey += 1;
-            questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
-            questionkey = 0;
-            refreshAnswers();
-          });
-      }catch(e){
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),
-        );
-        
-      }
+      questionManager.goNextQuestion();
+    } catch(NoMoreQuestionsException){
+      Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (con) => Finish(widget.chapter, widget.subchapter, [questionManager.results], widget.context)),
+      );
     }
+    setState(() {
+      questionradio = null;
+      highlighting = -1;
+      state = QuestionState.answering;
+
+    });
+    
   }
 
 }
