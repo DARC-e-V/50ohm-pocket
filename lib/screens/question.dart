@@ -33,7 +33,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   int highlighting = -1;
 
-  late int questionkey, subchapterkey;
+  int questionkey = 0;
+  int subchapterkey = 0 ;
   late List<String> Answers;
   
 
@@ -47,7 +48,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   @override
   initState() {
     questionManager = this.context.read<QuestionController>();
-    questionManager!.initialize(context, PractiseTypes.subchapter, widget.chapter, widget.subchapter[0]);
+    questionManager.initialize(widget.context, PractiseTypes.subchapter, widget.chapter, widget.subchapter[0]);
 
     super.initState();
   }
@@ -270,10 +271,9 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
       state = QuestionState.evaluating;
     });
     bool correct = questionContent.answers.firstWhere((AnswerElement answer) => answer.shuffledIndex == i).correct;
-    // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
+
     questionManager.saveCurrentResult(correct);
     
-    questreslist[subchapterkey].add(correct);
     
     setState(() {
       highlighting = questionContent.answers[0].shuffledIndex;
@@ -351,7 +351,7 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
       Navigator.pop(context);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (con) => Finish(widget.chapter, widget.subchapter, [questionManager.results], context)),
+        MaterialPageRoute(builder: (con) => Finish(widget.chapter, widget.subchapter, [questionManager.results], widget.context)),
       );
     }
     setState(() {
