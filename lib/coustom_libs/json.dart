@@ -177,6 +177,16 @@ class Json{
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
 
+  getSubchapter(int chapter, int subchapter){
+    try{
+      return this.data!["sections"][chapter]["sections"][subchapter];
+    }catch(e){
+      return this.data!["sections"][chapter];
+    }
+
+  }
+
+
 }
 
 class JsonWidget extends InheritedWidget{

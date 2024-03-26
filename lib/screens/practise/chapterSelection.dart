@@ -2,14 +2,16 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/icons.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/helpers/question_controller.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
-import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/screens/legal/aboutApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'formelsammlung.dart';
+import '../formelsammlung.dart';
 
 
 class Learningmodule extends StatefulWidget {
@@ -227,7 +229,10 @@ class _LearningmoduleState extends State<Learningmodule> {
             InkWell(
               onTap:() async {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
+                      MaterialPageRoute(
+                          builder: (_) =>
+                            Question(context, [subchapter], chapter),
+                        ),
                     ).then((value){
                       if(value ?? false){
                         setState(() {});

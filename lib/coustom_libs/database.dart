@@ -23,8 +23,6 @@ class Databaseobj{
     int i = 0;
     for(var result in resultlist){
 
-      result = result.map((x) => x ? 1 : 0).toList();
-
       // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
       //print("liste :: $list");
       try{  

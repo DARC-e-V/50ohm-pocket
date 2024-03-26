@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutAppPage extends StatelessWidget {
   @override
@@ -34,7 +34,7 @@ class AboutAppPage extends StatelessWidget {
                       title: Text("Quellcode"),
                       leading: Icon(Icons.code),
                       onPressed: (BuildContext context) {
-                        launch("https://github.com/DARC-e-V/50ohm-pocket");
+                        launchUrlString("https://github.com/DARC-e-V/50ohm-pocket");
                       },
                     ),
                     SettingsTile(
@@ -51,14 +51,14 @@ class AboutAppPage extends StatelessWidget {
                       title: Text("app@darc.de"),
                       leading: Icon(Icons.email),
                       onPressed: (BuildContext context) {
-                        launch("mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A");
+                        launchUrlString("mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A");
                       },
                     ),
                     SettingsTile(
                       title: Text("app.darc.de"),
                       leading: Icon(Icons.web),
                       onPressed: (BuildContext context) {
-                        launch("https://app.darc.de");
+                        launchUrlString("https://app.darc.de");
                       },
                     ),
                   ],
@@ -71,14 +71,14 @@ class AboutAppPage extends StatelessWidget {
                       title: Text("Datenschutzerklärung"),
                       leading: Icon(Icons.policy),
                       onPressed: (BuildContext context) {
-                        launch("https://app.darc.de/privacy_50ohm.html");
+                        launchUrlString("https://app.darc.de/privacy_50ohm.html");
                       },
                     ),
                     SettingsTile(
                       title: Text("Impressum"),
                       leading: Icon(Icons.menu_book),
                       onPressed: (BuildContext context) {
-                        launch("https://www.darc.de/impressum/");
+                        launchUrlString("https://www.darc.de/impressum/");
                       },
                     ),
                   ],
