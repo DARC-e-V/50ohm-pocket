@@ -1,13 +1,12 @@
 import 'package:fuenfzigohm/constants.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/helpers/question_controller.dart';
 import 'package:fuenfzigohm/screens/practise/completeLesson.dart';
 import 'package:fuenfzigohm/screens/formelsammlung.dart';
-import 'package:fuenfzigohm/screens/practise/chapterSelection.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
 
 enum QuestionState{
@@ -16,9 +15,10 @@ enum QuestionState{
 }
 
 class Question extends StatefulWidget {
-
-  var subchapter, chapter;
-  final BuildContext context;
+  
+  List<int> subchapter;
+  int chapter;
+  BuildContext context;
 
   Question(this.context, this.subchapter,this.chapter);
 
@@ -27,18 +27,13 @@ class Question extends StatefulWidget {
 }
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
-  var questionorder, questreslist, pdfController, questionradio;
-  
-  QuestionState state = QuestionState.answering;
+  late PdfController pdfController;
+  late int questionradio;
+
+  QuestionState status = QuestionState.answering;
 
   int highlighting = -1;
-
-  int questionkey = 0;
-  int subchapterkey = 0 ;
-  late List<String> Answers;
   
-
-  late Json json;
   bool correct = false;
   OverlayEntry? overlayEntry;
   late QuestionController questionManager; 
@@ -113,7 +108,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   ),
                 ),
                 questionContent.imageType == ImageType.headerImage 
-                ? questionImage(context, json.questionimage(widget.chapter,widget.subchapter.length == 0 ? Null : widget.subchapter[subchapterkey], questionorder[questionkey])!)
+                ? questionImage(context, questionContent.headerImage!)
                 : SizedBox(),
                 Divider(height: std_padding * 2,),
                 questionContent.imageType == ImageType.imageAnswers 
@@ -130,7 +125,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   autofocus: false,
                   style: buttonstyle(main_col),
                   onPressed: () {
-                    if(state == QuestionState.answering && questionradio != null){
+                    if(status == QuestionState.answering && questionradio != null){
                       _questionhandler(questionradio, questionContent);
                     }
                   },
@@ -202,13 +197,13 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
               groupValue: questionradio,
               value: i,
               onChanged: (var value) {
-                if(state == QuestionState.answering){
+                if(status == QuestionState.answering){
                   setState(() {
                     questionradio = i;
                   });
                 }
               },
-              title: questionImage(context, questionContent.headerImage!),
+              title: questionImage(context, questionContent.answers[i].element),
             ),
           );
         }
@@ -239,7 +234,7 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
                     groupValue: questionradio,
                     value: i,
                     onChanged: (var value) {
-                      if(state == QuestionState.answering){
+                      if(status == QuestionState.answering){
                         setState(() {
                           questionradio = i;
                         });
@@ -268,7 +263,7 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
   }
   _questionhandler(i, QuestionElement questionContent){
     setState(() {
-      state = QuestionState.evaluating;
+      status = QuestionState.evaluating;
     });
     bool correct = questionContent.answers.firstWhere((AnswerElement answer) => answer.shuffledIndex == i).correct;
 
@@ -351,25 +346,18 @@ ListView radioSvgListBuilder(QuestionElement questionContent) {
       Navigator.pop(context);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (con) => Finish(widget.chapter, widget.subchapter, [questionManager.results], widget.context)),
+        MaterialPageRoute(builder: (con) => Finish(questionManager, widget.context)),
       );
     }
     setState(() {
-      questionradio = null;
+      questionradio = -1;
       highlighting = -1;
-      state = QuestionState.answering;
+      status = QuestionState.answering;
 
     });
     
   }
 
-}
-
-orderlist(var elements, bool random){
-  int i = 0; List<int> orderlist = List.generate((elements),(generator) {i++; return i - 1;});
-
-  if(!random) return orderlist;
-  else orderlist.shuffle(); return orderlist;
 }
 
 

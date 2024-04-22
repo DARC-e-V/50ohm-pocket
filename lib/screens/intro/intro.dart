@@ -154,7 +154,7 @@ class _WelcomeState extends State<Welcome> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          "Entdecke die neue Amateurfunkklasse N – mit einem mühelosen Einstieg, Fokus auf Selbstbau und exklusivem Zugang zur Kurzwelle. Tauche ein in die Welt des Amateurfunks und erlebe Kommunikation auf eine ganz neue, selbstgestaltete Art!",
+                                          "Baue deine eigene Funkstation auf, experimentiere mit neuester Technik und knüpfte Kontakte weltweit. Erlebe grenzenlose Kommunikation und werde Teil einer aktiven Gemeinschaft, die die Zukunft des Amateurfunks gestaltet.",
                                           style: TextStyle(fontSize: 17),
                                           )),
                                       Icon(Icons.arrow_forward_ios)
@@ -187,7 +187,7 @@ class _WelcomeState extends State<Welcome> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                          "Vertiefe deine Kenntnisse in Technik und Funkbetrieb, nimm an Amateurfunk-Wettbewerben teil und engagiere dich in der Ausbildung von neuen Funkamateuren.",
                                           style: TextStyle(fontSize: 17),
                                           )),
                                       Icon(Icons.arrow_forward_ios)
@@ -220,7 +220,7 @@ class _WelcomeState extends State<Welcome> {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                            "Errichte deine eigene Amateurfunkstation mit hoher Sendeleistung, leite Funkkurse und bilde neue Funkamateure aus. Engagiere dich in der Forschung und Entwicklung neuer Funktechnologien und gestalte die Zukunft des Amateurfunks aktiv mit.",
                                             style: TextStyle(fontSize: 17),
                                             )),
                                         Icon(Icons.arrow_forward_ios)

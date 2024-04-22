@@ -1,5 +1,6 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/helpers/question_controller.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -7,23 +8,24 @@ import 'package:flutter/widgets.dart';
 
 
 class Finish extends StatefulWidget{
-  var subchapter, chapter, result, context;
-  Finish( this.chapter, this.subchapter, this.result, this.context);
+  QuestionController questionController;
+  BuildContext context;
+
+  Finish( this.questionController, this.context);
 
   @override
   State<StatefulWidget> createState() =>
-     _finishstate(subchapter, chapter, result, context);
+     _finishstate();
 
 }
 
 class _finishstate extends State<Finish>{
-  var subchapter, chapter, result, context;
 
-  _finishstate( this.subchapter, this.chapter, this.result, this.context);
+  _finishstate( );
   
   @override
   Widget build(BuildContext buildcontext) {
-    Databaseobj(context).write(JsonWidget.of(context).mainchapter, chapter, subchapter, result);
+    Databaseobj(context).write(widget.questionController);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -43,25 +45,30 @@ class _finishstate extends State<Finish>{
               ),
               Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: AspectRatio(
-                  aspectRatio: 0.8,
-                  child: PieChart(
-                    PieChartData(
-                      sections: [
-                        PieChartSectionData(
-                          value: progress(),
-                          color: Colors.green,
-                          title: "richtig",
-                        ),
-                        PieChartSectionData(
-                          value: 100.0 - progress(),
-                          color: Colors.red,
-                          title: "falsch",
-                        ),
-                      ]
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height - 240,
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: PieChart(
+                      PieChartData(
+                        sections: [
+                          PieChartSectionData(
+                            value: progress(),
+                            color: Colors.green,
+                            title: "richtig",
+                          ),
+                          PieChartSectionData(
+                            value: 100.0 - progress(),
+                            color: Colors.red,
+                            title: "falsch",
+                          ),
+                        ]
+                      ),
+                      swapAnimationDuration: Duration(milliseconds: 15000), // Optional
+                      swapAnimationCurve: Curves.linear, 
                     ),
-                    swapAnimationDuration: Duration(milliseconds: 1500), // Optional
-                    swapAnimationCurve: Curves.linear, 
                   ),
                 ),
               ),
