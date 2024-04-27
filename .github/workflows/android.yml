@@ -31,7 +31,7 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1.4.0
       with:
-        flutter-version: "3.7.0"
+        flutter-version: "3.19.6"
         channel: 'stable'
     - name: Create the Keystore
       env:
