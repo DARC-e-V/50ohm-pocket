@@ -36,7 +36,7 @@ jobs:
     - name: Create the Keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
-      run: echo $KEYSTORE_BASE64 | base64 --decode > $RUNNER_TEMP/keystore.jks
+      run: echo $KEYSTORE_BASE64 | base64 --decode > $RUNNER_TEMP/upload-keystore.jks
     - run: flutter pub get
     - run: flutter build apk
     - run: flutter build appbundle
