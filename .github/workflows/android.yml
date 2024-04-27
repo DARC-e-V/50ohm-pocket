@@ -42,7 +42,6 @@ jobs:
         echo $KEYSTORE_BASE64 | base64 --decode > android/upload-keystore.jks
         echo $KEYPROPERTIES_BASE64 | base64 --decode > android/key.properties
     - run: flutter pub get
-    - run: flutter build apk
     - run: flutter build appbundle
 
     - uses: actions/upload-artifact@v4
