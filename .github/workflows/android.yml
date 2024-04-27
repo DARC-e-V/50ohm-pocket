@@ -44,9 +44,7 @@ jobs:
     - run: flutter pub get
     - run: flutter build apk
     - run: flutter build appbundle
-    - name: Sign Android App Bundle
-      run: jarsigner -keystore android/keystore.keystore -storepass ${{ secrets.STORE_PASSWORD }} -keypass ${{ secrets.KEYSTORE_KEY_ALIAS }} -sigalg SHA256withRSA -digestalg SHA-256 -signedjar build/app/outputs/bundle/release/app-release-signed.aab build/app/outputs/bundle/release/*.aab release
-    
+
     - uses: actions/upload-artifact@v2.2.4
       with:
         path: |
