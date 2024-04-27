@@ -48,6 +48,7 @@ jobs:
       with:
         name: Signed App Bundle
         path: build/app/outputs/bundle/release/app-release.aab
+        compression: none
 
     
 
