@@ -45,11 +45,10 @@ jobs:
     - run: flutter build apk
     - run: flutter build appbundle
 
-    - uses: actions/upload-artifact@v2.2.4
+    - uses: actions/upload-artifact@v4
       with:
-        path: |
-          build/app/outputs/flutter-apk/app-release.apk  
-          build/app/outputs/bundle/release/app-release-signed.aab
+        name: Signed App Bundle
+        path: build/app/outputs/bundle/release/app-release-signed.aab
 
     
 
