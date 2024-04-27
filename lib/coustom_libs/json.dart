@@ -15,7 +15,35 @@ class Json{
     if(importedData != Null){
 
       if(mainchapter == -1){
+        this.data = importedData!;
 
+        for(var i in this.data!["sections"]){
+          for(var y in i["sections"]){
+            (y["questions"] as List).removeWhere(
+              (z){
+                for(int klasse in klassen){
+                  if(z["class"] == klasse.toString()){
+                    return false;
+                  }
+                }
+                return true;
+              }
+            );
+          }
+        }
+        for(int i = 0; i < (this.data!["sections"] as List).length; i++){
+          this.data!["sections"][i]["sections"].removeWhere((element) {
+            if((element["questions"] as List).isEmpty){
+              //print(element["title"]);
+              return true;
+            }
+            return false;
+          });
+          if((this.data!["sections"][i]["sections"] as List).isEmpty){
+            (this.data!["sections"] as List).removeAt(i);
+            i--;
+          }
+        }
         return this.data;
       } else {
           this.data = importedData!["sections"][mainchapter];

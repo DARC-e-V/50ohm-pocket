@@ -251,13 +251,21 @@ class _LearningmoduleState extends State<Learningmodule> {
   );
 
   getUserClass(BuildContext context) {
+    print(DatabaseWidget.of(context).settings_database.get("Klasse"));
     switch(DatabaseWidget.of(context).settings_database.get("Klasse")){
       case [1]:
         return chapterbuilder(context, 'assets/questions/N.json', -1);
-      case [2]:
+      case [1, 2]:
         return chapterbuilder(context, 'assets/questions/E.json', -1);
-      case [3]:
+      case [1, 2, 3]:
         return chapterbuilder(context, 'assets/questions/A.json', -1);
+      case [2]:
+        return chapterbuilder(context, 'assets/questions/NE.json', -1);
+      case [3]:
+        return chapterbuilder(context, 'assets/questions/EA.json', -1);
+      case [2, 3]:
+        return chapterbuilder(context, 'assets/questions/NEA.json', -1);
+
     }
   }
 
