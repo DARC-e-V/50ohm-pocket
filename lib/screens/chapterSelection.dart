@@ -61,16 +61,16 @@ class _LearningmoduleState extends State<Learningmodule> {
           length: 3,
           child: Scaffold(
             body: courseOrdering
-            ? chapterbuilder(context, 'assets/questions/ausbildungsmaterial.json', -1)
-            : PageView.builder(
-                itemBuilder: (content, index){
-                  if(index == 0){
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 0);
-                  }else if(index == 1){
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 1);
-                  }else{
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 2);
-                  }
+              ? getUserClass(context)
+              : PageView.builder(
+                  itemBuilder: (content, index){
+                    if(index == 0){
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 0);
+                    }else if(index == 1){
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 1);
+                    }else{
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 2);
+                    }
                 },
                 itemCount: 3,
                 )
@@ -249,6 +249,17 @@ class _LearningmoduleState extends State<Learningmodule> {
       );
     }
   );
+
+  getUserClass(BuildContext context) {
+    switch(DatabaseWidget.of(context).settings_database.get("Klasse")){
+      case [1]:
+        return chapterbuilder(context, 'assets/questions/N.json', -1);
+      case [2]:
+        return chapterbuilder(context, 'assets/questions/E.json', -1);
+      case [3]:
+        return chapterbuilder(context, 'assets/questions/A.json', -1);
+    }
+  }
 
 }
 
