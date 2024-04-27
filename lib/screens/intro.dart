@@ -1,8 +1,8 @@
 import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/screens/chapterSelection.dart';
-import 'package:fuenfzigohm/screens/selectLearningPath.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/selectLearningPath.dart';
 
 
 class Welcome extends StatefulWidget{
@@ -12,20 +12,20 @@ class Welcome extends StatefulWidget{
 }
 
 class _WelcomeState extends State<Welcome> {
-  var _pageController;   
+  var _pageController;
 
   @override
   Widget build(BuildContext context) {
-      if(DatabaseWidget.of(context).settings_database.containsKey("Klasse")){
-        _pageController = PageController(initialPage: 1);
-      } else{
-        _pageController = PageController(initialPage: 0); 
-      }
+    if(DatabaseWidget.of(context).settings_database.containsKey("Klasse")){
+      _pageController = PageController(initialPage: 1);
+    } else{
+      _pageController = PageController(initialPage: 0);
+    }
 
-      bool welcomePage = DatabaseWidget.of(context).settings_database.containsKey("welcomePage");
-      if(welcomePage) return Learningmodule();
-      return Scaffold(
-        body: PageView.builder(
+    bool welcomePage = DatabaseWidget.of(context).settings_database.containsKey("welcomePage");
+    if(welcomePage) return Learningmodule();
+    return Scaffold(
+      body: PageView.builder(
           itemCount: 2,
           controller: _pageController,
           itemBuilder: (content, index){
@@ -34,55 +34,66 @@ class _WelcomeState extends State<Welcome> {
                 bottom: true,
                 child: Stack(
                   children: [
-                    SvgPicture.asset(
-                      "assets/welcome/Icons.svg",
-                      width: MediaQuery.of(context).size.width,
-                      alignment: Alignment.center,
-                      clipBehavior: Clip.hardEdge,
-                      ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Willkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
-                              Text(
-                                "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
-                                style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.w600)
-                              ),
-                            ] 
-                          ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 100.0),
+                        child: SvgPicture.asset(
+                          "assets/welcome/Icons.svg",
+                          alignment: Alignment.topCenter,
+                          clipBehavior: Clip.hardEdge,
+                          fit: BoxFit.fitWidth,
                         ),
-                        Center(
-                          child: InkWell(
-                            onTap: () {
-                              _pageController.animateToPage(1, duration: Duration(milliseconds: 200), curve: Curves.linear);
-                            },
-                            child: Container(
-                              width: 364,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF00A0E3),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Start',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text("Willkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
+                                  Text(
+                                      "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
+                                      style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 39, 39, 39), fontWeight: FontWeight.w600)
                                   ),
-                                ),
+
+                                ]
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: InkWell(
+                        onTap: () {
+                          _pageController.animateToPage(1, duration: Duration(milliseconds: 200), curve: Curves.linear);
+                        },
+                        child: Container(
+                          width: 364,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF00A0E3),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Start',
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
                               ),
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               );
@@ -96,12 +107,12 @@ class _WelcomeState extends State<Welcome> {
                         child: Text("Womit möchtest du beginnen?", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                       ),
                       TextButton(onPressed: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => selectClass()),
-                          );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => selectClass()),
+                        );
                       },
-                        child: Text("Ich habe schon eine Prüfung abgelegt.", style: TextStyle(fontSize: 18),)
+                          child: Text("Ich habe schon eine Prüfung abgelegt.", style: TextStyle(fontSize: 18),)
                       ),
                       InkWell(
                         onTap: (){
@@ -131,9 +142,9 @@ class _WelcomeState extends State<Welcome> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Neu",
-                                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
-                                              ),
+                                                "Neu",
+                                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -142,9 +153,9 @@ class _WelcomeState extends State<Welcome> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                          "Entdecke die neue Amateurfunkklasse N – mit einem mühelosen Einstieg, Fokus auf Selbstbau und exklusivem Zugang zur Kurzwelle. Tauche ein in die Welt des Amateurfunks und erlebe Kommunikation auf eine ganz neue, selbstgestaltete Art!",
-                                          style: TextStyle(fontSize: 17),
+                                          child: Text(
+                                            "Baue deine eigene Funkstation auf, experimentiere mit neuester Technik und knüpfte Kontakte weltweit. Erlebe grenzenlose Kommunikation und werde Teil einer aktiven Gemeinschaft, die die Zukunft des Amateurfunks gestaltet.",
+                                            style: TextStyle(fontSize: 17),
                                           )),
                                       Icon(Icons.arrow_forward_ios)
                                     ],
@@ -175,9 +186,9 @@ class _WelcomeState extends State<Welcome> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                          "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
-                                          style: TextStyle(fontSize: 17),
+                                          child: Text(
+                                            "Vertiefe deine Kenntnisse in Technik und Funkbetrieb, nimm an Amateurfunk-Wettbewerben teil und engagiere dich in der Ausbildung von neuen Funkamateuren.",
+                                            style: TextStyle(fontSize: 17),
                                           )),
                                       Icon(Icons.arrow_forward_ios)
                                     ],
@@ -193,43 +204,43 @@ class _WelcomeState extends State<Welcome> {
                           handleStart([1, 2, 3], context);
                         },
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xff3BB583),
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                    Row(
-                                      children: [
-                                        Expanded(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xff3BB583),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                  Row(
+                                    children: [
+                                      Expanded(
                                           child: Text(
-                                            "Entdecke die Möglichkeiten des Amateurfunks auf einem neuen Level und erlebe die Welt der Kommunikation mit höherer Leistung und auf mehreren Kurzwellenfrequenzen. Tauche ein und gestalte deine Funkerfahrung neu!",
+                                            "Errichte deine eigene Amateurfunkstation mit hoher Sendeleistung, leite Funkkurse und bilde neue Funkamateure aus. Engagiere dich in der Forschung und Entwicklung neuer Funktechnologien und gestalte die Zukunft des Amateurfunks aktiv mit.",
                                             style: TextStyle(fontSize: 17),
-                                            )),
-                                        Icon(Icons.arrow_forward_ios)
-                                      ],
-                                    )
-                                  ],
-                                ),
+                                          )),
+                                      Icon(Icons.arrow_forward_ios)
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
                           ),
-                      ) 
+                        ),
+                      )
                     ],
                   ),
                 ),
               );
             }
-        }),
-      );
-    }
-} 
+          }),
+    );
+  }
+}
 
 void handleStart(List<int> klasse, BuildContext context){
   DatabaseWidget.of(context).settings_database.put("welcomePage", true);

@@ -1,7 +1,7 @@
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
-import 'package:fuenfzigohm/screens/formelsammlung.dart';
+import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +106,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 IconButton(icon: Icon(Icons.book), onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Formularpage(1),
+                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung"),
                     )
                   );
                   },

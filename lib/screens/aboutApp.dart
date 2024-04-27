@@ -102,6 +102,11 @@ class AboutAppPage extends StatelessWidget {
                         Navigator.of(context).pushNamed("/questionsLicenseNotice");
                       },
                     ),
+                    SettingsTile(
+                        title: Text("(Frequenz-)Nutzungsplan"),
+                        description: Text("Der Nutzungsplan wurde aus der Anlage 1 der Amateurfunkverordnung – AFuV 2023 entnommen."),
+                        leading: Icon(Icons.assignment),
+                    )
                   ],
                 ),
               ],

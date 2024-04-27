@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'formelsammlung.dart';
+import 'pdfViewer.dart';
 
 
 class Learningmodule extends StatefulWidget {
@@ -27,10 +27,17 @@ class _LearningmoduleState extends State<Learningmodule> {
     bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
         appBar: AppBar(
-          title: SvgPicture.asset("assets/svgs/ohm2.svg"),
+          title: SvgPicture.asset("assets/icons/ohm2.svg"),
           actions: [
             PopupMenuButton(
               itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 3,
+                  child: ListTile(
+                    leading: Icon(Icons.description), // Icon for Nutzungsplan
+                    title: Text("Nutzungsplan"),
+                  ),
+                ),
                 PopupMenuItem(
                   value: 2,
                   child: ListTile(
@@ -61,16 +68,16 @@ class _LearningmoduleState extends State<Learningmodule> {
           length: 3,
           child: Scaffold(
             body: courseOrdering
-            ? chapterbuilder(context, 'assets/questions/ausbildungsmaterial.json', -1)
-            : PageView.builder(
-                itemBuilder: (content, index){
-                  if(index == 0){
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 0);
-                  }else if(index == 1){
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 1);
-                  }else{
-                    return chapterbuilder(context, 'assets/questions/Questions.json', 2);
-                  }
+              ? getUserClass(context)
+              : PageView.builder(
+                  itemBuilder: (content, index){
+                    if(index == 0){
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 0);
+                    }else if(index == 1){
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 1);
+                    }else{
+                      return chapterbuilder(context, 'assets/questions/Questions.json', 2);
+                    }
                 },
                 itemCount: 3,
                 )
@@ -81,8 +88,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch(item){
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Nutzungsplan.pdf", "Nutzungsplan")));
+        break;
       case 2:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung")));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
@@ -249,6 +259,25 @@ class _LearningmoduleState extends State<Learningmodule> {
       );
     }
   );
+
+  getUserClass(BuildContext context) {
+    print(DatabaseWidget.of(context).settings_database.get("Klasse"));
+    switch(DatabaseWidget.of(context).settings_database.get("Klasse")){
+      case [1]:
+        return chapterbuilder(context, 'assets/questions/N.json', -1);
+      case [1, 2]:
+        return chapterbuilder(context, 'assets/questions/E.json', -1);
+      case [1, 2, 3]:
+        return chapterbuilder(context, 'assets/questions/A.json', -1);
+      case [2]:
+        return chapterbuilder(context, 'assets/questions/NE.json', -1);
+      case [3]:
+        return chapterbuilder(context, 'assets/questions/EA.json', -1);
+      case [2, 3]:
+        return chapterbuilder(context, 'assets/questions/NEA.json', -1);
+
+    }
+  }
 
 }
 
