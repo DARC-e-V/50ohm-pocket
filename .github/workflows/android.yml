@@ -46,9 +46,8 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: Signed App Bundle
+        name: Signed_App_Bundle
         path: build/app/outputs/bundle/release/app-release.aab
-        compression: none
 
     
 
