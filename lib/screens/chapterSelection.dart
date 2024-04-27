@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'formelsammlung.dart';
+import 'pdfViewer.dart';
 
 
 class Learningmodule extends StatefulWidget {
@@ -31,6 +31,13 @@ class _LearningmoduleState extends State<Learningmodule> {
           actions: [
             PopupMenuButton(
               itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 3,
+                  child: ListTile(
+                    leading: Icon(Icons.description), // Icon for Nutzungsplan
+                    title: Text("Nutzungsplan"),
+                  ),
+                ),
                 PopupMenuItem(
                   value: 2,
                   child: ListTile(
@@ -81,8 +88,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch(item){
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Nutzungsplan.pdf", "Nutzungsplan")));
+        break;
       case 2:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung")));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
