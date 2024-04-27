@@ -27,7 +27,7 @@ class _LearningmoduleState extends State<Learningmodule> {
     bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
         appBar: AppBar(
-          title: SvgPicture.asset("assets/svgs/ohm2.svg"),
+          title: SvgPicture.asset("assets/icons/ohm2.svg"),
           actions: [
             PopupMenuButton(
               itemBuilder: (context) => [
