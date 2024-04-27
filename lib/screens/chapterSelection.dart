@@ -4,8 +4,10 @@ import 'package:fuenfzigohm/coustom_libs/icons.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
+import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'formelsammlung.dart';
 
@@ -27,10 +29,30 @@ class _LearningmoduleState extends State<Learningmodule> {
         appBar: AppBar(
           title: SvgPicture.asset("assets/svgs/ohm2.svg"),
           actions: [
-            PopupMenuButton(itemBuilder: (context) => [
-              PopupMenuItem(value: 1, child: Text("Formelsammlung")),
-              PopupMenuItem(value: 0, child: Text("Einstellungen")),
-            ],
+            PopupMenuButton(
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 2,
+                  child: ListTile(
+                    leading: Icon(Icons.functions), // Icon for Formelsammlung
+                    title: Text("Formelsammlung"),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 1,
+                  child: ListTile(
+                    leading: Icon(Icons.settings), // Icon for Einstellungen
+                    title: Text("Einstellungen"),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 0,
+                  child: ListTile(
+                    leading: Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
+                    title: Text("Über diese App"),
+                  ),
+                ),
+              ],
               onSelected: (item) => _selectItem(context, item),
             ),
           ],
@@ -59,11 +81,14 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch(item){
-      case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+      case 2:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
         break;
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Formularpage(1)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+        break;
+      case 0:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutAppPage()));
         break;
     }
   }
@@ -93,11 +118,13 @@ class _LearningmoduleState extends State<Learningmodule> {
         },
     );
   }
+
+
   Widget selectlesson(var data, var context) {
     Json json = Json(data);
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
-    
+
       child: Padding(
         padding: EdgeInsets.only(left: 5,right: 5),
         child: ListView.builder(
@@ -149,8 +176,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                       minimumSize: Size.fromHeight(100),
                       backgroundColor: main_col.withOpacity(0.7),
                       shape: RoundedRectangleBorder(
-                        borderRadius: json.chaptersize(currentmainchapter) == 0 
-                          ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)) 
+                        borderRadius: json.chaptersize(currentmainchapter) == 0
+                          ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))
                           : BorderRadius.all(Radius.circular(5))
                       ),
                     ),
@@ -171,7 +198,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ),
                     ),
                   ),
-                    json.chaptersize(currentmainchapter) == 0 
+                    json.chaptersize(currentmainchapter) == 0
                       ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
                       : SizedBox(height: 8,),
 
@@ -225,6 +252,13 @@ class _LearningmoduleState extends State<Learningmodule> {
 
 }
 
+Future<void> launchURL(url) async {
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});

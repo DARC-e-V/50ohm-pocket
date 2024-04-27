@@ -8,4 +8,9 @@ Egal, ob du schon eine Lizenz hast oder gerade erst mit dem Lernen beginnst, mit
 # Mithelfen
 Das Projekt wird derzeit von einem kleinen Entwicklerteam ehrenamtlich entwickelt. Wenn du Verbesserungsvorschläge hast oder einen Fehler gefunden hast, schreibe gerne ein Issue.  Wenn du die App aktiv mitgestalten möchtest, klon das Repository und bring 50Ohm voran. Wir freuen uns über Pull Requests. 
 
+
+## Update der Lizenzhinweise für verwendete Pakete
+
+`flutter pub run flutter_oss_licenses:generate.dart`
+
 ![portal](https://github.com/Konradrundfunk/50ohm-pocket/assets/33392939/7ddb8cbc-5c60-4c5d-8e59-6541ce410919)
