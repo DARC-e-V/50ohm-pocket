@@ -31,7 +31,8 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1.4.0
       with:
-        channel: 'stable' # or: 'beta', 'dev' or 'master'
+        flutter-version: "3.7.0"
+        channel: 'stable'
     - name: Create the Keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
