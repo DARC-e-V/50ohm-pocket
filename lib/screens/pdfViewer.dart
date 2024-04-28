@@ -1,15 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 
-class Formularpage extends StatelessWidget{
+class PdfViewer extends StatelessWidget{
   final start_at;
-  Formularpage(this.start_at);
+  final String path;
+  final String title;
+  PdfViewer(this.start_at, this.path, this.title);
 
   @override
   Widget build(BuildContext context) {
   final pdfController = PdfControllerPinch(
-    document: PdfDocument.openAsset('assets/pdf/Formelsammlung.pdf'),
+    document: PdfDocument.openAsset(path),
   );
 
     return Scaffold(
@@ -19,7 +20,7 @@ class Formularpage extends StatelessWidget{
             Navigator.of(context).pop();
           },
         ),
-        title: Text("Formelsammlung"),
+        title: Text(title),
       ),
       body: PdfViewPinch(
         controller: pdfController,
