@@ -26,6 +26,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+      id: extract_branch
+
     - uses: actions/setup-java@v2
       with:
         distribution: 'zulu'
@@ -34,6 +40,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         channel: stable
+
     - name: Create the Keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
@@ -42,6 +49,7 @@ jobs:
         echo $KEYSTORE_BASE64 | base64 --decode > android/upload-keystore.jks
         echo $KEYPROPERTIES_BASE64 | base64 --decode > android/key.properties
     - run: flutter pub get
+    - run: flutter pub run flutter_oss_licenses:generate.dart
     - run: flutter build appbundle
 
     - uses: actions/upload-artifact@v4
@@ -49,5 +57,11 @@ jobs:
         name: Signed_App_Bundle
         path: build/app/outputs/bundle/release/app-release.aab
 
-    
-
+    - name: Upload artifact to Nextcloud
+      env:
+        USERNAME: ${{ secrets.NEXTCLOUD_USERNAME }}
+        PASSWORD: ${{ secrets.NEXTCLOUD_PASSWORD }}
+      run: |
+        curl -u $USERNAME:$PASSWORD -X MKCOL https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch} || echo "Branch folder exists"
+        curl -T build/app/outputs/flutter-apk/app-release.apk -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch}/
+        curl -T build/app/outputs/bundle/release/app-release.aab -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch}/
