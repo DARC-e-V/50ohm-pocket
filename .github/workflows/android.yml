@@ -63,6 +63,6 @@ jobs:
         USERNAME: ${{ secrets.NEXTCLOUD_USERNAME }}
         PASSWORD: ${{ secrets.NEXTCLOUD_PASSWORD }}
       run: |
-        curl -u $USERNAME:$PASSWORD -X MKCOL https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch} || echo "Branch folder exists"
-        curl -T build/app/outputs/flutter-apk/app-release.apk -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch}/
-        curl -T build/app/outputs/bundle/release/app-release.aab -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${steps.extract.outputs.branch}/
+        curl -u $USERNAME:$PASSWORD -X MKCOL https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract.outputs.branch }} || echo "Branch folder exists"
+        curl -T build/app/outputs/flutter-apk/app-release.apk -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract.outputs.branch }}/
+        curl -T build/app/outputs/bundle/release/app-release.aab -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract.outputs.branch }}/
