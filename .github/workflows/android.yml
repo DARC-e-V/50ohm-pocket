@@ -51,6 +51,7 @@ jobs:
     - run: flutter pub get
     - run: flutter pub run flutter_oss_licenses:generate.dart
     - run: flutter build appbundle
+    - run: flutter build apk --release
 
     - uses: actions/upload-artifact@v4
       with:
