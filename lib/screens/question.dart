@@ -315,58 +315,71 @@ ListView radioSvgListBuilder() {
     }
   }
   _overlay(bool wrong) {
-
     OverlayState? overlayState = Overlay.of(context);
 
     overlayEntry = OverlayEntry(
-        builder: (buildcontext){
-          return  Container(
-            child: Stack(                
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                Container(
-                  height: 200,
-                    decoration: BoxDecoration(
-                      color: wrong ? Colors.red.shade200: Colors.green.shade200,
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 90, right: 20, left: 20),
-                        child: 
-                          RichText(
-                            textAlign: TextAlign.left,
-                            text: TextSpan(
-                              children: parseTextWithMath(
-                                wrong ? "Die Antwort ist falsch!" : "Richtig!",
-                                TextStyle(
-                                  fontFamily: "Roboto",
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  decoration: TextDecoration.none
-                                ),
-                              )
+      builder: (buildcontext) {
+        return Container(
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: wrong ? Colors.red.shade200 : Colors.green.shade200,
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 90, right: 20, left: 20),
+                    child: RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: wrong ? "Falsch, richtig wäre:\n" : "Richtig:\n",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 24,
+                              decoration: TextDecoration.none,
                             ),
                           ),
-                      ),         
-                    )
+                          ...parseTextWithMath(
+                            "${Answers[0]}",
+                            TextStyle(
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 30,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
+              ),
               SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 10, left: 8,),
+                  padding: EdgeInsets.only(bottom: 10, left: 8),
                   child: ElevatedButton(
                     autofocus: false,
                     style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
-                    onPressed: (){
+                    onPressed: () {
                       overlayEntry!.remove();
                       _nextquest();
                     },
-                    child: Text("Weiter", style: TextStyle(color: Colors.black),),
+                    child: Text(
+                      "Weiter",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
               ),
             ],
-          )
+          ),
         );
       },
     );
