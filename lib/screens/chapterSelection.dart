@@ -204,7 +204,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         json.chapter_names(currentmainchapter),
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                   ),
