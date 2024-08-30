@@ -30,6 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "de.darc.fuenfizigohm"
+    // needs to stay at this, have a look at https://issuetracker.google.com/issues/342522139?pli=1 cost me some time to find out
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
