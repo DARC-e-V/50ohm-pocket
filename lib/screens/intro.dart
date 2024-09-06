@@ -59,7 +59,7 @@ class _WelcomeState extends State<Welcome> {
                                   Text("Willkommen,", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),),
                                   Text(
                                       "wir freuen uns dich auf deinem Weg zur Amateurfunkzulassung begleiten zu dürfen.",
-                                      style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 39, 39, 39), fontWeight: FontWeight.w600)
+                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)
                                   ),
 
                                 ]
