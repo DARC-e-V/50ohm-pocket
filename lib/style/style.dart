@@ -8,7 +8,7 @@ lightmode() => ThemeData(
                 brightness: Brightness.light,
                 primaryColor: main_col,
                 textTheme: TextTheme(
-                    headline5: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,)
+                    headlineSmall: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,)
                 )
             );
 
