@@ -74,7 +74,7 @@ class selectClass extends StatelessWidget{
                                 children: [
                                   Expanded(
                                       child: Text(
-                                        "Du hast deine E Zulassung? Super! Starte heute mit deinen Vorbereitungen auf die Klasse E.",
+                                        "Du hast deine E Zulassung? Super! Starte heute mit deinen Vorbereitungen auf die Klasse A.",
                                         style: TextStyle(fontSize: 17),
                                       )),
                                   Icon(Icons.arrow_forward_ios)
