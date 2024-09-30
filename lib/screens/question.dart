@@ -102,11 +102,19 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
             ),
             Row(
-              children: [
-                IconButton(icon: Icon(Icons.book), onPressed: () {
+                children: [
+                IconButton(icon: Icon(Icons.functions), onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung"),
+                    )
+                  );
+                  },
+                ),
+                IconButton(icon: Icon(Icons.description), onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Nutzungsplan.pdf", "Nutzungsplan"),
                     )
                   );
                   },
