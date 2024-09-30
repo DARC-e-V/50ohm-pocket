@@ -86,7 +86,7 @@ class MiscOssLicenseSingle extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
                   child: Text(package.description,
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold))),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold))),
             if (package.homepage != null)
               Padding(
                   padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
@@ -98,7 +98,7 @@ class MiscOssLicenseSingle extends StatelessWidget {
             if (package.description.isNotEmpty || package.homepage != null) const Divider(),
             Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
-              child: Text(_bodyText(), style: Theme.of(context).textTheme.bodyText2),
+              child: Text(_bodyText(), style: Theme.of(context).textTheme.bodyMedium),
             ),
           ])),
     );
