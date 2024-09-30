@@ -103,8 +103,8 @@ class AboutAppPage extends StatelessWidget {
                       },
                     ),
                     SettingsTile(
-                        title: Text("(Frequenz-)Nutzungsplan"),
-                        description: Text("Der Nutzungsplan wurde aus der Anlage 1 der Amateurfunkverordnung – AFuV 2023 entnommen."),
+                        title: Text("Auszug der Anlage 1 AFuV"),
+                        description: Text("Die Übersicht wurde aus der Anlage 1 der Amateurfunkverordnung – AFuV 2023 entnommen."),
                         leading: Icon(Icons.assignment),
                     )
                   ],

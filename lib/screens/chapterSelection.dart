@@ -34,8 +34,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                 PopupMenuItem(
                   value: 3,
                   child: ListTile(
-                    leading: Icon(Icons.description), // Icon for Nutzungsplan
-                    title: Text("Nutzungsplan"),
+                    leading: Icon(Icons.description), // Icon for Anlage 1 AFuV
+                    title: Text("Anlage 1 AFuV"),
                   ),
                 ),
                 PopupMenuItem(
@@ -89,7 +89,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   _selectItem(BuildContext context, Object item) {
     switch(item){
       case 3:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Nutzungsplan.pdf", "Nutzungsplan")));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Anlage_1_AFuV.pdf", "Anlage 1 AFuV")));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung")));

@@ -1666,7 +1666,7 @@
                         {
                             "number": "AA112",
                             "class": "3",
-                            "question": "Der Pegelwert 120 dB$\u03bc$V/m entspricht einer elektrischen Feldst\u00e4rke von ...",
+                            "question": "Der Pegelwert 120 dB\u03bcV/m entspricht einer elektrischen Feldst\u00e4rke von ...",
                             "answer_a": "1 V/m.",
                             "answer_b": "0,78 V/m.",
                             "answer_c": "41,6 V/m.",
