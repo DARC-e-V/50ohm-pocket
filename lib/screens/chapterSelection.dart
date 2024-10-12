@@ -132,9 +132,8 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   Widget selectlesson(var data, var context) {
     Json json = Json(data);
-    return ConstrainedBox(
+    return Center( child: ConstrainedBox(      
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
-
       child: Padding(
         padding: EdgeInsets.only(left: 5,right: 5),
         child: ListView.builder(
@@ -160,7 +159,7 @@ class _LearningmoduleState extends State<Learningmodule> {
           }
         )
       ),
-    );
+    ));
   }
 
 
