@@ -81,7 +81,7 @@ Ich habe das so gemacht:
 * ein neues, leeres Verzeichnis `cmdline-tools` erstellen und
 * das `latest`-Verzeichnis dort hinein verschíeben.
 
-Dann nochmal `flutter doctor` und etwaige Instruktionen auführen, bis
+Dann nochmal `flutter doctor` und etwaige Instruktionen ausführen, bis
 alles so weit passt.
 
 Wenn das endlich so weit ist, kannst du nun aufrufen

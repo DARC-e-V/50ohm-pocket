@@ -114,7 +114,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 IconButton(icon: Icon(Icons.description), onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Nutzungsplan.pdf", "Nutzungsplan"),
+                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Anlage_1_AFuV.pdf", "Anlage 1 AFuV"),
                     )
                   );
                   },
