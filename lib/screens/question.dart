@@ -361,7 +361,7 @@ ListView radioSvgListBuilder() {
                 ),
               SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 10, left: 8,),
+                  padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                   child: ElevatedButton(
                     autofocus: false,
                     style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
