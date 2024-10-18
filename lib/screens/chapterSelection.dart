@@ -32,17 +32,10 @@ class _LearningmoduleState extends State<Learningmodule> {
             PopupMenuButton(
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  value: 3,
-                  child: ListTile(
-                    leading: Icon(Icons.description), // Icon for Anlage 1 AFuV
-                    title: Text("Anlage 1 AFuV"),
-                  ),
-                ),
-                PopupMenuItem(
                   value: 2,
                   child: ListTile(
-                    leading: Icon(Icons.functions), // Icon for Formelsammlung
-                    title: Text("Formelsammlung"),
+                    leading: Icon(Icons.description), // Hilfsmittel
+                    title: Text("Hilfsmittel"),
                   ),
                 ),
                 PopupMenuItem(
@@ -87,19 +80,25 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
   _selectItem(BuildContext context, Object item) {
-    switch(item){
-      case 3:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Anlage_1_AFuV.pdf", "Anlage 1 AFuV")));
-        break;
+    switch (item) {
       case 2:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung")));
+        _launchURL("https://50ohm.de/hm");
         break;
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settingspage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Settingspage()));
         break;
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutAppPage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
         break;
+    }
+  }
+
+  _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch');
     }
   }
 
