@@ -107,7 +107,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             Row(
                 children: [
                 IconButton(icon: Icon(Icons.description), onPressed: () {
-                     _launchURL("https://50ohm.de/hm");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel"),
+                    )
+                  );
                   },
                 ),
               ],

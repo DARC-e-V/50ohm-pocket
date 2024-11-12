@@ -34,7 +34,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 PopupMenuItem(
                   value: 2,
                   child: ListTile(
-                    leading: Icon(Icons.description), // Hilfsmittel
+                    leading: Icon(Icons.open_in_browser), // Hilfsmittel
                     title: Text("Hilfsmittel"),
                   ),
                 ),
