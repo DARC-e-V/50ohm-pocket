@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
@@ -178,6 +180,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   InteractiveViewer questionImage(BuildContext context, String url) {
     List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
     Widget image;
+    double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
     ColorFilter colorFilter = 
       MediaQuery.of(context).platformBrightness == Brightness.dark 
         ? ColorFilter.matrix(<double>[
@@ -198,13 +201,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         padding: const EdgeInsets.all(8.0),
         child: ColorFiltered(
           colorFilter: colorFilter,
-          child: Image.asset("assets/svgs/$url.png")
+          child: Image.asset("assets/svgs/$url.png", 
+          width: imageScaleWidth)
           ),
       );
     } else {
       image = SvgPicture.asset(
-        "assets/svgs/$url.svg",
-        colorFilter: colorFilter,        
+        "assets/svgs/$url.svg",        
+        colorFilter: colorFilter,
+        width: imageScaleWidth
         );
     };
     return InteractiveViewer(
@@ -357,7 +362,7 @@ ListView radioSvgListBuilder() {
                 ),
               SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 10, left: 8,),
+                  padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                   child: ElevatedButton(
                     autofocus: false,
                     style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
