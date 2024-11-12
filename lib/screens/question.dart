@@ -9,6 +9,7 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum QuestionState{
   answering, 
@@ -105,18 +106,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             ),
             Row(
                 children: [
-                IconButton(icon: Icon(Icons.functions), onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung"),
-                    )
-                  );
-                  },
-                ),
                 IconButton(icon: Icon(Icons.description), onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Anlage_1_AFuV.pdf", "Anlage 1 AFuV"),
+                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel"),
                     )
                   );
                   },
@@ -180,6 +173,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       )
     );
   }
+
+  _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch');
+    }
+  }  
 
   InteractiveViewer questionImage(BuildContext context, String url) {
     List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
