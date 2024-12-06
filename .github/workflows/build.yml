@@ -58,6 +58,10 @@ jobs:
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
           echo "storeFile=keystore.jks" >> android/key.properties
 
+      - name: Fetch package licenses
+        run: |
+          flutter pub run flutter_oss_licenses:generate.dart
+
       #6 Building APK
       - name: Build APK
         run: flutter build apk --release
