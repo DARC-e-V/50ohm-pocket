@@ -117,7 +117,7 @@ jobs:
           draft: true
           artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab,build/ios_build.tar.gz"
           tag: v${{ env.VERSION }}
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Upload artifact to Nextcloud
         env:
