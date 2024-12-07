@@ -1,4 +1,4 @@
-name: android build and sign
+name: build, sign and upload
 
 #based on https://medium.com/@colonal/automating-flutter-builds-and-releases-with-github-actions-77ccf4a1ccdd
 # Controls when the workflow will run
