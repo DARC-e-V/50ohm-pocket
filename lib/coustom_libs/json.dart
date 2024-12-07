@@ -13,7 +13,6 @@ class Json{
     Map<String, dynamic>? importedData  = jsonDecode(rawdata);
     List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
     if(importedData != Null){
-
       if(mainchapter == -1){
         this.data = importedData!;
 
@@ -111,11 +110,16 @@ class Json{
 
   }
 
-  questionid(var chapter, var subchapter, var question){
-    try{
-      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
-    }catch(e){
-      return this.data!["sections"][chapter]["questions"][question]["number"];
+  String? questionId(var chapter, var subchapter, var question){
+    if(question >= this.data!["sections"][chapter]["sections"][subchapter]["questions"].length){
+      return null;
+    }
+
+    String? id;
+    if((id = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"]) != null){
+      return id;
+    } else if((id = this.data!["sections"][chapter]["questions"][question]["number"]) != null){
+      return id;
     }
   }
 

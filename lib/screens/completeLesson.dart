@@ -1,5 +1,4 @@
-import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/coustom_libs/questionState.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -7,23 +6,23 @@ import 'package:flutter/widgets.dart';
 
 
 class Finish extends StatefulWidget{
-  var subchapter, chapter, result, context;
-  Finish( this.chapter, this.subchapter, this.result, this.context);
+  List<QuestionEvaluation> questionEvaluation;
+
+  Finish(this.questionEvaluation);
 
   @override
   State<StatefulWidget> createState() =>
-     _finishstate(subchapter, chapter, result, context);
+     _finishstate(this.questionEvaluation);
 
 }
 
 class _finishstate extends State<Finish>{
-  var subchapter, chapter, result, context;
+  List<QuestionEvaluation> questionEvaluation;
 
-  _finishstate( this.subchapter, this.chapter, this.result, this.context);
+  _finishstate(this.questionEvaluation);
   
   @override
   Widget build(BuildContext buildcontext) {
-    Databaseobj(context).write(JsonWidget.of(context).mainchapter, chapter, subchapter, result);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -87,10 +86,12 @@ class _finishstate extends State<Finish>{
   progress(){
     int x = 0;
     int y = 0;
-    for(var item in this.result){
-      item = item.map((x) => x ? 1 : 0).toList();
-      x += (item.fold(0, (var i, element) => element + i) as int);
-      y = y + (item.length as int);
+
+    for(QuestionEvaluation qe in questionEvaluation){
+      if(qe.correct){
+        x++;
+      }
+      y++;
     }
     return (x / y) * 100;
   }

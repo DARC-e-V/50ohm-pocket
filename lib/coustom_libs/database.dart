@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuenfzigohm/coustom_libs/questionState.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Database{
@@ -19,31 +20,16 @@ class Databaseobj{
 
   Databaseobj(this.context);
 
-  write(mainchapter, chapter, subchapter, resultlist){
-    int i = 0;
-    for(var result in resultlist){
 
-      result = result.map((x) => x ? 1 : 0).toList();
+  write(QuestionEvaluation questionEvaluation){
+    DateTime now = DateTime.now().toUtc();
+    String isoTimeString = now.toIso8601String();
 
-      // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-      //print("liste :: $list");
-      try{  
-        List list = DatabaseWidget.of(context).prog_database.get(subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]");
-        int x = 0;
-        List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
-        DatabaseWidget.of(context).prog_database.put(
-            subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]",
-            updatedres
-          );
-      }catch(e){
-        DatabaseWidget.of(context).prog_database.put(
-        subchapter.length == 0  ? "[$mainchapter][$chapter]" :"[$mainchapter][$chapter][${subchapter[i]}]",
-        (result as List<dynamic>)
-        );
-      }
-      i++;
+    DatabaseWidget
+        .of(context)
+        .prog_database
+        .put(isoTimeString, "CORRECT: ${questionEvaluation.question.questionID}");
     }
-  }
 
   read(mainchapter, chapter, subchapter){
     try{

@@ -37,21 +37,21 @@ dependencies:
   pdfx:
     git:
       url: https://github.com/ScerIO/packages.flutter
-      ref: 8b105a7dfc6b90220c1d79fcb805fb764cab00c5
+      ref: a1e4ff9adf7e43444f3cf1b8b1f8af2213fd2a60
       path: packages/pdfx
   flutter_svg: ^2.0.9
   url_launcher: ^6.0.10
   flutter_math_fork:
     git:
       url: https://github.com/simpleclub-extended/flutter_math_fork
-  package_info_plus: ^5.0.1
-
+  package_info_plus: ^8.1.1
+  provider: ^6.0.0
 
 
 dev_dependencies:
   hive_generator: ^1.1.0
   flutter_oss_licenses: ^2.0.1
-  build_runner: ^2.0.6
+  build_runner: ^2.4.13
   flutter_launcher_icons: "^0.9.1"
   flutter_test:
     sdk: flutter
