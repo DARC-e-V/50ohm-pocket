@@ -87,10 +87,15 @@ class QuestionManager with ChangeNotifier {
   void evaluateQuestion(int answer){
     int correct = _questions[_currentQuestionIndex].correct;
     bool correctAnswer = answer == correct;
-    _evaluations.add(QuestionEvaluation(
+
+    QuestionEvaluation questionEvaluation = QuestionEvaluation(
       question: _questions[_currentQuestionIndex],
       correct: correctAnswer,
-    ));
+    );
+
+    _evaluations.add(questionEvaluation);
+    DatabaseFunctions.write(context, questionEvaluation);
+
     questionState = QuestionState.evaluating;
     notifyListeners();
   }

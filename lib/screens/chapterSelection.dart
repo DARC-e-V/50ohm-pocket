@@ -209,7 +209,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                   ),
                     json.chaptersize(currentmainchapter) == 0
                     // Todo: add the new algorithm for the progress bar
-                      ? LinearProgressIndicator(value: Databaseobj.read(context, JsonWidget.of(context).mainchapter, currentmainchapter, null))
+                      ? LinearProgressIndicator(value: DatabaseFunctions.read(context, JsonWidget.of(context).mainchapter, currentmainchapter, null))
                       : SizedBox(height: 8,),
 
                   chapterLesson(currentmainchapter, json),
@@ -234,13 +234,13 @@ class _LearningmoduleState extends State<Learningmodule> {
         child: Column(
           children: [
             // Todo: add the new algorithm for the progress bar
-            LinearProgressIndicator(value: Databaseobj.read(context, JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
+            LinearProgressIndicator(value: DatabaseFunctions.read(context, JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
             InkWell(
               onTap:() async {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
                     ).then((value){
-                      if(value ?? false){
+                      if(value != null){
                         setState(() {});
                       }
                     });

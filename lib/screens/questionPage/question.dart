@@ -23,14 +23,12 @@ class Question extends StatefulWidget {
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   var pdfController, questionradio, highlighting;
-  
-  QuestionState state = QuestionState.answering;
 
   final context, chapter, subchapter;
 
   late Json json;
-  OverlayEntry? overlayEntry;
 
+  OverlayEntry? overlayEntry;
   late QuestionManager questionManager;
 
   _Questionstate(this.context, this.subchapter,this.chapter);
@@ -51,20 +49,24 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       if(!correct) setState(() {
         highlighting = questionManager.getCorrectAnswer();
       });
-      overlayQuestion(correct, context, questionManager, overlayEntry!);
+      overlayEntry = overlayQuestion(correct, context, questionManager);
     }else if (questionManager.getQuestionState() == QuestionState.answering){
-      setState(() {});
-      questionradio = null;
-      highlighting = null;
+      setState(() {
+        overlayEntry?.remove();
+        questionradio = null;
+        highlighting = null;
+      });
     } else if(questionManager.getQuestionState() == QuestionState.dispose){
-     dispose();
+      if(overlayEntry != null && overlayEntry!.mounted)
+        overlayEntry!.remove();
      return;
     }
   }
 
-
   @override
   void dispose() {
+    if(overlayEntry != null && overlayEntry!.mounted)
+      overlayEntry!.remove();
     questionManager.removeListener(_onQuestionManagerChanged);
     super.dispose();
   }
@@ -73,14 +75,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
   return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: (){
-            try{
-              overlayEntry!.remove();
-            }catch(e){}
-            Navigator.of(context).pop();
-          },
-        ),
         backgroundColor: const Color.fromARGB(10, 0, 0, 0),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,7 +180,7 @@ ListView radioSvgListBuilder() {
               groupValue: questionradio,
               value: i,
               onChanged: (var value) {
-                if(state == QuestionState.answering){
+                if(questionManager.getQuestionState() == QuestionState.answering){
                   setState(() {
                     questionradio = i;
                   });
@@ -218,12 +212,12 @@ ListView radioSvgListBuilder() {
                   ),
                   child: RadioListTile(
                     enableFeedback: true,
-                    fillColor: MaterialStateColor.resolveWith((states) => main_col),
+                    fillColor: WidgetStateColor.resolveWith((states) => main_col),
                     activeColor: main_col,
                     groupValue: questionradio,
                     value: i,
                     onChanged: (var value) {
-                      if(state == QuestionState.answering){
+                      if(questionManager.getQuestionState() == QuestionState.answering){
                         setState(() {
                           questionradio = i;
                         });

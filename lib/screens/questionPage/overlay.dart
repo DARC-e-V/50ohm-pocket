@@ -3,15 +3,12 @@ import 'package:fuenfzigohm/coustom_libs/questionState.dart';
 import 'package:fuenfzigohm/screens/questionPage/mathParser.dart';
 import 'package:fuenfzigohm/style/style.dart';
 
-overlayQuestion(
+OverlayEntry overlayQuestion(
     bool correct,
     BuildContext context,
     QuestionManager questionManager,
-    OverlayEntry overlayEntry
     ) {
 
-  OverlayState? overlayState = Overlay.of(context);
-  // give a short and motivating statement to motivate the user not to exagurating
   List<String> motivational_message = [
     "Gut gemacht!",
     "Weiter so!",
@@ -24,13 +21,13 @@ overlayQuestion(
     "Die Antwort ist falsch!",
     "Das war nicht richtig!"
   ];
-  // select one random message and give back a string
+
   if(correct){
     motivational_message.shuffle();
   }else{
     motivational_message_false.shuffle();
   }
-  overlayEntry = OverlayEntry(
+  OverlayEntry overlayEntry = OverlayEntry(
     builder: (buildcontext){
       return  Container(
           child: Stack(
@@ -71,8 +68,7 @@ overlayQuestion(
                     style: buttonstyle(correct ?  Colors.green : Colors.redAccent),
                     onPressed: (){
                       questionManager.nextQuestion();
-                      overlayEntry.remove();
-                    },
+                      },
                     child: Text("Weiter", style: TextStyle(color: Colors.black),),
                   ),
                 ),
@@ -82,5 +78,6 @@ overlayQuestion(
       );
     },
   );
-  overlayState.insert(overlayEntry);
+  Overlay.of(context).insert(overlayEntry);
+  return overlayEntry;
 }
