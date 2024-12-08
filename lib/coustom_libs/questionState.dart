@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 
@@ -95,6 +96,7 @@ class QuestionManager with ChangeNotifier {
   }
 
   void nextQuestion() {
+    // if the current question is the last question, navigate to the finish page
     if((_currentQuestionIndex + 2) > _questions.length){
       Navigator.push(
         context,

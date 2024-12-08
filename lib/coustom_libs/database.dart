@@ -16,22 +16,32 @@ class Database{
 }
 
 class Databaseobj{
-  BuildContext context;
 
-  Databaseobj(this.context);
-
-
-  write(QuestionEvaluation questionEvaluation){
+  static void write(BuildContext context, QuestionEvaluation questionEvaluation){
     DateTime now = DateTime.now().toUtc();
     String isoTimeString = now.toIso8601String();
 
+    // push event after correct answer
     DatabaseWidget
         .of(context)
         .prog_database
-        .put(isoTimeString, "CORRECT: ${questionEvaluation.question.questionID}");
-    }
+        .put(isoTimeString, """{
+          \"event\" : \"correct\",
+          \"value\" : \"${questionEvaluation.question.questionID}\"
+          }""");
 
-  read(mainchapter, chapter, subchapter){
+    // push updated chapter progress
+    DatabaseWidget
+        .of(context)
+        .prog_database
+        .put(isoTimeString, """{
+          \"event\" : \"chapter_update\",
+          \"value\" : \"${questionEvaluation.question.questionID}\"
+          }""");
+
+  }
+
+  static double read(BuildContext context, mainchapter, chapter, subchapter){
     try{
       List<dynamic> list = DatabaseWidget.of(context).prog_database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
       return (list.fold(0, (var x, element) => element + x) / (list.length * 3));
