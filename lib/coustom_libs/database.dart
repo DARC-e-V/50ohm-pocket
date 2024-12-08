@@ -1,57 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:fuenfzigohm/coustom_libs/questionState.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Database{
 
-  var progress;
-  var settings;
+  late Box progress;
+  late Box settings;
+  late Box progress2;
 
   load() async{
     await Hive.initFlutter();
     settings = await Hive.openBox('settings');
     progress = await Hive.openBox('progress');
-    return [progress, settings ];
+    progress2 = await Hive.openBox('progress2');
+    return [progress, settings, progress2];
   }
 }
 
-class Databaseobj{
-  BuildContext context;
+class EventData {
+  final String event;
+  final String value;
+  final String context;
 
-  Databaseobj(this.context);
+  EventData({required this.event, required this.value, required this.context});
 
-  write(mainchapter, chapter, subchapter, resultlist){
-    int i = 0;
-    for(var result in resultlist){
+  Map<String, dynamic> toJson() {
+    return {
+      'event': event,
+      'value': value,
+      'context': context,
+    };
+  }
+  String toJsonString() {
+    return toJson().toString();
+  }
+}
 
-      result = result.map((x) => x ? 1 : 0).toList();
+class DatabaseFunctions{
 
-      // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
-      //print("liste :: $list");
-      try{  
-        List list = DatabaseWidget.of(context).prog_database.get(subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]");
-        int x = 0;
-        List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
-        DatabaseWidget.of(context).prog_database.put(
-            subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]",
-            updatedres
-          );
-      }catch(e){
-        DatabaseWidget.of(context).prog_database.put(
-        subchapter.length == 0  ? "[$mainchapter][$chapter]" :"[$mainchapter][$chapter][${subchapter[i]}]",
-        (result as List<dynamic>)
-        );
-      }
-      i++;
+  static void write(BuildContext context, QuestionEvaluation questionEvaluation){
+
+    String isoTimeString = _getisoUTCString();
+    EventData correctEvent =
+      EventData(event: 'correct', value: questionEvaluation.question.questionID, context: 'none');
+    // push event after correct answer
+    DatabaseWidget
+        .of(context)
+        .prog_database2
+        .put(isoTimeString, correctEvent.toJsonString());
+
+    if(questionEvaluation.correct){
+      // Todo: get and update progress
+      // push updated chapter progress
+      EventData chapterUpdateEvent =
+      EventData(event: 'chapter_update', value: "10", context: questionEvaluation.question.questionID);
+
+      DatabaseWidget
+          .of(context)
+          .prog_database2
+          .put(isoTimeString, chapterUpdateEvent.toJsonString());
     }
+
   }
 
-  read(mainchapter, chapter, subchapter){
+  static double read(BuildContext context, mainchapter, chapter, subchapter){
     try{
       List<dynamic> list = DatabaseWidget.of(context).prog_database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
       return (list.fold(0, (var x, element) => element + x) / (list.length * 3));
     }catch(e){
       return 0.0;
     }  
+  }
+  static void checkMigrate(Box prog_database, Box prog_database2){
+    if(prog_database.get("migrated") == null){
+      migrate(prog_database, prog_database2);
+    }
+  }
+  static void migrate(Box prog_database, Box prog_database2){
+    List<dynamic> keys = prog_database.keys.toList();
+    String isoTimeString = _getisoUTCString();
+
+    for(var key in keys){
+      if(key is String){
+        EventData event = EventData(
+          event: 'chapter_update',
+          value: prog_database.get(key),
+          context: key,
+        );
+        prog_database2.put(isoTimeString, event.toJsonString());
+      }
+    }
+  }
+
+  static String _getisoUTCString(){
+    DateTime now = DateTime.now().toUtc();
+    String isoTimeString = now.toIso8601String();
+    return isoTimeString;
   }
 }
 
@@ -60,10 +104,12 @@ class DatabaseWidget extends InheritedWidget{
 
   final Box settings_database;
   final Box prog_database;
+  final Box prog_database2;
 
   const DatabaseWidget({
     required this.settings_database,
     required this.prog_database,
+    required this.prog_database2,
     required Widget child,
   }) : super(child: child);
 
@@ -73,5 +119,4 @@ class DatabaseWidget extends InheritedWidget{
 
   static DatabaseWidget of(BuildContext context) =>
     context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;
-
 }

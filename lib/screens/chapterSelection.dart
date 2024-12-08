@@ -2,7 +2,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/icons.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
-import 'package:fuenfzigohm/screens/question.dart';
+import 'package:fuenfzigohm/screens/questionPage/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:flutter/material.dart';
@@ -208,7 +208,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                     ),
                   ),
                     json.chaptersize(currentmainchapter) == 0
-                      ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
+                    // Todo: add the new algorithm for the progress bar
+                      ? LinearProgressIndicator(value: DatabaseFunctions.read(context, JsonWidget.of(context).mainchapter, currentmainchapter, null))
                       : SizedBox(height: 8,),
 
                   chapterLesson(currentmainchapter, json),
@@ -232,13 +233,14 @@ class _LearningmoduleState extends State<Learningmodule> {
         margin: EdgeInsets.only(top: 10),
         child: Column(
           children: [
-            LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
+            // Todo: add the new algorithm for the progress bar
+            LinearProgressIndicator(value: DatabaseFunctions.read(context, JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
             InkWell(
               onTap:() async {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
                     ).then((value){
-                      if(value ?? false){
+                      if(value != null){
                         setState(() {});
                       }
                     });
