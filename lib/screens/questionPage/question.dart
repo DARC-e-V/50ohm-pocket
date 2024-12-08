@@ -174,7 +174,7 @@ ListView radioSvgListBuilder() {
               color: i == highlighting ? questionColor : Colors.transparent,
             ),
             child: RadioListTile(
-              fillColor: WidgetStateColor.resolveWith((states) => main_col),
+              fillColor: MaterialStateColor.resolveWith((states) => main_col),
               activeColor: main_col,
               enableFeedback: true,
               groupValue: questionradio,
@@ -212,8 +212,7 @@ ListView radioSvgListBuilder() {
                   ),
                   child: RadioListTile(
                     enableFeedback: true,
-                    fillColor: WidgetStateColor.resolveWith((states) => main_col),
-                    activeColor: main_col,
+                    fillColor: MaterialStateColor.resolveWith((states) => main_col),                    activeColor: main_col,
                     groupValue: questionradio,
                     value: i,
                     onChanged: (var value) {
