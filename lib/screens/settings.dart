@@ -2,7 +2,7 @@ import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
-class Settingspage extends StatefulWidget{
+class Settingspage extends StatefulWidget {
   @override
   _settingsstate createState() => _settingsstate();
 }
@@ -15,18 +15,20 @@ class _settingsstate extends State<Settingspage> {
 
   @override
   Widget build(BuildContext context) {
-    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
+    bool courseOrdering = DatabaseWidget.of(context)
+            .settings_database
+            .get(DatabaseWidget.SETTINGS_COURSE_ORDER_KEY) ??
+        true;
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
             Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/learn");
           },
-        ), 
+        ),
         title: Text("Einstellungen"),
-
       ),
       body: SettingsList(
         sections: [
@@ -36,28 +38,32 @@ class _settingsstate extends State<Settingspage> {
             tiles: <SettingsTile>[
               SettingsTile.navigation(
                 title: Text("Zu trainierende Fragen"),
-                description: Text("Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast, kannst du hier einzelne Teile abwählen."),
-                trailing: Icon(Icons.keyboard_arrow_right), 
-                onPressed: (BuildContext context){
-                  DatabaseWidget.of(context).settings_database.delete("welcomePage");
+                description: Text(
+                    "Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast, kannst du hier einzelne Teile abwählen."),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onPressed: (BuildContext context) {
+                  DatabaseWidget.of(context)
+                      .settings_database
+                      .delete(DatabaseWidget.SETTINGS_WELCOME_PAGE_KEY);
                   Navigator.of(context).popAndPushNamed("/welcome");
                 },
               ),
               SettingsTile.switchTile(
                 initialValue: courseOrdering,
-                onToggle: (bool value){
+                onToggle: (bool value) {
                   setState(() {
                     courseOrdering = value;
                   });
-                  DatabaseWidget.of(context).settings_database.put("courseOrdering", value);
+                  DatabaseWidget.of(context)
+                      .settings_database
+                      .put(DatabaseWidget.SETTINGS_COURSE_ORDER_KEY, value);
                 },
-                title: Text("Ausbildungsmaterial nach 50Ohm.de")
-                ),
+                title: Text("Ausbildungsmaterial nach 50Ohm.de"),
+              ),
             ],
           ),
         ],
       ),
     );
   }
-
 }
