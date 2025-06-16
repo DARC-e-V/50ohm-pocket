@@ -1,7 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:fuenfzigohm/coustom_libs/database.dart';
 
 class CourseClass {
   // Basic course values as constants for easy readability
@@ -35,15 +32,4 @@ class CourseClass {
     }
     throw Exception('Invalid course provided');
   }
-}
-
-void handleCourseStart(Set<int> course, BuildContext context) {
-  final selectedCourse = [...course];
-  DatabaseWidget.of(context)
-      .settings_database
-      .put(DatabaseWidget.SETTINGS_WELCOME_PAGE_KEY, true);
-  DatabaseWidget.of(context)
-      .settings_database
-      .put(DatabaseWidget.SETTINGS_CLASS_KEY, selectedCourse);
-  Navigator.pushNamedAndRemoveUntil(context, "/learn", (r) => false);
 }
