@@ -132,11 +132,10 @@ class WelcomeCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_1_bar_rounded,
-            surfaceColor: Color(0xFF16C47F),
+            surfaceColor: CourseClass.CLASS_N_SURFACE_COLOR,
             classTitle: "Klasse N",
             classDescription:
                 "Baue deine eigene Funkstation auf, experimentiere mit neuester Technik und knüpfte Kontakte weltweit. Erlebe grenzenlose Kommunikation und werde Teil einer aktiven Gemeinschaft, die die Zukunft des Amateurfunks gestaltet.",
-            badge: "Neu",
           ),
           ClassListTile(
             onTap: () => BlocProvider.of<WelcomeBloc>(context).add(
@@ -145,7 +144,7 @@ class WelcomeCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_2_bar_rounded,
-            surfaceColor: Color(0xFFFFD65A),
+            surfaceColor: CourseClass.CLASS_E_SURFACE_COLOR,
             classTitle: "Klasse E",
             classDescription:
                 "Vertiefe deine Kenntnisse in Technik und Funkbetrieb, nimm an Amateurfunk-Wettbewerben teil und engagiere dich in der Ausbildung von neuen Funkamateuren.",
@@ -157,7 +156,7 @@ class WelcomeCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_rounded,
-            surfaceColor: Color(0xFFFF9D23),
+            surfaceColor: CourseClass.CLASS_A_SURFACE_COLOR,
             classTitle: "Klasse A",
             classDescription:
                 "Errichte deine eigene Amateurfunkstation mit hoher Sendeleistung, leite Funkkurse und bilde neue Funkamateure aus. Engagiere dich in der Forschung und Entwicklung neuer Funktechnologien und gestalte die Zukunft des Amateurfunks aktiv mit.",
@@ -201,7 +200,7 @@ class WelcomeUpdateCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_1_bar_rounded,
-            surfaceColor: Color(0xFF16C47F),
+            surfaceColor: CourseClass.CLASS_N_SURFACE_COLOR,
             classTitle: "Upgrade von N auf E",
             classDescription:
                 "Du hast schon deine N Zulassung? Super! Starte heute mit deinen Vorbereitungen auf die Klasse E.",
@@ -214,7 +213,7 @@ class WelcomeUpdateCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_2_bar_rounded,
-            surfaceColor: Color(0xFFFFD65A),
+            surfaceColor: CourseClass.CLASS_E_SURFACE_COLOR,
             classTitle: "Upgrade von E auf A",
             classDescription:
                 "Du hast deine E Zulassung? Super! Starte heute mit deinen Vorbereitungen auf die Klasse A.",
@@ -227,7 +226,7 @@ class WelcomeUpdateCourseSelection extends StatelessWidget {
               ),
             ),
             icon: Icons.signal_cellular_alt_rounded,
-            surfaceColor: Color(0xFFFF9D23),
+            surfaceColor: CourseClass.CLASS_A_SURFACE_COLOR,
             classTitle: "Upgrade von N auf A",
             classDescription:
                 "Du hast deine N Zulassung? Super! Starte heute mit deinen Vorbereitungen auf die Klasse A.",

@@ -1,6 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class CourseClass {
+  static const CLASS_N_SURFACE_COLOR = Color(0xFF47ABE8);
+  static const CLASS_E_SURFACE_COLOR = Color(0xFFFE756C);
+  static const CLASS_A_SURFACE_COLOR = Color(0xFF3BB583);
+
   // Basic course values as constants for easy readability
   static const CLASS_N = 1;
   static const CLASS_E = 2;
