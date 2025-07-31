@@ -1,5 +1,5 @@
 name: fuenfzigohm
-description: Lerne für die Amateurfunkprüfung, jetzt mit dem neuen Fragenkatalog. 
+description: Lerne für die Amateurfunkprüfung, jetzt mit dem neuen Fragenkatalog.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -41,17 +41,23 @@ dependencies:
   flutter_math_fork:
     git:
       url: https://github.com/simpleclub-extended/flutter_math_fork
+      ref: 6e84b607c5c0e00dd1f3d4bd30ef3f1628053328
   package_info_plus: ^5.0.1
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
 
 
 
 dev_dependencies:
-  hive_generator: ^1.1.0
-  flutter_oss_licenses: ^2.0.1
+  hive_generator: ^2.0.1
+  flutter_oss_licenses: ^3.0.2
   build_runner: ^2.0.6
-  flutter_launcher_icons: "^0.9.1"
+  flutter_launcher_icons: ^0.14.3
   flutter_test:
     sdk: flutter
+  test: ^1.24.9
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.4
 
 flutter_icons:
   android: true

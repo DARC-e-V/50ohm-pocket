@@ -2,37 +2,31 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
+// TODO: Set up all colors, warning and success
+lightmode() => ThemeData.from(
+      colorScheme: ColorScheme.light(primary: Color(0xFF01ACF1)),
+    );
 
-lightmode() => ThemeData(
-                primaryColorLight: Color(0xFFE1E6FF),
-                brightness: Brightness.light,
-                primaryColor: main_col,
-                textTheme: TextTheme(
-                    headlineSmall: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,)
-                )
-            );
+// TODO: Set up all colors, warning and success
+darkmode() => ThemeData.from(
+      colorScheme: ColorScheme.dark(primary: Color(0xFF01ACF1)),
+    );
 
-darkmode() => ThemeData(
-                primaryColorDark: Color(0xFF1C1F44),
-                brightness: Brightness.dark,
-                primaryColor: main_col,
-                cardColor: main_col,
-              );
-
+// TODO: Remove this, discuss general button style, derivates, etc.
 buttonstyle(Color color) => ButtonStyle(
-                  fixedSize: MaterialStateProperty.all<Size>(Size(700,60),),
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 25,
-                    ),
-                  ),
-                  backgroundColor: MaterialStateProperty.all<Color>(color),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7.0),
-                      )
-                  )
-                );
-
-
+      fixedSize: MaterialStateProperty.all<Size>(
+        Size(700, 60),
+      ),
+      textStyle: MaterialStateProperty.all<TextStyle>(
+        TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 25,
+        ),
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(color),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7.0),
+        ),
+      ),
+    );
