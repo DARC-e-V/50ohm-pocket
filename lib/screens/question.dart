@@ -9,7 +9,7 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as html_parser;
 
 enum QuestionState{
@@ -436,7 +436,8 @@ List<InlineSpan> parseTextWithMath(String input, TextStyle textStyle) {
     if (i % 2 == 0) {
       // Normal text (may contain HTML tags)
       final document = html_parser.parse(parts[i]);
-      spans.addAll(_parseHtmlNodes(document.body!.nodes, textStyle));
+      final List<dom.Node> documentBodyNodes = document.body?.nodes ?? [];
+      spans.addAll(_parseHtmlNodes(documentBodyNodes, textStyle));
     } else {
       // Math block
       spans.add(WidgetSpan(
@@ -449,32 +450,40 @@ List<InlineSpan> parseTextWithMath(String input, TextStyle textStyle) {
   return spans;
 }
 
-List<InlineSpan> _parseHtmlNodes(List nodes, TextStyle baseStyle) {
+List<InlineSpan> _parseHtmlNodes(List<dom.Node> nodes, TextStyle baseStyle) {
   List<InlineSpan> spans = [];
+  final Map<String, TextStyle> textStyleMap = const {
+    "b": TextStyle(fontWeight: FontWeight.bold),
+    "strong": TextStyle(fontWeight: FontWeight.bold),
+    "i": TextStyle(fontStyle: FontStyle.italic),
+    "em": TextStyle(fontStyle: FontStyle.italic),
+    "u": TextStyle(decoration: TextDecoration.underline),
+  };
 
-  for (var node in nodes) {
-    if (node.nodeType == 3) {
+  for (final node in nodes) {
+    if (node.nodeType == dom.Node.TEXT_NODE) {
       // Plain text
       spans.add(TextSpan(text: node.text, style: baseStyle));
-    } else if (node.localName == "b" || node.localName == "strong") {
-      // Bold Text
+      continue;
+    } 
+
+    if(!(node is dom.Element)) {
+      continue;
+    }
+
+    final String nodeLocalName = node.localName ?? "";
+    final String formattedNodeLocalName = nodeLocalName.toLowerCase();
+    
+    if (textStyleMap.containsKey(formattedNodeLocalName)) {
+      final mappedTextStyle = textStyleMap[formattedNodeLocalName];
       spans.add(TextSpan(
-        children: _parseHtmlNodes(node.nodes, baseStyle.copyWith(fontWeight: FontWeight.bold)),
+        children: _parseHtmlNodes(node.nodes, baseStyle.merge(mappedTextStyle))
       ));
-    } else if (node.localName == "i" || node.localName == "em") {
-      // Italic Text
-      spans.add(TextSpan(
-        children: _parseHtmlNodes(node.nodes, baseStyle.copyWith(fontStyle: FontStyle.italic)),
-      ));
-    } else if (node.localName == "u") {
-      // Underline Text
-      spans.add(TextSpan(
-        children: _parseHtmlNodes(node.nodes, baseStyle.copyWith(decoration: TextDecoration.underline)),
-      ));
-    } else if (node.localName == "br") {
+    } else if (formattedNodeLocalName == "br") {
       // Linebreaks
-      spans.add(const TextSpan(text: "\n"));
-    } else {
+      final TextSpan lineBreakTextSpan = const TextSpan(text: "\n");
+      spans.add(lineBreakTextSpan);
+    } else if (node.hasChildNodes()) {
       // Default: recurse without style change
       spans.addAll(_parseHtmlNodes(node.nodes, baseStyle));
     }
