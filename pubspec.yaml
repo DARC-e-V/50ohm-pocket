@@ -43,6 +43,7 @@ dependencies:
       url: https://github.com/dakshatsuraasa/flutter_math.git
       ref: main
   package_info_plus: ^5.0.1
+  html: ^0.15.4
 
 
 
