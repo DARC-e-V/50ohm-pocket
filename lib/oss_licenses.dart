@@ -1614,7 +1614,7 @@ SOFTWARE.''',
     description: 'Fast and high-quality TeX math equation rendering with pure Dart & Flutter.',
     homepage: 'https://github.com/simpleclub/flutter_math',
     authors: [],
-    version: '0.7.3',
+    version: '0.7.4',
     license: '''Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
