@@ -9,6 +9,8 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:html/dom.dart' as dom;
+import 'package:html/parser.dart' as html_parser;
 
 enum QuestionState{
   answering, 
@@ -424,23 +426,68 @@ orderlist(var elements, bool random){
 }
 
 
-List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
-  List<WidgetSpan> widgets = [];
+List<InlineSpan> parseTextWithMath(String input, TextStyle textStyle) {
+  List<InlineSpan> spans = [];
+
+  // Split by $...$ for math blocks
   List<String> parts = input.split('\$');
 
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
-      widgets.add(WidgetSpan(
-          child: Text(parts[i], style: Textstyle,),
-          alignment: PlaceholderAlignment.middle,
-      ));
+      // Normal text (may contain HTML tags)
+      final document = html_parser.parse(parts[i]);
+      final List<dom.Node> documentBodyNodes = document.body?.nodes ?? [];
+      spans.addAll(_parseHtmlNodes(documentBodyNodes, textStyle));
     } else {
-      widgets.add(WidgetSpan(
-        child: Math.tex(parts[i], textStyle: Textstyle),
+      // Math block
+      spans.add(WidgetSpan(
+        child: Math.tex(parts[i], textStyle: textStyle),
         alignment: PlaceholderAlignment.middle,
       ));
     }
   }
 
-  return widgets;
+  return spans;
+}
+
+List<InlineSpan> _parseHtmlNodes(List<dom.Node> nodes, TextStyle baseStyle) {
+  List<InlineSpan> spans = [];
+  final Map<String, TextStyle> textStyleMap = const {
+    "b": TextStyle(fontWeight: FontWeight.bold),
+    "strong": TextStyle(fontWeight: FontWeight.bold),
+    "i": TextStyle(fontStyle: FontStyle.italic),
+    "em": TextStyle(fontStyle: FontStyle.italic),
+    "u": TextStyle(decoration: TextDecoration.underline),
+  };
+
+  for (final node in nodes) {
+    if (node.nodeType == dom.Node.TEXT_NODE) {
+      // Plain text
+      spans.add(TextSpan(text: node.text, style: baseStyle));
+      continue;
+    } 
+
+    if(!(node is dom.Element)) {
+      continue;
+    }
+
+    final String nodeLocalName = node.localName ?? "";
+    final String formattedNodeLocalName = nodeLocalName.toLowerCase();
+    
+    if (textStyleMap.containsKey(formattedNodeLocalName)) {
+      final mappedTextStyle = textStyleMap[formattedNodeLocalName];
+      spans.add(TextSpan(
+        children: _parseHtmlNodes(node.nodes, baseStyle.merge(mappedTextStyle))
+      ));
+    } else if (formattedNodeLocalName == "br") {
+      // Linebreaks
+      final TextSpan lineBreakTextSpan = const TextSpan(text: "\n");
+      spans.add(lineBreakTextSpan);
+    } else if (node.hasChildNodes()) {
+      // Default: recurse without style change
+      spans.addAll(_parseHtmlNodes(node.nodes, baseStyle));
+    }
+  }
+
+  return spans;
 }
