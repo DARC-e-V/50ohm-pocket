@@ -27,11 +27,12 @@ jobs:
           java-version: '17'
 
       #3 Install specified flutter version
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+      - name: Install Flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
 
       #4 Install Dependencies
       - name: Install Dependencies
-        run: fvm flutter pub get
+        run: flutter pub get
 
       #5 Setup Keystore
       - name: Decode Keystore

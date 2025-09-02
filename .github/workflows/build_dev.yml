@@ -26,33 +26,34 @@ jobs:
           java-version: '17'
 
       #3 Install specified flutter version
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+      - name: Install Flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
 
       #4 Install dependencies
       - name: Install Dependencies
-        run: fvm flutter pub get
+        run: flutter pub get
 
       #5 Updating licenses
       - name: fetching licenses
-        run: fvm flutter pub run flutter_oss_licenses:generate.dart
+        run: flutter pub run flutter_oss_licenses:generate.dart
 
       #6 Building APK
       - name: Build APK
-        run: fvm flutter build apk --debug
+        run: flutter build apk --debug
 
       #7 Build iOS (ipa)
       - name: Build IPA
-        run: fvm flutter build ios --no-codesign
+        run: flutter build ios --no-codesign
 
 
       #8 Upload Artifacts
-      - name: Upload Artifacts
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: debug.apk
           path: build/app/outputs/flutter-apk/app-debug.apk
 
-      - name: Upload Artifacts
+      - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
           name: Runner.ipa
