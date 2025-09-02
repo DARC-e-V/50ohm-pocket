@@ -38,7 +38,7 @@ dependencies:
       path: packages/pdfx
   flutter_svg: ^2.0.9
   url_launcher: ^6.0.10
-  flutter_math_fork:
+  flutter_math:
     git:
       url: https://github.com/dakshatsuraasa/flutter_math.git
       ref: main
