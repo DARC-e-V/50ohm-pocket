@@ -31,7 +31,7 @@ jobs:
 
       #4 Install dependencies
       - name: Install Dependencies
-        run: flutter pub get
+        run: flutter pub get && flutter doctor -v
 
       #5 Updating licenses
       - name: fetching licenses

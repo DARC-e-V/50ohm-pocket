@@ -40,8 +40,8 @@ dependencies:
   url_launcher: ^6.0.10
   flutter_math_fork:
     git:
-      url: https://github.com/simpleclub-extended/flutter_math_fork
-      ref: 2f270aee06d3ca02ca6d108420921472fd10e5cb
+      url: https://github.com/dakshatsuraasa/flutter_math.git
+      ref: main
   package_info_plus: ^5.0.1
 
 
