@@ -11,6 +11,6 @@ Das Projekt wird derzeit von einem kleinen Entwicklerteam ehrenamtlich entwickel
 
 ## Update der Lizenzhinweise für verwendete Pakete
 
-`flutter pub run flutter_oss_licenses:generate.dart`
+`fvm flutter pub run flutter_oss_licenses:generate.dart`
 
 ![portal](https://github.com/Konradrundfunk/50ohm-pocket/assets/33392939/7ddb8cbc-5c60-4c5d-8e59-6541ce410919)
