@@ -6,15 +6,6 @@ on:
   push:
     branches:
       - main
-      - dev
-      - ghactions
-
-  pull_request:
-    branches:
-      - main
-      - dev
-      - ghactions
-
 
   workflow_dispatch:
 
@@ -26,27 +17,23 @@ jobs:
     steps:
       #1 Checkout Repository
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-        #2 Setup Java
+      #2 Setup Java
       - name: Set Up Java
         uses: actions/setup-java@v3.12.0
         with:
           distribution: 'oracle'
           java-version: '17'
 
-        #3 Setup Flutter
-      - name: Set Up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml
+      #3 Install specified flutter version
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
 
-        #4 Install Dependencies
+      #4 Install Dependencies
       - name: Install Dependencies
-        run: flutter pub get
+        run: fvm flutter pub get
 
-        #5 Setup Keystore
+      #5 Setup Keystore
       - name: Decode Keystore
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
@@ -60,39 +47,43 @@ jobs:
 
       #6 Building APK
       - name: Build APK
-        run: flutter build apk --release
+        run: fvm flutter build apk --release
 
-        #7 Building App Bundle (aab)
+      #7 Building App Bundle (aab)
       - name: Build appBundle
-        run: flutter build appbundle
+        run: fvm flutter build appbundle --release
 
-        #8 Build iOS (ipa)
+      #8 Build iOS (ipa)
       - name: Build IPA
-        run: flutter build ios --no-codesign
+        run: fvm flutter build ios --release --no-codesign
 
-      - name: Compress Archives and IPAs
-        run: |
-          cd build
-          tar -czf ios_build.tar.gz ios
-
-        #9 Upload Artifacts
+      #9 Upload Artifacts
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Releases
-          path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.aab
-            build/ios_build.tar.gz
+          name: release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
-        #10 Extract Version
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release.aab
+          path: build/app/outputs/bundle/release/app-release.aab
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release.app
+          path: /build/ios/iphoneos/Runner.app
+
+      #10 Extract Version
       - name: Extract version from pubspec.yaml
         id: extract_version
         run: |
           version=$(grep '^version: ' pubspec.yaml | cut -d ' ' -f 2 | tr -d '\r')
           echo "VERSION=$version" >> $GITHUB_ENV
 
-        #11 Check if Tag Exists
+      #11 Check if Tag Exists
       - name: Check if Tag Exists
         id: check_tag
         run: |
@@ -102,7 +93,7 @@ jobs:
             echo "TAG_EXISTS=false" >> $GITHUB_ENV
           fi
 
-        #12 Modify Tag if it Exists
+      #12 Modify Tag if it Exists
       - name: Modify Tag
         if: env.TAG_EXISTS == 'true'
         id: modify_tag
@@ -110,12 +101,12 @@ jobs:
           new_version="${{ env.VERSION }}-build-${{ github.run_number }}"
           echo "VERSION=$new_version" >> $GITHUB_ENV
 
-        #13 Create Release
+      #13 Create Release
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           draft: true
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab,build/ios_build.tar.gz"
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab,build/ios/iphoneos/Runner.app"
           tag: v${{ env.VERSION }}
           token: ${{ secrets.GH_TOKEN }}
 
