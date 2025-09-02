@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.6+1
+version: 1.0.6+26
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -40,8 +40,8 @@ dependencies:
   url_launcher: ^6.0.10
   flutter_math_fork:
     git:
-      url: https://github.com/simpleclub-extended/flutter_math_fork
-      ref: 2f270aee06d3ca02ca6d108420921472fd10e5cb
+      url: https://github.com/dakshatsuraasa/flutter_math.git
+      ref: main
   package_info_plus: ^5.0.1
   html: ^0.15.4
 
