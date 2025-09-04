@@ -9,11 +9,10 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart' as html_parser;
+import 'package:url_launcher/url_launcher.dart';
 
 enum QuestionState{
-  answering, 
+  answering,
   evaluating
 }
 
@@ -30,19 +29,19 @@ class Question extends StatefulWidget {
 class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   var questionorder, questreslist, pdfController, questionradio;
-  
+
   QuestionState state = QuestionState.answering;
 
   int highlighting = -1;
 
   late int questionkey, subchapterkey;
   late List<String> ShuffledAnswers, Answers;
-  
+
   final List subchapter;
   final context, chapter;
 
   late Json json;
-  bool imageQuestion = false; 
+  bool imageQuestion = false;
   bool correct = false;
   OverlayEntry? overlayEntry;
 
@@ -75,7 +74,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       }else{
         Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
       }
-      
+
       ShuffledAnswers = [];
       ShuffledAnswers.addAll(Answers);
       ShuffledAnswers.shuffle();
@@ -88,135 +87,134 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          onPressed: (){
-            try{
-              overlayEntry!.remove();
-            }catch(e){}
-            Navigator.of(context).pop();
-          },
-        ),
-        backgroundColor: const Color.fromARGB(10, 0, 0, 0),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Frage "
-                  + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
-            ),
-            Row(
+        appBar: AppBar(
+          leading: BackButton(
+            onPressed: (){
+              try{
+                overlayEntry!.remove();
+              }catch(e){}
+              Navigator.of(context).pop();
+            },
+          ),
+          backgroundColor: const Color.fromARGB(10, 0, 0, 0),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Frage "
+                    + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+              ),
+              Row(
                 children: [
-                IconButton(icon: Icon(Icons.functions), onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Formelsammlung.pdf", "Formelsammlung"),
-                    )
-                  );
-                  },
-                ),
-                IconButton(icon: Icon(Icons.description), onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Anlage_1_AFuV.pdf", "Anlage 1 AFuV"),
-                    )
-                  );
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            ListView(
-              children: [
-                //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
-                Padding(
-                  padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
-                  child: Center(
-                    child: RichText(
-                      textAlign: TextAlign.left,
-                      text: TextSpan(
-                        children: parseTextWithMath(
-                          "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
-                          TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 22
-                          ),
+                  IconButton(icon: Icon(Icons.description), onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel"),
                         )
+                    );
+                  },
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              ListView(
+                children: [
+                  //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
+                  Padding(
+                    padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+                    child: Center(
+                      child: RichText(
+                        textAlign: TextAlign.left,
+                        text: TextSpan(
+                            children: parseTextWithMath(
+                              "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                              TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 22
+                              ),
+                            )
+                        ),
                       ),
                     ),
                   ),
-                ),
-                json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null 
-                ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
-                : SizedBox(),
-                Divider(height: std_padding * 2,),
-                imageQuestion 
-                ? radioSvgListBuilder() 
-                : radioTextListBuilder(),
-                SizedBox(height: 200),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
-                child: ElevatedButton(
-                  autofocus: false,
-                  style: buttonstyle(main_col),
-                  onPressed: () {
-                    if(state == QuestionState.answering && questionradio != null){
-                      _questionhandler(ShuffledAnswers, Answers, questionradio);
-                    }
-                  },
-                  child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
+                  json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null
+                      ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
+                      : SizedBox(),
+                  Divider(height: std_padding * 2,),
+                  imageQuestion
+                      ? radioSvgListBuilder()
+                      : radioTextListBuilder(),
+                  SizedBox(height: 200),
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                  child: ElevatedButton(
+                    autofocus: false,
+                    style: buttonstyle(main_col),
+                    onPressed: () {
+                      if(state == QuestionState.answering && questionradio != null){
+                        _questionhandler(ShuffledAnswers, Answers, questionradio);
+                      }
+                    },
+                    child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      )
+            ],
+          ),
+        )
     );
+  }
+
+  _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch');
+    }
   }
 
   InteractiveViewer questionImage(BuildContext context, String url) {
     List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
     Widget image;
     double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
-    ColorFilter colorFilter = 
-      MediaQuery.of(context).platformBrightness == Brightness.dark 
+    ColorFilter colorFilter =
+    MediaQuery.of(context).platformBrightness == Brightness.dark
         ? ColorFilter.matrix(<double>[
-            -1.0, 0.0, 0.0, 0.0, 255.0, 
-            0.0, -1.0, 0.0, 0.0, 255.0, 
-            0.0, 0.0, -1.0, 0.0, 255.0, 
-            0.0, 0.0, 0.0, 1.0, 0.0, 
-          ])
+      -1.0, 0.0, 0.0, 0.0, 255.0,
+      0.0, -1.0, 0.0, 0.0, 255.0,
+      0.0, 0.0, -1.0, 0.0, 255.0,
+      0.0, 0.0, 0.0, 1.0, 0.0,
+    ])
         : ColorFilter.matrix(<double>[
-            1.0, 0.0, 0.0, 0.0, 0.0, 
-            0.0, 1.0, 0.0, 0.0, 0.0, 
-            0.0, 0.0, 1.0, 0.0, 0.0, 
-            0.0, 0.0, 0.0, 1.0, 0.0, 
-          ]);
+      1.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 1.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 1.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 1.0, 0.0,
+    ]);
 
     if(illegalImages.contains(url)){
       image = Padding(
         padding: const EdgeInsets.all(8.0),
         child: ColorFiltered(
-          colorFilter: colorFilter,
-          child: Image.asset("assets/svgs/$url.png", 
-          width: imageScaleWidth)
-          ),
+            colorFilter: colorFilter,
+            child: Image.asset("assets/svgs/$url.png",
+                width: imageScaleWidth)
+        ),
       );
     } else {
       image = SvgPicture.asset(
-        "assets/svgs/$url.svg",        
-        colorFilter: colorFilter,
-        width: imageScaleWidth
-        );
+          "assets/svgs/$url.svg",
+          colorFilter: colorFilter,
+          width: imageScaleWidth
+      );
     };
     return InteractiveViewer(
       boundaryMargin: const EdgeInsets.all(20.0),
@@ -225,8 +223,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       child: image,
     );
   }
-ListView radioSvgListBuilder() {
-  Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
+  ListView radioSvgListBuilder() {
+    Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
@@ -256,7 +254,7 @@ ListView radioSvgListBuilder() {
         }
     );
   }
-  
+
   ListView radioTextListBuilder() {
     Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
 
@@ -275,30 +273,30 @@ ListView radioSvgListBuilder() {
                     color: i == highlighting ? questionColor  : Colors.transparent,
                   ),
                   child: RadioListTile(
-                    enableFeedback: true,
-                    fillColor: MaterialStateColor.resolveWith((states) => main_col),
-                    activeColor: main_col,
-                    groupValue: questionradio,
-                    value: i,
-                    onChanged: (var value) {
-                      if(state == QuestionState.answering){
-                        setState(() {
-                          questionradio = i;
-                        });
-                      }
-                    },
-                    title: RichText(
-                      textAlign: TextAlign.left,
-                      text: TextSpan(
-                        children: parseTextWithMath(
-                          "${ShuffledAnswers[i]}",
-                          TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 22
-                          ),
-                        )
-                      ),
-                    )
+                      enableFeedback: true,
+                      fillColor: MaterialStateColor.resolveWith((states) => main_col),
+                      activeColor: main_col,
+                      groupValue: questionradio,
+                      value: i,
+                      onChanged: (var value) {
+                        if(state == QuestionState.answering){
+                          setState(() {
+                            questionradio = i;
+                          });
+                        }
+                      },
+                      title: RichText(
+                        textAlign: TextAlign.left,
+                        text: TextSpan(
+                            children: parseTextWithMath(
+                              "${ShuffledAnswers[i]}",
+                              TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 22
+                              ),
+                            )
+                        ),
+                      )
                   ),
                 ),
               ]
@@ -313,11 +311,11 @@ ListView radioSvgListBuilder() {
     bool correct = ShuffledAnswers[i] == Answers[0];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
-    
+
     for(int i = 0; i < ShuffledAnswers.length; i++){
       if(ShuffledAnswers[i] == Answers[0]){
         setState(() {
-          highlighting = i;          
+          highlighting = i;
         });
         break;
       };
@@ -334,54 +332,54 @@ ListView radioSvgListBuilder() {
     OverlayState? overlayState = Overlay.of(context);
 
     overlayEntry = OverlayEntry(
-        builder: (buildcontext){
-          return  Container(
-            child: Stack(                
+      builder: (buildcontext){
+        return  Container(
+            child: Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: [
                 Container(
-                  height: 200,
+                    height: 200,
                     decoration: BoxDecoration(
                       color: wrong ? Colors.red.shade200: Colors.green.shade200,
                     ),
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 90, right: 20, left: 20),
-                        child: 
-                          RichText(
-                            textAlign: TextAlign.left,
-                            text: TextSpan(
+                        child:
+                        RichText(
+                          textAlign: TextAlign.left,
+                          text: TextSpan(
                               children: parseTextWithMath(
                                 wrong ? "Die Antwort ist falsch!" : "Richtig!",
                                 TextStyle(
-                                  fontFamily: "Roboto",
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  decoration: TextDecoration.none
+                                    fontFamily: "Roboto",
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    decoration: TextDecoration.none
                                 ),
                               )
-                            ),
                           ),
-                      ),         
+                        ),
+                      ),
                     )
                 ),
-              SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
-                  child: ElevatedButton(
-                    autofocus: false,
-                    style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
-                    onPressed: (){
-                      overlayEntry!.remove();
-                      _nextquest();
-                    },
-                    child: Text("Weiter", style: TextStyle(color: Colors.black),),
+                SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                    child: ElevatedButton(
+                      autofocus: false,
+                      style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
+                      onPressed: (){
+                        overlayEntry!.remove();
+                        _nextquest();
+                      },
+                      child: Text("Weiter", style: TextStyle(color: Colors.black),),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )
+              ],
+            )
         );
       },
     );
@@ -398,20 +396,20 @@ ListView radioSvgListBuilder() {
       });
     }catch(e){
       try{
-          this.subchapter[this.subchapterkey];
-          setState(() {
-            questionradio = null;
-            subchapterkey += 1;
-            questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
-            questionkey = 0;
-            refreshAnswers();
-          });
+        this.subchapter[this.subchapterkey];
+        setState(() {
+          questionradio = null;
+          subchapterkey += 1;
+          questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
+          questionkey = 0;
+          refreshAnswers();
+        });
       }catch(e){
         Navigator.push(
           context,
           MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),
         );
-        
+
       }
     }
   }
@@ -426,68 +424,23 @@ orderlist(var elements, bool random){
 }
 
 
-List<InlineSpan> parseTextWithMath(String input, TextStyle textStyle) {
-  List<InlineSpan> spans = [];
-
-  // Split by $...$ for math blocks
+List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
+  List<WidgetSpan> widgets = [];
   List<String> parts = input.split('\$');
 
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
-      // Normal text (may contain HTML tags)
-      final document = html_parser.parse(parts[i]);
-      final List<dom.Node> documentBodyNodes = document.body?.nodes ?? [];
-      spans.addAll(_parseHtmlNodes(documentBodyNodes, textStyle));
+      widgets.add(WidgetSpan(
+        child: Text(parts[i], style: Textstyle,),
+        alignment: PlaceholderAlignment.middle,
+      ));
     } else {
-      // Math block
-      spans.add(WidgetSpan(
-        child: Math.tex(parts[i], textStyle: textStyle),
+      widgets.add(WidgetSpan(
+        child: Math.tex(parts[i], textStyle: Textstyle),
         alignment: PlaceholderAlignment.middle,
       ));
     }
   }
 
-  return spans;
-}
-
-List<InlineSpan> _parseHtmlNodes(List<dom.Node> nodes, TextStyle baseStyle) {
-  List<InlineSpan> spans = [];
-  final Map<String, TextStyle> textStyleMap = const {
-    "b": TextStyle(fontWeight: FontWeight.bold),
-    "strong": TextStyle(fontWeight: FontWeight.bold),
-    "i": TextStyle(fontStyle: FontStyle.italic),
-    "em": TextStyle(fontStyle: FontStyle.italic),
-    "u": TextStyle(decoration: TextDecoration.underline),
-  };
-
-  for (final node in nodes) {
-    if (node.nodeType == dom.Node.TEXT_NODE) {
-      // Plain text
-      spans.add(TextSpan(text: node.text, style: baseStyle));
-      continue;
-    } 
-
-    if(!(node is dom.Element)) {
-      continue;
-    }
-
-    final String nodeLocalName = node.localName ?? "";
-    final String formattedNodeLocalName = nodeLocalName.toLowerCase();
-    
-    if (textStyleMap.containsKey(formattedNodeLocalName)) {
-      final mappedTextStyle = textStyleMap[formattedNodeLocalName];
-      spans.add(TextSpan(
-        children: _parseHtmlNodes(node.nodes, baseStyle.merge(mappedTextStyle))
-      ));
-    } else if (formattedNodeLocalName == "br") {
-      // Linebreaks
-      final TextSpan lineBreakTextSpan = const TextSpan(text: "\n");
-      spans.add(lineBreakTextSpan);
-    } else if (node.hasChildNodes()) {
-      // Default: recurse without style change
-      spans.addAll(_parseHtmlNodes(node.nodes, baseStyle));
-    }
-  }
-
-  return spans;
+  return widgets;
 }
