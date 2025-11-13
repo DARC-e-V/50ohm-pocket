@@ -126,7 +126,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 children: [
                   //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
                   Padding(
-                    padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+                    padding: EdgeInsets.only(top: stdPadding, left: stdPadding, right: stdPadding),
                     child: Center(
                       child: RichText(
                         textAlign: TextAlign.left,
@@ -145,7 +145,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null
                       ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
                       : SizedBox(),
-                  Divider(height: std_padding * 2,),
+                  Divider(height: stdPadding * 2,),
                   imageQuestion
                       ? radioSvgListBuilder()
                       : radioTextListBuilder(),
@@ -158,7 +158,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                   child: ElevatedButton(
                     autofocus: false,
-                    style: buttonstyle(main_col),
+                    style: buttonstyle(mainCol),
                     onPressed: () {
                       if(state == QuestionState.answering && questionradio != null){
                         _questionhandler(ShuffledAnswers, Answers, questionradio);
@@ -236,8 +236,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               color: i == highlighting ? questionColor : Colors.transparent,
             ),
             child: RadioListTile(
-              fillColor: MaterialStateColor.resolveWith((states) => main_col),
-              activeColor: main_col,
+              fillColor: MaterialStateColor.resolveWith((states) => mainCol),
+              activeColor: mainCol,
               enableFeedback: true,
               groupValue: questionradio,
               value: i,
@@ -274,8 +274,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   ),
                   child: RadioListTile(
                       enableFeedback: true,
-                      fillColor: MaterialStateColor.resolveWith((states) => main_col),
-                      activeColor: main_col,
+                      fillColor: MaterialStateColor.resolveWith((states) => mainCol),
+                      activeColor: mainCol,
                       groupValue: questionradio,
                       value: i,
                       onChanged: (var value) {

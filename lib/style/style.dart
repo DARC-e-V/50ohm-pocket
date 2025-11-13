@@ -6,7 +6,7 @@ import '../constants.dart';
 lightmode() => ThemeData(
                 primaryColorLight: Color(0xFFE1E6FF),
                 brightness: Brightness.light,
-                primaryColor: main_col,
+                primaryColor: mainCol,
                 textTheme: TextTheme(
                     headlineSmall: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,)
                 )
@@ -15,8 +15,8 @@ lightmode() => ThemeData(
 darkmode() => ThemeData(
                 primaryColorDark: Color(0xFF1C1F44),
                 brightness: Brightness.dark,
-                primaryColor: main_col,
-                cardColor: main_col,
+                primaryColor: mainCol,
+                cardColor: mainCol,
               );
 
 buttonstyle(Color color) => ButtonStyle(

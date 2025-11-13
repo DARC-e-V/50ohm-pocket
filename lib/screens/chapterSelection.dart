@@ -113,7 +113,7 @@ class _LearningmoduleState extends State<Learningmodule> {
           return Text("Konnte die Fragen nicht laden");
         } else {
           return Padding(
-            padding: EdgeInsets.all(std_padding),
+            padding: EdgeInsets.all(stdPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -140,7 +140,7 @@ class _LearningmoduleState extends State<Learningmodule> {
               itemBuilder: (context, i) {
                 if(i == 0){
                   return Padding(
-                      padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
+                      padding: EdgeInsets.only(top:8, right: stdPadding, left: stdPadding),
                       child:
                       Column(children: [
                         Text(
@@ -167,13 +167,13 @@ class _LearningmoduleState extends State<Learningmodule> {
     return SizedBox(
       width: 100,
       child: Container(
-          margin: json.chaptersize(currentmainchapter) == 0 ? EdgeInsets.all(0) : EdgeInsets.only(top: std_padding),
+          margin: json.chaptersize(currentmainchapter) == 0 ? EdgeInsets.all(0) : EdgeInsets.only(top: stdPadding),
           decoration: BoxDecoration(
-            color: json.chaptersize(currentmainchapter) == 0 ? main_col.withOpacity(0.4) : main_col.withOpacity(0.4),
+            color: json.chaptersize(currentmainchapter) == 0 ? mainCol.withOpacity(0.4) : mainCol.withOpacity(0.4),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Padding(
-              padding: EdgeInsets.all(std_padding),
+              padding: EdgeInsets.all(stdPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -182,7 +182,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                     onPressed: () {},
                     style: TextButton.styleFrom(
                       minimumSize: Size.fromHeight(100),
-                      backgroundColor: main_col.withOpacity(0.7),
+                      backgroundColor: mainCol.withOpacity(0.7),
                       shape: RoundedRectangleBorder(
                           borderRadius: json.chaptersize(currentmainchapter) == 0
                               ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))
@@ -231,7 +231,7 @@ class _LearningmoduleState extends State<Learningmodule> {
           margin: EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
+              LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: mainCol,),
               InkWell(
                 onTap:() async {
                   Navigator.of(context).push(
