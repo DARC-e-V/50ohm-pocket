@@ -56,7 +56,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     setState(() {
       json = Json(JsonWidget.of(context).json);
 
-      if(subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
+      if (subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
       refreshAnswers();
@@ -69,9 +69,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   refreshAnswers(){
     setState(() {
       imageQuestion = json.imageQuestion(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
-      if(imageQuestion){
+      if (imageQuestion){
         Answers = json.imageList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
-      }else{
+      } else {
         Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
       }
 
@@ -160,7 +160,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     autofocus: false,
                     style: buttonstyle(mainCol),
                     onPressed: () {
-                      if(state == QuestionState.answering && questionradio != null){
+                      if (state == QuestionState.answering && questionradio != null){
                         _questionhandler(ShuffledAnswers, Answers, questionradio);
                       }
                     },
@@ -200,7 +200,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       0.0, 0.0, 0.0, 1.0, 0.0,
     ]);
 
-    if(illegalImages.contains(url)){
+    if (illegalImages.contains(url)){
       image = Padding(
         padding: const EdgeInsets.all(8.0),
         child: ColorFiltered(
@@ -242,7 +242,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               groupValue: questionradio,
               value: i,
               onChanged: (var value) {
-                if(state == QuestionState.answering){
+                if (state == QuestionState.answering){
                   setState(() {
                     questionradio = i;
                   });
@@ -279,7 +279,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       groupValue: questionradio,
                       value: i,
                       onChanged: (var value) {
-                        if(state == QuestionState.answering){
+                        if (state == QuestionState.answering){
                           setState(() {
                             questionradio = i;
                           });
@@ -312,18 +312,18 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
 
-    for(int i = 0; i < ShuffledAnswers.length; i++){
-      if(ShuffledAnswers[i] == Answers[0]){
+    for (int i = 0; i < ShuffledAnswers.length; i++){
+      if (ShuffledAnswers[i] == Answers[0]){
         setState(() {
           highlighting = i;
         });
         break;
       };
     }
-    if(correct){
+    if (correct){
       _overlay(false);
     }
-    else{
+    else {
       _overlay(true);
     }
   }
@@ -419,7 +419,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 orderlist(var elements, bool random){
   int i = 0; List<int> orderlist = List.generate((elements),(generator) {i++; return i - 1;});
 
-  if(!random) return orderlist;
+  if (!random) return orderlist;
   else orderlist.shuffle(); return orderlist;
 }
 

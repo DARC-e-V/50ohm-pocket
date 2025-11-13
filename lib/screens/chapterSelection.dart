@@ -64,11 +64,11 @@ class _LearningmoduleState extends State<Learningmodule> {
                 ? getUserClass(context)
                 : PageView.builder(
               itemBuilder: (content, index){
-                if(index == 0){
+                if (index == 0){
                   return chapterbuilder(context, 'assets/questions/Questions.json', 0);
-                }else if(index == 1){
+                } else if (index == 1){
                   return chapterbuilder(context, 'assets/questions/Questions.json', 1);
-                }else{
+                } else {
                   return chapterbuilder(context, 'assets/questions/Questions.json', 2);
                 }
               },
@@ -138,7 +138,7 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: ListView.builder(
               itemCount: json.mainchaptersize(),
               itemBuilder: (context, i) {
-                if(i == 0){
+                if (i == 0){
                   return Padding(
                       padding: EdgeInsets.only(top:8, right: stdPadding, left: stdPadding),
                       child:
@@ -193,7 +193,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                     //   Navigator.of(context).push(
                     //     MaterialPageRoute(builder: (BuildContext context) => Question(context, orderlist(json.chaptersize(currentmainchapter), true), currentmainchapter)),
                     //   ).then((value){
-                    //     if(value ?? false){
+                    //     if (value ?? false){
                     //       setState(() {});
                     //     }
                     //   });
@@ -237,7 +237,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
                   ).then((value){
-                    if(value ?? false){
+                    if (value ?? false){
                       setState(() {});
                     }
                   });
@@ -290,13 +290,13 @@ Future<void> launchURL(url) async {
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
   int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
 
-  if(!random) return orderlist;
+  if (!random) return orderlist;
   else orderlist.shuffle(); return orderlist;
 
 }
 
 starticon(var string){
-  if(string == null){
+  if (string == null){
     return Icons.keyboard_arrow_right;
   }
   var icon = getMaterialIcon( name: '$string');

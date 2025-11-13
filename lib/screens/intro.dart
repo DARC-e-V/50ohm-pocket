@@ -5,7 +5,7 @@ import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/selectLearningPath.dart';
 
 
-class Welcome extends StatefulWidget{
+class Welcome extends StatefulWidget {
 
   @override
   State<Welcome> createState() => _WelcomeState();
@@ -16,20 +16,20 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
-    if(DatabaseWidget.of(context).settings_database.containsKey("Klasse")){
+    if (DatabaseWidget.of(context).settings_database.containsKey("Klasse")){
       _pageController = PageController(initialPage: 1);
-    } else{
+    } else {
       _pageController = PageController(initialPage: 0);
     }
 
     bool welcomePage = DatabaseWidget.of(context).settings_database.containsKey("welcomePage");
-    if(welcomePage) return Learningmodule();
+    if (welcomePage) return Learningmodule();
     return Scaffold(
       body: PageView.builder(
           itemCount: 2,
           controller: _pageController,
           itemBuilder: (content, index){
-            if(index == 0){
+            if (index == 0){
               return SafeArea(
                 bottom: true,
                 child: Stack(
@@ -97,7 +97,7 @@ class _WelcomeState extends State<Welcome> {
                   ],
                 ),
               );
-            }else if(index == 1){
+            } else if (index == 1){
               return SafeArea(
                 child: SingleChildScrollView(
                   child: Column(

@@ -2,7 +2,7 @@ import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 
-class Settingspage extends StatefulWidget{
+class Settingspage extends StatefulWidget {
   @override
   _settingsstate createState() => _settingsstate();
 }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-class Finish extends StatefulWidget{
+class Finish extends StatefulWidget {
   var subchapter, chapter, result, context;
   Finish( this.chapter, this.subchapter, this.result, this.context);
 
@@ -16,7 +16,7 @@ class Finish extends StatefulWidget{
 
 }
 
-class _finishstate extends State<Finish>{
+class _finishstate extends State<Finish> {
   var subchapter, chapter, result, context;
 
   _finishstate( this.subchapter, this.chapter, this.result, this.context);
@@ -87,7 +87,7 @@ class _finishstate extends State<Finish>{
   progress(){
     int x = 0;
     int y = 0;
-    for(var item in this.result){
+    for (var item in this.result){
       item = item.map((x) => x ? 1 : 0).toList();
       x += (item.fold(0, (var i, element) => element + i) as int);
       y = y + (item.length as int);

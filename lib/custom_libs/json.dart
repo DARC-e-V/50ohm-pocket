@@ -4,7 +4,7 @@ import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
-class Json{
+class Json {
   Map<String, dynamic>? data;
   Json(this.data);
 
@@ -12,17 +12,17 @@ class Json{
     var rawdata = await rootBundle.loadString(questionpath);
     Map<String, dynamic>? importedData  = jsonDecode(rawdata);
     List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
-    if(importedData != Null){
+    if (importedData != Null){
 
-      if(mainchapter == -1){
+      if (mainchapter == -1){
         this.data = importedData!;
 
-        for(var i in this.data!["sections"]){
-          for(var y in i["sections"]){
+        for (var i in this.data!["sections"]){
+          for (var y in i["sections"]){
             (y["questions"] as List).removeWhere(
               (z){
-                for(int klasse in klassen){
-                  if(z["class"] == klasse.toString()){
+                for (int klasse in klassen){
+                  if (z["class"] == klasse.toString()){
                     return false;
                   }
                 }
@@ -31,15 +31,15 @@ class Json{
             );
           }
         }
-        for(int i = 0; i < (this.data!["sections"] as List).length; i++){
+        for (int i = 0; i < (this.data!["sections"] as List).length; i++){
           this.data!["sections"][i]["sections"].removeWhere((element) {
-            if((element["questions"] as List).isEmpty){
+            if ((element["questions"] as List).isEmpty){
               //print(element["title"]);
               return true;
             }
             return false;
           });
-          if((this.data!["sections"][i]["sections"] as List).isEmpty){
+          if ((this.data!["sections"][i]["sections"] as List).isEmpty){
             (this.data!["sections"] as List).removeAt(i);
             i--;
           }
@@ -47,13 +47,13 @@ class Json{
         return this.data;
       } else {
           this.data = importedData!["sections"][mainchapter];
-          if(mainchapter == 0){
-            for(var i in this.data!["sections"]){
-              for(var y in i["sections"]){
+          if (mainchapter == 0){
+            for (var i in this.data!["sections"]){
+              for (var y in i["sections"]){
                 (y["questions"] as List).removeWhere(
                   (z){
-                    for(int klasse in klassen){
-                      if(z["class"] == klasse.toString()){
+                    for (int klasse in klassen){
+                      if (z["class"] == klasse.toString()){
                         return false;
                       }
                     }
@@ -64,8 +64,8 @@ class Json{
             }
             (this.data!["sections"] as List).removeWhere(
               (element){
-                for(var y in element["sections"]){
-                  if((y["questions"] as List).isEmpty){
+                for (var y in element["sections"]){
+                  if ((y["questions"] as List).isEmpty){
                     return true;
                   }
                 }
@@ -121,12 +121,12 @@ class Json{
 
   bool imageQuestion(int chapter, var subchapter, int question){
     try{
-      if(this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_a"] != null){
+      if (this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_a"] != null){
         return true;
       }
       return false;
     }catch(_){
-      if(this.data!["sections"][chapter]["questions"][question]["picture_a"] != null){
+      if (this.data!["sections"][chapter]["questions"][question]["picture_a"] != null){
         return true;
       }
       return false;
@@ -179,7 +179,7 @@ class Json{
 
 }
 
-class JsonWidget extends InheritedWidget{
+class JsonWidget extends InheritedWidget {
   final Map<String, dynamic>? json;
   final int mainchapter;
 

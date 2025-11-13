@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Database{
+class Database {
 
   var progress;
   var settings;
@@ -14,14 +14,14 @@ class Database{
   }
 }
 
-class Databaseobj{
+class Databaseobj {
   BuildContext context;
 
   Databaseobj(this.context);
 
   write(mainchapter, chapter, subchapter, resultlist){
     int i = 0;
-    for(var result in resultlist){
+    for (var result in resultlist){
 
       result = result.map((x) => x ? 1 : 0).toList();
 
@@ -56,7 +56,7 @@ class Databaseobj{
 }
 
 
-class DatabaseWidget extends InheritedWidget{
+class DatabaseWidget extends InheritedWidget {
 
   final Box settings_database;
   final Box prog_database;
