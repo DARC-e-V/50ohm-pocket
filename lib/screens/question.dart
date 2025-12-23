@@ -1,3 +1,5 @@
+import "package:html/parser.dart";
+import "package:html/dom.dart" as dom;
 import 'dart:math';
 
 import 'package:fuenfzigohm/constants.dart';
@@ -424,16 +426,16 @@ orderlist(var elements, bool random){
 }
 
 
-List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
-  List<WidgetSpan> widgets = [];
+
+List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
+  List<InlineSpan> widgets = [];
   List<String> parts = input.split('\$');
 
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
-      widgets.add(WidgetSpan(
-        child: Text(parts[i], style: Textstyle,),
-        alignment: PlaceholderAlignment.middle,
-      ));
+      if (parts[i].isNotEmpty) {
+          widgets.addAll(parseHtml(parts[i], Textstyle));
+      }
     } else {
       widgets.add(WidgetSpan(
         child: Math.tex(parts[i], textStyle: Textstyle),
@@ -443,4 +445,47 @@ List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
   }
 
   return widgets;
+}
+
+List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
+  var document = parse(htmlString);
+  List<InlineSpan> spans = [];
+
+  for (var node in document.body!.nodes) {
+    if (node is dom.Text) {
+      if (node.text.isNotEmpty) {
+        spans.add(TextSpan(text: node.text, style: style));
+      }
+    } else if (node is dom.Element) {
+       TextStyle newStyle = style;
+       if (node.localName == 'b' || node.localName == 'strong') {
+         newStyle = style.copyWith(fontWeight: FontWeight.bold);
+       } else if (node.localName == 'i' || node.localName == 'em') {
+         newStyle = style.copyWith(fontStyle: FontStyle.italic);
+       } else if (node.localName == 'br') {
+          spans.add(TextSpan(text: "\n", style: style));
+          continue;
+       }
+       
+       if (node.hasChildNodes()) {
+         String innerHtml = node.innerHtml; 
+          for(var child in node.nodes) {
+              if (child is dom.Text) {
+                  spans.add(TextSpan(text: child.text, style: newStyle));
+              } else if (child is dom.Element) {
+                   if (child.localName == 'br') {
+                      spans.add(TextSpan(text: "\n", style: newStyle));
+                   } else {
+                       spans.add(TextSpan(text: child.text, style: newStyle));
+                   }
+              }
+          }
+       } else {
+          if(node.text.isNotEmpty) {
+              spans.add(TextSpan(text: node.text, style: newStyle));
+          }
+       }
+    }
+  }
+  return spans;
 }
