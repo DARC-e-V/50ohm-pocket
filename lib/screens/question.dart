@@ -462,6 +462,8 @@ List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
          newStyle = style.copyWith(fontWeight: FontWeight.bold);
        } else if (node.localName == 'i' || node.localName == 'em') {
          newStyle = style.copyWith(fontStyle: FontStyle.italic);
+       } else if (node.localName == 'u' || node.localName == 'ins') {
+         newStyle = style.copyWith(decoration: TextDecoration.underline);
        } else if (node.localName == 'br') {
           spans.add(TextSpan(text: "\n", style: style));
           continue;
