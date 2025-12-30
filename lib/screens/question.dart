@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fuenfzigohm/constants.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
@@ -93,7 +94,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               try{
                 overlayEntry!.remove();
               }catch(e){}
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(true);
             },
           ),
           backgroundColor: const Color.fromARGB(10, 0, 0, 0),
@@ -311,6 +312,14 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     bool correct = ShuffledAnswers[i] == Answers[0];
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
+
+    Databaseobj(context).writeSingle(
+      JsonWidget.of(context).mainchapter,
+      chapter,
+      subchapter.length == 0 ? null : subchapter[subchapterkey],
+      questionorder[questionkey],
+      correct
+    );
 
     for(int i = 0; i < ShuffledAnswers.length; i++){
       if(ShuffledAnswers[i] == Answers[0]){
