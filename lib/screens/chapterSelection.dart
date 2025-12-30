@@ -5,6 +5,7 @@ import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -107,7 +108,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       future: Json(null).load(path, mainchapter, context),
       builder: (context, snapshot){
         if (snapshot.hasData) {
-          return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>), mainchapter);
+          return JsonWidget(selectlesson(snapshot.data, context, mainchapter),(snapshot.data as Map<String, dynamic>), mainchapter);
         } else if (snapshot.hasError){
           print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
@@ -129,16 +130,27 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
 
-  Widget selectlesson(var data, var context) {
+  Widget selectlesson(var data, var context, int mainchapter) {
     Json json = Json(data);
+    
+    // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
+    List<List<int>> questionKeys = json.getAllQuestionKeys(mainchapter);
+    List<int> questionScores = Databaseobj(context).getAllQuestionScoresFromKeys(questionKeys);
+    
     return Center( child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
       child: Padding(
           padding: EdgeInsets.only(left: 5,right: 5),
           child: ListView.builder(
-              itemCount: json.mainchaptersize(),
+              itemCount: json.mainchaptersize() + 1,
               itemBuilder: (context, i) {
                 if(i == 0){
+                  // Progress overview at the very top
+                  return ProgressOverviewCard(
+                    questionScores: questionScores,
+                  );
+                }
+                if(i == 1){
                   return Padding(
                       padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
                       child:
@@ -154,7 +166,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ],)
                   );
                 }
-                return chapterwidget(json, i - 2, context);
+                return chapterwidget(json, i - 3, context);
               }
           )
       ),

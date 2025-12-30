@@ -53,6 +53,80 @@ class Databaseobj{
       return 0.0;
     }  
   }
+  
+  /// Returns the score for a single question at a specific index within a subchapter/chapter.
+  /// Returns 0 if not found.
+  int getQuestionScore(int mainchapter, int chapter, int? subchapter, int questionIndex) {
+    try {
+      String key = subchapter == null || subchapter == -1 
+          ? "[$mainchapter][$chapter]" 
+          : "[$mainchapter][$chapter][$subchapter]";
+      List<dynamic>? scores = DatabaseWidget.of(context).prog_database.get(key);
+      if (scores != null && questionIndex < scores.length) {
+        return (scores[questionIndex] as int?) ?? 0;
+      }
+    } catch (e) {
+      // Return 0 on error
+    }
+    return 0;
+  }
+  
+  /// Returns a list of scores for ALL questions based on the provided question keys.
+  /// Each key is [mainchapter, chapter, subchapter, questionIndex].
+  /// Unanswered questions get score 0.
+  List<int> getAllQuestionScoresFromKeys(List<List<int>> questionKeys) {
+    List<int> allScores = [];
+    
+    for (var key in questionKeys) {
+      int mainchapter = key[0];
+      int chapter = key[1];
+      int? subchapter = key[2] == -1 ? null : key[2];
+      int questionIndex = key[3];
+      
+      int score = getQuestionScore(mainchapter, chapter, subchapter, questionIndex);
+      allScores.add(score);
+    }
+    
+    return allScores;
+  }
+  
+  /// Returns a list of all question scores from all stored progress entries.
+  /// Each score represents how many times a question was answered correctly.
+  /// NOTE: This only returns answered questions. Use getAllQuestionScoresFromKeys for all questions.
+  List<int> getAllQuestionScores() {
+    List<int> allScores = [];
+    Box progDb = DatabaseWidget.of(context).prog_database;
+    
+    for (var key in progDb.keys) {
+      try {
+        List<dynamic> scores = progDb.get(key);
+        if (scores != null) {
+          for (var score in scores) {
+            allScores.add((score as int?) ?? 0);
+          }
+        }
+      } catch (e) {
+        // Skip invalid entries
+      }
+    }
+    
+    return allScores;
+  }
+  
+  /// Returns a map with statistics about the learning progress.
+  /// Keys: 'total', 'learned', 'inProgress', 'notStarted'
+  Map<String, int> getProgressStats(List<int> scores) {
+    int learned = scores.where((s) => s >= 3).length;
+    int inProgress = scores.where((s) => s > 0 && s < 3).length;
+    int notStarted = scores.where((s) => s <= 0).length;
+    
+    return {
+      'total': scores.length,
+      'learned': learned,
+      'inProgress': inProgress,
+      'notStarted': notStarted,
+    };
+  }
 }
 
 
