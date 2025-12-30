@@ -5,6 +5,8 @@ import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/screens/examSelection.dart';
+import 'package:fuenfzigohm/screens/pastExams.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,6 +33,13 @@ class _LearningmoduleState extends State<Learningmodule> {
         actions: [
           PopupMenuButton(
             itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 3,
+                child: ListTile(
+                  leading: Icon(Icons.history),
+                  title: Text("Vergangene Prüfungen"),
+                ),
+              ),
               PopupMenuItem(
                 value: 2,
                 child: ListTile(
@@ -81,6 +90,10 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch (item) {
+      case 3:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const PastExamsScreen()));
+        break;
       case 2:
         _launchURL("https://50ohm.de/hm");
         break;
@@ -136,7 +149,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       child: Padding(
           padding: EdgeInsets.only(left: 5,right: 5),
           child: ListView.builder(
-              itemCount: json.mainchaptersize(),
+              itemCount: json.mainchaptersize() + 1, // +1 for exam card
               itemBuilder: (context, i) {
                 if(i == 0){
                   return Padding(
@@ -154,7 +167,72 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ],)
                   );
                 }
-                return chapterwidget(json, i - 2, context);
+                if(i == 1){
+                  // Prüfungssimulation-Kachel
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: std_padding, vertical: 8),
+                    child: InkWell(
+                      onTap: () => Navigator.pushNamed(context, '/exam'),
+                      borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.orange.shade600, Colors.deepOrange.shade400],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.orange.withOpacity(0.3),
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Icon(Icons.quiz, size: 32, color: Colors.white),
+                            ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Prüfungssimulation',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Text(
+                                    'Teste dein Wissen unter Prüfungsbedingungen',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white.withOpacity(0.9),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Icon(Icons.arrow_forward_ios, color: Colors.white.withOpacity(0.7)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+                return chapterwidget(json, i - 3, context); // -3 now (title + exam card + 0-index)
               }
           )
       ),
