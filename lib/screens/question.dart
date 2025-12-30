@@ -100,9 +100,28 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Frage "
-                    + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+              Row(
+                children: [
+                  Text(
+                    "Frage "
+                        + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                  ),
+                  SizedBox(width: 12),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: main_col.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "${questionkey + 1}/${questionorder.length}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 children: [
