@@ -108,7 +108,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       future: Json(null).load(path, mainchapter, context),
       builder: (context, snapshot){
         if (snapshot.hasData) {
-          return JsonWidget(selectlesson(snapshot.data, context, mainchapter),(snapshot.data as Map<String, dynamic>), mainchapter);
+          return JsonWidget(selectlesson(snapshot.data!, context, mainchapter),(snapshot.data as Map<String, dynamic>), mainchapter);
         } else if (snapshot.hasError){
           print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
@@ -130,7 +130,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
 
-  Widget selectlesson(var data, var context, int mainchapter) {
+  Widget selectlesson(Map<String, dynamic> data, BuildContext context, int mainchapter) {
     Json json = Json(data);
     
     // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
@@ -142,15 +142,10 @@ class _LearningmoduleState extends State<Learningmodule> {
       child: Padding(
           padding: EdgeInsets.only(left: 5,right: 5),
           child: ListView.builder(
-              itemCount: json.mainchaptersize() + 1,
+              // +2 for title (i=0) and progress card (i=1)
+              itemCount: json.mainchaptersize() + 2,
               itemBuilder: (context, i) {
                 if(i == 0){
-                  // Progress overview at the very top
-                  return ProgressOverviewCard(
-                    questionScores: questionScores,
-                  );
-                }
-                if(i == 1){
                   return Padding(
                       padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
                       child:
@@ -166,7 +161,13 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ],)
                   );
                 }
-                return chapterwidget(json, i - 3, context);
+                if(i == 1){
+                  return ProgressOverviewCard(
+                    questionScores: questionScores,
+                  );
+                }
+                // Offset by 2 for the title and progress card
+                return chapterwidget(json, i - 2, context);
               }
           )
       ),

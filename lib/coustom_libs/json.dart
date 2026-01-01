@@ -177,27 +177,6 @@ class Json{
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
 
-  /// Returns total count of all questions across all chapters and subchapters
-  int getTotalQuestionCount() {
-    int total = 0;
-    try {
-      for (var chapter in this.data!["sections"]) {
-        if (chapter["sections"] != null) {
-          for (var subchapter in chapter["sections"]) {
-            if (subchapter["questions"] != null) {
-              total += (subchapter["questions"] as List).length;
-            }
-          }
-        } else if (chapter["questions"] != null) {
-          total += (chapter["questions"] as List).length;
-        }
-      }
-    } catch (e) {
-      // Return 0 on error
-    }
-    return total;
-  }
-
   /// Returns a list of all question keys in order: [[mainchapter, chapter, subchapter, questionIndex], ...]
   /// Used to map questions to their database scores
   List<List<int>> getAllQuestionKeys(int mainchapter) {

@@ -80,10 +80,10 @@ class _ProgressBarPainter extends CustomPainter {
           ? Colors.grey.shade700 
           : Colors.grey.shade400;
     } else if (score == 1) {
-      // 1x correct - orange
+      // 1x correct - vibrant orange
       return isDarkMode 
-          ? Colors.orange.shade700 
-          : Colors.orange.shade400;
+          ? Colors.deepOrange.shade400 
+          : Colors.deepOrange;
     } else if (score == 2) {
       // 2x correct - yellow
       return isDarkMode 
