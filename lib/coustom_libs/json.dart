@@ -177,6 +177,31 @@ class Json{
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
 
+  // Get total question count for a chapter (including all subchapters)
+  int getTotalQuestionCount(int chapter) {
+    try {
+      int totalCount = 0;
+      var sections = this.data!["sections"][chapter]["sections"];
+      
+      // If this chapter has subsections
+      if (sections is List) {
+        for (var subsection in sections) {
+          if (subsection["questions"] != null) {
+            totalCount += (subsection["questions"] as List).length;
+          }
+        }
+      }
+      return totalCount;
+    } catch (e) {
+      // If there's an error, try to get direct questions
+      try {
+        return (this.data!["sections"][chapter]["questions"] as List).length;
+      } catch (e) {
+        return 0;
+      }
+    }
+  }
+
 }
 
 class JsonWidget extends InheritedWidget{
