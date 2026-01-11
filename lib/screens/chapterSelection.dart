@@ -242,6 +242,8 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   Widget chapterwidget(var json, var s, var context){
     var currentmainchapter = s + 1;
+    int totalQuestions = json.getTotalQuestionCount(currentmainchapter);
+    
     return SizedBox(
       width: 100,
       child: Container(
@@ -278,9 +280,33 @@ class _LearningmoduleState extends State<Learningmodule> {
                     // },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        json.chapter_names(currentmainchapter),
-                        style: Theme.of(context).textTheme.headlineSmall,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            json.chapter_names(currentmainchapter),
+                            style: Theme.of(context).textTheme.headlineSmall,
+                            textAlign: TextAlign.center,
+                          ),
+                          if (totalQuestions > 0) ...[
+                            SizedBox(height: 8),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.25),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                '$totalQuestions ${totalQuestions == 1 ? 'Frage' : 'Fragen'}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   ),
@@ -302,6 +328,8 @@ class _LearningmoduleState extends State<Learningmodule> {
       shrinkWrap: true,
       itemCount: json.chaptersize(chapter),
       itemBuilder: (context, subchapter) {
+        int questionCount = json.subchaptersize(chapter, subchapter);
+        
         return Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
@@ -326,6 +354,25 @@ class _LearningmoduleState extends State<Learningmodule> {
                     json.subchapter_name(chapter, subchapter),
                     style: TextStyle(
                         fontWeight: FontWeight.w500
+                    ),
+                  ),
+                  trailing: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: main_col.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: main_col.withOpacity(0.3),
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      '$questionCount',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: main_col,
+                      ),
                     ),
                   ),
                 ),
