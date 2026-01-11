@@ -1,6 +1,9 @@
+import "package:html/parser.dart";
+import "package:html/dom.dart" as dom;
 import 'dart:math';
 
 import 'package:fuenfzigohm/constants.dart';
+import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
@@ -93,16 +96,35 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               try{
                 overlayEntry!.remove();
               }catch(e){}
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(true);
             },
           ),
           backgroundColor: const Color.fromARGB(10, 0, 0, 0),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Frage "
-                    + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+              Row(
+                children: [
+                  Text(
+                    "Frage "
+                        + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                  ),
+                  SizedBox(width: 12),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: main_col.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "${questionkey + 1}/${questionorder.length}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 children: [
@@ -312,6 +334,14 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
 
+    Databaseobj(context).writeSingle(
+      JsonWidget.of(context).mainchapter,
+      chapter,
+      subchapter.length == 0 ? null : subchapter[subchapterkey],
+      questionorder[questionkey],
+      correct
+    );
+
     for(int i = 0; i < ShuffledAnswers.length; i++){
       if(ShuffledAnswers[i] == Answers[0]){
         setState(() {
@@ -424,16 +454,16 @@ orderlist(var elements, bool random){
 }
 
 
-List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
-  List<WidgetSpan> widgets = [];
+
+List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
+  List<InlineSpan> widgets = [];
   List<String> parts = input.split('\$');
 
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
-      widgets.add(WidgetSpan(
-        child: Text(parts[i], style: Textstyle,),
-        alignment: PlaceholderAlignment.middle,
-      ));
+      if (parts[i].isNotEmpty) {
+          widgets.addAll(parseHtml(parts[i], Textstyle));
+      }
     } else {
       widgets.add(WidgetSpan(
         child: Math.tex(parts[i], textStyle: Textstyle),
@@ -443,4 +473,49 @@ List<WidgetSpan> parseTextWithMath(String input, TextStyle Textstyle) {
   }
 
   return widgets;
+}
+
+List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
+  var document = parse(htmlString);
+  List<InlineSpan> spans = [];
+
+  for (var node in document.body!.nodes) {
+    if (node is dom.Text) {
+      if (node.text.isNotEmpty) {
+        spans.add(TextSpan(text: node.text, style: style));
+      }
+    } else if (node is dom.Element) {
+       TextStyle newStyle = style;
+       if (node.localName == 'b' || node.localName == 'strong') {
+         newStyle = style.copyWith(fontWeight: FontWeight.bold);
+       } else if (node.localName == 'i' || node.localName == 'em') {
+         newStyle = style.copyWith(fontStyle: FontStyle.italic);
+       } else if (node.localName == 'u' || node.localName == 'ins') {
+         newStyle = style.copyWith(decoration: TextDecoration.underline);
+       } else if (node.localName == 'br') {
+          spans.add(TextSpan(text: "\n", style: style));
+          continue;
+       }
+       
+       if (node.hasChildNodes()) {
+         String innerHtml = node.innerHtml; 
+          for(var child in node.nodes) {
+              if (child is dom.Text) {
+                  spans.add(TextSpan(text: child.text, style: newStyle));
+              } else if (child is dom.Element) {
+                   if (child.localName == 'br') {
+                      spans.add(TextSpan(text: "\n", style: newStyle));
+                   } else {
+                       spans.add(TextSpan(text: child.text, style: newStyle));
+                   }
+              }
+          }
+       } else {
+          if(node.text.isNotEmpty) {
+              spans.add(TextSpan(text: node.text, style: newStyle));
+          }
+       }
+    }
+  }
+  return spans;
 }
