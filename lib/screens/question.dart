@@ -150,17 +150,17 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   Padding(
                     padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
                     child: Center(
-                      child: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
+                      child: Text.rich(
+                        TextSpan(
                             children: parseTextWithMath(
                               "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
                               TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 22
+                                  fontSize: 22,
                               ),
                             )
                         ),
+                        textAlign: TextAlign.left,
                       ),
                     ),
                   ),
@@ -307,17 +307,17 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                           });
                         }
                       },
-                      title: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
+                      title: Text.rich(
+                        TextSpan(
                             children: parseTextWithMath(
                               "${ShuffledAnswers[i]}",
                               TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 22
+                                  fontSize: 22,
                               ),
                             )
                         ),
+                        textAlign: TextAlign.left,
                       )
                   ),
                 ),
