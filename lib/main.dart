@@ -2,6 +2,7 @@ import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/intro.dart';
+import 'package:fuenfzigohm/screens/examSelection.dart';
 import 'package:fuenfzigohm/helpers/packagesListing.dart';
 import 'package:fuenfzigohm/helpers/questionsLicenseNotice.dart';
 import 'package:fuenfzigohm/style/style.dart';
@@ -25,6 +26,7 @@ void main() {
                 routes:{
                   '/learn': (context) => Learningmodule(),
                   '/welcome': (context) => Welcome(),
+                  '/exam': (context) => const ExamSelectionScreen(),
                   '/appPackages': (context) => OssLicensesPage(),
                   '/questionsLicenseNotice': (context) => QuestionsLicensePage(),
                   '/aboutApp' : (context) => AboutAppPage(),
