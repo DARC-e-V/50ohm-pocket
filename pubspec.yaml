@@ -39,9 +39,7 @@ dependencies:
   flutter_svg: ^2.0.9
   url_launcher: ^6.0.10
   flutter_math_fork:
-    git:
-      url: https://github.com/dakshatsuraasa/flutter_math.git
-      ref: main
+    path: vendor/flutter_math_fork
   package_info_plus: ^5.0.1
   html: ^0.15.4
 
