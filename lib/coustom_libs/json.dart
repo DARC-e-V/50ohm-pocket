@@ -47,32 +47,26 @@ class Json{
         return this.data;
       } else {
           this.data = importedData!["sections"][mainchapter];
-          if(mainchapter == 0){
-            for(var i in this.data!["sections"]){
-              for(var y in i["sections"]){
-                (y["questions"] as List).removeWhere(
-                  (z){
-                    for(int klasse in klassen){
-                      if(z["class"] == klasse.toString()){
-                        return false;
-                      }
+          for(var i in this.data!["sections"]){
+            for(var y in i["sections"]){
+              (y["questions"] as List).removeWhere(
+                (z){
+                  for(int klasse in klassen){
+                    if(z["class"] == klasse.toString()){
+                      return false;
                     }
-                    return true;
                   }
-                );
-              }
-            }
-            (this.data!["sections"] as List).removeWhere(
-              (element){
-                for(var y in element["sections"]){
-                  if((y["questions"] as List).isEmpty){
-                    return true;
-                  }
+                  return true;
                 }
-                return false;
-              }
-            );
+              );
+            }
           }
+          (this.data!["sections"] as List).removeWhere(
+            (element){
+              (element["sections"] as List).removeWhere((y) => (y["questions"] as List).isEmpty);
+              return (element["sections"] as List).isEmpty;
+            }
+          );
           return this.data;
         }
     }
