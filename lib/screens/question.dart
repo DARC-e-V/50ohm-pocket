@@ -439,7 +439,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         );
       },
     );
-    overlayState!.insert(overlayEntry!);
+    overlayState.insert(overlayEntry!);
   }
   _nextquest(){
     try{
@@ -524,7 +524,6 @@ List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
        }
        
        if (node.hasChildNodes()) {
-         String innerHtml = node.innerHtml; 
           for(var child in node.nodes) {
               if (child is dom.Text) {
                   spans.add(TextSpan(text: child.text, style: newStyle));

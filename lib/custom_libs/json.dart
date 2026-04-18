@@ -8,14 +8,14 @@ class Json{
   Map<String, dynamic>? data;
   Json(this.data);
 
-  Future<Map<String, dynamic>?> load(final String questionpath, int mainchapter, BuildContext context) async {
+  Future<Map<String, dynamic>> load(final String questionpath, int mainchapter, BuildContext context) async {
     var rawdata = await rootBundle.loadString(questionpath);
-    Map<String, dynamic>? importedData  = jsonDecode(rawdata);
+    Map<String, dynamic> importedData = jsonDecode(rawdata);
     List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
-    if(importedData != Null){
+    {
 
       if(mainchapter == -1){
-        this.data = importedData!;
+        this.data = importedData;
 
         for(var i in this.data!["sections"]){
           for(var y in i["sections"]){
@@ -44,9 +44,9 @@ class Json{
             i--;
           }
         }
-        return this.data;
+        return this.data!;
       } else {
-          this.data = importedData!["sections"][mainchapter];
+          this.data = importedData["sections"][mainchapter];
           for(var i in this.data!["sections"]){
             for(var y in i["sections"]){
               (y["questions"] as List).removeWhere(
@@ -67,7 +67,7 @@ class Json{
               return (element["sections"] as List).isEmpty;
             }
           );
-          return this.data;
+          return this.data!;
         }
     }
   }
