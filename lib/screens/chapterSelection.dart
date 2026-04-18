@@ -7,7 +7,6 @@ import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'pdfViewer.dart';
 
@@ -317,14 +316,6 @@ class _LearningmoduleState extends State<Learningmodule> {
     }
   }
 
-}
-
-Future<void> launchURL(url) async {
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
-  } else {
-    throw 'Could not launch $url';
-  }
 }
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){

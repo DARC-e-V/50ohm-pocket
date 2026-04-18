@@ -6,6 +6,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/section_urls.dart';
+import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
@@ -13,7 +14,6 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 enum QuestionState{
   answering,
@@ -143,7 +143,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   IconButton(
                     icon: Icon(Icons.menu_book),
                     tooltip: "50Ω Lernmaterial",
-                    onPressed: () => _launchURL(_getSectionUrl()),
+                    onPressed: () => launchURL(_getSectionUrl()),
                   ),
                   IconButton(icon: Icon(Icons.description), tooltip: "Hilfsmittel", onPressed: () {
                     Navigator.push(
@@ -213,12 +213,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
 
-  _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch');
-    }
-  }
 
   String _getSectionUrl() {
     final selectedClasses = List<int>.from(
