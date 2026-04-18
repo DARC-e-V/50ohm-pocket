@@ -18,7 +18,6 @@ class Learningmodule extends StatefulWidget {
 }
 
 class _LearningmoduleState extends State<Learningmodule> {
-  late List<Tab> tabs;
   bool reload = false;
 
 
