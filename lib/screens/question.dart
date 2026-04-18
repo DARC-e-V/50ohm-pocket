@@ -52,6 +52,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   _Questionstate(this.context, this.subchapter,this.chapter);
 
+  get _subchapter => subchapter.isEmpty ? null : subchapter[subchapterkey];
+
   @override
   initState() {
     questreslist = List.generate(subchapter.length == 0 ? 1 :subchapter.length, (index) => List.empty(growable: true));
@@ -72,11 +74,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   refreshAnswers(){
     setState(() {
-      imageQuestion = json.imageQuestion(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+      imageQuestion = json.imageQuestion(chapter, _subchapter, questionorder[questionkey]);
       if(imageQuestion){
-        Answers = json.imageList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+        Answers = json.imageList(chapter, _subchapter, questionorder[questionkey]);
       }else{
-        Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
+        Answers = json.answerList(chapter, _subchapter, questionorder[questionkey]);
       }
 
       ShuffledAnswers = [];
@@ -109,10 +111,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   children: [
                     Flexible(
                       child: Tooltip(
-                        message: "Frage ${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                        message: "Frage ${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
                         child: Text(
                           "Frage "
-                              + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                              + "${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -168,7 +170,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       child: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
-                              "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                              "${json.questionname(chapter, _subchapter, questionorder[questionkey])}",
                               TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 22,
@@ -179,8 +181,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null
-                      ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
+                  json.questionimage(chapter, _subchapter, questionorder[questionkey]) != null
+                      ? questionImage(context, json.questionimage(chapter,_subchapter, questionorder[questionkey])!)
                       : SizedBox(),
                   Divider(height: std_padding * 2,),
                   imageQuestion
