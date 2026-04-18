@@ -121,7 +121,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: main_col.withValues(alpha: 0.2),
+                        color: main_col.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
