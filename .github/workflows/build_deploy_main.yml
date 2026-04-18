@@ -48,15 +48,15 @@ jobs:
 
       #6 Building APK
       - name: Build APK
-        run: fvm flutter build apk --release
+        run: flutter build apk --release
 
       #7 Building App Bundle (aab)
       - name: Build appBundle
-        run: fvm flutter build appbundle --release
+        run: flutter build appbundle --release
 
       #8 Build iOS (ipa)
       - name: Build IPA
-        run: fvm flutter build ios --release --no-codesign
+        run: flutter build ios --release --no-codesign
 
       #9 Upload Artifacts
       - name: Upload Artifacts
@@ -119,4 +119,4 @@ jobs:
           curl -u $USERNAME:$PASSWORD -X MKCOL https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract_branch.outputs.branch }} || echo "Branch folder exists"
           curl -T build/app/outputs/flutter-apk/app-release.apk -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract_branch.outputs.branch }}/
           curl -T build/app/outputs/bundle/release/app-release.aab -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract_branch.outputs.branch }}/
-          curl -T build/ios_build.tar.gz -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract_branch.outputs.branch }}/
+          curl -T build/ios/iphoneos/Runner.app -u $USERNAME:$PASSWORD https://files.darc.de/remote.php/dav/files/$USERNAME/app/50Ohm-APP/Builds/Android/${{ steps.extract_branch.outputs.branch }}/
