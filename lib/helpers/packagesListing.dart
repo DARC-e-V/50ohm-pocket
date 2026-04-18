@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:fuenfzigohm/coustom_libs/oss_licenses.dart';
+import 'package:fuenfzigohm/custom_libs/oss_licenses.dart';
 
 class OssLicensesPage extends StatelessWidget {
   static Future<List<Package>> loadLicenses() async {

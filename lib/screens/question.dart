@@ -3,9 +3,9 @@ import "package:html/dom.dart" as dom;
 import 'dart:math';
 
 import 'package:fuenfzigohm/constants.dart';
-import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
-import 'package:fuenfzigohm/coustom_libs/section_urls.dart';
+import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/section_urls.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
