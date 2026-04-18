@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/coustom_libs/database.dart';
 import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/coustom_libs/section_urls.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
@@ -103,32 +104,46 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Text(
-                    "Frage "
-                        + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
-                  ),
-                  SizedBox(width: 12),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: main_col.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      "${questionkey + 1}/${questionorder.length}",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+              Expanded(
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Tooltip(
+                        message: "Frage ${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                        child: Text(
+                          "Frage "
+                              + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 12),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: main_col.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        "${questionkey + 1}/${questionorder.length}",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  IconButton(icon: Icon(Icons.description), onPressed: () {
+                  IconButton(
+                    icon: Icon(Icons.menu_book),
+                    tooltip: "50Ω Lernmaterial",
+                    onPressed: () => _launchURL(_getSectionUrl()),
+                  ),
+                  IconButton(icon: Icon(Icons.description), tooltip: "Hilfsmittel", onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel"),
@@ -201,6 +216,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     if (!await launchUrl(uri)) {
       throw Exception('Could not launch');
     }
+  }
+
+  String _getSectionUrl() {
+    final selectedClasses = List<int>.from(
+      DatabaseWidget.of(context).settings_database.get("Klasse") ?? [1, 2, 3],
+    );
+    final course = courseIdFromSelectedClasses(selectedClasses);
+    final subsectionTitle = json.subchapter_name(chapter, subchapter[subchapterkey])?.toString() ?? '';
+    return subsectionUrl(course, subsectionTitle) ?? 'https://50ohm.de';
   }
 
   InteractiveViewer questionImage(BuildContext context, String url) {
