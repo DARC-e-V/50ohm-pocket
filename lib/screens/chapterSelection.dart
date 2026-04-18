@@ -82,7 +82,8 @@ class _LearningmoduleState extends State<Learningmodule> {
   _selectItem(BuildContext context, Object item) {
     switch (item) {
       case 2:
-        _launchURL("https://50ohm.de/hm");
+        Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel")));
         break;
       case 1:
         Navigator.of(context)
@@ -92,13 +93,6 @@ class _LearningmoduleState extends State<Learningmodule> {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
         break;
-    }
-  }
-
-  _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch');
     }
   }
 
