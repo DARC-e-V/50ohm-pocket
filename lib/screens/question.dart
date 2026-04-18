@@ -396,7 +396,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      color: wrong ? Colors.red.shade200: Colors.green.shade200,
+                      color: wrong ? Colors.red.shade700 : Colors.green.shade700,
                     ),
                     child: Center(
                       child: Padding(
@@ -425,7 +425,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                     child: ElevatedButton(
                       autofocus: false,
-                      style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
+                      style: buttonstyle(wrong ? Colors.red.shade300 : Colors.green.shade300),
                       onPressed: (){
                         overlayEntry!.remove();
                         _nextquest();
