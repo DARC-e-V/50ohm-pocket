@@ -138,6 +138,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true)
                   IconButton(
                     icon: Icon(Icons.menu_book),
                     tooltip: "50Ω Lernmaterial",
