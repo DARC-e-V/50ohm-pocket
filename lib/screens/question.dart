@@ -13,6 +13,7 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/semantics.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 enum QuestionState{
@@ -118,17 +119,22 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       ),
                     ),
                     SizedBox(width: 12),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: main_col.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        "${questionkey + 1}/${questionorder.length}",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                    Semantics(
+                      label: "Frage ${questionkey + 1} von ${questionorder.length}",
+                      child: ExcludeSemantics(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: main_col.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            "${questionkey + 1}/${questionorder.length}",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -194,7 +200,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                   child: ElevatedButton(
-                    autofocus: false,
                     style: buttonstyle(main_col),
                     onPressed: () {
                       if(state == QuestionState.answering && questionradio != null){
@@ -227,7 +232,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     return subsectionUrl(course, subsectionTitle) ?? 'https://50ohm.de';
   }
 
-  InteractiveViewer questionImage(BuildContext context, String url) {
+  Widget questionImage(BuildContext context, String url, {String semanticsLabel = "Diagramm"}) {
     List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
     Widget image;
     double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
@@ -262,11 +267,16 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           width: imageScaleWidth
       );
     };
-    return InteractiveViewer(
-      boundaryMargin: const EdgeInsets.all(20.0),
-      maxScale: 1.6,
-      panEnabled: false,
-      child: image,
+    return Semantics(
+      label: semanticsLabel,
+      child: ExcludeSemantics(
+        child: InteractiveViewer(
+          boundaryMargin: const EdgeInsets.all(20.0),
+          maxScale: 1.6,
+          panEnabled: false,
+          child: image,
+        ),
+      ),
     );
   }
   ListView radioSvgListBuilder() {
@@ -281,20 +291,24 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             decoration: BoxDecoration(
               color: i == highlighting ? questionColor : Colors.transparent,
             ),
-            child: RadioListTile(
-              fillColor: MaterialStateColor.resolveWith((states) => main_col),
-              activeColor: main_col,
-              enableFeedback: true,
-              groupValue: questionradio,
-              value: i,
-              onChanged: (var value) {
-                if(state == QuestionState.answering){
-                  setState(() {
-                    questionradio = i;
-                  });
-                }
-              },
-              title: questionImage(context, ShuffledAnswers[i]),
+            child: Semantics(
+              label: "Antwort ${i + 1} von 4",
+              selected: i == highlighting,
+              child: RadioListTile(
+                fillColor: MaterialStateColor.resolveWith((states) => main_col),
+                activeColor: main_col,
+                enableFeedback: true,
+                groupValue: questionradio,
+                value: i,
+                onChanged: (var value) {
+                  if(state == QuestionState.answering){
+                    setState(() {
+                      questionradio = i;
+                    });
+                  }
+                },
+                title: ExcludeSemantics(child: questionImage(context, ShuffledAnswers[i])),
+              ),
             ),
           );
         }
@@ -375,13 +389,23 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       };
     }
     if(correct){
-      _overlay(false);
+      _overlay(false, "Richtig!");
     }
     else{
-      _overlay(true);
+      final hasMath = Answers[0].contains(RegExp(r'\$[^$]+\$'));
+      final announcement = (imageQuestion || hasMath)
+          ? "Falsch."
+          : "Falsch. Die richtige Antwort ist: ${_plainText(Answers[0])}";
+      _overlay(true, announcement);
     }
   }
-  _overlay(bool wrong) {
+
+  String _plainText(String raw) {
+    return parse(raw).body?.text ?? raw;
+  }
+
+  _overlay(bool wrong, String announcement) {
+    SemanticsService.announce(announcement, TextDirection.ltr);
 
     OverlayState? overlayState = Overlay.of(context);
 
@@ -422,7 +446,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                     child: ElevatedButton(
-                      autofocus: false,
+                      autofocus: true,
                       style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
                       onPressed: (){
                         overlayEntry!.remove();
