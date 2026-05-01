@@ -42,6 +42,7 @@ class _WelcomeState extends State<Welcome> {
                           alignment: Alignment.topCenter,
                           clipBehavior: Clip.hardEdge,
                           fit: BoxFit.fitWidth,
+                          excludeFromSemantics: true,
                         ),
                       ),
                     ),
@@ -70,7 +71,9 @@ class _WelcomeState extends State<Welcome> {
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: InkWell(
+                      child: Semantics(
+                        button: true,
+                        child: InkWell(
                         onTap: () {
                           _pageController.animateToPage(1, duration: Duration(milliseconds: 200), curve: Curves.linear);
                         },
@@ -93,6 +96,7 @@ class _WelcomeState extends State<Welcome> {
                           ),
                         ),
                       ),
+                      ),
                     )
                   ],
                 ),
@@ -114,119 +118,134 @@ class _WelcomeState extends State<Welcome> {
                       },
                           child: Text("Ich habe schon eine Prüfung abgelegt.", style: TextStyle(fontSize: 18),)
                       ),
-                      InkWell(
-                        onTap: (){
-                          handleStart([1], context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xff47ABE8),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
+                      Semantics(
+                        button: true,
+                        child: MergeSemantics(
+                          child: InkWell(
+                            onTap: (){
+                              handleStart([1], context);
+                            },
                             child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xff47ABE8),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Column(
                                     children: [
-                                      Text("Klasse N", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xff00008B),
-                                          borderRadius: BorderRadius.circular(15.0),
-                                        ),
-                                        child: Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                                "Neu",
-                                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Klasse N", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xff00008B),
+                                              borderRadius: BorderRadius.circular(15.0),
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                    "Neu",
+                                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: Text(
+                                                "Baue deine eigene Funkstation auf, experimentiere mit neuester Technik und knüpfte Kontakte weltweit. Erlebe grenzenlose Kommunikation und werde Teil einer aktiven Gemeinschaft, die die Zukunft des Amateurfunks gestaltet.",
+                                                style: TextStyle(fontSize: 17),
+                                              )),
+                                          ExcludeSemantics(child: Icon(Icons.arrow_forward_ios)),
+                                        ],
+                                      )
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                          child: Text(
-                                            "Baue deine eigene Funkstation auf, experimentiere mit neuester Technik und knüpfte Kontakte weltweit. Erlebe grenzenlose Kommunikation und werde Teil einer aktiven Gemeinschaft, die die Zukunft des Amateurfunks gestaltet.",
-                                            style: TextStyle(fontSize: 17),
-                                          )),
-                                      Icon(Icons.arrow_forward_ios)
-                                    ],
-                                  )
-                                ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: (){
-                          handleStart([1, 2], context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xffFE756C),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
+                      Semantics(
+                        button: true,
+                        child: MergeSemantics(
+                          child: InkWell(
+                            onTap: (){
+                              handleStart([1, 2], context);
+                            },
                             child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Klasse E", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                  Row(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xffFE756C),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Expanded(
-                                          child: Text(
-                                            "Vertiefe deine Kenntnisse in Technik und Funkbetrieb, nimm an Amateurfunk-Wettbewerben teil und engagiere dich in der Ausbildung von neuen Funkamateuren.",
-                                            style: TextStyle(fontSize: 17),
-                                          )),
-                                      Icon(Icons.arrow_forward_ios)
+                                      Text("Klasse E", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: Text(
+                                                "Vertiefe deine Kenntnisse in Technik und Funkbetrieb, nimm an Amateurfunk-Wettbewerben teil und engagiere dich in der Ausbildung von neuen Funkamateuren.",
+                                                style: TextStyle(fontSize: 17),
+                                              )),
+                                          ExcludeSemantics(child: Icon(Icons.arrow_forward_ios)),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: (){
-                          handleStart([1, 2, 3], context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xff3BB583),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
+                      Semantics(
+                        button: true,
+                        child: MergeSemantics(
+                          child: InkWell(
+                            onTap: (){
+                              handleStart([1, 2, 3], context);
+                            },
                             child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
-                                  Row(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xff3BB583),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Expanded(
-                                          child: Text(
-                                            "Errichte deine eigene Amateurfunkstation mit hoher Sendeleistung, leite Funkkurse und bilde neue Funkamateure aus. Engagiere dich in der Forschung und Entwicklung neuer Funktechnologien und gestalte die Zukunft des Amateurfunks aktiv mit.",
-                                            style: TextStyle(fontSize: 17),
-                                          )),
-                                      Icon(Icons.arrow_forward_ios)
+                                      Text("Klasse A", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: Text(
+                                                "Errichte deine eigene Amateurfunkstation mit hoher Sendeleistung, leite Funkkurse und bilde neue Funkamateure aus. Engagiere dich in der Forschung und Entwicklung neuer Funktechnologien und gestalte die Zukunft des Amateurfunks aktiv mit.",
+                                                style: TextStyle(fontSize: 17),
+                                              )),
+                                          ExcludeSemantics(child: Icon(Icons.arrow_forward_ios)),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
