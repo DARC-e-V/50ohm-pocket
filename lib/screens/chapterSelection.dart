@@ -27,9 +27,10 @@ class _LearningmoduleState extends State<Learningmodule> {
     bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
     return Scaffold(
       appBar: AppBar(
-        title: SvgPicture.asset("assets/icons/ohm2.svg"),
+        title: SvgPicture.asset("assets/icons/ohm2.svg", semanticsLabel: "50 Ohm"),
         actions: [
           PopupMenuButton(
+            tooltip: "Menü öffnen",
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 2,
@@ -180,7 +181,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  TextButton(
+                  ExcludeSemantics(child: TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
                       minimumSize: Size.fromHeight(100),
@@ -231,9 +232,12 @@ class _LearningmoduleState extends State<Learningmodule> {
                         ],
                       ),
                     ),
-                  ),
+                  )),
                   json.chaptersize(currentmainchapter) == 0
-                      ? LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null))
+                      ? LinearProgressIndicator(
+                          value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null),
+                          semanticsLabel: "Lernfortschritt",
+                        )
                       : SizedBox(height: 8,),
 
                   chapterLesson(currentmainchapter, json),
@@ -259,9 +263,11 @@ class _LearningmoduleState extends State<Learningmodule> {
           margin: EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
-              InkWell(
-                onTap:() async {
+              ExcludeSemantics(
+                child: LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
+              ),
+              ListTile(
+                onTap: () async {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
                   ).then((value){
@@ -270,30 +276,31 @@ class _LearningmoduleState extends State<Learningmodule> {
                     }
                   });
                 },
-                child: ListTile(
-                  leading: Icon(starticon(json.chaptericon(chapter, subchapter))),
-                  title: Text(
-                    json.subchapter_name(chapter, subchapter),
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500
-                    ),
-                  ),
-                  trailing: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: main_col.withOpacity(0.15),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: main_col.withOpacity(0.3),
-                        width: 1,
+                leading: ExcludeSemantics(child: Icon(starticon(json.chaptericon(chapter, subchapter)))),
+                title: Text(
+                  json.subchapter_name(chapter, subchapter),
+                  style: TextStyle(fontWeight: FontWeight.w500),
+                ),
+                trailing: Semantics(
+                  label: "$questionCount Fragen",
+                  child: ExcludeSemantics(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: main_col.withOpacity(0.15),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: main_col.withOpacity(0.3),
+                          width: 1,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      '$questionCount',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: main_col,
+                      child: Text(
+                        '$questionCount',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: main_col,
+                        ),
                       ),
                     ),
                   ),
