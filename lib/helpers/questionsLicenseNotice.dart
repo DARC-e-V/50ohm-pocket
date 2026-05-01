@@ -24,16 +24,24 @@ class QuestionsLicensePage extends StatelessWidget {
             tiles: [
               SettingsTile(
                 title: Text('Bundesnetzagentur,\n 2. Auflage, Dezember 2023 \n'),
-                description: GestureDetector(
-                  onTap: () => _launchURL('https://www.bundesnetzagentur.de/amateurfunk'),
-                  child: Text('www.bundesnetzagentur.de/amateurfunk \n \n Prüfungsfragen zum Erwerb von Amateurfunkprüfungsbescheinigungen \n \n Änderungen: HTML Tags wurden aus den Fragen entfernt', style: TextStyle(fontStyle: FontStyle.italic)),
+                description: Semantics(
+                  link: true,
+                  label: "Bundesnetzagentur-Website zum Amateurfunk öffnen",
+                  child: GestureDetector(
+                    onTap: () => _launchURL('https://www.bundesnetzagentur.de/amateurfunk'),
+                    child: Text('www.bundesnetzagentur.de/amateurfunk \n \n Prüfungsfragen zum Erwerb von Amateurfunkprüfungsbescheinigungen \n \n Änderungen: HTML Tags wurden aus den Fragen entfernt', style: TextStyle(fontStyle: FontStyle.italic)),
+                  ),
                 ),
               ),
               SettingsTile(
                 title: Text(""),
-                description: GestureDetector(
-                  onTap: () => _launchURL('https://www.govdata.de/dl-de/by-2-0'),
-                  child: Text('Datenlizenz Deutschland – Namensnennung – Version 2.0 \n www.govdata.de/dl-de/by-2-0'),
+                description: Semantics(
+                  link: true,
+                  label: "Datenlizenz Deutschland – Namensnennung – Version 2.0 öffnen",
+                  child: GestureDetector(
+                    onTap: () => _launchURL('https://www.govdata.de/dl-de/by-2-0'),
+                    child: Text('Datenlizenz Deutschland – Namensnennung – Version 2.0 \n www.govdata.de/dl-de/by-2-0'),
+                  ),
                 ),
               ),
             ],
