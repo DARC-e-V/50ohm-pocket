@@ -6,6 +6,7 @@ import 'package:fuenfzigohm/helpers/packagesListing.dart';
 import 'package:fuenfzigohm/helpers/questionsLicenseNotice.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
@@ -89,6 +90,15 @@ class _PocketAppState extends State<PocketApp> {
               darkTheme: darkmode(),
               themeMode: ThemeMode.system,
               title: '50ohm-pocket',
+              locale: const Locale('de', 'DE'),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('de', 'DE'),
+              ],
               home: Welcome(),
               routes: {
                 '/learn': (context) => Learningmodule(),
