@@ -405,11 +405,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   }
 
   _overlay(bool wrong, String announcement) {
-    SemanticsService.sendAnnouncement(
-      View.of(context),
-      announcement,
-      TextDirection.ltr,
-    );
+    SemanticsService.announce(announcement, TextDirection.ltr);
 
     OverlayState? overlayState = Overlay.of(context);
 
