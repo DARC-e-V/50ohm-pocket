@@ -277,6 +277,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 child: LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
               ),
               ListTile(
+                contentPadding: EdgeInsetsDirectional.only(start: 16, end: 8),
                 onTap: () async {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
@@ -295,7 +296,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                   label: "$questionCount Fragen",
                   child: ExcludeSemantics(
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      width: 40,
+                      padding: EdgeInsets.symmetric(vertical: 6),
                       decoration: BoxDecoration(
                         color: main_col.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(12),
@@ -306,6 +308,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ),
                       child: Text(
                         '$questionCount',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
