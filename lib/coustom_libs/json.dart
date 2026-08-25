@@ -47,32 +47,26 @@ class Json{
         return this.data;
       } else {
           this.data = importedData!["sections"][mainchapter];
-          if(mainchapter == 0){
-            for(var i in this.data!["sections"]){
-              for(var y in i["sections"]){
-                (y["questions"] as List).removeWhere(
-                  (z){
-                    for(int klasse in klassen){
-                      if(z["class"] == klasse.toString()){
-                        return false;
-                      }
+          for(var i in this.data!["sections"]){
+            for(var y in i["sections"]){
+              (y["questions"] as List).removeWhere(
+                (z){
+                  for(int klasse in klassen){
+                    if(z["class"] == klasse.toString()){
+                      return false;
                     }
-                    return true;
                   }
-                );
-              }
-            }
-            (this.data!["sections"] as List).removeWhere(
-              (element){
-                for(var y in element["sections"]){
-                  if((y["questions"] as List).isEmpty){
-                    return true;
-                  }
+                  return true;
                 }
-                return false;
-              }
-            );
+              );
+            }
           }
+          (this.data!["sections"] as List).removeWhere(
+            (element){
+              (element["sections"] as List).removeWhere((y) => (y["questions"] as List).isEmpty);
+              return (element["sections"] as List).isEmpty;
+            }
+          );
           return this.data;
         }
     }
@@ -176,6 +170,31 @@ class Json{
   // Todo fix
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
+
+  // Get total question count for a chapter (including all subchapters)
+  int getTotalQuestionCount(int chapter) {
+    try {
+      int totalCount = 0;
+      var sections = this.data!["sections"][chapter]["sections"];
+      
+      // If this chapter has subsections
+      if (sections is List) {
+        for (var subsection in sections) {
+          if (subsection["questions"] != null) {
+            totalCount += (subsection["questions"] as List).length;
+          }
+        }
+      }
+      return totalCount;
+    } catch (e) {
+      // If there's an error, try to get direct questions
+      try {
+        return (this.data!["sections"][chapter]["questions"] as List).length;
+      } catch (e) {
+        return 0;
+      }
+    }
+  }
 
 }
 

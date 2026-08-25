@@ -1,0 +1,60 @@
+name: Build Flutter App from PR
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build PR
+    runs-on: macos-latest
+
+    steps:
+      #1 Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      #2 Setup Java
+      - name: Set Up Java
+        uses: actions/setup-java@v3.12.0
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+
+      #3 Install specified flutter version
+      - name: Install Flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+
+      #4 Install dependencies
+      - name: Install Dependencies
+        run: flutter pub get && flutter doctor -v
+
+      #5 Updating licenses
+      - name: fetching licenses
+        run: flutter pub run flutter_oss_licenses:generate.dart
+
+      #6 Building APK
+      - name: Build APK
+        run: flutter build apk --debug
+
+      #7 Build iOS (ipa)
+      - name: Build IPA
+        run: flutter build ios --no-codesign
+
+
+      #8 Upload Artifacts
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug.apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Runner.ipa
+          path: build/ios/iphoneos/Runner.app

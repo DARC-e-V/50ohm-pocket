@@ -22,6 +22,10 @@ class Databaseobj{
   write(mainchapter, chapter, subchapter, resultlist){
     int i = 0;
     for(var result in resultlist){
+      if(result.isEmpty) {
+        i++;
+        continue;
+      }
 
       result = result.map((x) => x ? 1 : 0).toList();
 
@@ -52,6 +56,34 @@ class Databaseobj{
     }catch(e){
       return 0.0;
     }  
+  }
+
+  writeSingle(mainchapter, chapter, subchapter, int questionIndex, bool correct) {
+    String key = subchapter == null 
+        ? "[$mainchapter][$chapter]" 
+        : "[$mainchapter][$chapter][$subchapter]";
+    
+    int value = correct ? 1 : 0;
+    
+    try {
+      List<dynamic> list = DatabaseWidget.of(context).prog_database.get(key);
+      if (list != null && questionIndex < list.length) {
+        list[questionIndex] = list[questionIndex] + value;
+        DatabaseWidget.of(context).prog_database.put(key, list);
+      } else {
+        // List doesn't exist or is too short, create/extend it
+        List<dynamic> newList = list ?? [];
+        while (newList.length <= questionIndex) {
+          newList.add(0);
+        }
+        newList[questionIndex] = newList[questionIndex] + value;
+        DatabaseWidget.of(context).prog_database.put(key, newList);
+      }
+    } catch (e) {
+      List<dynamic> newList = List.generate(questionIndex + 1, (i) => 0);
+      newList[questionIndex] = value;
+      DatabaseWidget.of(context).prog_database.put(key, newList);
+    }
   }
 }
 
