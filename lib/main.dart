@@ -1,15 +1,20 @@
 import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/helpers/app_bloc_observer.dart';
+import 'package:fuenfzigohm/repository/service/setting_service.dart';
+import 'package:fuenfzigohm/repository/setting_repository.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
-import 'package:fuenfzigohm/screens/intro.dart';
 import 'package:fuenfzigohm/helpers/packagesListing.dart';
 import 'package:fuenfzigohm/helpers/questionsLicenseNotice.dart';
 import 'package:fuenfzigohm/style/style.dart';
+import 'package:fuenfzigohm/ui/welcome/pages/welcome.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
+  Bloc.observer = AppBlocObserver();
   runApp(
     FutureBuilder(
       future: Database().load(),
@@ -82,43 +87,51 @@ class _PocketAppState extends State<PocketApp> {
       child: DatabaseWidget(
         prog_database: widget.progDatabase,
         settings_database: widget.settingsDatabase,
-        child: ValueListenableBuilder<double>(
-          valueListenable: _fontScaleNotifier,
-          builder: (context, fontScale, _) {
-            return MaterialApp(
-              theme: lightmode(),
-              darkTheme: darkmode(),
-              themeMode: ThemeMode.system,
-              title: '50ohm-pocket',
-              locale: const Locale('de', 'DE'),
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('de', 'DE'),
-              ],
-              home: Welcome(),
-              routes: {
-                '/learn': (context) => Learningmodule(),
-                '/welcome': (context) => Welcome(),
-                '/appPackages': (context) => OssLicensesPage(),
-                '/questionsLicenseNotice': (context) => QuestionsLicensePage(),
-                '/aboutApp': (context) => AboutAppPage(),
-              },
-              builder: (context, child) {
-                final mediaQuery = MediaQuery.of(context);
-                return MediaQuery(
-                  data: mediaQuery.copyWith(
-                    textScaler: TextScaler.linear(fontScale),
-                  ),
-                  child: child ?? const SizedBox.shrink(),
-                );
-              },
-              debugShowCheckedModeBanner: false,
-            );
-          },
+        child: RepositoryProvider(
+          create: (_) => SettingRepository(
+            service: SettingService(
+              settings_database: widget.settingsDatabase,
+            ),
+          ),
+          child: ValueListenableBuilder<double>(
+            valueListenable: _fontScaleNotifier,
+            builder: (context, fontScale, _) {
+              return MaterialApp(
+                theme: lightmode(),
+                darkTheme: darkmode(),
+                themeMode: ThemeMode.system,
+                title: '50ohm-pocket',
+                locale: const Locale('de', 'DE'),
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [
+                  Locale('de', 'DE'),
+                ],
+                home: Welcome(),
+                routes: {
+                  '/learn': (context) => Learningmodule(),
+                  '/welcome': (context) => Welcome(),
+                  '/appPackages': (context) => OssLicensesPage(),
+                  '/questionsLicenseNotice': (context) =>
+                      QuestionsLicensePage(),
+                  '/aboutApp': (context) => AboutAppPage(),
+                },
+                builder: (context, child) {
+                  final mediaQuery = MediaQuery.of(context);
+                  return MediaQuery(
+                    data: mediaQuery.copyWith(
+                      textScaler: TextScaler.linear(fontScale),
+                    ),
+                    child: child ?? const SizedBox.shrink(),
+                  );
+                },
+                debugShowCheckedModeBanner: false,
+              );
+            },
+          ),
         ),
       ),
     );
