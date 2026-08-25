@@ -4,6 +4,35 @@ import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
+/// Filters direct questions and arbitrarily nested question sections by class.
+/// Empty sections are removed after filtering.
+void filterQuestionSections(Map<String, dynamic> section, Set<int> classes) {
+  final questions = section["questions"];
+  if (questions is List) {
+    questions.removeWhere((question) {
+      if (question is! Map) return true;
+      final questionClass = int.tryParse(question["class"].toString());
+      return questionClass == null || !classes.contains(questionClass);
+    });
+  }
+
+  final subsections = section["sections"];
+  if (subsections is List) {
+    for (final subsection in subsections.whereType<Map>()) {
+      filterQuestionSections(subsection.cast<String, dynamic>(), classes);
+    }
+    subsections.removeWhere((subsection) =>
+        subsection is! Map || !_questionSectionHasContent(subsection));
+  }
+}
+
+bool _questionSectionHasContent(Map section) {
+  final questions = section["questions"];
+  final subsections = section["sections"];
+  return questions is List && questions.isNotEmpty ||
+      subsections is List && subsections.isNotEmpty;
+}
+
 class Json{
   Map<String, dynamic>? data;
   Json(this.data);
@@ -11,65 +40,18 @@ class Json{
   Future<Map<String, dynamic>> load(final String questionpath, int mainchapter, BuildContext context) async {
     var rawdata = await rootBundle.loadString(questionpath);
     Map<String, dynamic> importedData = jsonDecode(rawdata);
-    List<int> klassen = DatabaseWidget.of(context).settings_database.get("Klasse");
-    {
+    final storedClasses =
+        DatabaseWidget.of(context).settings_database.get("Klasse");
+    final classes = storedClasses is Iterable
+        ? storedClasses.whereType<num>().map((value) => value.toInt()).toSet()
+        : <int>{};
 
-      if(mainchapter == -1){
-        this.data = importedData;
+    this.data = mainchapter == -1
+        ? importedData
+        : importedData["sections"][mainchapter] as Map<String, dynamic>;
 
-        for(var i in this.data!["sections"]){
-          for(var y in i["sections"]){
-            (y["questions"] as List).removeWhere(
-              (z){
-                for(int klasse in klassen){
-                  if(z["class"] == klasse.toString()){
-                    return false;
-                  }
-                }
-                return true;
-              }
-            );
-          }
-        }
-        for(int i = 0; i < (this.data!["sections"] as List).length; i++){
-          this.data!["sections"][i]["sections"].removeWhere((element) {
-            if((element["questions"] as List).isEmpty){
-              //print(element["title"]);
-              return true;
-            }
-            return false;
-          });
-          if((this.data!["sections"][i]["sections"] as List).isEmpty){
-            (this.data!["sections"] as List).removeAt(i);
-            i--;
-          }
-        }
-        return this.data!;
-      } else {
-          this.data = importedData["sections"][mainchapter];
-          for(var i in this.data!["sections"]){
-            for(var y in i["sections"]){
-              (y["questions"] as List).removeWhere(
-                (z){
-                  for(int klasse in klassen){
-                    if(z["class"] == klasse.toString()){
-                      return false;
-                    }
-                  }
-                  return true;
-                }
-              );
-            }
-          }
-          (this.data!["sections"] as List).removeWhere(
-            (element){
-              (element["sections"] as List).removeWhere((y) => (y["questions"] as List).isEmpty);
-              return (element["sections"] as List).isEmpty;
-            }
-          );
-          return this.data!;
-        }
-    }
+    filterQuestionSections(this.data!, classes);
+    return this.data!;
   }
 
   main_chapter_name() =>
@@ -157,12 +139,13 @@ class Json{
 
 
   chaptersize(int chapter) {
-    try{
-      return this.data!["sections"][chapter]["sections"].length;
-    }catch(e){
-      return this.data!["sections"][chapter].length;
-    }
+    final sections = this.data!["sections"][chapter]["sections"];
+    return sections is List ? sections.length : 0;
+  }
 
+  int chapterQuestionCount(int chapter) {
+    final questions = this.data!["sections"][chapter]["questions"];
+    return questions is List ? questions.length : 0;
   }
 
   mainchaptersize() =>
@@ -205,27 +188,19 @@ class Json{
 
   // Get total question count for a chapter (including all subchapters)
   int getTotalQuestionCount(int chapter) {
-    try {
-      int totalCount = 0;
-      var sections = this.data!["sections"][chapter]["sections"];
+    final directQuestionCount = chapterQuestionCount(chapter);
+    if (directQuestionCount > 0) return directQuestionCount;
 
-      // If this chapter has subsections
-      if (sections is List) {
-        for (var subsection in sections) {
-          if (subsection["questions"] != null) {
-            totalCount += (subsection["questions"] as List).length;
-          }
+    int totalCount = 0;
+    final sections = this.data!["sections"][chapter]["sections"];
+    if (sections is List) {
+      for (final subsection in sections) {
+        if (subsection is Map && subsection["questions"] is List) {
+          totalCount += (subsection["questions"] as List).length;
         }
       }
-      return totalCount;
-    } catch (e) {
-      // If there's an error, try to get direct questions
-      try {
-        return (this.data!["sections"][chapter]["questions"] as List).length;
-      } catch (e) {
-        return 0;
-      }
     }
+    return totalCount;
   }
 }
 

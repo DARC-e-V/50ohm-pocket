@@ -19,6 +19,30 @@ int lessonListItemCount(int chapterCount) =>
 int lessonChapterIndex(int listItemIndex) =>
     listItemIndex - lessonListHeaderItemCount;
 
+const freeLearningMainChapters = [2, 1, 0];
+const freeLearningSwipeHints = [
+  "Wische nach links, um zu den Betriebsfragen zu gelangen.",
+  "Wische nach rechts zu den Vorschriftsfragen oder nach links zu den technischen Fragen.",
+  "Wische nach rechts, um zu den Betriebsfragen zu gelangen.",
+];
+
+int freeLearningMainChapter(int pageIndex) =>
+    freeLearningMainChapters[pageIndex];
+
+String freeLearningSwipeHint(int pageIndex) =>
+    freeLearningSwipeHints[pageIndex];
+
+bool isDirectQuestionChapter(Json json, int chapter) =>
+    json.chaptersize(chapter) == 0 && json.chapterQuestionCount(chapter) > 0;
+
+int lessonRowCount(Json json, int chapter) =>
+    isDirectQuestionChapter(json, chapter) ? 1 : json.chaptersize(chapter);
+
+String lessonRowTitle(Json json, int chapter, int row) =>
+    isDirectQuestionChapter(json, chapter)
+        ? json.chapter_names(chapter)
+        : json.subchapter_name(chapter, row);
+
 
 class Learningmodule extends StatefulWidget {
   @override
@@ -72,13 +96,12 @@ class _LearningmoduleState extends State<Learningmodule> {
                 ? getUserClass(context)
                 : PageView.builder(
               itemBuilder: (content, index){
-                if(index == 0){
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 0);
-                }else if(index == 1){
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 1);
-                }else{
-                  return chapterbuilder(context, 'assets/questions/Questions.json', 2);
-                }
+                return chapterbuilder(
+                  context,
+                  'assets/questions/Questions.json',
+                  freeLearningMainChapter(index),
+                  swipeHint: freeLearningSwipeHint(index),
+                );
               },
               itemCount: 3,
             )
@@ -104,12 +127,17 @@ class _LearningmoduleState extends State<Learningmodule> {
     }
   }
 
-  Widget chapterbuilder(var context, var path, var mainchapter) {
+  Widget chapterbuilder(var context, var path, var mainchapter,
+      {String? swipeHint}) {
     return FutureBuilder(
       future: Json(null).load(path, mainchapter, context),
       builder: (context, snapshot){
         if (snapshot.hasData) {
-          return JsonWidget(selectlesson(snapshot.data!, context, mainchapter),(snapshot.data as Map<String, dynamic>), mainchapter);
+          return JsonWidget(
+              selectlesson(snapshot.data!, context, mainchapter,
+                  swipeHint: swipeHint),
+              (snapshot.data as Map<String, dynamic>),
+              mainchapter);
         } else if (snapshot.hasError){
           print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
@@ -131,7 +159,9 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
 
-  Widget selectlesson(Map<String, dynamic> data, BuildContext context, int mainchapter) {
+  Widget selectlesson(Map<String, dynamic> data, BuildContext context,
+      int mainchapter,
+      {String? swipeHint}) {
     Json json = Json(data);
 
     // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
@@ -157,6 +187,14 @@ class _LearningmoduleState extends State<Learningmodule> {
                             fontSize: 35,
                           ),
                         ),
+                        if (swipeHint != null) ...[
+                          SizedBox(height: 6),
+                          Text(
+                            swipeHint,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
                         Divider(height: 20,)
                       ],)
                   );
@@ -180,7 +218,7 @@ class _LearningmoduleState extends State<Learningmodule> {
     return SizedBox(
       width: 100,
       child: Container(
-          margin: json.chaptersize(currentmainchapter) == 0 ? EdgeInsets.all(0) : EdgeInsets.only(top: std_padding),
+          margin: EdgeInsets.only(top: std_padding),
           decoration: BoxDecoration(
             color: json.chaptersize(currentmainchapter) == 0 ? main_col.withOpacity(0.4) : main_col.withOpacity(0.4),
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -197,9 +235,10 @@ class _LearningmoduleState extends State<Learningmodule> {
                       minimumSize: Size.fromHeight(100),
                       backgroundColor: main_col.withOpacity(0.7),
                       shape: RoundedRectangleBorder(
-                          borderRadius: json.chaptersize(currentmainchapter) == 0
-                              ? BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))
-                              : BorderRadius.all(Radius.circular(5))
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5),
+                          )
                       ),
                     ),
                     // onPressed: () async {
@@ -243,12 +282,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ),
                     ),
                   )),
-                  json.chaptersize(currentmainchapter) == 0
-                      ? LinearProgressIndicator(
-                          value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, currentmainchapter, null),
-                          semanticsLabel: "Lernfortschritt",
-                        )
-                      : SizedBox(height: 8,),
+                  SizedBox(height: 8,),
 
                   chapterLesson(currentmainchapter, json),
                 ],
@@ -262,9 +296,12 @@ class _LearningmoduleState extends State<Learningmodule> {
       physics: NeverScrollableScrollPhysics(),
       addAutomaticKeepAlives: true,
       shrinkWrap: true,
-      itemCount: json.chaptersize(chapter),
+      itemCount: lessonRowCount(json, chapter),
       itemBuilder: (context, subchapter) {
-        int questionCount = json.subchaptersize(chapter, subchapter);
+        bool hasDirectQuestions = isDirectQuestionChapter(json, chapter);
+        int questionCount = hasDirectQuestions
+            ? json.chapterQuestionCount(chapter)
+            : json.subchaptersize(chapter, subchapter);
 
         return Card(
           shape: RoundedRectangleBorder(
@@ -274,13 +311,26 @@ class _LearningmoduleState extends State<Learningmodule> {
           child: Column(
             children: [
               ExcludeSemantics(
-                child: LinearProgressIndicator(value: Databaseobj(context).read(JsonWidget.of(context).mainchapter, chapter, subchapter), color: main_col,),
+                child: LinearProgressIndicator(
+                  value: Databaseobj(context).read(
+                    JsonWidget.of(context).mainchapter,
+                    chapter,
+                    hasDirectQuestions ? null : subchapter,
+                  ),
+                  color: main_col,
+                ),
               ),
               ListTile(
                 contentPadding: EdgeInsetsDirectional.only(start: 16, end: 8),
                 onTap: () async {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (BuildContext materialcontext) => Question(context, [subchapter], chapter)),
+                    MaterialPageRoute(
+                      builder: (BuildContext materialcontext) => Question(
+                        context,
+                        hasDirectQuestions ? [] : [subchapter],
+                        chapter,
+                      ),
+                    ),
                   ).then((value){
                     if(value ?? false){
                       setState(() {});
@@ -289,7 +339,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 },
                 leading: ExcludeSemantics(child: Icon(starticon(json.chaptericon(chapter, subchapter)))),
                 title: Text(
-                  json.subchapter_name(chapter, subchapter),
+                  lessonRowTitle(json, chapter, subchapter),
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
                 trailing: Semantics(

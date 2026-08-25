@@ -63,7 +63,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     setState(() {
       json = Json(JsonWidget.of(context).json);
 
-      if(subchapter.length == 0) questionorder = orderlist(json.chaptersize(chapter), true);
+      if(subchapter.length == 0) questionorder = orderlist(json.chapterQuestionCount(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
       refreshAnswers();
