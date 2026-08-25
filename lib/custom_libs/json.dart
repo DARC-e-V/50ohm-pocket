@@ -166,7 +166,7 @@ class Json{
   }
 
   mainchaptersize() =>
-      this.data!["sections"].length + 1;
+      this.data!["sections"].length;
   // Todo fix
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;

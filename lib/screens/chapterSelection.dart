@@ -11,6 +11,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'pdfViewer.dart';
 
+const int lessonListHeaderItemCount = 2;
+
+int lessonListItemCount(int chapterCount) =>
+    chapterCount + lessonListHeaderItemCount;
+
+int lessonChapterIndex(int listItemIndex) =>
+    listItemIndex - lessonListHeaderItemCount;
+
 
 class Learningmodule extends StatefulWidget {
   @override
@@ -134,8 +142,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       child: Padding(
           padding: EdgeInsets.only(left: 5,right: 5),
           child: ListView.builder(
-              // +2 for title (i=0) and progress card (i=1)
-              itemCount: json.mainchaptersize() + 2,
+              itemCount: lessonListItemCount(json.mainchaptersize()),
               itemBuilder: (context, i) {
                 if(i == 0){
                   return Padding(
@@ -158,8 +165,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                     questionScores: questionScores,
                   );
                 }
-                // Offset by 2 for the title and progress card
-                return chapterwidget(json, i - 2, context);
+                return chapterwidget(json, lessonChapterIndex(i), context);
               }
           )
       ),
@@ -167,8 +173,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
 
-  Widget chapterwidget(var json, var s, var context){
-    var currentmainchapter = s + 1;
+  Widget chapterwidget(var json, int currentmainchapter, var context){
     int totalQuestions = json.getTotalQuestionCount(currentmainchapter);
 
     return SizedBox(
