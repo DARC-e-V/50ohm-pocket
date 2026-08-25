@@ -1,4 +1,4 @@
-import 'package:fuenfzigohm/coustom_libs/database.dart';
+import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/intro.dart';

@@ -67,12 +67,12 @@ class Databaseobj{
     
     try {
       List<dynamic> list = DatabaseWidget.of(context).prog_database.get(key);
-      if (list != null && questionIndex < list.length) {
+      if (questionIndex < list.length) {
         list[questionIndex] = list[questionIndex] + value;
         DatabaseWidget.of(context).prog_database.put(key, list);
       } else {
-        // List doesn't exist or is too short, create/extend it
-        List<dynamic> newList = list ?? [];
+        // If list is too short, create/extend it
+        List<dynamic> newList = list;
         while (newList.length <= questionIndex) {
           newList.add(0);
         }

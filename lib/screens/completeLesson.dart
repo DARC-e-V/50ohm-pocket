@@ -1,5 +1,3 @@
-import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
