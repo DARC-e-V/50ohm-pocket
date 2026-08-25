@@ -227,12 +227,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     return subsectionUrl(course, subsectionTitle) ?? 'https://50ohm.de';
   }
 
-  InteractiveViewer questionImage(BuildContext context, String url) {
+  InteractiveViewer questionImage(BuildContext context, String url, {bool useDarkForeground = false}) {
     List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
     Widget image;
     double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
     ColorFilter colorFilter =
-    MediaQuery.of(context).platformBrightness == Brightness.dark
+    MediaQuery.of(context).platformBrightness == Brightness.dark && !useDarkForeground
         ? ColorFilter.matrix(<double>[
       -1.0, 0.0, 0.0, 0.0, 255.0,
       0.0, -1.0, 0.0, 0.0, 255.0,
@@ -269,8 +269,48 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       child: image,
     );
   }
+  Color _answerBackgroundColor(int answerIndex) {
+    if (state != QuestionState.evaluating) {
+      return Colors.transparent;
+    }
+
+    if (answerIndex == highlighting) {
+      return correctFeedbackColor;
+    }
+
+    if (answerIndex == questionradio) {
+      return incorrectFeedbackColor;
+    }
+
+    return Colors.transparent;
+  }
+
+  bool _isFeedbackAnswer(int answerIndex) {
+    return state == QuestionState.evaluating &&
+        (answerIndex == highlighting || answerIndex == questionradio);
+  }
+
+  Color? _answerForegroundColor(int answerIndex) {
+    return _isFeedbackAnswer(answerIndex) ? Colors.black87 : null;
+  }
+
+  Widget? _answerStatusIcon(int answerIndex) {
+    if (state != QuestionState.evaluating) {
+      return null;
+    }
+
+    if (answerIndex == highlighting) {
+      return Icon(Icons.check_circle, color: Colors.green.shade800);
+    }
+
+    if (answerIndex == questionradio) {
+      return Icon(Icons.cancel, color: Colors.red.shade800);
+    }
+
+    return null;
+  }
+
   ListView radioSvgListBuilder() {
-    Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
@@ -279,7 +319,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         itemBuilder: (context, i){
           return Container(
             decoration: BoxDecoration(
-              color: i == highlighting ? questionColor : Colors.transparent,
+              color: _answerBackgroundColor(i),
             ),
             child: RadioListTile(
               fillColor: MaterialStateColor.resolveWith((states) => main_col),
@@ -294,7 +334,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   });
                 }
               },
-              title: questionImage(context, ShuffledAnswers[i]),
+              secondary: _answerStatusIcon(i),
+              title: questionImage(
+                context,
+                ShuffledAnswers[i],
+                useDarkForeground: _isFeedbackAnswer(i),
+              ),
             ),
           );
         }
@@ -302,8 +347,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   }
 
   ListView radioTextListBuilder() {
-    Color questionColor = MediaQuery.of(context).platformBrightness == Brightness.dark ?Color.fromARGB(135, 0, 94, 255) : Colors.blue.shade200;
-
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         addAutomaticKeepAlives: true,
@@ -316,7 +359,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: i == highlighting ? questionColor  : Colors.transparent,
+                    color: _answerBackgroundColor(i),
                   ),
                   child: RadioListTile(
                       enableFeedback: true,
@@ -331,6 +374,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                           });
                         }
                       },
+                      secondary: _answerStatusIcon(i),
                       title: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
@@ -338,6 +382,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                               TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 22,
+                                  color: _answerForegroundColor(i),
                               ),
                             )
                         ),
@@ -394,7 +439,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      color: wrong ? Colors.red.shade200: Colors.green.shade200,
+                      color: wrong ? incorrectFeedbackColor : correctFeedbackColor,
                     ),
                     child: Center(
                       child: Padding(
