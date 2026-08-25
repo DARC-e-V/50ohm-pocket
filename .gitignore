@@ -126,3 +126,6 @@ app.*.symbols
 pubspec.lock
 
 .packages
+
+# FVM Version Cache
+.fvm/
