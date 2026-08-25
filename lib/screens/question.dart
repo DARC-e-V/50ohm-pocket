@@ -3,9 +3,10 @@ import "package:html/dom.dart" as dom;
 import 'dart:math';
 
 import 'package:fuenfzigohm/constants.dart';
-import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
-import 'package:fuenfzigohm/coustom_libs/section_urls.dart';
+import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/section_urls.dart';
+import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
@@ -13,7 +14,6 @@ import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 enum QuestionState{
   answering,
@@ -52,6 +52,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   _Questionstate(this.context, this.subchapter,this.chapter);
 
+  get _subchapter => subchapter.isEmpty ? null : subchapter[subchapterkey];
+
   @override
   initState() {
     questreslist = List.generate(subchapter.length == 0 ? 1 :subchapter.length, (index) => List.empty(growable: true));
@@ -72,11 +74,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   refreshAnswers(){
     setState(() {
-      imageQuestion = json.imageQuestion(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+      imageQuestion = json.imageQuestion(chapter, _subchapter, questionorder[questionkey]);
       if(imageQuestion){
-        Answers = json.imageList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]);
+        Answers = json.imageList(chapter, _subchapter, questionorder[questionkey]);
       }else{
-        Answers = json.answerList(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey],questionorder[questionkey]);
+        Answers = json.answerList(chapter, _subchapter, questionorder[questionkey]);
       }
 
       ShuffledAnswers = [];
@@ -109,10 +111,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   children: [
                     Flexible(
                       child: Tooltip(
-                        message: "Frage ${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                        message: "Frage ${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
                         child: Text(
                           "Frage "
-                              + "${json.questionid(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                              + "${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -141,7 +143,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   IconButton(
                     icon: Icon(Icons.menu_book),
                     tooltip: "50Ω Lernmaterial",
-                    onPressed: () => _launchURL(_getSectionUrl()),
+                    onPressed: () => launchURL(_getSectionUrl()),
                   ),
                   IconButton(icon: Icon(Icons.description), tooltip: "Hilfsmittel", onPressed: () {
                     Navigator.push(
@@ -168,7 +170,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       child: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
-                              "${json.questionname(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])}",
+                              "${json.questionname(chapter, _subchapter, questionorder[questionkey])}",
                               TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 22,
@@ -179,8 +181,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey]) != null
-                      ? questionImage(context, json.questionimage(chapter,subchapter.length == 0 ? Null : subchapter[subchapterkey], questionorder[questionkey])!)
+                  json.questionimage(chapter, _subchapter, questionorder[questionkey]) != null
+                      ? questionImage(context, json.questionimage(chapter,_subchapter, questionorder[questionkey])!)
                       : SizedBox(),
                   Divider(height: std_padding * 2,),
                   imageQuestion
@@ -211,12 +213,6 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     );
   }
 
-  _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch');
-    }
-  }
 
   String _getSectionUrl() {
     final selectedClasses = List<int>.from(
@@ -394,7 +390,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      color: wrong ? Colors.red.shade200: Colors.green.shade200,
+                      color: wrong ? Colors.red.shade700 : Colors.green.shade700,
                     ),
                     child: Center(
                       child: Padding(
@@ -423,7 +419,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                     padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                     child: ElevatedButton(
                       autofocus: false,
-                      style: buttonstyle(wrong ? Colors.redAccent : Colors.green),
+                      style: buttonstyle(wrong ? Colors.red.shade300 : Colors.green.shade300),
                       onPressed: (){
                         overlayEntry!.remove();
                         _nextquest();
@@ -437,7 +433,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         );
       },
     );
-    overlayState!.insert(overlayEntry!);
+    overlayState.insert(overlayEntry!);
   }
   _nextquest(){
     try{
@@ -522,7 +518,6 @@ List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
        }
        
        if (node.hasChildNodes()) {
-         String innerHtml = node.innerHtml; 
           for(var child in node.nodes) {
               if (child is dom.Text) {
                   spans.add(TextSpan(text: child.text, style: newStyle));

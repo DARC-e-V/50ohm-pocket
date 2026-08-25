@@ -1,13 +1,12 @@
 import 'package:fuenfzigohm/constants.dart';
-import 'package:fuenfzigohm/coustom_libs/database.dart';
-import 'package:fuenfzigohm/coustom_libs/icons.dart';
-import 'package:fuenfzigohm/coustom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/custom_libs/icons.dart';
+import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'pdfViewer.dart';
 
@@ -18,7 +17,6 @@ class Learningmodule extends StatefulWidget {
 }
 
 class _LearningmoduleState extends State<Learningmodule> {
-  late List<Tab> tabs;
   bool reload = false;
 
 
@@ -82,7 +80,8 @@ class _LearningmoduleState extends State<Learningmodule> {
   _selectItem(BuildContext context, Object item) {
     switch (item) {
       case 2:
-        _launchURL("https://50ohm.de/hm");
+        Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel")));
         break;
       case 1:
         Navigator.of(context)
@@ -92,13 +91,6 @@ class _LearningmoduleState extends State<Learningmodule> {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
         break;
-    }
-  }
-
-  _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch');
     }
   }
 
@@ -324,14 +316,6 @@ class _LearningmoduleState extends State<Learningmodule> {
     }
   }
 
-}
-
-Future<void> launchURL(url) async {
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
-  } else {
-    throw 'Could not launch $url';
-  }
 }
 
 buildquestionlist(var chapter, var subchapter, Json json, bool random){
