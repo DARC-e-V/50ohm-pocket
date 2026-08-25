@@ -154,7 +154,7 @@ class Json{
       return this.data!["sections"][chapter]["questions"].length;
     }
   }
-    
+
 
   chaptersize(int chapter) {
     try{
@@ -162,7 +162,7 @@ class Json{
     }catch(e){
       return this.data!["sections"][chapter].length;
     }
-      
+
   }
 
   mainchaptersize() =>
@@ -171,12 +171,44 @@ class Json{
   percentOfChapter(List questionlist, int currentprog) =>
       (questionlist.length * currentprog) * 0.1 ;
 
+  /// Returns a list of all question keys in order: [[mainchapter, chapter, subchapter, questionIndex], ...]
+  /// Used to map questions to their database scores
+  List<List<int>> getAllQuestionKeys(int mainchapter) {
+    List<List<int>> keys = [];
+    try {
+      List sections = this.data!["sections"];
+      for (int c = 0; c < sections.length; c++) {
+        var chapter = sections[c];
+        if (chapter["sections"] != null) {
+          List subchapters = chapter["sections"];
+          for (int s = 0; s < subchapters.length; s++) {
+            var subchapter = subchapters[s];
+            if (subchapter["questions"] != null) {
+              int questionCount = (subchapter["questions"] as List).length;
+              for (int q = 0; q < questionCount; q++) {
+                keys.add([mainchapter, c, s, q]);
+              }
+            }
+          }
+        } else if (chapter["questions"] != null) {
+          int questionCount = (chapter["questions"] as List).length;
+          for (int q = 0; q < questionCount; q++) {
+            keys.add([mainchapter, c, -1, q]); // -1 indicates no subchapter
+          }
+        }
+      }
+    } catch (e) {
+      // Return empty on error
+    }
+    return keys;
+  }
+
   // Get total question count for a chapter (including all subchapters)
   int getTotalQuestionCount(int chapter) {
     try {
       int totalCount = 0;
       var sections = this.data!["sections"][chapter]["sections"];
-      
+
       // If this chapter has subsections
       if (sections is List) {
         for (var subsection in sections) {
@@ -195,7 +227,6 @@ class Json{
       }
     }
   }
-
 }
 
 class JsonWidget extends InheritedWidget{

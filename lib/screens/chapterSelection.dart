@@ -5,6 +5,7 @@ import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -99,7 +100,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       future: Json(null).load(path, mainchapter, context),
       builder: (context, snapshot){
         if (snapshot.hasData) {
-          return JsonWidget(selectlesson(snapshot.data, context),(snapshot.data as Map<String, dynamic>), mainchapter);
+          return JsonWidget(selectlesson(snapshot.data!, context, mainchapter),(snapshot.data as Map<String, dynamic>), mainchapter);
         } else if (snapshot.hasError){
           print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
@@ -121,14 +122,20 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
 
-  Widget selectlesson(var data, var context) {
+  Widget selectlesson(Map<String, dynamic> data, BuildContext context, int mainchapter) {
     Json json = Json(data);
+
+    // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
+    List<List<int>> questionKeys = json.getAllQuestionKeys(mainchapter);
+    List<int> questionScores = Databaseobj(context).getAllQuestionScoresFromKeys(questionKeys);
+
     return Center( child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
       child: Padding(
           padding: EdgeInsets.only(left: 5,right: 5),
           child: ListView.builder(
-              itemCount: json.mainchaptersize(),
+              // +2 for title (i=0) and progress card (i=1)
+              itemCount: json.mainchaptersize() + 2,
               itemBuilder: (context, i) {
                 if(i == 0){
                   return Padding(
@@ -146,6 +153,12 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ],)
                   );
                 }
+                if(i == 1){
+                  return ProgressOverviewCard(
+                    questionScores: questionScores,
+                  );
+                }
+                // Offset by 2 for the title and progress card
                 return chapterwidget(json, i - 2, context);
               }
           )
@@ -157,7 +170,7 @@ class _LearningmoduleState extends State<Learningmodule> {
   Widget chapterwidget(var json, var s, var context){
     var currentmainchapter = s + 1;
     int totalQuestions = json.getTotalQuestionCount(currentmainchapter);
-    
+
     return SizedBox(
       width: 100,
       child: Container(
@@ -243,7 +256,7 @@ class _LearningmoduleState extends State<Learningmodule> {
       itemCount: json.chaptersize(chapter),
       itemBuilder: (context, subchapter) {
         int questionCount = json.subchaptersize(chapter, subchapter);
-        
+
         return Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
