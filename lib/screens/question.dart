@@ -8,6 +8,7 @@ import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/section_urls.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
+import 'package:fuenfzigohm/learning_state/practice_question_selector.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
@@ -24,10 +25,24 @@ enum QuestionState{
 
 class Question extends StatefulWidget {
 
-  var subchapter, chapter;
+  final List subchapter;
+  final int chapter;
   final BuildContext context;
+  final Map<String, dynamic>? practiceData;
+  final List<QuestionReference> practiceQuestions;
 
-  Question(this.context, this.subchapter,this.chapter);
+  Question(this.context, this.subchapter,this.chapter)
+      : practiceData = null,
+        practiceQuestions = const [];
+
+  Question.practice(
+      this.context,
+      Map<String, dynamic> data,
+      List<QuestionReference> questions,
+      ) : subchapter = const [],
+        chapter = 0,
+        practiceData = data,
+        practiceQuestions = questions;
 
   @override
   createState() => _Questionstate(this.context, this.subchapter,this.chapter);
@@ -47,6 +62,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   final context, chapter;
 
   late Json json;
+  late final PracticeQuestionSelector _practiceSelector;
+  QuestionReference? _practiceReference;
+  int _practiceAnswered = 0;
   bool imageQuestion = false;
   bool correct = false;
   OverlayEntry? overlayEntry;
@@ -54,7 +72,19 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   _Questionstate(this.context, this.subchapter,this.chapter);
 
-  get _subchapter => subchapter.isEmpty ? null : subchapter[subchapterkey];
+  bool get _isPractice => widget.practiceData != null;
+
+  int get _chapter => _practiceReference?.chapter ?? chapter;
+
+  get _subchapter => _isPractice
+      ? _practiceReference?.subchapter
+      : subchapter.isEmpty ? null : subchapter[subchapterkey];
+
+  int get _questionIndex =>
+      _practiceReference?.questionIndex ?? questionorder[questionkey];
+
+  String get _questionId =>
+      json.questionid(_chapter, _subchapter, _questionIndex).toString();
 
   @override
   initState() {
@@ -62,9 +92,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
-      json = Json(JsonWidget.of(context).json);
+      json = Json(widget.practiceData ?? JsonWidget.of(context).json);
 
-      if(subchapter.length == 0) questionorder = orderlist(json.chapterQuestionCount(chapter), true);
+      if (_isPractice) {
+        _practiceSelector = PracticeQuestionSelector();
+        questionorder = <int>[];
+        _selectNextPracticeQuestion();
+      } else if(subchapter.length == 0) questionorder = orderlist(json.chapterQuestionCount(chapter), true);
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
       refreshAnswers();
@@ -76,11 +110,11 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   refreshAnswers(){
     setState(() {
-      imageQuestion = json.imageQuestion(chapter, _subchapter, questionorder[questionkey]);
+      imageQuestion = json.imageQuestion(_chapter, _subchapter, _questionIndex);
       if(imageQuestion){
-        Answers = json.imageList(chapter, _subchapter, questionorder[questionkey]);
+        Answers = json.imageList(_chapter, _subchapter, _questionIndex);
       }else{
-        Answers = json.answerList(chapter, _subchapter, questionorder[questionkey]);
+        Answers = json.answerList(_chapter, _subchapter, _questionIndex);
       }
 
       ShuffledAnswers = [];
@@ -113,17 +147,18 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   children: [
                     Flexible(
                       child: Tooltip(
-                        message: "Frage ${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
+                        message: "Frage $_questionId",
                         child: Text(
-                          "Frage "
-                              + "${json.questionid(chapter, _subchapter, questionorder[questionkey])}",
+                          _isPractice ? "Üben · $_questionId" : "Frage $_questionId",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
                     SizedBox(width: 12),
                     Semantics(
-                      label: "Frage ${questionkey + 1} von ${questionorder.length}",
+                      label: _isPractice
+                          ? "Frage ${_practiceAnswered + 1}"
+                          : "Frage ${questionkey + 1} von ${questionorder.length}",
                       child: ExcludeSemantics(
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -132,7 +167,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
-                            "${questionkey + 1}/${questionorder.length}",
+                            _isPractice
+                                ? "${_practiceAnswered + 1}"
+                                : "${questionkey + 1}/${questionorder.length}",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -148,11 +185,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (SolutionIndex.hasSolution(
-                    json.questionid(
-                      chapter,
-                      _subchapter,
-                      questionorder[questionkey],
-                    ).toString(),
+                    _questionId,
                   ))
                     IconButton(
                       icon: Icon(Icons.lightbulb, color: Colors.amber),
@@ -190,7 +223,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       child: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
-                              "${json.questionname(chapter, _subchapter, questionorder[questionkey])}",
+                              "${json.questionname(_chapter, _subchapter, _questionIndex)}",
                               TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 22,
@@ -201,8 +234,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  json.questionimage(chapter, _subchapter, questionorder[questionkey]) != null
-                      ? questionImage(context, json.questionimage(chapter,_subchapter, questionorder[questionkey])!)
+                  json.questionimage(_chapter, _subchapter, _questionIndex) != null
+                      ? questionImage(context, json.questionimage(_chapter,_subchapter, _questionIndex)!)
                       : SizedBox(),
                   Divider(height: std_padding * 2,),
                   imageQuestion
@@ -242,14 +275,14 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       DatabaseWidget.of(context).settings_database.get("Klasse") ?? [1, 2, 3],
     );
     final course = courseIdFromSelectedClasses(selectedClasses);
-    final subsectionTitle = json.subchapter_name(chapter, subchapter[subchapterkey])?.toString() ?? '';
+    final subsectionTitle = _subchapter == null
+        ? json.chapter_names(_chapter).toString()
+        : json.subchapter_name(_chapter, _subchapter).toString();
     return subsectionUrl(course, subsectionTitle) ?? 'https://50ohm.de';
   }
 
   String _getSolutionUrl() {
-    final questionId =
-        json.questionid(chapter, _subchapter, questionorder[questionkey]);
-    return SolutionIndex.urlFor(questionId.toString());
+    return SolutionIndex.urlFor(_questionId);
   }
 
   Widget questionImage(BuildContext context, String url, {bool useDarkForeground = false, String semanticsLabel = "Diagramm"}) {
@@ -444,8 +477,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         ? ['a', 'b', 'c', 'd'][selectedAnswerIndex]
         : null;
     await DatabaseWidget.of(context).learningStateRepository.recordAnswer(
-      questionId:
-          json.questionid(chapter, _subchapter, questionorder[questionkey]),
+      questionId: _questionId,
       correct: correct,
       selectedAnswerKey: selectedAnswerKey,
     );
@@ -534,6 +566,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     overlayState.insert(overlayEntry!);
   }
   _nextquest(){
+    if (_isPractice) {
+      questionradio = null;
+      _practiceAnswered += 1;
+      _selectNextPracticeQuestion();
+      refreshAnswers();
+      return;
+    }
     try{
       this.questionorder[this.questionkey + 1];
       this.questionradio = null;
@@ -560,6 +599,22 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
       }
     }
+  }
+
+  void _selectNextPracticeQuestion() {
+    final previousQuestionId = _practiceReference?.questionId;
+    final nextQuestionId = _practiceSelector.nextQuestionId(
+      courseQuestionIds:
+          widget.practiceQuestions.map((reference) => reference.questionId),
+      repository: DatabaseWidget.of(context).learningStateRepository,
+      previousQuestionId: previousQuestionId,
+    );
+    if (nextQuestionId == null) {
+      throw StateError('No answered question is available for practice.');
+    }
+    _practiceReference = widget.practiceQuestions.firstWhere(
+      (reference) => reference.questionId == nextQuestionId,
+    );
   }
 
 }

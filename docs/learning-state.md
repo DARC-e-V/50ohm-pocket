@@ -35,6 +35,20 @@ bisherige Wertungsregel aber noch nicht.
 Dieses Modell erlaubt später andere Lernalgorithmen, Statistiken und das
 Zusammenführen mehrerer Geräte, ohne die Rohhistorie zu verlieren.
 
+## Üben
+
+Die offene Übungsrunde verwendet ausschließlich Fragen des ausgewählten
+Lernwegs, die bereits mindestens einmal beantwortet wurden. Dazu zählen auch
+Fragen, die bisher nur falsch beantwortet wurden und deshalb noch null Punkte
+haben. Solange Fragen mit weniger als drei Punkten vorhanden sind, stammen vier
+von fünf Auswahlen aus diesem Bereich „In Arbeit“. Jede fünfte Auswahl
+wiederholt eine bereits gelernte Frage.
+
+Sind alle gesehenen Fragen gelernt, läuft die Runde ausschließlich mit
+Wiederholungen weiter. Sie hat keine feste Länge und kann jederzeit beendet
+werden. Jede Antwort wird wie im normalen Kurs unmittelbar als Ereignis
+gespeichert.
+
 ## Einmalige Migration
 
 Beim ersten App-Start mit diesem Stand wird die alte, positionsbasierte
@@ -72,4 +86,5 @@ Automatisierte Tests prüfen:
 - die Migration für N, N→E, N→E→A, E, A und E→A,
 - den vom Nutzer bestätigten Rückschluss über den aktuell gewählten Kurs,
 - die Idempotenz der Migration,
-- den Wechsel N → E → N und die Darstellung im Gesamtkatalog.
+- den Wechsel N → E → N und die Darstellung im Gesamtkatalog,
+- die Auswahl von Fragen für eine offene Übungsrunde.

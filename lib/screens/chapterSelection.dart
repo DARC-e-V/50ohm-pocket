@@ -5,6 +5,7 @@ import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/screens/practice.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -80,6 +81,13 @@ class _LearningmoduleState extends State<Learningmodule> {
             tooltip: "Menü öffnen",
             itemBuilder: (context) => [
               PopupMenuItem(
+                value: 3,
+                child: ListTile(
+                  leading: Icon(Icons.school),
+                  title: Text("Üben"),
+                ),
+              ),
+              PopupMenuItem(
                 value: 2,
                 child: ListTile(
                   leading: Icon(Icons.open_in_browser), // Hilfsmittel
@@ -131,6 +139,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch (item) {
+      case 3:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => PracticePage()))
+            .then((_) => setState(() {}));
+        break;
       case 2:
         Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel")));

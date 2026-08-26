@@ -1,14 +1,28 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/practice.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('practice intro explains the open-ended exercise',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: PracticePage()),
+    );
+
+    expect(find.text('Übungsrunde'), findsOneWidget);
+    expect(find.textContaining('bereits beantwortet'), findsOneWidget);
+    expect(find.textContaining('sofort gespeichert'), findsOneWidget);
+    expect(find.text('Übung starten'), findsOneWidget);
+  });
 
   test('lesson list maps all chapters without skipping or exceeding bounds',
       () {

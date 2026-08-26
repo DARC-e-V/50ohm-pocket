@@ -8,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:fuenfzigohm/learning_state/answer_event.dart';
 import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
 import 'package:fuenfzigohm/learning_state/legacy_progress_migrator.dart';
+import 'package:fuenfzigohm/learning_state/practice_question_selector.dart';
 import 'package:fuenfzigohm/learning_state/reset_learning_state.dart';
 
 void main() {
@@ -76,8 +77,7 @@ void main() {
     expect(events.map((event) => event.deviceId).toSet(), hasLength(1));
   });
 
-  test('a single answer is persisted before the lesson is completed',
-      () async {
+  test('a single answer is persisted before the lesson is completed', () async {
     final repository = LearningStateRepository(
       eventsBox: eventsBox,
       settingsBox: settingsBox,
@@ -116,6 +116,82 @@ void main() {
 
     expect(repository.scoreForQuestion('NA102'), 5);
     expect(repository.progressForQuestions(['NA102']), 1);
+  });
+
+  test('practice includes wrongly answered questions as seen', () async {
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+    await repository.recordAnswer(
+      questionId: 'NA102',
+      correct: false,
+      selectedAnswerKey: 'b',
+    );
+
+    final selector = PracticeQuestionSelector();
+    expect(
+      selector.nextQuestionId(
+        courseQuestionIds: ['NA101', 'NA102'],
+        repository: repository,
+      ),
+      'NA102',
+    );
+  });
+
+  test('practice prefers in-progress questions and repeats learned ones',
+      () async {
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+    await repository.recordAnswer(
+      questionId: 'NA101',
+      correct: true,
+      selectedAnswerKey: 'a',
+    );
+    for (var attempt = 0; attempt < 3; attempt++) {
+      await repository.recordAnswer(
+        questionId: 'NA102',
+        correct: true,
+        selectedAnswerKey: 'a',
+      );
+    }
+
+    final selector = PracticeQuestionSelector();
+    final selections = List.generate(
+      5,
+      (_) => selector.nextQuestionId(
+        courseQuestionIds: ['NA101', 'NA102', 'NA103'],
+        repository: repository,
+      ),
+    );
+    expect(selections.take(4), everyElement('NA101'));
+    expect(selections.last, 'NA102');
+  });
+
+  test('practice continues with learned questions after work is complete',
+      () async {
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+    for (var attempt = 0; attempt < 3; attempt++) {
+      await repository.recordAnswer(
+        questionId: 'NA102',
+        correct: true,
+        selectedAnswerKey: 'a',
+      );
+    }
+
+    final selector = PracticeQuestionSelector();
+    expect(
+      selector.nextQuestionId(
+        courseQuestionIds: ['NA101', 'NA102'],
+        repository: repository,
+      ),
+      'NA102',
+    );
   });
 
   test('legacy migration assumes the currently selected course', () async {

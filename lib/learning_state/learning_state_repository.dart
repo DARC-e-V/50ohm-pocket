@@ -12,6 +12,7 @@ class LearningStateRepository {
   final Uuid _uuid;
 
   Map<String, int>? _scoreByQuestionId;
+  Set<String>? _answeredQuestionIds;
   String? _deviceId;
 
   LearningStateRepository({
@@ -55,6 +56,26 @@ class LearningStateRepository {
   }
 
   int scoreForQuestion(String questionId) => _scores[questionId] ?? 0;
+
+  Set<String> get answeredQuestionIds {
+    final cached = _answeredQuestionIds;
+    if (cached != null) return Set.unmodifiable(cached);
+
+    final ids = <String>{};
+    for (final rawEvent in eventsBox.values) {
+      try {
+        if (rawEvent is! Map) continue;
+        ids.add(AnswerEvent.fromMap(rawEvent).questionId);
+      } catch (_) {
+        // Ignore malformed events while retaining the rest of the log.
+      }
+    }
+    _answeredQuestionIds = ids;
+    return Set.unmodifiable(ids);
+  }
+
+  bool hasAnsweredQuestion(String questionId) =>
+      answeredQuestionIds.contains(questionId);
 
   List<int> scoresForQuestions(Iterable<String> questionIds) =>
       questionIds.map(scoreForQuestion).toList();
@@ -118,7 +139,9 @@ class LearningStateRepository {
 
   Future<void> _storeEvent(AnswerEvent event) async {
     final cachedScores = _scoreByQuestionId;
+    final cachedAnsweredIds = _answeredQuestionIds;
     await eventsBox.put(event.id, event.toMap());
+    cachedAnsweredIds?.add(event.questionId);
     if (event.correct && cachedScores != null) {
       cachedScores.update(event.questionId, (score) => score + 1,
           ifAbsent: () => 1);
@@ -128,7 +151,11 @@ class LearningStateRepository {
   Future<void> clearAnswers() async {
     await eventsBox.clear();
     _scoreByQuestionId = <String, int>{};
+    _answeredQuestionIds = <String>{};
   }
 
-  void rebuildProjection() => _scoreByQuestionId = null;
+  void rebuildProjection() {
+    _scoreByQuestionId = null;
+    _answeredQuestionIds = null;
+  }
 }
