@@ -9,6 +9,7 @@ import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
+import 'package:fuenfzigohm/screens/question_search.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -131,6 +132,13 @@ class _LearningmoduleState extends State<Learningmodule> {
             tooltip: "Menü öffnen",
             itemBuilder: (context) => [
               PopupMenuItem(
+                value: 5,
+                child: ListTile(
+                  leading: Icon(Icons.search),
+                  title: Text("Frage suchen"),
+                ),
+              ),
+              PopupMenuItem(
                 value: 4,
                 child: ListTile(
                   leading: Icon(Icons.quiz),
@@ -197,6 +205,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   _selectItem(BuildContext context, Object item) {
     switch (item) {
+      case 5:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => QuestionSearchPage()))
+            .then((_) => setState(() {}));
+        break;
       case 4:
         Navigator.of(context)
             .push(

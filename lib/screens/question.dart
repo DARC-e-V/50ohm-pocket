@@ -30,10 +30,12 @@ class Question extends StatefulWidget {
   final BuildContext context;
   final Map<String, dynamic>? practiceData;
   final List<QuestionReference> practiceQuestions;
+  final QuestionReference? singleQuestion;
 
   Question(this.context, this.subchapter,this.chapter)
       : practiceData = null,
-        practiceQuestions = const [];
+        practiceQuestions = const [],
+        singleQuestion = null;
 
   Question.practice(
       this.context,
@@ -42,7 +44,31 @@ class Question extends StatefulWidget {
       ) : subchapter = const [],
         chapter = 0,
         practiceData = data,
-        practiceQuestions = questions;
+        practiceQuestions = questions,
+        singleQuestion = null;
+
+  Question.single(
+      this.context,
+      Map<String, dynamic> question,
+      ) : subchapter = const [],
+        chapter = 0,
+        practiceData = {
+          "title": "Suchergebnis",
+          "sections": [
+            {
+              "title": "Suchergebnis",
+              "questions": [question],
+            }
+          ],
+        },
+        practiceQuestions = const [],
+        singleQuestion = QuestionReference(
+          mainChapter: -1,
+          chapter: 0,
+          subchapter: null,
+          questionIndex: 0,
+          questionId: "${question['number']}",
+        );
 
   @override
   createState() => _Questionstate(this.context, this.subchapter,this.chapter);
@@ -72,16 +98,24 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   _Questionstate(this.context, this.subchapter,this.chapter);
 
-  bool get _isPractice => widget.practiceData != null;
+  bool get _isPractice =>
+      widget.practiceData != null && widget.singleQuestion == null;
 
-  int get _chapter => _practiceReference?.chapter ?? chapter;
+  bool get _isSingle => widget.singleQuestion != null;
 
-  get _subchapter => _isPractice
-      ? _practiceReference?.subchapter
-      : subchapter.isEmpty ? null : subchapter[subchapterkey];
+  int get _chapter =>
+      widget.singleQuestion?.chapter ?? _practiceReference?.chapter ?? chapter;
+
+  get _subchapter => _isSingle
+      ? widget.singleQuestion!.subchapter
+      : _isPractice
+          ? _practiceReference?.subchapter
+          : subchapter.isEmpty ? null : subchapter[subchapterkey];
 
   int get _questionIndex =>
-      _practiceReference?.questionIndex ?? questionorder[questionkey];
+      widget.singleQuestion?.questionIndex ??
+      _practiceReference?.questionIndex ??
+      questionorder[questionkey];
 
   String get _questionId =>
       json.questionid(_chapter, _subchapter, _questionIndex).toString();
@@ -94,7 +128,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     setState(() {
       json = Json(widget.practiceData ?? JsonWidget.of(context).json);
 
-      if (_isPractice) {
+      if (_isSingle) {
+        questionorder = <int>[widget.singleQuestion!.questionIndex];
+      } else if (_isPractice) {
         _practiceSelector = PracticeQuestionSelector();
         questionorder = <int>[];
         _selectNextPracticeQuestion();
@@ -151,8 +187,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              SizedBox(width: 8),
-              Semantics(
+              if (!_isSingle) SizedBox(width: 8),
+              if (!_isSingle) Semantics(
                 label: _isPractice
                     ? "Frage ${_practiceAnswered + 1}"
                     : "Frage ${questionkey + 1} von ${questionorder.length}",
@@ -569,6 +605,10 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     overlayState.insert(overlayEntry!);
   }
   _nextquest(){
+    if (_isSingle) {
+      Navigator.of(context).pop(true);
+      return;
+    }
     if (_isPractice) {
       questionradio = null;
       _practiceAnswered += 1;

@@ -18,6 +18,7 @@ import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
 import 'package:fuenfzigohm/screens/question.dart';
+import 'package:fuenfzigohm/screens/question_search.dart';
 import 'package:fuenfzigohm/ui/welcome/bloc/welcome_bloc.dart';
 import 'package:fuenfzigohm/ui/welcome/pages/welcome_layout.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
@@ -133,6 +134,25 @@ void main() {
     expect(find.textContaining('bereits beantwortet'), findsOneWidget);
     expect(find.textContaining('sofort gespeichert'), findsOneWidget);
     expect(find.text('Übung starten'), findsOneWidget);
+  });
+
+  test('question search finds questions by number only', () async {
+    final raw =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final catalog = jsonDecode(raw) as Map<String, dynamic>;
+    final questions = buildQuestionSearchIndex(catalog);
+
+    expect(questions, hasLength(1750));
+    expect(
+      searchQuestionNumbers(questions, 'na 103')
+          .map((question) => question.questionId),
+      ['NA103'],
+    );
+    expect(
+      searchQuestionNumbers(questions, '103')
+          .map((question) => question.questionId),
+      contains('NA103'),
+    );
   });
 
   testWidgets('exam simulation offers all official exam variants',
