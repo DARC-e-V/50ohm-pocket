@@ -49,7 +49,7 @@ android {
     defaultConfig {
         applicationId "de.darc.fuenfizigohm"
         minSdkVersion flutter.minSdkVersion
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
