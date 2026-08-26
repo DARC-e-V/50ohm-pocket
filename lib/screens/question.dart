@@ -639,13 +639,53 @@ List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
       }
     } else {
       widgets.add(WidgetSpan(
-        child: Math.tex(parts[i], textStyle: Textstyle),
+        child: _BreakableMath(
+          expression: parts[i],
+          textStyle: Textstyle,
+        ),
         alignment: PlaceholderAlignment.middle,
       ));
     }
   }
 
   return widgets;
+}
+
+class _BreakableMath extends StatelessWidget {
+  final String expression;
+  final TextStyle textStyle;
+
+  const _BreakableMath({
+    required this.expression,
+    required this.textStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final parts = Math.tex(
+      expression,
+      textStyle: textStyle,
+    ).texBreak().parts;
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: parts.map((part) {
+            if (!constraints.hasBoundedWidth) return part;
+            return ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: constraints.maxWidth),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: part,
+              ),
+            );
+          }).toList(growable: false),
+        );
+      },
+    );
+  }
 }
 
 List<InlineSpan> parseHtml(String htmlString, TextStyle style) {

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -15,6 +16,7 @@ import 'package:fuenfzigohm/repository/setting_repository.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
+import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/ui/welcome/bloc/welcome_bloc.dart';
 import 'package:fuenfzigohm/ui/welcome/pages/welcome_layout.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
@@ -216,6 +218,43 @@ void main() {
     expect(find.text('Gelernt: 1'), findsOneWidget);
     expect(find.text('In Arbeit: 3'), findsOneWidget);
     expect(find.text('Offen: 1'), findsOneWidget);
+  });
+
+  testWidgets('long formulas wrap inside the available answer width',
+      (tester) async {
+    const availableWidth = 280.0;
+    final formulaKey = GlobalKey();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            key: formulaKey,
+            width: availableWidth,
+            child: Text.rich(
+              TextSpan(
+                children: parseTextWithMath(
+                  r'$P_{\textrm{ERP}} = (P_{\textrm{Sender}} - '
+                  r'P_{\textrm{Verluste}}) \cdot G_{\textrm{Antenne}}$ '
+                  'bezogen auf einen Halbwellendipol',
+                  const TextStyle(fontSize: 22),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsAtLeastNWidgets(2));
+    final availableRight = tester.getTopRight(find.byKey(formulaKey)).dx;
+    for (final math in find.byType(Math).evaluate()) {
+      expect(
+        tester.getTopRight(find.byWidget(math.widget)).dx,
+        lessThanOrEqualTo(availableRight + 0.01),
+      );
+    }
+    expect(tester.takeException(), isNull);
   });
 
   test('lesson list maps all chapters without skipping or exceeding bounds',
