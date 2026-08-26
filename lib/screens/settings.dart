@@ -184,6 +184,13 @@ class _settingsstate extends State<Settingspage> {
                   ).settings_database.put("courseOrdering", value);
                 },
                 title: Text("Ausbildungsmaterial nach 50Ohm.de"),
+                description: Text(
+                  "Ist der Schalter aktiviert, werden die Fragen in der "
+                  "didaktisch aufbereiteten Reihenfolge von 50ohm.de "
+                  "angezeigt. Ist er deaktiviert, folgt die Reihenfolge dem "
+                  "amtlichen Fragenkatalog der Bundesnetzagentur. Zum Lernen "
+                  "empfehlen wir die Reihenfolge von 50ohm.de.",
+                ),
               ),
             ],
           ),
