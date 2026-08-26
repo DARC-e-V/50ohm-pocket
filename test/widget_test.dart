@@ -8,6 +8,7 @@ import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
+import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,24 @@ void main() {
     expect(find.textContaining('bereits beantwortet'), findsOneWidget);
     expect(find.textContaining('sofort gespeichert'), findsOneWidget);
     expect(find.text('Übung starten'), findsOneWidget);
+  });
+
+  testWidgets('wrongly answered questions count as in progress',
+      (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ProgressOverviewCard(
+            questionScores: [0, 0, 1, 2, 3],
+            answeredQuestions: [false, true, true, true, true],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Gelernt: 1'), findsOneWidget);
+    expect(find.text('In Arbeit: 3'), findsOneWidget);
+    expect(find.text('Offen: 1'), findsOneWidget);
   });
 
   test('lesson list maps all chapters without skipping or exceeding bounds',

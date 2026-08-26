@@ -77,6 +77,11 @@ class LearningStateRepository {
   bool hasAnsweredQuestion(String questionId) =>
       answeredQuestionIds.contains(questionId);
 
+  List<bool> answeredForQuestions(Iterable<String> questionIds) {
+    final answeredIds = answeredQuestionIds;
+    return questionIds.map(answeredIds.contains).toList();
+  }
+
   List<int> scoresForQuestions(Iterable<String> questionIds) =>
       questionIds.map(scoreForQuestion).toList();
 

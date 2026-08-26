@@ -29,8 +29,10 @@ unveränderliches Ereignis mit:
 
 Der aktuell sichtbare Lernstand ist eine Projektion dieses Protokolls. Wie
 bisher zählt jede richtige Antwort einen Punkt. Ab drei Punkten gilt eine
-Frage als gelernt; falsche Antworten werden protokolliert, verändern diese
-bisherige Wertungsregel aber noch nicht.
+Frage als gelernt. Eine noch nie beantwortete Frage ist „Offen“. Nach der
+ersten richtigen oder falschen Antwort gilt sie bis zum Erreichen von drei
+Punkten als „In Arbeit“. Falsche Antworten werden protokolliert, verändern die
+Punktzahl aber nicht.
 
 Dieses Modell erlaubt später andere Lernalgorithmen, Statistiken und das
 Zusammenführen mehrerer Geräte, ohne die Rohhistorie zu verlieren.

@@ -197,9 +197,12 @@ class _LearningmoduleState extends State<Learningmodule> {
     Json json = Json(data);
 
     final questionIds = json.getAllQuestionIds(mainchapter);
-    final questionScores = DatabaseWidget.of(context)
-        .learningStateRepository
-        .scoresForQuestions(questionIds);
+    final learningStateRepository =
+        DatabaseWidget.of(context).learningStateRepository;
+    final questionScores =
+        learningStateRepository.scoresForQuestions(questionIds);
+    final answeredQuestions =
+        learningStateRepository.answeredForQuestions(questionIds);
 
     return Center( child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
@@ -235,6 +238,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 if(i == 1){
                   return ProgressOverviewCard(
                     questionScores: questionScores,
+                    answeredQuestions: answeredQuestions,
                   );
                 }
                 return chapterwidget(json, lessonChapterIndex(i), context);

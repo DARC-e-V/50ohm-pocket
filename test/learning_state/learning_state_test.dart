@@ -54,6 +54,11 @@ void main() {
       correct: false,
       selectedAnswerKey: 'b',
     );
+
+    expect(
+      repository.answeredForQuestions(['NA101', 'NA102']),
+      [false, true],
+    );
     await repository.recordAnswer(
       questionId: 'NA102',
       correct: true,
