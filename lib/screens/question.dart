@@ -698,9 +698,12 @@ List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
       }
     } else {
       widgets.add(WidgetSpan(
-        child: _BreakableMath(
-          expression: parts[i],
-          textStyle: Textstyle,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 6.0),
+          child: _BreakableMath(
+            expression: parts[i],
+            textStyle: Textstyle,
+          ),
         ),
         alignment: PlaceholderAlignment.middle,
       ));
