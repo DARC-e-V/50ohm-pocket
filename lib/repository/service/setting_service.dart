@@ -1,4 +1,4 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
 class SettingService {
   static const String SETTINGS_WELCOME_PAGE_KEY = 'welcomePage';

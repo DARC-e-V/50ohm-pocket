@@ -12,7 +12,7 @@ import 'package:fuenfzigohm/ui/welcome/pages/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

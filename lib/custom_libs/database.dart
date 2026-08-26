@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
 import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
 import 'package:fuenfzigohm/learning_state/legacy_progress_migrator.dart';
