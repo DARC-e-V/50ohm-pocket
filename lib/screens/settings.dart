@@ -1,4 +1,5 @@
 import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/learning_state/reset_learning_state.dart';
 import 'package:fuenfzigohm/main.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -86,6 +87,46 @@ class _settingsstate extends State<Settingspage> {
     }
   }
 
+  Future<void> _confirmLearningStateReset(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text("Lernstand wirklich zurücksetzen?"),
+        content: const Text(
+          "Alle beantworteten Fragen und der gesamte Lernfortschritt werden "
+          "dauerhaft gelöscht. Deine Kursauswahl und die übrigen "
+          "Einstellungen bleiben erhalten.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: const Text("Abbrechen"),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onError,
+            ),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: const Text("Lernstand löschen"),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+
+    await resetLearningState(
+      repository: DatabaseWidget.of(context).learningStateRepository,
+      legacyProgressBox: DatabaseWidget.of(context).prog_database,
+    );
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Der Lernstand wurde zurückgesetzt.")),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     bool courseOrdering =
@@ -143,6 +184,32 @@ class _settingsstate extends State<Settingspage> {
                   ).settings_database.put("courseOrdering", value);
                 },
                 title: Text("Ausbildungsmaterial nach 50Ohm.de"),
+              ),
+            ],
+          ),
+          SettingsSection(
+            margin: EdgeInsetsDirectional.all(8.0),
+            title: Text(
+              'Danger Zone',
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
+            tiles: <SettingsTile>[
+              SettingsTile(
+                leading: Icon(
+                  Icons.delete_forever,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                title: Text(
+                  "Lernstand zurücksetzen",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+                description: Text(
+                  "Löscht alle beantworteten Fragen und den gesamten "
+                  "Lernfortschritt.",
+                ),
+                onPressed: _confirmLearningStateReset,
               ),
             ],
           ),

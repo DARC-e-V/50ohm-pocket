@@ -8,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:fuenfzigohm/learning_state/answer_event.dart';
 import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
 import 'package:fuenfzigohm/learning_state/legacy_progress_migrator.dart';
+import 'package:fuenfzigohm/learning_state/reset_learning_state.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -211,7 +212,7 @@ void main() {
     }
   });
 
-  test('switching courses projects only matching stable question ids',
+  test('N progress is retained in N+E and N+E+A by stable question id',
       () async {
     final repository = LearningStateRepository(
       eventsBox: eventsBox,
@@ -224,12 +225,20 @@ void main() {
         selectedAnswerKey: 'a',
       );
     }
+    await repository.recordAnswer(
+      questionId: 'EA111',
+      correct: true,
+      selectedAnswerKey: 'a',
+    );
 
     final nIds = _questionIds(
       jsonDecode(await rootBundle.loadString('assets/questions/N.json')),
     );
     final eIds = _questionIds(
       jsonDecode(await rootBundle.loadString('assets/questions/E.json')),
+    );
+    final neIds = _questionIds(
+      jsonDecode(await rootBundle.loadString('assets/questions/NE.json')),
     );
     final neaIds = _questionIds(
       jsonDecode(await rootBundle.loadString('assets/questions/NEA.json')),
@@ -242,22 +251,61 @@ void main() {
 
     expect(nIds, contains('NA102'));
     expect(eIds, isNot(contains('NA102')));
+    expect(neIds, containsAll(['NA102', 'EA111']));
     expect(neaIds, contains('NA102'));
     expect(catalogIds, contains('NA102'));
 
     await settingsBox.put('Klasse', [2]);
-    expect(repository.scoresForQuestions(eIds).where((score) => score > 0),
-        isEmpty);
+    expect(
+      repository.scoresForQuestions(eIds).where((score) => score > 0),
+      hasLength(1),
+    );
 
     await settingsBox.put('Klasse', [1]);
     expect(repository.scoreForQuestion('NA102'), 3);
     expect(repository.progressForQuestions(['NA102']), 1);
-    expect(repository.scoresForQuestions(neaIds).where((score) => score > 0),
-        hasLength(1));
     expect(
-      repository.scoresForQuestions(catalogIds).where((score) => score > 0),
+      repository.scoresForQuestions(nIds).where((score) => score > 0),
       hasLength(1),
     );
+    expect(
+      repository.scoresForQuestions(neIds).where((score) => score > 0),
+      hasLength(2),
+    );
+    expect(repository.scoresForQuestions(neaIds).where((score) => score > 0),
+        hasLength(2));
+    expect(
+      repository.scoresForQuestions(catalogIds).where((score) => score > 0),
+      hasLength(2),
+    );
+  });
+
+  test('reset clears event and legacy learning state but keeps settings',
+      () async {
+    await settingsBox.put('Klasse', [1, 2, 3]);
+    await settingsBox.put('learningStateMigrationV1', {'completed': true});
+    await legacyProgressBox.put('[-1][0][0]', [3]);
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+    await repository.recordAnswer(
+      questionId: 'NA102',
+      correct: true,
+      selectedAnswerKey: 'a',
+    );
+    expect(repository.scoreForQuestion('NA102'), 1);
+
+    await resetLearningState(
+      repository: repository,
+      legacyProgressBox: legacyProgressBox,
+    );
+
+    expect(eventsBox, isEmpty);
+    expect(legacyProgressBox, isEmpty);
+    expect(repository.scoreForQuestion('NA102'), 0);
+    expect(settingsBox.get('Klasse'), [1, 2, 3]);
+    expect(settingsBox.get('learningStateMigrationV1'), {'completed': true});
   });
 }
 

@@ -125,5 +125,10 @@ class LearningStateRepository {
     }
   }
 
+  Future<void> clearAnswers() async {
+    await eventsBox.clear();
+    _scoreByQuestionId = <String, int>{};
+  }
+
   void rebuildProjection() => _scoreByQuestionId = null;
 }

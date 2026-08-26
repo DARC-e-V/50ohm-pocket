@@ -51,6 +51,12 @@ Die Migration ist wiederholbar:
 - Die alte `progress`-Box wird nicht gelöscht und bleibt als Rückfall- und
   Diagnosequelle erhalten.
 
+Über „Einstellungen → Danger Zone → Lernstand zurücksetzen“ können das neue
+Ereignisprotokoll und die alte `progress`-Box nach einer zusätzlichen
+Bestätigung vollständig gelöscht werden. Kursauswahl, Geräte-ID und
+Migrationsmarker bleiben bestehen; dadurch werden gelöschte Altdaten nicht
+erneut importiert.
+
 ## Abgedeckte Szenarien
 
 Automatisierte Tests prüfen:
