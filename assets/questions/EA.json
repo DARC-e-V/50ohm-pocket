@@ -2508,7 +2508,7 @@
                         {
                             "number": "AC307",
                             "class": "3",
-                            "question": "Eine Transformatorwicklung hat einen Drahtdurchmesser von 0,5 mm. Die zulässige Stromdichte beträgt \\qty[per-mode=symbol]{2,5}{A\\permm²}. Wie groß ist der zulässige Strom?",
+                            "question": "Eine Transformatorwicklung hat einen Drahtdurchmesser von 0,5 mm. Die zulässige Stromdichte beträgt  2,5 A/mm². Wie groß ist der zulässige Strom?",
                             "answer_a": "ca. 0,49 A",
                             "answer_b": "ca. 1,96 A",
                             "answer_c": "ca. 1,25 A",
@@ -9211,19 +9211,19 @@
                             "number": "AE405",
                             "class": "3",
                             "question": "Bei einem digitalen Übertragungsverfahren (z. B. RTTY) wird die Frequenz eines Senders zwischen zwei Symbolfrequenzen (z. B. 14072,43 kHz und 14072,60 kHz) umgetastet, so dass pro Symbol ein Bit (0 oder 1) übertragen werden kann. Die Symbolrate beträgt 45,45 baud. Welcher Datenrate entspricht das?",
-                            "answer_a": "\\qty[per-mode=symbol]{45,45}{Bit\\pers}",
-                            "answer_b": "\\qty[per-mode=symbol]{90,9}{Bit\\pers}",
-                            "answer_c": "\\qty[per-mode=symbol]{22,725}{Bit\\pers}",
-                            "answer_d": "\\qty[per-mode=symbol]{181,8}{Bit\\pers}"
+                            "answer_a": "45,45 Bit/s",
+                            "answer_b": "90,9 Bit/s",
+                            "answer_c": "22,725 Bit/s",
+                            "answer_d": "181,8 Bit/s"
                         },
                         {
                             "number": "AE406",
                             "class": "3",
                             "question": "Bei einem digitalen Übertragungsverfahren (z. B. FT4) wird die Frequenz eines Senders zwischen vier Symbolfrequenzen (z. B. 14081,20 kHz, 14081,40 kHz, 14081,61 kHz und 14081,83 kHz) umgetastet, so dass pro Symbol zwei Bit (00, 01, 10 oder 11) übertragen werden können. Die Symbolrate beträgt 23,4 baud. Welcher Datenrate entspricht das?",
-                            "answer_a": "\\qty[per-mode=symbol]{46,8}{Bit\\pers}",
-                            "answer_b": "\\qty[per-mode=symbol]{11,7}{Bit\\pers}",
-                            "answer_c": "\\qty[per-mode=symbol]{23,4}{Bit\\pers}",
-                            "answer_d": "\\qty[per-mode=symbol]{93,6}{Bit\\pers}"
+                            "answer_a": "46,8 Bit/s",
+                            "answer_b": "11,7 Bit/s",
+                            "answer_c": "23,4 Bit/s",
+                            "answer_d": "93,6 Bit/s"
                         }
                     ]
                 },
@@ -9419,7 +9419,7 @@
                             "number": "AE417",
                             "class": "3",
                             "question": "Ein Übertragungskanal mit einer Bandbreite von 2,7 kHz wird durch additives weißes Gaußsches Rauschen (AWGN) gestört. Das Signal-Rausch-Verhältnis (SNR) beträgt 0 dB. Welche Bitrate kann nach dem Shannon-Hartley-Gesetz etwa maximal fehlerfrei übertragen werden?",
-                            "answer_a": "ca. \\qty[per-mode=symbol]{2,7}{\\kiloBit\\pers}",
+                            "answer_a": "ca. 2,7 kBit/s",
                             "answer_b": "0 Bit/s (Übertragung nicht möglich)",
                             "answer_c": "ca. 2,7 Bit/s",
                             "answer_d": "ca. 39 Bit/s"
@@ -9428,19 +9428,19 @@
                             "number": "AE418",
                             "class": "3",
                             "question": "Ein Übertragungskanal mit einer Bandbreite von 10 MHz wird durch additives weißes Gaußsches Rauschen (AWGN) gestört. Das Signal-Rausch-Verhältnis (SNR) beträgt 0 dB. Welche Bitrate kann nach dem Shannon-Hartley-Gesetz etwa maximal fehlerfrei übertragen werden?",
-                            "answer_a": "ca. \\qty[per-mode=symbol]{10}{MBit\\pers}",
-                            "answer_b": "ca. \\qty[per-mode=symbol]{7}{MBit\\pers}",
-                            "answer_c": "ca. \\qty[per-mode=symbol]{8}{MBit\\pers}",
-                            "answer_d": "ca. \\qty[per-mode=symbol]{100}{MBit\\pers}"
+                            "answer_a": "ca. 10 MBit/s",
+                            "answer_b": "ca. 7 MBit/s",
+                            "answer_c": "ca. 8 MBit/s",
+                            "answer_d": "ca. 100 MBit/s"
                         },
                         {
                             "number": "AE419",
                             "class": "3",
                             "question": "Ein Übertragungskanal mit einer Bandbreite von 10 MHz wird durch additives weißes Gaußsches Rauschen (AWGN) gestört. Das Signal-Rausch-Verhältnis (SNR) beträgt 30 dB. Welche Bitrate kann nach dem Shannon-Hartley-Gesetz etwa maximal fehlerfrei übertragen werden?",
-                            "answer_a": "ca. \\qty[per-mode=symbol]{100}{MBit\\pers}",
-                            "answer_b": "ca. \\qty[per-mode=symbol]{10}{MBit\\pers}",
-                            "answer_c": "ca. \\qty[per-mode=symbol]{7}{MBit\\pers}",
-                            "answer_d": "ca. \\qty[per-mode=symbol]{8}{MBit\\pers}"
+                            "answer_a": "ca. 100 MBit/s",
+                            "answer_b": "ca. 10 MBit/s",
+                            "answer_c": "ca. 7 MBit/s",
+                            "answer_d": "ca. 8 MBit/s"
                         },
                         {
                             "number": "AE420",
@@ -9448,8 +9448,8 @@
                             "question": "Ein Übertragungskanal mit einer Bandbreite von 2,7 kHz wird durch additives weißes Gaußsches Rauschen (AWGN) gestört. Das Signal-Rausch-Verhältnis (SNR) beträgt -20 dB. Welche Bitrate kann nach dem Shannon-Hartley-Gesetz etwa maximal fehlerfrei übertragen werden?",
                             "answer_a": "ca. 39 Bit/s",
                             "answer_b": "0 Bit/s (Übertragung nicht möglich)",
-                            "answer_c": "ca. \\qty[per-mode=symbol]{2,7}{\\kiloBit\\pers}",
-                            "answer_d": "ca. \\qty[per-mode=symbol]{5,4}{\\kiloBit\\pers}"
+                            "answer_c": "ca. 2,7 kBit/s",
+                            "answer_d": "ca. 5,4 kBit/s"
                         }
                     ]
                 },
