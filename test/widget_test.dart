@@ -32,17 +32,40 @@ void main() {
 
   test('free learning pages use regulations, operation, technique order', () {
     expect(
-      List.generate(3, freeLearningMainChapter),
+      freeLearningMainChaptersForClasses({1}),
       [2, 1, 0],
     );
-    expect(freeLearningSwipeHint(0), contains('links'));
-    expect(freeLearningSwipeHint(0), contains('Betriebsfragen'));
-    expect(freeLearningSwipeHint(1), contains('rechts'));
-    expect(freeLearningSwipeHint(1), contains('links'));
-    expect(freeLearningSwipeHint(1), contains('Vorschriftsfragen'));
-    expect(freeLearningSwipeHint(1), contains('technischen Fragen'));
-    expect(freeLearningSwipeHint(2), contains('rechts'));
-    expect(freeLearningSwipeHint(2), contains('Betriebsfragen'));
+    expect(freeLearningSwipeHintForClasses({1}, 0), contains('links'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 0),
+      contains('Betriebsfragen'),
+    );
+    expect(freeLearningSwipeHintForClasses({1}, 1), contains('rechts'));
+    expect(freeLearningSwipeHintForClasses({1}, 1), contains('links'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 1),
+      contains('Vorschriftsfragen'),
+    );
+    expect(
+      freeLearningSwipeHintForClasses({1}, 1),
+      contains('technischen Fragen'),
+    );
+    expect(freeLearningSwipeHintForClasses({1}, 2), contains('rechts'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 2),
+      contains('Betriebsfragen'),
+    );
+  });
+
+  test('free learning upgrades show only their technical additions', () {
+    for (final course in <Set<int>>[
+      {2},
+      {3},
+      {2, 3},
+    ]) {
+      expect(freeLearningMainChaptersForClasses(course), [0]);
+      expect(freeLearningSwipeHintForClasses(course, 0), isNull);
+    }
   });
 
   test('question filter supports direct and nested question sections', () {
@@ -89,15 +112,6 @@ void main() {
     expect((sections[1]['sections'] as List), hasLength(1));
   });
 
-  test('catalog expands upgrade courses to their complete target class', () {
-    expect(catalogClassesForCourse([1]), {1});
-    expect(catalogClassesForCourse([2]), {1, 2});
-    expect(catalogClassesForCourse([1, 2]), {1, 2});
-    expect(catalogClassesForCourse([3]), {1, 2, 3});
-    expect(catalogClassesForCourse([2, 3]), {1, 2, 3});
-    expect(catalogClassesForCourse([1, 2, 3]), {1, 2, 3});
-  });
-
   test('direct chapter questions are counted without fake subchapters', () {
     final json = Json({
       'sections': [
@@ -128,7 +142,7 @@ void main() {
         await rootBundle.loadString('assets/questions/Questions.json');
     final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
 
-    for (final mainChapter in freeLearningMainChapters) {
+    for (final mainChapter in fullCatalogMainChapters) {
       final section =
           (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
       filterQuestionSections(section, {1, 2, 3});
@@ -139,7 +153,8 @@ void main() {
     }
   });
 
-  test('real catalog is non-empty for every selectable course', () async {
+  test('real catalog is non-empty on every page exposed for a course',
+      () async {
     final rawCatalog =
         await rootBundle.loadString('assets/questions/Questions.json');
     final selectableCourses = <Set<int>>[
@@ -152,11 +167,11 @@ void main() {
     ];
 
     for (final course in selectableCourses) {
-      for (final mainChapter in freeLearningMainChapters) {
+      for (final mainChapter in freeLearningMainChaptersForClasses(course)) {
         final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
         final section =
             (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
-        filterQuestionSections(section, catalogClassesForCourse(course));
+        filterQuestionSections(section, course);
 
         final json = Json(section);
         expect(
@@ -165,6 +180,29 @@ void main() {
           reason: 'Empty catalog page $mainChapter for course $course',
         );
       }
+    }
+  });
+
+  test('upgrade catalog contains exactly the selected additional classes',
+      () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final cases = [
+      (classes: <int>{2}, expectedQuestions: 463),
+      (classes: <int>{3}, expectedQuestions: 716),
+      (classes: <int>{2, 3}, expectedQuestions: 1179),
+    ];
+
+    for (final testCase in cases) {
+      final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+      final technique =
+          (catalog['sections'] as List)[0] as Map<String, dynamic>;
+      filterQuestionSections(technique, testCase.classes);
+
+      expect(
+        Json(technique).getAllQuestionIds(0),
+        hasLength(testCase.expectedQuestions),
+      );
     }
   });
 }

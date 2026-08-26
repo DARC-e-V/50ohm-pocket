@@ -33,18 +33,6 @@ bool _questionSectionHasContent(Map section) {
       subsections is List && subsections.isNotEmpty;
 }
 
-/// Expands an upgrade selection to the complete target exam catalog.
-///
-/// Course assets use only the newly required classes for upgrades, for
-/// example `{2}` for N -> E. The official catalog view, however, must also
-/// contain the common class-N questions for operation and regulations.
-Set<int> catalogClassesForCourse(Iterable<int> selectedClasses) {
-  final classes = selectedClasses.toSet();
-  if (classes.contains(3)) return {1, 2, 3};
-  if (classes.contains(2)) return {1, 2};
-  return {1};
-}
-
 class QuestionReference {
   final int mainChapter;
   final int chapter;
@@ -83,9 +71,7 @@ class Json {
         ? importedData
         : importedData["sections"][mainchapter] as Map<String, dynamic>;
 
-    final filterClasses =
-        mainchapter == -1 ? classes : catalogClassesForCourse(classes);
-    filterQuestionSections(this.data!, filterClasses);
+    filterQuestionSections(this.data!, classes);
     return this.data!;
   }
 

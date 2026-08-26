@@ -19,18 +19,27 @@ int lessonListItemCount(int chapterCount) =>
 int lessonChapterIndex(int listItemIndex) =>
     listItemIndex - lessonListHeaderItemCount;
 
-const freeLearningMainChapters = [2, 1, 0];
+const fullCatalogMainChapters = [2, 1, 0];
 const freeLearningSwipeHints = [
   "Wische nach links, um zu den Betriebsfragen zu gelangen.",
   "Wische nach rechts zu den Vorschriftsfragen oder nach links zu den technischen Fragen.",
   "Wische nach rechts, um zu den Betriebsfragen zu gelangen.",
 ];
 
-int freeLearningMainChapter(int pageIndex) =>
-    freeLearningMainChapters[pageIndex];
+List<int> freeLearningMainChaptersForClasses(Iterable<int> selectedClasses) {
+  final classes = selectedClasses.toSet();
+  return classes.isEmpty || classes.contains(1)
+      ? fullCatalogMainChapters
+      : const [0];
+}
 
-String freeLearningSwipeHint(int pageIndex) =>
-    freeLearningSwipeHints[pageIndex];
+String? freeLearningSwipeHintForClasses(
+  Iterable<int> selectedClasses,
+  int pageIndex,
+) {
+  final pages = freeLearningMainChaptersForClasses(selectedClasses);
+  return pages.length == 1 ? null : freeLearningSwipeHints[pageIndex];
+}
 
 bool isDirectQuestionChapter(Json json, int chapter) =>
     json.chaptersize(chapter) == 0 && json.chapterQuestionCount(chapter) > 0;
@@ -56,6 +65,13 @@ class _LearningmoduleState extends State<Learningmodule> {
   @override
   Widget build(BuildContext context) {
     bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
+    final storedClasses =
+        DatabaseWidget.of(context).settings_database.get("Klasse");
+    final selectedClasses = storedClasses is Iterable
+        ? storedClasses.whereType<num>().map((value) => value.toInt()).toList()
+        : <int>[];
+    final freeLearningPages =
+        freeLearningMainChaptersForClasses(selectedClasses);
     return Scaffold(
       appBar: AppBar(
         title: SvgPicture.asset("assets/icons/ohm2.svg", semanticsLabel: "50 Ohm"),
@@ -90,7 +106,7 @@ class _LearningmoduleState extends State<Learningmodule> {
         ],
       ),
       body: DefaultTabController(
-        length: 3,
+        length: freeLearningPages.length,
         child: Scaffold(
             body: courseOrdering
                 ? getUserClass(context)
@@ -99,11 +115,14 @@ class _LearningmoduleState extends State<Learningmodule> {
                 return chapterbuilder(
                   context,
                   'assets/questions/Questions.json',
-                  freeLearningMainChapter(index),
-                  swipeHint: freeLearningSwipeHint(index),
+                  freeLearningPages[index],
+                  swipeHint: freeLearningSwipeHintForClasses(
+                    selectedClasses,
+                    index,
+                  ),
                 );
               },
-              itemCount: 3,
+              itemCount: freeLearningPages.length,
             )
         ),
       ),
