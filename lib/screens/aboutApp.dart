@@ -38,7 +38,7 @@ class AboutAppPage extends StatelessWidget {
                       },
                     ),
                     SettingsTile(
-                      title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON \n Felix Pfannkuch, DO6FP"),
+                      title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON \n Felix Pfannkuch, DO6FP \n Matthias Jung, DL9MJ \n und alle weiteren Mitwirkenden"),
                       leading: Icon(Icons.flutter_dash),
                     ),
                   ],
