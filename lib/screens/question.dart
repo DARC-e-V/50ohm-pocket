@@ -77,6 +77,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   var questionorder, questreslist, pdfController, questionradio;
 
+  final ScrollController _questionScrollController = ScrollController();
+
   QuestionState state = QuestionState.answering;
 
   int highlighting = -1;
@@ -97,6 +99,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
 
   _Questionstate(this.context, this.subchapter,this.chapter);
+
+  @override
+  void dispose() {
+    _questionScrollController.dispose();
+    super.dispose();
+  }
 
   bool get _isPractice =>
       widget.practiceData != null && widget.singleQuestion == null;
@@ -254,6 +262,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           child: Stack(
             children: [
               ListView(
+                controller: _questionScrollController,
                 children: [
                   //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
                   Padding(
@@ -609,6 +618,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       Navigator.of(context).pop(true);
       return;
     }
+
+    if (_questionScrollController.hasClients) {
+      _questionScrollController.jumpTo(
+        _questionScrollController.position.minScrollExtent,
+      );
+    }
+
     if (_isPractice) {
       questionradio = null;
       _practiceAnswered += 1;
