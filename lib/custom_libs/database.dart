@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Database{
+import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
+import 'package:fuenfzigohm/learning_state/legacy_progress_migrator.dart';
 
+class Database {
   var progress;
   var settings;
 
-  load() async{
+  load() async {
     await Hive.initFlutter();
     settings = await Hive.openBox('settings');
     progress = await Hive.openBox('progress');
-    return [progress, settings ];
+    final learningEvents = await Hive.openBox('learning_events_v1');
+    final learningStateRepository = LearningStateRepository(
+      eventsBox: learningEvents,
+      settingsBox: settings,
+    );
+    await LegacyProgressMigrator(
+      legacyProgressBox: progress,
+      settingsBox: settings,
+      learningStateRepository: learningStateRepository,
+    ).migrateIfNeeded();
+    return [progress, settings, learningStateRepository];
   }
 }
 
-class Databaseobj{
+class Databaseobj {
   BuildContext context;
 
   Databaseobj(this.context);
 
-  write(mainchapter, chapter, subchapter, resultlist){
+  write(mainchapter, chapter, subchapter, resultlist) {
     int i = 0;
-    for(var result in resultlist){
-      if(result.isEmpty) {
+    for (var result in resultlist) {
+      if (result.isEmpty) {
         i++;
         continue;
       }
@@ -31,36 +43,49 @@ class Databaseobj{
 
       // List list = DatabaseWidget.of(context).database.get("[$mainchapter][$chapter][${subchapter[0]}]");
       //print("liste :: $list");
-      try{
-        List list = DatabaseWidget.of(context).prog_database.get(subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]");
+      try {
+        List list = DatabaseWidget.of(context).prog_database.get(
+            subchapter.length == 0
+                ? "[$mainchapter][$chapter]"
+                : "[$mainchapter][$chapter][${subchapter[i]}]");
         int x = 0;
-        List<dynamic> updatedres = list.map((item){x++; return  item + result[x - 1];}).toList();
+        List<dynamic> updatedres = list.map((item) {
+          x++;
+          return item + result[x - 1];
+        }).toList();
         DatabaseWidget.of(context).prog_database.put(
-            subchapter.length == 0  ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][${subchapter[i]}]",
-            updatedres
-          );
-      }catch(e){
+            subchapter.length == 0
+                ? "[$mainchapter][$chapter]"
+                : "[$mainchapter][$chapter][${subchapter[i]}]",
+            updatedres);
+      } catch (e) {
         DatabaseWidget.of(context).prog_database.put(
-        subchapter.length == 0  ? "[$mainchapter][$chapter]" :"[$mainchapter][$chapter][${subchapter[i]}]",
-        (result as List<dynamic>)
-        );
+            subchapter.length == 0
+                ? "[$mainchapter][$chapter]"
+                : "[$mainchapter][$chapter][${subchapter[i]}]",
+            (result as List<dynamic>));
       }
       i++;
     }
   }
 
-  read(mainchapter, chapter, subchapter){
-    try{
-      List<dynamic> list = DatabaseWidget.of(context).prog_database.get(subchapter == null ? "[$mainchapter][$chapter]" : "[$mainchapter][$chapter][$subchapter]");
-      return (list.fold(0, (var x, element) => element + x) / (list.length * 3));
-    }catch(e){
+  read(mainchapter, chapter, subchapter) {
+    try {
+      List<dynamic> list = DatabaseWidget.of(context).prog_database.get(
+          subchapter == null
+              ? "[$mainchapter][$chapter]"
+              : "[$mainchapter][$chapter][$subchapter]");
+      return (list.fold(0, (var x, element) => element + x) /
+          (list.length * 3));
+    } catch (e) {
       return 0.0;
     }
   }
 
   /// Returns the score for a single question at a specific index within a subchapter/chapter.
   /// Returns 0 if not found.
-  int getQuestionScore(int mainchapter, int chapter, int? subchapter, int questionIndex) {
+  int getQuestionScore(
+      int mainchapter, int chapter, int? subchapter, int questionIndex) {
     try {
       String key = subchapter == null || subchapter == -1
           ? "[$mainchapter][$chapter]"
@@ -99,7 +124,8 @@ class Databaseobj{
       if (currentDbKey != lastDbKey) {
         lastDbKey = currentDbKey;
         try {
-          cachedScores = DatabaseWidget.of(context).prog_database.get(currentDbKey);
+          cachedScores =
+              DatabaseWidget.of(context).prog_database.get(currentDbKey);
         } catch (e) {
           cachedScores = null;
         }
@@ -115,7 +141,8 @@ class Databaseobj{
     return allScores;
   }
 
-  writeSingle(mainchapter, chapter, subchapter, int questionIndex, bool correct) {
+  writeSingle(
+      mainchapter, chapter, subchapter, int questionIndex, bool correct) {
     String key = subchapter == null
         ? "[$mainchapter][$chapter]"
         : "[$mainchapter][$chapter][$subchapter]";
@@ -144,23 +171,21 @@ class Databaseobj{
   }
 }
 
-
-class DatabaseWidget extends InheritedWidget{
-
+class DatabaseWidget extends InheritedWidget {
   final Box settings_database;
   final Box prog_database;
+  final LearningStateRepository learningStateRepository;
 
   const DatabaseWidget({
     required this.settings_database,
     required this.prog_database,
+    required this.learningStateRepository,
     required Widget child,
   }) : super(child: child);
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) =>
-  false;
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
   static DatabaseWidget of(BuildContext context) =>
-    context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;
-
+      context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;
 }

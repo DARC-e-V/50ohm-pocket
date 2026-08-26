@@ -33,6 +33,26 @@ bool _questionSectionHasContent(Map section) {
       subsections is List && subsections.isNotEmpty;
 }
 
+class QuestionReference {
+  final int mainChapter;
+  final int chapter;
+  final int? subchapter;
+  final int questionIndex;
+  final String questionId;
+
+  const QuestionReference({
+    required this.mainChapter,
+    required this.chapter,
+    required this.subchapter,
+    required this.questionIndex,
+    required this.questionId,
+  });
+
+  String get legacyKey => subchapter == null
+      ? '[$mainChapter][$chapter]'
+      : '[$mainChapter][$chapter][$subchapter]';
+}
+
 class Json{
   Map<String, dynamic>? data;
   Json(this.data);
@@ -157,7 +177,18 @@ class Json{
   /// Returns a list of all question keys in order: [[mainchapter, chapter, subchapter, questionIndex], ...]
   /// Used to map questions to their database scores
   List<List<int>> getAllQuestionKeys(int mainchapter) {
-    List<List<int>> keys = [];
+    return getQuestionReferences(mainchapter)
+        .map((reference) => [
+              reference.mainChapter,
+              reference.chapter,
+              reference.subchapter ?? -1,
+              reference.questionIndex,
+            ])
+        .toList();
+  }
+
+  List<QuestionReference> getQuestionReferences(int mainchapter) {
+    List<QuestionReference> references = [];
     try {
       List sections = this.data!["sections"];
       for (int c = 0; c < sections.length; c++) {
@@ -169,21 +200,53 @@ class Json{
             if (subchapter["questions"] != null) {
               int questionCount = (subchapter["questions"] as List).length;
               for (int q = 0; q < questionCount; q++) {
-                keys.add([mainchapter, c, s, q]);
+                references.add(QuestionReference(
+                  mainChapter: mainchapter,
+                  chapter: c,
+                  subchapter: s,
+                  questionIndex: q,
+                  questionId: subchapter["questions"][q]["number"].toString(),
+                ));
               }
             }
           }
         } else if (chapter["questions"] != null) {
           int questionCount = (chapter["questions"] as List).length;
           for (int q = 0; q < questionCount; q++) {
-            keys.add([mainchapter, c, -1, q]); // -1 indicates no subchapter
+            references.add(QuestionReference(
+              mainChapter: mainchapter,
+              chapter: c,
+              subchapter: null,
+              questionIndex: q,
+              questionId: chapter["questions"][q]["number"].toString(),
+            ));
           }
         }
       }
     } catch (e) {
       // Return empty on error
     }
-    return keys;
+    return references;
+  }
+
+  List<String> getAllQuestionIds(int mainchapter) =>
+      getQuestionReferences(mainchapter)
+          .map((reference) => reference.questionId)
+          .toList();
+
+  List<String> getQuestionIds(int chapter, int? subchapter) {
+    if (subchapter == null) {
+      final questions = this.data!["sections"][chapter]["questions"];
+      if (questions is! List) return [];
+      return questions
+          .map((question) => question["number"].toString())
+          .toList();
+    }
+
+    final questions =
+        this.data!["sections"][chapter]["sections"][subchapter]["questions"];
+    if (questions is! List) return [];
+    return questions.map((question) => question["number"].toString()).toList();
   }
 
   // Get total question count for a chapter (including all subchapters)

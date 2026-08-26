@@ -6,6 +6,7 @@ import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/helpers/packagesListing.dart';
 import 'package:fuenfzigohm/helpers/questionsLicenseNotice.dart';
+import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:fuenfzigohm/ui/welcome/pages/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,12 +24,14 @@ void main() {
           final data = snapshot.data as List;
           final progressDatabase = data[0] as Box;
           final settingsDatabase = data[1] as Box;
+          final learningStateRepository = data[2] as LearningStateRepository;
           final initialFontScale =
               (settingsDatabase.get("fontScale") as num?)?.toDouble() ?? 1.0;
 
           return PocketApp(
             progDatabase: progressDatabase,
             settingsDatabase: settingsDatabase,
+            learningStateRepository: learningStateRepository,
             initialFontScale: initialFontScale,
           );
         }
@@ -43,12 +46,14 @@ class PocketApp extends StatefulWidget {
   final Box progDatabase;
   final Box settingsDatabase;
   final double initialFontScale;
+  final LearningStateRepository learningStateRepository;
 
   const PocketApp({
     super.key,
     required this.progDatabase,
     required this.settingsDatabase,
     required this.initialFontScale,
+    required this.learningStateRepository,
   });
 
   @override
@@ -87,6 +92,7 @@ class _PocketAppState extends State<PocketApp> {
       child: DatabaseWidget(
         prog_database: widget.progDatabase,
         settings_database: widget.settingsDatabase,
+        learningStateRepository: widget.learningStateRepository,
         child: RepositoryProvider(
           create: (_) => SettingRepository(
             service: SettingService(

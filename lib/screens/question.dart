@@ -204,9 +204,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
                   child: ElevatedButton(
                     style: buttonstyle(main_col),
-                    onPressed: () {
+                    onPressed: () async {
                       if(state == QuestionState.answering && questionradio != null){
-                        _questionhandler(ShuffledAnswers, Answers, questionradio);
+                        await _questionhandler(
+                          ShuffledAnswers,
+                          Answers,
+                          questionradio,
+                        );
                       }
                     },
                     child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
@@ -408,7 +412,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         }
     );
   }
-  _questionhandler(ShuffledAnswers, Answers, i){
+  Future<void> _questionhandler(ShuffledAnswers, Answers, i) async {
     setState(() {
       state = QuestionState.evaluating;
     });
@@ -416,12 +420,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     // print("${_json.correctanswer(this.chapter,this.subchapter[this.subchapterkey],this.question[this.questionkey])}");
     questreslist[subchapterkey].add(correct);
 
-    Databaseobj(context).writeSingle(
-      JsonWidget.of(context).mainchapter,
-      chapter,
-      subchapter.length == 0 ? null : subchapter[subchapterkey],
-      questionorder[questionkey],
-      correct
+    final selectedAnswerIndex = Answers.indexOf(ShuffledAnswers[i]);
+    final selectedAnswerKey = selectedAnswerIndex >= 0
+        ? ['a', 'b', 'c', 'd'][selectedAnswerIndex]
+        : null;
+    await DatabaseWidget.of(context).learningStateRepository.recordAnswer(
+      questionId:
+          json.questionid(chapter, _subchapter, questionorder[questionkey]),
+      correct: correct,
+      selectedAnswerKey: selectedAnswerKey,
     );
 
     for(int i = 0; i < ShuffledAnswers.length; i++){

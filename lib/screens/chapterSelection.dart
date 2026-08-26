@@ -164,9 +164,10 @@ class _LearningmoduleState extends State<Learningmodule> {
       {String? swipeHint}) {
     Json json = Json(data);
 
-    // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
-    List<List<int>> questionKeys = json.getAllQuestionKeys(mainchapter);
-    List<int> questionScores = Databaseobj(context).getAllQuestionScoresFromKeys(questionKeys);
+    final questionIds = json.getAllQuestionIds(mainchapter);
+    final questionScores = DatabaseWidget.of(context)
+        .learningStateRepository
+        .scoresForQuestions(questionIds);
 
     return Center( child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
@@ -312,11 +313,14 @@ class _LearningmoduleState extends State<Learningmodule> {
             children: [
               ExcludeSemantics(
                 child: LinearProgressIndicator(
-                  value: Databaseobj(context).read(
-                    JsonWidget.of(context).mainchapter,
-                    chapter,
-                    hasDirectQuestions ? null : subchapter,
-                  ),
+                  value: DatabaseWidget.of(context)
+                      .learningStateRepository
+                      .progressForQuestions(
+                        json.getQuestionIds(
+                          chapter,
+                          hasDirectQuestions ? null : subchapter,
+                        ),
+                      ),
                   color: main_col,
                 ),
               ),
