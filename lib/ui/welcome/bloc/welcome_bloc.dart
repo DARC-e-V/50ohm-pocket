@@ -12,8 +12,7 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   }) : super(const WelcomeState()) {
     on<WelcomeFetchStatusEvent>(_mapWelcomeFetchStatusEventToState);
     on<WelcomeStartEvent>(_mapWelcomeStartEventToState);
-    on<WelcomeCourseUpgradeToggleEvent>(
-        _mapWelcomeCourseUpgradeToggleEventToState);
+    on<WelcomeBackEvent>(_mapWelcomeBackEventToState);
     on<WelcomeCourseSelectEvent>(_mapWelcomeCourseSelectEventToState);
   }
 
@@ -42,15 +41,11 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
         ));
   }
 
-  void _mapWelcomeCourseUpgradeToggleEventToState(
-    WelcomeCourseUpgradeToggleEvent event,
+  void _mapWelcomeBackEventToState(
+    WelcomeBackEvent event,
     Emitter emit,
   ) async {
-    emit(this.state.copyWith(
-          status: state.status == WelcomeStatus.updateCourseSelection
-              ? WelcomeStatus.courseSelection
-              : WelcomeStatus.updateCourseSelection,
-        ));
+    emit(state.copyWith(status: WelcomeStatus.initial));
   }
 
   void _mapWelcomeCourseSelectEventToState(

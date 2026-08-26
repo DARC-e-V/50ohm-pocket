@@ -170,7 +170,7 @@ class _settingsstate extends State<Settingspage> {
                   DatabaseWidget.of(
                     context,
                   ).settings_database.delete("welcomePage");
-                  Navigator.of(context).popAndPushNamed("/welcome");
+                  Navigator.of(context).pushNamed("/welcome");
                 },
               ),
               SettingsTile.switchTile(

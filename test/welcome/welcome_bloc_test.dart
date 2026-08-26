@@ -74,21 +74,12 @@ void main() {
     );
 
     blocTest<WelcomeBloc, WelcomeState>(
-      'emits courseUpgradeSelection when WelcomeCourseUpgradeToggleEvent is added',
+      'returns from course selection to the greeting during onboarding',
+      seed: () => WelcomeState(status: WelcomeStatus.courseSelection),
       build: () => welcomeBloc,
-      act: (bloc) => bloc.add(WelcomeCourseUpgradeToggleEvent()),
+      act: (bloc) => bloc.add(WelcomeBackEvent()),
       expect: () => [
-        WelcomeState(status: WelcomeStatus.updateCourseSelection),
-      ],
-    );
-
-    blocTest<WelcomeBloc, WelcomeState>(
-      'emits courseSelection when WelcomeCourseUpgradeToggleEvent is added',
-      build: () => welcomeBloc,
-      seed: () => WelcomeState(status: WelcomeStatus.updateCourseSelection),
-      act: (bloc) => bloc.add(WelcomeCourseUpgradeToggleEvent()),
-      expect: () => [
-        WelcomeState(status: WelcomeStatus.courseSelection),
+        WelcomeState(status: WelcomeStatus.initial),
       ],
     );
 

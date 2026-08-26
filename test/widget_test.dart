@@ -2,16 +2,120 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
+import 'package:fuenfzigohm/repository/models/course_class.dart';
+import 'package:fuenfzigohm/repository/setting_repository.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
+import 'package:fuenfzigohm/ui/welcome/bloc/welcome_bloc.dart';
+import 'package:fuenfzigohm/ui/welcome/pages/welcome_layout.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
+
+class _MockSettingRepository extends Mock implements SettingRepository {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('course selection shows all six courses on one page',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    expect(
+      completeCourseOptions.map((option) => option.course),
+      [
+        CourseClass.COURSE_CLASS_N,
+        CourseClass.COURSE_CLASS_NE,
+        CourseClass.COURSE_CLASS_NEA,
+      ],
+    );
+    expect(
+      upgradeCourseOptions.map((option) => option.course),
+      [
+        CourseClass.COURSE_CLASS_E,
+        CourseClass.COURSE_CLASS_EA,
+        CourseClass.COURSE_CLASS_A,
+      ],
+    );
+
+    final repository = _MockSettingRepository();
+    when(() => repository.courseClass).thenReturn({});
+    when(() => repository.setCourseClass(any())).thenAnswer((_) async {});
+    when(() => repository.setShowWelcomeScreen(any())).thenAnswer((_) async {});
+    final bloc = WelcomeBloc(settingRepository: repository);
+    addTearDown(bloc.close);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: BlocProvider.value(
+          value: bloc,
+          child: const WelcomeCourseSelection(),
+        ),
+      ),
+    );
+
+    expect(
+        find.text('Lernen auf 50ohm.de. Üben, wo du willst.'), findsOneWidget);
+    expect(find.textContaining('in der Bahn'), findsOneWidget);
+    expect(find.text('Kurs auswählen'), findsNothing);
+    expect(find.text('Gesamtkurse'), findsOneWidget);
+    expect(find.text('Aufbaukurse'), findsOneWidget);
+    expect(find.textContaining('noch kein Amateurfunkzeugnis'), findsOneWidget);
+    expect(find.textContaining('Klasse N oder E'), findsOneWidget);
+    for (final label in [
+      'N',
+      'N + E',
+      'N + E + A',
+      'N → E',
+      'N → A',
+      'E → A'
+    ]) {
+      expect(find.text(label), findsOneWidget);
+    }
+
+    await tester.scrollUntilVisible(find.text('N → A'), 400);
+    await tester.tap(find.text('N → A'));
+    await tester.pump();
+    verify(() => repository.setCourseClass(CourseClass.COURSE_CLASS_EA))
+        .called(1);
+  });
+
+  testWidgets('course selection returns to settings without losing setup',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    final repository = _MockSettingRepository();
+    when(() => repository.courseClass).thenReturn({1});
+    when(() => repository.setShowWelcomeScreen(any())).thenAnswer((_) async {});
+    final bloc = WelcomeBloc(settingRepository: repository);
+    addTearDown(bloc.close);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        initialRoute: '/course-selection',
+        routes: {
+          '/': (_) => const Scaffold(body: Text('Einstellungen')),
+          '/course-selection': (_) => BlocProvider.value(
+                value: bloc,
+                child: const Scaffold(body: WelcomeCourseSelection()),
+              ),
+        },
+      ),
+    );
+
+    await tester.scrollUntilVisible(find.text('Zurück'), 500);
+    await tester.tap(find.text('Zurück'));
+    await tester.pumpAndSettle();
+
+    verify(() => repository.setShowWelcomeScreen(true)).called(1);
+    expect(find.text('Einstellungen'), findsOneWidget);
+  });
 
   testWidgets('practice intro explains the open-ended exercise',
       (tester) async {
