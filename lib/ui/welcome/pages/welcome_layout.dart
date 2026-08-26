@@ -46,6 +46,19 @@ class WelcomeGreeting extends StatelessWidget {
             "assets/welcome/Icons.svg",
             clipBehavior: Clip.none,
             fit: BoxFit.cover,
+            colorFilter: Theme.of(context).brightness == Brightness.light
+                ? ColorFilter.matrix(<double>[
+                    1.0, 0.0, 0.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 1.0, 0.0, 0.0,
+                    0.0, 0.0, 0.0, 1.0, 0.0,
+                  ])
+                : ColorFilter.matrix(<double>[
+                    -1.0, 0.0, 0.0, 0.0, 255.0,
+                    0.0, -1.0, 0.0, 0.0, 255.0,
+                    0.0, 0.0, -1.0, 0.0, 255.0,
+                    0.0, 0.0, 0.0, 1.0, 0.0,
+                  ]),
           ),
         ),
         Container(
@@ -124,6 +137,19 @@ class WelcomeCourseSelection extends StatelessWidget {
                   'assets/welcome/Icons.svg',
                   clipBehavior: Clip.none,
                   fit: BoxFit.cover,
+                  colorFilter: Theme.of(context).brightness == Brightness.light
+                      ? ColorFilter.matrix(<double>[
+                          1.0, 0.0, 0.0, 0.0, 0.0,
+                          0.0, 1.0, 0.0, 0.0, 0.0,
+                          0.0, 0.0, 1.0, 0.0, 0.0,
+                          0.0, 0.0, 0.0, 1.0, 0.0,
+                        ])
+                      : ColorFilter.matrix(<double>[
+                          -1.0, 0.0, 0.0, 0.0, 255.0,
+                          0.0, -1.0, 0.0, 0.0, 255.0,
+                          0.0, 0.0, -1.0, 0.0, 255.0,
+                          0.0, 0.0, 0.0, 1.0, 0.0,
+                        ]),
                 ),
               ),
             ),

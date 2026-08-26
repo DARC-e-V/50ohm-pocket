@@ -33,6 +33,17 @@ class _settingsstate extends State<Settingspage> {
     return "Standard";
   }
 
+  String _themeModeLabel(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.light:
+        return "Hell";
+      case ThemeMode.dark:
+        return "Dunkel";
+      case ThemeMode.system:
+        return "Systemeinstellung";
+    }
+  }
+
   Future<void> _showFontSizeDialog(
     BuildContext context,
     AppSettingsScope appSettings,
@@ -84,6 +95,88 @@ class _settingsstate extends State<Settingspage> {
 
     if (newFontScale != null) {
       appSettings.onFontScaleChanged(newFontScale);
+    }
+  }
+
+  Future<void> _showThemeModeDialog(
+    BuildContext context,
+    AppSettingsScope appSettings,
+  ) async {
+    ThemeMode selectedThemeMode = appSettings.themeMode;
+
+    final newThemeMode = await showDialog<ThemeMode>(
+      context: context,
+      builder: (dialogContext) {
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              title: const Text("Design"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Hell"),
+                    value: ThemeMode.light,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Dunkel"),
+                    value: ThemeMode.dark,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Systemeinstellung"),
+                    value: ThemeMode.system,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(),
+                  child: const Text("Abbrechen"),
+                ),
+                FilledButton(
+                  onPressed: () =>
+                      Navigator.of(dialogContext).pop(selectedThemeMode),
+                  child: const Text("Speichern"),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+
+    if (newThemeMode != null) {
+      appSettings.onThemeModeChanged(newThemeMode);
     }
   }
 
@@ -158,6 +251,15 @@ class _settingsstate extends State<Settingspage> {
                 trailing: Icon(Icons.keyboard_arrow_right),
                 onPressed: (BuildContext context) {
                   _showFontSizeDialog(context, appSettings);
+                },
+              ),
+              SettingsTile.navigation(
+                title: Text("Design"),
+                value: Text(_themeModeLabel(appSettings.themeMode)),
+                description: Text("Wähle zwischen Hell-, Dunkel- oder Systemeinstellung."),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onPressed: (BuildContext context) {
+                  _showThemeModeDialog(context, appSettings);
                 },
               ),
               SettingsTile.navigation(

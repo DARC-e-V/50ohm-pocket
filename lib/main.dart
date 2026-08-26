@@ -72,16 +72,42 @@ class PocketApp extends StatefulWidget {
 
 class _PocketAppState extends State<PocketApp> {
   late final ValueNotifier<double> _fontScaleNotifier;
+  late final ValueNotifier<ThemeMode> _themeModeNotifier;
 
   @override
   void initState() {
     super.initState();
     _fontScaleNotifier = ValueNotifier<double>(widget.initialFontScale);
+    final savedThemeMode = widget.settingsDatabase.get("themeMode") as String? ?? "system";
+    _themeModeNotifier = ValueNotifier<ThemeMode>(_stringToThemeMode(savedThemeMode));
+  }
+
+  ThemeMode _stringToThemeMode(String value) {
+    switch (value) {
+      case "light":
+        return ThemeMode.light;
+      case "dark":
+        return ThemeMode.dark;
+      default:
+        return ThemeMode.system;
+    }
+  }
+
+  String _themeModeToString(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.light:
+        return "light";
+      case ThemeMode.dark:
+        return "dark";
+      case ThemeMode.system:
+        return "system";
+    }
   }
 
   @override
   void dispose() {
     _fontScaleNotifier.dispose();
+    _themeModeNotifier.dispose();
     super.dispose();
   }
 
@@ -94,11 +120,22 @@ class _PocketAppState extends State<PocketApp> {
     widget.settingsDatabase.put("fontScale", scale);
   }
 
+  void _updateThemeMode(ThemeMode mode) {
+    if (_themeModeNotifier.value == mode) {
+      return;
+    }
+
+    _themeModeNotifier.value = mode;
+    widget.settingsDatabase.put("themeMode", _themeModeToString(mode));
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppSettingsScope(
       fontScaleNotifier: _fontScaleNotifier,
       onFontScaleChanged: _updateFontScale,
+      themeModeNotifier: _themeModeNotifier,
+      onThemeModeChanged: _updateThemeMode,
       child: DatabaseWidget(
         prog_database: widget.progDatabase,
         settings_database: widget.settingsDatabase,
@@ -112,39 +149,44 @@ class _PocketAppState extends State<PocketApp> {
           child: ValueListenableBuilder<double>(
             valueListenable: _fontScaleNotifier,
             builder: (context, fontScale, _) {
-              return MaterialApp(
-                theme: lightmode(),
-                darkTheme: darkmode(),
-                themeMode: ThemeMode.system,
-                title: '50ohm-pocket',
-                locale: const Locale('de', 'DE'),
-                localizationsDelegates: const [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: const [
-                  Locale('de', 'DE'),
-                ],
-                home: Welcome(),
-                routes: {
-                  '/learn': (context) => Learningmodule(),
-                  '/welcome': (context) => Welcome(),
-                  '/appPackages': (context) => OssLicensesPage(),
-                  '/questionsLicenseNotice': (context) =>
-                      QuestionsLicensePage(),
-                  '/aboutApp': (context) => AboutAppPage(),
-                },
-                builder: (context, child) {
-                  final mediaQuery = MediaQuery.of(context);
-                  return MediaQuery(
-                    data: mediaQuery.copyWith(
-                      textScaler: TextScaler.linear(fontScale),
-                    ),
-                    child: child ?? const SizedBox.shrink(),
+              return ValueListenableBuilder<ThemeMode>(
+                valueListenable: _themeModeNotifier,
+                builder: (context, themeMode, _) {
+                  return MaterialApp(
+                    theme: lightmode(),
+                    darkTheme: darkmode(),
+                    themeMode: themeMode,
+                    title: '50ohm-pocket',
+                    locale: const Locale('de', 'DE'),
+                    localizationsDelegates: const [
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: const [
+                      Locale('de', 'DE'),
+                    ],
+                    home: Welcome(),
+                    routes: {
+                      '/learn': (context) => Learningmodule(),
+                      '/welcome': (context) => Welcome(),
+                      '/appPackages': (context) => OssLicensesPage(),
+                      '/questionsLicenseNotice': (context) =>
+                          QuestionsLicensePage(),
+                      '/aboutApp': (context) => AboutAppPage(),
+                    },
+                    builder: (context, child) {
+                      final mediaQuery = MediaQuery.of(context);
+                      return MediaQuery(
+                        data: mediaQuery.copyWith(
+                          textScaler: TextScaler.linear(fontScale),
+                        ),
+                        child: child ?? const SizedBox.shrink(),
+                      );
+                    },
+                    debugShowCheckedModeBanner: false,
                   );
                 },
-                debugShowCheckedModeBanner: false,
               );
             },
           ),
@@ -154,18 +196,30 @@ class _PocketAppState extends State<PocketApp> {
   }
 }
 
-class AppSettingsScope extends InheritedNotifier<ValueNotifier<double>> {
+class AppSettingsScope extends InheritedWidget {
+  final ValueNotifier<double> fontScaleNotifier;
   final void Function(double scale) onFontScaleChanged;
+  final ValueNotifier<ThemeMode> themeModeNotifier;
+  final void Function(ThemeMode mode) onThemeModeChanged;
 
   const AppSettingsScope({
     super.key,
-    required ValueNotifier<double> fontScaleNotifier,
+    required this.fontScaleNotifier,
     required this.onFontScaleChanged,
+    required this.themeModeNotifier,
+    required this.onThemeModeChanged,
     required super.child,
-  }) : super(notifier: fontScaleNotifier);
+  });
 
   static AppSettingsScope of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppSettingsScope>()!;
 
-  double get fontScale => notifier?.value ?? 1.0;
+  double get fontScale => fontScaleNotifier.value;
+  ThemeMode get themeMode => themeModeNotifier.value;
+
+  @override
+  bool updateShouldNotify(AppSettingsScope oldWidget) {
+    return fontScaleNotifier != oldWidget.fontScaleNotifier ||
+        themeModeNotifier != oldWidget.themeModeNotifier;
+  }
 }

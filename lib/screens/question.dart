@@ -338,7 +338,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     Widget image;
     double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
     ColorFilter colorFilter =
-    MediaQuery.of(context).platformBrightness == Brightness.dark && !useDarkForeground
+    Theme.of(context).brightness == Brightness.dark && !useDarkForeground
         ? ColorFilter.matrix(<double>[
       -1.0, 0.0, 0.0, 0.0, 255.0,
       0.0, -1.0, 0.0, 0.0, 255.0,
