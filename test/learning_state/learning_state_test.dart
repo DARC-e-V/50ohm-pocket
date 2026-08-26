@@ -101,42 +101,14 @@ void main() {
     await legacyProgressBox.put('[-1][99][0]', [1]);
 
     final assets = <String, String>{
-      'assets/questions/E.json': jsonEncode({
-        'sections': [
-          {
-            'title': 'E chapter',
-            'sections': [
-              {
-                'title': 'E subchapter',
-                'questions': [
-                  {'number': 'EA111', 'class': '2'},
-                ],
-              },
-            ],
+      LegacyProgressMigrator.legacySnapshotAsset: jsonEncode({
+        'version': 1,
+        'courses': {
+          'E': {
+            '[-1][0][0]': ['EA111'],
+            '[0][0][0]': ['EA222'],
           },
-        ],
-      }),
-      'assets/questions/Questions.json': jsonEncode({
-        'sections': [
-          {
-            'title': 'Technique',
-            'sections': [
-              {
-                'title': 'Chapter',
-                'sections': [
-                  {
-                    'title': 'Subchapter',
-                    'questions': [
-                      {'number': 'EA222', 'class': '2'},
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-          {'title': 'Operation', 'sections': []},
-          {'title': 'Regulations', 'sections': []},
-        ],
+        },
       }),
     };
     final repository = LearningStateRepository(
@@ -174,7 +146,8 @@ void main() {
       {3}: 'AH203',
       {2, 3}: 'EA111',
     };
-    final assetCache = <String, String>{};
+    final legacySnapshot =
+        await rootBundle.loadString(LegacyProgressMigrator.legacySnapshotAsset);
 
     for (final migrationCase in cases.entries) {
       await eventsBox.clear();
@@ -191,15 +164,8 @@ void main() {
         legacyProgressBox: legacyProgressBox,
         settingsBox: settingsBox,
         learningStateRepository: repository,
-        loadAsset: (path) async => assetCache[path]!,
+        loadAsset: (path) async => legacySnapshot,
       );
-
-      // Populate the cache before migration so the injected loader stays
-      // synchronous and each large catalog asset is read only once.
-      final selectedAsset = _assetForClasses(migrationCase.key);
-      assetCache[selectedAsset] ??= await rootBundle.loadString(selectedAsset);
-      assetCache['assets/questions/Questions.json'] ??=
-          await rootBundle.loadString('assets/questions/Questions.json');
 
       await migrator.migrateIfNeeded();
 
@@ -210,6 +176,41 @@ void main() {
       );
       expect(eventsBox.length, 1);
     }
+  });
+
+  test('legacy snapshot is complete and independent of current course files',
+      () async {
+    final snapshot = jsonDecode(await rootBundle
+        .loadString(LegacyProgressMigrator.legacySnapshotAsset)) as Map;
+    expect(snapshot['version'], 1);
+    final courses = snapshot['courses'] as Map;
+
+    expect(courses.keys.toSet(), {'N', 'E', 'NE', 'A', 'EA', 'NEA'});
+    final expectedReferenceCounts = {
+      'N': 1142,
+      'E': 926,
+      'NE': 2068,
+      'A': 1432,
+      'EA': 2358,
+      'NEA': 3500,
+    };
+    for (final entry in expectedReferenceCounts.entries) {
+      final referenceCount = (courses[entry.key] as Map)
+          .values
+          .whereType<List>()
+          .fold<int>(0, (sum, ids) => sum + ids.length);
+      expect(referenceCount, entry.value, reason: entry.key);
+    }
+    expect((courses['N'] as Map)['[-1][0][0]'][0], 'NA102');
+    expect((courses['E'] as Map)['[-1][0][0]'][0], 'EA111');
+    expect((courses['A'] as Map)['[-1][0][0]'][0], 'AH203');
+
+    // A moved chapter in the current course must not affect the frozen map.
+    final currentE = jsonDecode(
+      await rootBundle.loadString('assets/questions/E.json'),
+    );
+    expect(_questionIds(currentE), contains('EA111'));
+    expect((courses['E'] as Map)['[-1][0][0]'][0], 'EA111');
   });
 
   test('N progress is retained in N+E and N+E+A by stable question id',
@@ -323,17 +324,4 @@ List<String> _questionIds(dynamic node) {
     }
   }
   return ids;
-}
-
-String _assetForClasses(Set<int> classes) {
-  final sorted = classes.toList()..sort();
-  return switch (sorted.join(',')) {
-    '1' => 'assets/questions/N.json',
-    '1,2' => 'assets/questions/NE.json',
-    '1,2,3' => 'assets/questions/NEA.json',
-    '2' => 'assets/questions/E.json',
-    '3' => 'assets/questions/A.json',
-    '2,3' => 'assets/questions/EA.json',
-    _ => throw ArgumentError.value(classes),
-  };
 }

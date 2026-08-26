@@ -5,6 +5,11 @@ Egal, ob du schon eine Lizenz hast oder gerade erst mit dem Lernen beginnst, mit
 # Mithelfen
 Das Projekt wird derzeit von einem kleinen Entwicklerteam ehrenamtlich entwickelt. Wenn du Verbesserungsvorschläge hast oder einen Fehler gefunden hast, schreibe gerne ein Issue.  Wenn du die App aktiv mitgestalten möchtest, klon das Repository und bring 50Ohm voran. Wir freuen uns über Pull Requests. 
 
+## Entwicklungsdokumentation
+
+- [Fragen- und Kursdaten aktualisieren](docs/question-assets.md) (Das ist wichtig bei neuen Releases!)
+- [Lernstand: Ereignisprotokoll und Migration](docs/learning-state.md)
+
 ## Update der Lizenzhinweise für verwendete Pakete
 
 `fvm flutter pub run flutter_oss_licenses:generate.dart`

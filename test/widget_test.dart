@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 
 void main() {
@@ -205,4 +206,80 @@ void main() {
       );
     }
   });
+
+  test('current guided courses contain exactly their indexed question sets',
+      () async {
+    final expectedCounts = {
+      'N': 571,
+      'E': 462,
+      'NE': 1033,
+      'A': 717,
+      'EA': 1179,
+      'NEA': 1750,
+    };
+
+    for (final entry in expectedCounts.entries) {
+      final course = jsonDecode(
+        await rootBundle.loadString('assets/questions/${entry.key}.json'),
+      );
+      final ids = _allQuestionIds(course);
+      expect(ids, hasLength(entry.value), reason: entry.key);
+      expect(ids.toSet(), hasLength(entry.value), reason: entry.key);
+    }
+
+    final aCourse = jsonDecode(
+      await rootBundle.loadString('assets/questions/A.json'),
+    );
+    final aQuestions = _questionsById(aCourse);
+    expect(aQuestions['EI303']?['class'], '2');
+  });
+
+  test('solution availability is bundled for every question view', () async {
+    await SolutionIndex.load();
+    expect(SolutionIndex.hasSolution('AB101'), isTrue);
+    expect(SolutionIndex.hasSolution('AB103'), isFalse);
+    expect(SolutionIndex.urlFor('AB101'), 'https://50ohm.de/AB101.html');
+  });
+}
+
+List<String> _allQuestionIds(dynamic node) {
+  final ids = <String>[];
+
+  void visit(dynamic value) {
+    if (value is Map) {
+      if (value['number'] is String) ids.add(value['number'] as String);
+      for (final child in value.values) {
+        visit(child);
+      }
+    } else if (value is List) {
+      for (final child in value) {
+        visit(child);
+      }
+    }
+  }
+
+  visit(node);
+  return ids;
+}
+
+Map<String, Map> _questionsById(dynamic node) {
+  final questions = <String, Map>{};
+
+  void visit(dynamic value) {
+    if (value is Map) {
+      if (value['number'] is String) {
+        questions[value['number'] as String] = value;
+      }
+      for (final child in value.values) {
+        visit(child);
+      }
+    } else if (value is List) {
+      for (final child in value) {
+        visit(child);
+      }
+    }
+  }
+
+  visit(node);
+  return questions;
 }

@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 
-import 'package:fuenfzigohm/custom_libs/json.dart';
-
 import 'learning_state_repository.dart';
 
 typedef AssetStringLoader = Future<String> Function(String path);
@@ -25,6 +23,7 @@ class LegacyMigrationResult {
 
 class LegacyProgressMigrator {
   static const String migrationSettingsKey = 'learningStateMigrationV1';
+  static const String legacySnapshotAsset = 'assets/questions/legacy_v1.json';
 
   final Box<dynamic> legacyProgressBox;
   final Box<dynamic> settingsBox;
@@ -51,13 +50,15 @@ class LegacyProgressMigrator {
       );
     }
 
-    final referencesByLegacyKey = <String, List<QuestionReference>>{};
-    await _addSelectedCourseReferences(
-      selectedCourseAsset,
-      selectedClasses,
-      referencesByLegacyKey,
+    final snapshot = jsonDecode(await loadAsset(legacySnapshotAsset)) as Map;
+    final courses = snapshot['courses'] as Map;
+    final rawReferences = courses[_courseIdFor(selectedClasses)] as Map;
+    final referencesByLegacyKey = rawReferences.map(
+      (key, value) => MapEntry(
+        key.toString(),
+        (value as List).map((questionId) => questionId.toString()).toList(),
+      ),
     );
-    await _addCatalogReferences(selectedClasses, referencesByLegacyKey);
 
     int migratedEvents = 0;
     int unresolvedScores = 0;
@@ -66,7 +67,7 @@ class LegacyProgressMigrator {
       final rawScores = legacyProgressBox.get(legacyKey);
       if (rawScores is! List) continue;
 
-      final references = referencesByLegacyKey[legacyKey] ?? const [];
+      final questionIds = referencesByLegacyKey[legacyKey] ?? const [];
       for (int questionIndex = 0;
           questionIndex < rawScores.length;
           questionIndex++) {
@@ -74,25 +75,23 @@ class LegacyProgressMigrator {
         final score = rawScore is num ? rawScore.toInt() : 0;
         if (score <= 0) continue;
 
-        final matchingReference = references
-            .where((reference) => reference.questionIndex == questionIndex)
-            .firstOrNull;
-        if (matchingReference == null) {
+        if (questionIndex >= questionIds.length) {
           unresolvedScores += score;
           continue;
         }
+        final questionId = questionIds[questionIndex];
 
         for (int attempt = 0; attempt < score; attempt++) {
           final eventId = _legacyEventId(
             legacyKey: legacyKey,
             questionIndex: questionIndex,
-            questionId: matchingReference.questionId,
+            questionId: questionId,
             attempt: attempt,
           );
           final inserted =
               await learningStateRepository.recordLegacyCorrectAnswer(
             eventId: eventId,
-            questionId: matchingReference.questionId,
+            questionId: questionId,
             legacySourceKey: '$legacyKey[$questionIndex]',
           );
           if (inserted) migratedEvents++;
@@ -125,58 +124,21 @@ class LegacyProgressMigrator {
     return classes.isEmpty ? {1} : classes;
   }
 
-  Future<void> _addSelectedCourseReferences(
-    String assetPath,
-    Set<int> selectedClasses,
-    Map<String, List<QuestionReference>> target,
-  ) async {
-    final data = jsonDecode(await loadAsset(assetPath)) as Map<String, dynamic>;
-    filterQuestionSections(data, selectedClasses);
-    _addReferences(Json(data).getQuestionReferences(-1), target);
-  }
-
-  Future<void> _addCatalogReferences(
-    Set<int> selectedClasses,
-    Map<String, List<QuestionReference>> target,
-  ) async {
-    final catalog = jsonDecode(
-      await loadAsset('assets/questions/Questions.json'),
-    ) as Map<String, dynamic>;
-    final mainSections = catalog['sections'] as List;
-
-    for (int mainChapter = 0;
-        mainChapter < mainSections.length;
-        mainChapter++) {
-      final sectionCopy = jsonDecode(jsonEncode(mainSections[mainChapter]))
-          as Map<String, dynamic>;
-      filterQuestionSections(sectionCopy, selectedClasses);
-      _addReferences(
-        Json(sectionCopy).getQuestionReferences(mainChapter),
-        target,
-      );
-    }
-  }
-
-  void _addReferences(
-    Iterable<QuestionReference> references,
-    Map<String, List<QuestionReference>> target,
-  ) {
-    for (final reference in references) {
-      target.putIfAbsent(reference.legacyKey, () => []).add(reference);
-    }
-  }
-
   String _courseAssetFor(Set<int> classes) {
+    return 'assets/questions/${_courseIdFor(classes)}.json';
+  }
+
+  String _courseIdFor(Set<int> classes) {
     final sorted = classes.toList()..sort();
     final key = sorted.join(',');
     return switch (key) {
-      '1' => 'assets/questions/N.json',
-      '1,2' => 'assets/questions/NE.json',
-      '1,2,3' => 'assets/questions/NEA.json',
-      '2' => 'assets/questions/E.json',
-      '3' => 'assets/questions/A.json',
-      '2,3' => 'assets/questions/EA.json',
-      _ => 'assets/questions/N.json',
+      '1' => 'N',
+      '1,2' => 'NE',
+      '1,2,3' => 'NEA',
+      '2' => 'E',
+      '3' => 'A',
+      '2,3' => 'EA',
+      _ => 'N',
     };
   }
 
@@ -187,11 +149,4 @@ class LegacyProgressMigrator {
     required int attempt,
   }) =>
       'legacy-v1:$legacyKey:$questionIndex:$questionId:$attempt';
-}
-
-extension _FirstOrNullExtension<T> on Iterable<T> {
-  T? get firstOrNull {
-    final iterator = this.iterator;
-    return iterator.moveNext() ? iterator.current : null;
-  }
 }

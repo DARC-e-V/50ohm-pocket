@@ -67,11 +67,15 @@ class Json {
         ? storedClasses.whereType<num>().map((value) => value.toInt()).toSet()
         : <int>{};
 
-    this.data = mainchapter == -1
-        ? importedData
-        : importedData["sections"][mainchapter] as Map<String, dynamic>;
-
-    filterQuestionSections(this.data!, classes);
+    if (mainchapter == -1) {
+      // Guided course assets already contain the exact questions assigned to
+      // that course. A catalog class can legitimately occur in a later course.
+      this.data = importedData;
+    } else {
+      this.data =
+          importedData["sections"][mainchapter] as Map<String, dynamic>;
+      filterQuestionSections(this.data!, classes);
+    }
     return this.data!;
   }
 

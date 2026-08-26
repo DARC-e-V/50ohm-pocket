@@ -15,6 +15,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   runApp(
     FutureBuilder(
@@ -35,7 +36,16 @@ void main() {
             initialFontScale: initialFontScale,
           );
         }
-        if (snapshot.hasError) return Text("Error");
+        if (snapshot.hasError) {
+          debugPrint('App startup failed: ${snapshot.error}');
+          return MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: Text("Die App konnte nicht gestartet werden."),
+              ),
+            ),
+          );
+        }
         return Center(child: CircularProgressIndicator());
       },
     ),

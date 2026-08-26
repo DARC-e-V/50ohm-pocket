@@ -1,5 +1,10 @@
 # Lernstand: Ereignisprotokoll und Migration
 
+Die einmalige Migration des alten positionsbasierten Lernstands verwendet
+`assets/questions/legacy_v1.json`. Dieser eingefrorene Schnappschuss entkoppelt
+die Migration von späteren Änderungen an Kapiteln und Abschnitten. Erst nach
+dem Start und der Migration lädt die Oberfläche die aktuellen Kursdateien.
+
 ## Ziel
 
 Der Lernstand wird anhand der stabilen Fragenummer gespeichert, zum Beispiel
@@ -68,16 +73,3 @@ Automatisierte Tests prüfen:
 - den vom Nutzer bestätigten Rückschluss über den aktuell gewählten Kurs,
 - die Idempotenz der Migration,
 - den Wechsel N → E → N und die Darstellung im Gesamtkatalog.
-
-## Spätere Erweiterungen
-
-Noch nicht Teil dieser Änderung sind:
-
-1. das Aktualisieren von Reihenfolge und Kapiteln aus den 50ohm.de-Konfigs,
-2. eine Probeprüfung nach dem Algorithmus von 50ohm.de,
-3. ein Menü „Lernen“ mit 25 Fragen, überwiegend aus „In Arbeit“ und mit
-   gelegentlichen Wiederholungen gelernter Fragen.
-
-Das Ereignisprotokoll liefert dafür eine stabile Grundlage. Vor einer echten
-Gerätesynchronisation müssen noch Konfliktregeln, Katalogversionierung,
-Datenschutz und Log-Kompaktierung festgelegt werden.

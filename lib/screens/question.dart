@@ -6,6 +6,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/section_urls.dart';
+import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
@@ -146,6 +147,18 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (SolutionIndex.hasSolution(
+                    json.questionid(
+                      chapter,
+                      _subchapter,
+                      questionorder[questionkey],
+                    ).toString(),
+                  ))
+                    IconButton(
+                      icon: Icon(Icons.lightbulb, color: Colors.amber),
+                      tooltip: "Lösungshinweis auf 50ohm.de",
+                      onPressed: () => launchURL(_getSolutionUrl()),
+                    ),
                   if (DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true)
                   IconButton(
                     icon: Icon(Icons.menu_book),
@@ -231,6 +244,12 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     final course = courseIdFromSelectedClasses(selectedClasses);
     final subsectionTitle = json.subchapter_name(chapter, subchapter[subchapterkey])?.toString() ?? '';
     return subsectionUrl(course, subsectionTitle) ?? 'https://50ohm.de';
+  }
+
+  String _getSolutionUrl() {
+    final questionId =
+        json.questionid(chapter, _subchapter, questionorder[questionkey]);
+    return SolutionIndex.urlFor(questionId.toString());
   }
 
   Widget questionImage(BuildContext context, String url, {bool useDarkForeground = false, String semanticsLabel = "Diagramm"}) {
