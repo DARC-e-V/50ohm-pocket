@@ -10,6 +10,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
+import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/exam/exam_simulation.dart';
 import 'package:fuenfzigohm/repository/models/course_class.dart';
 import 'package:fuenfzigohm/repository/setting_repository.dart';
@@ -158,6 +159,10 @@ void main() {
     await SolutionIndex.load(
       loadAsset: (_) async => '{"question_ids":["AB101"]}',
     );
+    await VideoIndex.load(
+      loadAsset: (_) async =>
+          '{"question_urls":{"AB101":"https://www.youtube.com/watch?v=test&t=12s"}}',
+    );
     final result = ExamQuestionResult(
       question: const ExamCatalogQuestion(
         id: 'AB101',
@@ -180,6 +185,9 @@ void main() {
     );
 
     expect(find.byTooltip('Lösungshinweis auf 50ohm.de'), findsOneWidget);
+    expect(find.byTooltip('Lernvideo von DL2YMR'), findsOneWidget);
+    expect(find.text('AB101'), findsOneWidget);
+    expect(find.text('Frage AB101'), findsNothing);
     expect(
       tester.widget<Icon>(find.byIcon(Icons.check_circle)).color,
       Colors.green.shade800,
@@ -514,6 +522,16 @@ void main() {
     expect(SolutionIndex.hasSolution('AB101'), isTrue);
     expect(SolutionIndex.hasSolution('AB103'), isFalse);
     expect(SolutionIndex.urlFor('AB101'), 'https://50ohm.de/AB101.html');
+  });
+
+  test('video availability is bundled for every question view', () async {
+    await VideoIndex.load();
+    expect(VideoIndex.hasVideo('NA103'), isTrue);
+    expect(VideoIndex.hasVideo('AB101'), isFalse);
+    expect(
+      VideoIndex.urlFor('NA103'),
+      'https://www.youtube.com/watch?v=WnOBk1UogjM&t=0s',
+    );
   });
 }
 

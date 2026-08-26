@@ -4,13 +4,17 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:fuenfzigohm/learning_state/learning_state_repository.dart';
 import 'package:fuenfzigohm/learning_state/legacy_progress_migrator.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
+import 'package:fuenfzigohm/custom_libs/video_index.dart';
 
 class Database {
   var progress;
   var settings;
 
   load() async {
-    await SolutionIndex.load();
+    await Future.wait([
+      SolutionIndex.load(),
+      VideoIndex.load(),
+    ]);
     await Hive.initFlutter();
     settings = await Hive.openBox('settings');
     progress = await Hive.openBox('progress');

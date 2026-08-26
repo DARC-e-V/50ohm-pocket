@@ -11,6 +11,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
+import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/exam/exam_simulation.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/question.dart';
@@ -982,7 +983,7 @@ class ExamReviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Frage ${result.question.id}'),
+        title: Text(result.question.id),
         actions: [
           if (SolutionIndex.hasSolution(result.question.id))
             IconButton(
@@ -990,6 +991,14 @@ class ExamReviewPage extends StatelessWidget {
               tooltip: 'Lösungshinweis auf 50ohm.de',
               onPressed: () => launchURL(
                 SolutionIndex.urlFor(result.question.id),
+              ),
+            ),
+          if (VideoIndex.hasVideo(result.question.id))
+            IconButton(
+              icon: const Icon(Icons.smart_display, color: Colors.red),
+              tooltip: 'Lernvideo von DL2YMR',
+              onPressed: () => launchURL(
+                VideoIndex.urlFor(result.question.id)!,
               ),
             ),
         ],

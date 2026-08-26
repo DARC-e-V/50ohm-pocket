@@ -8,6 +8,7 @@ import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/section_urls.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
+import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/learning_state/practice_question_selector.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
@@ -22,7 +23,6 @@ enum QuestionState{
   answering,
   evaluating
 }
-
 class Question extends StatefulWidget {
 
   final List subchapter;
@@ -139,77 +139,80 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
             },
           ),
           backgroundColor: const Color.fromARGB(10, 0, 0, 0),
+          titleSpacing: 0,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Tooltip(
-                        message: "Frage $_questionId",
-                        child: Text(
-                          _isPractice ? "Üben · $_questionId" : "Frage $_questionId",
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Semantics(
-                      label: _isPractice
-                          ? "Frage ${_practiceAnswered + 1}"
-                          : "Frage ${questionkey + 1} von ${questionorder.length}",
-                      child: ExcludeSemantics(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: main_col.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            _isPractice
-                                ? "${_practiceAnswered + 1}"
-                                : "${questionkey + 1}/${questionorder.length}",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                child: Tooltip(
+                  message: "Frage $_questionId",
+                  child: Text(
+                    _questionId,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (SolutionIndex.hasSolution(
-                    _questionId,
-                  ))
-                    IconButton(
-                      icon: Icon(Icons.lightbulb, color: Colors.amber),
-                      tooltip: "Lösungshinweis auf 50ohm.de",
-                      onPressed: () => launchURL(_getSolutionUrl()),
+              SizedBox(width: 8),
+              Semantics(
+                label: _isPractice
+                    ? "Frage ${_practiceAnswered + 1}"
+                    : "Frage ${questionkey + 1} von ${questionorder.length}",
+                child: ExcludeSemantics(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: main_col.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  if (DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true)
-                  IconButton(
-                    icon: Icon(Icons.menu_book),
-                    tooltip: "50Ω Lernmaterial",
-                    onPressed: () => launchURL(_getSectionUrl()),
+                    child: Text(
+                      _isPractice
+                          ? "${_practiceAnswered + 1}"
+                          : "${questionkey + 1}/${questionorder.length}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                  IconButton(icon: Icon(Icons.description), tooltip: "Hilfsmittel", onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel"),
-                        )
-                    );
-                  },
-                  ),
-                ],
-              )
+                ),
+              ),
             ],
           ),
+          actions: [
+            if (SolutionIndex.hasSolution(_questionId))
+              IconButton(
+                icon: Icon(Icons.lightbulb, color: Colors.amber),
+                tooltip: "Lösungshinweis auf 50ohm.de",
+                onPressed: () => launchURL(_getSolutionUrl()),
+              ),
+            if (VideoIndex.hasVideo(_questionId))
+              IconButton(
+                icon: Icon(Icons.smart_display, color: Colors.red),
+                tooltip: "Lernvideo von DL2YMR",
+                onPressed: () => launchURL(VideoIndex.urlFor(_questionId)!),
+              ),
+            if (DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true)
+              IconButton(
+                icon: Icon(Icons.menu_book),
+                tooltip: "50Ω Lernmaterial",
+                onPressed: () => launchURL(_getSectionUrl()),
+              ),
+            IconButton(
+              icon: Icon(Icons.description),
+              tooltip: "Hilfsmittel",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PdfViewer(
+                      1,
+                      "assets/pdf/Hilfsmittel_12062024.pdf",
+                      "Hilfsmittel",
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
         body: SafeArea(
           child: Stack(

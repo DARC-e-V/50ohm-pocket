@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
@@ -57,6 +58,7 @@ Future<void> main(List<String> arguments) async {
       .toList()
     ..sort();
   final generatedCourses = <String, Map<String, dynamic>>{};
+  final videoUrlsByQuestion = <String, String>{};
 
   for (final edition in _editions) {
     final tocSource = '$tocBaseUrl/$edition.json';
@@ -74,10 +76,19 @@ Future<void> main(List<String> arguments) async {
     final emittedIds = <String>{};
     for (final rawChapter in (toc['chapters'] as List).whereType<Map>()) {
       final chapter = rawChapter.cast<String, dynamic>();
+      final chapterVideoUrl = _youtubeUrl(
+        chapter['video_url'],
+        '$edition chapter "${chapter['title']}"',
+      );
       final outputSections = <dynamic>[];
       for (final rawSection in (chapter['sections'] as List).whereType<Map>()) {
         final section = rawSection.cast<String, dynamic>();
         final sectionId = section['ident'].toString();
+        final videoUrl = _youtubeUrl(
+              section['video_url'],
+              '$edition section $sectionId',
+            ) ??
+            chapterVideoUrl;
         final ids = index.entries
             .where((entry) =>
                 _editionsIn(entry.value).contains(edition) &&
@@ -93,6 +104,16 @@ Future<void> main(List<String> arguments) async {
           }
           if (!emittedIds.add(id)) {
             throw StateError('Question $id occurs more than once in $edition');
+          }
+          if (videoUrl != null) {
+            final existingUrl = videoUrlsByQuestion[id];
+            if (existingUrl != null && existingUrl != videoUrl) {
+              throw StateError(
+                'Question $id has conflicting video URLs: '
+                '$existingUrl and $videoUrl',
+              );
+            }
+            videoUrlsByQuestion[id] = videoUrl;
           }
           return Map<String, dynamic>.from(source);
         }).toList();
@@ -123,6 +144,15 @@ Future<void> main(List<String> arguments) async {
   _writeJson(
     File('${questionsDirectory.path}/solutions.json'),
     {'question_ids': solutionIds},
+  );
+  _writeJson(
+    File('${questionsDirectory.path}/videos.json'),
+    {
+      'question_urls': SplayTreeMap<String, String>.from(videoUrlsByQuestion),
+    },
+  );
+  stdout.writeln(
+    'Updated videos.json (${videoUrlsByQuestion.length} questions).',
   );
   for (final edition in _editions) {
     _writeJson(
@@ -199,6 +229,38 @@ Future<String> _readText(String source) async {
 List<String> _editionsIn(dynamic value) {
   if (value is! Map || value['editions'] is! List) return const [];
   return (value['editions'] as List).map((item) => item.toString()).toList();
+}
+
+String? _youtubeUrl(dynamic value, String source) {
+  if (value == null || value.toString().trim().isEmpty) return null;
+
+  final uri = Uri.tryParse(value.toString().trim());
+  if (uri == null || uri.scheme != 'https') {
+    throw StateError('$source contains an invalid video URL: $value');
+  }
+
+  final host = uri.host.toLowerCase();
+  String? videoId;
+  if (host == 'youtu.be') {
+    videoId = uri.pathSegments.firstOrNull;
+  } else if (host == 'youtube.com' || host == 'www.youtube.com') {
+    if (uri.path == '/watch') {
+      videoId = uri.queryParameters['v'];
+    }
+  }
+  if (videoId == null || videoId.isEmpty) {
+    throw StateError('$source contains an unsupported YouTube URL: $value');
+  }
+
+  final timestamp = uri.queryParameters['t'];
+  return Uri.https(
+    'www.youtube.com',
+    '/watch',
+    {
+      'v': videoId,
+      if (timestamp != null && timestamp.isNotEmpty) 't': timestamp,
+    },
+  ).toString();
 }
 
 void _visitQuestions(dynamic node, void Function(Map<String, dynamic>) visit) {
