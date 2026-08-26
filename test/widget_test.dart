@@ -89,6 +89,15 @@ void main() {
     expect((sections[1]['sections'] as List), hasLength(1));
   });
 
+  test('catalog expands upgrade courses to their complete target class', () {
+    expect(catalogClassesForCourse([1]), {1});
+    expect(catalogClassesForCourse([2]), {1, 2});
+    expect(catalogClassesForCourse([1, 2]), {1, 2});
+    expect(catalogClassesForCourse([3]), {1, 2, 3});
+    expect(catalogClassesForCourse([2, 3]), {1, 2, 3});
+    expect(catalogClassesForCourse([1, 2, 3]), {1, 2, 3});
+  });
+
   test('direct chapter questions are counted without fake subchapters', () {
     final json = Json({
       'sections': [
@@ -127,6 +136,35 @@ void main() {
       final json = Json(section);
       expect(json.mainchaptersize(), greaterThan(0));
       expect(json.getAllQuestionKeys(mainChapter), isNotEmpty);
+    }
+  });
+
+  test('real catalog is non-empty for every selectable course', () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final selectableCourses = <Set<int>>[
+      {1},
+      {2},
+      {1, 2},
+      {3},
+      {2, 3},
+      {1, 2, 3},
+    ];
+
+    for (final course in selectableCourses) {
+      for (final mainChapter in freeLearningMainChapters) {
+        final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+        final section =
+            (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
+        filterQuestionSections(section, catalogClassesForCourse(course));
+
+        final json = Json(section);
+        expect(
+          json.getAllQuestionIds(mainChapter),
+          isNotEmpty,
+          reason: 'Empty catalog page $mainChapter for course $course',
+        );
+      }
     }
   });
 }

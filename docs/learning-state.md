@@ -8,6 +8,10 @@ Schlüssel. Dadurch bleibt der Stand erhalten, wenn Fragen umsortiert werden
 oder dieselbe Frage in einem anderen Kurs beziehungsweise im Gesamtkatalog
 angezeigt wird.
 
+Upgrade-Kurse zeigen im geführten Kurs nur den neu zu lernenden Anteil. Die
+Ansicht „Lernen nach Katalog“ zeigt dagegen den vollständigen Katalog der
+Zielklasse: N→E wird dort als N+E und jedes Upgrade auf A als N+E+A gefiltert.
+
 Jede beantwortete Frage erzeugt in der Hive-Box `learning_events_v1` ein
 unveränderliches Ereignis mit:
 

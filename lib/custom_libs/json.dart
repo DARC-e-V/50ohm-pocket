@@ -33,6 +33,18 @@ bool _questionSectionHasContent(Map section) {
       subsections is List && subsections.isNotEmpty;
 }
 
+/// Expands an upgrade selection to the complete target exam catalog.
+///
+/// Course assets use only the newly required classes for upgrades, for
+/// example `{2}` for N -> E. The official catalog view, however, must also
+/// contain the common class-N questions for operation and regulations.
+Set<int> catalogClassesForCourse(Iterable<int> selectedClasses) {
+  final classes = selectedClasses.toSet();
+  if (classes.contains(3)) return {1, 2, 3};
+  if (classes.contains(2)) return {1, 2};
+  return {1};
+}
+
 class QuestionReference {
   final int mainChapter;
   final int chapter;
@@ -53,11 +65,12 @@ class QuestionReference {
       : '[$mainChapter][$chapter][$subchapter]';
 }
 
-class Json{
+class Json {
   Map<String, dynamic>? data;
   Json(this.data);
 
-  Future<Map<String, dynamic>> load(final String questionpath, int mainchapter, BuildContext context) async {
+  Future<Map<String, dynamic>> load(
+      final String questionpath, int mainchapter, BuildContext context) async {
     var rawdata = await rootBundle.loadString(questionpath);
     Map<String, dynamic> importedData = jsonDecode(rawdata);
     final storedClasses =
@@ -70,93 +83,124 @@ class Json{
         ? importedData
         : importedData["sections"][mainchapter] as Map<String, dynamic>;
 
-    filterQuestionSections(this.data!, classes);
+    final filterClasses =
+        mainchapter == -1 ? classes : catalogClassesForCourse(classes);
+    filterQuestionSections(this.data!, filterClasses);
     return this.data!;
   }
 
-  main_chapter_name() =>
-      this.data!["title"];
+  main_chapter_name() => this.data!["title"];
 
-  chapter_names(var chapter) =>
-      this.data!["sections"][chapter]["title"];
+  chapter_names(var chapter) => this.data!["sections"][chapter]["title"];
 
   chaptericon(int chapter, int subchapter) => null;
 
   subchapter_name(int chapter, int subchapter) {
-    try{
-        return this.data!["sections"][chapter]["sections"][subchapter]["title"];
-    }catch(e){
-        return this.data!["sections"][chapter]["title"];
+    try {
+      return this.data!["sections"][chapter]["sections"][subchapter]["title"];
+    } catch (e) {
+      return this.data!["sections"][chapter]["title"];
     }
   }
 
-  questionname(var chapter, var subchapter, var question){
-    try{
-      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["question"];
-    }catch(e){
+  questionname(var chapter, var subchapter, var question) {
+    try {
+      return this.data!["sections"][chapter]["sections"][subchapter]
+          ["questions"][question]["question"];
+    } catch (e) {
       return this.data!["sections"][chapter]["questions"][question]["question"];
     }
   }
 
-  String? questionimage(int chapter, var subchapter, int question){
-    try{
-      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_question"];
-    }on NoSuchMethodError catch(_){
-      return this.data!["sections"][chapter]["questions"][question]["picture_question"];
+  String? questionimage(int chapter, var subchapter, int question) {
+    try {
+      return this.data!["sections"][chapter]["sections"][subchapter]
+          ["questions"][question]["picture_question"];
+    } on NoSuchMethodError catch (_) {
+      return this.data!["sections"][chapter]["questions"][question]
+          ["picture_question"];
     }
-
   }
 
-  questionid(var chapter, var subchapter, var question){
-    try{
-      return this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["number"];
-    }catch(e){
+  questionid(var chapter, var subchapter, var question) {
+    try {
+      return this.data!["sections"][chapter]["sections"][subchapter]
+          ["questions"][question]["number"];
+    } catch (e) {
       return this.data!["sections"][chapter]["questions"][question]["number"];
     }
   }
 
-  bool imageQuestion(int chapter, var subchapter, int question){
-    try{
-      if(this.data!["sections"][chapter]["sections"][subchapter]["questions"][question]["picture_a"] != null){
+  bool imageQuestion(int chapter, var subchapter, int question) {
+    try {
+      if (this.data!["sections"][chapter]["sections"][subchapter]["questions"]
+              [question]["picture_a"] !=
+          null) {
         return true;
       }
       return false;
-    }catch(_){
-      if(this.data!["sections"][chapter]["questions"][question]["picture_a"] != null){
+    } catch (_) {
+      if (this.data!["sections"][chapter]["questions"][question]["picture_a"] !=
+          null) {
         return true;
       }
       return false;
     }
   }
 
-  List<String> answerList(int chapter, var subchapter, int question){
-    try{
-      Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
-      return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
-    }catch(e){
-      Map answerSection = this.data!["sections"][chapter]["questions"][question];
-      return [answerSection["answer_a"], answerSection["answer_b"], answerSection["answer_c"], answerSection["answer_d"]];
+  List<String> answerList(int chapter, var subchapter, int question) {
+    try {
+      Map answerSection = this.data!["sections"][chapter]["sections"]
+          [subchapter]["questions"][question];
+      return [
+        answerSection["answer_a"],
+        answerSection["answer_b"],
+        answerSection["answer_c"],
+        answerSection["answer_d"]
+      ];
+    } catch (e) {
+      Map answerSection =
+          this.data!["sections"][chapter]["questions"][question];
+      return [
+        answerSection["answer_a"],
+        answerSection["answer_b"],
+        answerSection["answer_c"],
+        answerSection["answer_d"]
+      ];
     }
   }
 
-  List<String> imageList(int chapter, var subchapter, int question){
-    try{
-      Map answerSection = this.data!["sections"][chapter]["sections"][subchapter]["questions"][question];
-      return [answerSection["picture_a"], answerSection["picture_b"], answerSection["picture_c"], answerSection["picture_d"]];
-    }catch(e){
-      Map answerSection = this.data!["sections"][chapter]["questions"][question];
-      return [answerSection["picture_a"], answerSection["picture_b"], answerSection["picture_c"], answerSection["picture_d"]];
+  List<String> imageList(int chapter, var subchapter, int question) {
+    try {
+      Map answerSection = this.data!["sections"][chapter]["sections"]
+          [subchapter]["questions"][question];
+      return [
+        answerSection["picture_a"],
+        answerSection["picture_b"],
+        answerSection["picture_c"],
+        answerSection["picture_d"]
+      ];
+    } catch (e) {
+      Map answerSection =
+          this.data!["sections"][chapter]["questions"][question];
+      return [
+        answerSection["picture_a"],
+        answerSection["picture_b"],
+        answerSection["picture_c"],
+        answerSection["picture_d"]
+      ];
     }
   }
 
-  subchaptersize(int chapter, int subchapter){
-    try{
-      return this.data!["sections"][chapter]["sections"][subchapter]["questions"].length;
-    }catch(e){
+  subchaptersize(int chapter, int subchapter) {
+    try {
+      return this
+          .data!["sections"][chapter]["sections"][subchapter]["questions"]
+          .length;
+    } catch (e) {
       return this.data!["sections"][chapter]["questions"].length;
     }
   }
-
 
   chaptersize(int chapter) {
     final sections = this.data!["sections"][chapter]["sections"];
@@ -168,11 +212,10 @@ class Json{
     return questions is List ? questions.length : 0;
   }
 
-  mainchaptersize() =>
-      this.data!["sections"].length;
+  mainchaptersize() => this.data!["sections"].length;
   // Todo fix
   percentOfChapter(List questionlist, int currentprog) =>
-      (questionlist.length * currentprog) * 0.1 ;
+      (questionlist.length * currentprog) * 0.1;
 
   /// Returns a list of all question keys in order: [[mainchapter, chapter, subchapter, questionIndex], ...]
   /// Used to map questions to their database scores
@@ -267,17 +310,16 @@ class Json{
   }
 }
 
-class JsonWidget extends InheritedWidget{
+class JsonWidget extends InheritedWidget {
   final Map<String, dynamic>? json;
   final int mainchapter;
 
-  const JsonWidget(Widget child, this.json, this.mainchapter) : super(child:child);
+  const JsonWidget(Widget child, this.json, this.mainchapter)
+      : super(child: child);
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) =>
-      false;
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
   static JsonWidget of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<JsonWidget>()!;
-
 }
