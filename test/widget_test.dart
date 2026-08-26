@@ -218,6 +218,11 @@ void main() {
     expect(find.text('Gelernt: 1'), findsOneWidget);
     expect(find.text('In Arbeit: 3'), findsOneWidget);
     expect(find.text('Offen: 1'), findsOneWidget);
+    expect(find.byTooltip(learningProgressExplanation), findsOneWidget);
+
+    await tester.tap(find.text('Lernstand'));
+    await tester.pump();
+    expect(find.text(learningProgressExplanation), findsOneWidget);
   });
 
   testWidgets('long formulas wrap inside the available answer width',
