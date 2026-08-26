@@ -45,6 +45,7 @@ dependencies:
       url: https://github.com/dakshatsuraasa/flutter_math.git
       ref: main
   package_info_plus: ^5.0.1
+  share_plus: ^7.2.2
   html: ^0.15.4
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7

@@ -6,11 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/solution_index.dart';
+import 'package:fuenfzigohm/exam/exam_simulation.dart';
 import 'package:fuenfzigohm/repository/models/course_class.dart';
 import 'package:fuenfzigohm/repository/setting_repository.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/exam_simulation.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
 import 'package:fuenfzigohm/ui/welcome/bloc/welcome_bloc.dart';
 import 'package:fuenfzigohm/ui/welcome/pages/welcome_layout.dart';
@@ -127,6 +130,74 @@ void main() {
     expect(find.textContaining('bereits beantwortet'), findsOneWidget);
     expect(find.textContaining('sofort gespeichert'), findsOneWidget);
     expect(find.text('Übung starten'), findsOneWidget);
+  });
+
+  testWidgets('exam simulation offers all official exam variants',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: ExamSimulationPage(initialCatalog: []),
+      ),
+    );
+
+    expect(find.text('Erstprüfung'), findsOneWidget);
+    expect(find.text('Aufstockungsprüfung'), findsOneWidget);
+    expect(find.text('Einzelne Prüfungsteile'), findsOneWidget);
+    expect(find.text('Klasse N'), findsOneWidget);
+    expect(find.text('N → E'), findsOneWidget);
+    expect(find.text('Technik Klasse A'), findsOneWidget);
+  });
+
+  testWidgets('exam review uses training feedback and shows solution hint',
+      (tester) async {
+    await SolutionIndex.load(
+      loadAsset: (_) async => '{"question_ids":["AB101"]}',
+    );
+    final result = ExamQuestionResult(
+      question: const ExamCatalogQuestion(
+        id: 'AB101',
+        part: 'A',
+        category: [],
+        data: {
+          'question': 'Testfrage',
+          'answer_a': 'Richtige Antwort',
+          'answer_b': 'Falsche Antwort',
+          'answer_c': 'Antwort C',
+          'answer_d': 'Antwort D',
+        },
+      ),
+      answerOrder: const [0, 1, 2, 3],
+      selectedAnswer: 1,
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ExamReviewPage(result: result)),
+    );
+
+    expect(find.byTooltip('Lösungshinweis auf 50ohm.de'), findsOneWidget);
+    expect(
+      tester.widget<Icon>(find.byIcon(Icons.check_circle)).color,
+      Colors.green.shade800,
+    );
+    expect(
+      tester.widget<Icon>(find.byIcon(Icons.cancel)).color,
+      Colors.red.shade800,
+    );
+    expect(
+      tester
+          .widgetList<Container>(find.byType(Container))
+          .where((container) => container.color == correctFeedbackColor),
+      hasLength(1),
+    );
+    expect(
+      tester
+          .widgetList<Container>(find.byType(Container))
+          .where((container) => container.color == incorrectFeedbackColor),
+      hasLength(1),
+    );
   });
 
   testWidgets('wrongly answered questions count as in progress',

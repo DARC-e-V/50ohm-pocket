@@ -105,6 +105,26 @@ void main() {
     expect(reopenedRepository.scoreForQuestion('NA102'), 1);
   });
 
+  test('exam answers are stored in the same learning log with their source',
+      () async {
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+
+    await repository.recordAnswer(
+      questionId: 'NA102',
+      correct: false,
+      selectedAnswerKey: 'b',
+      source: 'exam',
+    );
+
+    expect(repository.hasAnsweredQuestion('NA102'), isTrue);
+    final event = AnswerEvent.fromMap(eventsBox.values.single as Map);
+    expect(event.source, 'exam');
+    expect(event.correct, isFalse);
+  });
+
   test('projection caps progress at learned threshold', () async {
     final repository = LearningStateRepository(
       eventsBox: eventsBox,

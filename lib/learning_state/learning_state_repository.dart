@@ -100,6 +100,7 @@ class LearningStateRepository {
     required bool correct,
     required String? selectedAnswerKey,
     DateTime? answeredAtUtc,
+    String source = 'answer',
   }) async {
     final now = DateTime.now().toUtc();
     final deviceId = await _getOrCreateDeviceId();
@@ -112,7 +113,7 @@ class LearningStateRepository {
       selectedAnswerKey: selectedAnswerKey,
       catalogVersion: catalogVersion,
       deviceId: deviceId,
-      source: 'answer',
+      source: source,
     );
     await _storeEvent(event);
     return event;
