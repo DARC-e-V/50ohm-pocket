@@ -16,13 +16,13 @@ class QuestionsLicensePage extends StatelessWidget {
             title: Text(''),
             tiles: [
               SettingsTile(
-                title: Text('Bundesnetzagentur,\n 2. Auflage, Dezember 2023 \n'),
+                title: Text('Bundesnetzagentur,\n3. Auflage, März 2024\n'),
                 description: Semantics(
                   link: true,
                   label: "Bundesnetzagentur-Website zum Amateurfunk öffnen",
                   child: GestureDetector(
                     onTap: () => launchURL('https://www.bundesnetzagentur.de/amateurfunk'),
-                    child: Text('www.bundesnetzagentur.de/amateurfunk \n \n Prüfungsfragen zum Erwerb von Amateurfunkprüfungsbescheinigungen \n \n Änderungen: HTML Tags wurden aus den Fragen entfernt', style: TextStyle(fontStyle: FontStyle.italic)),
+                    child: Text('www.bundesnetzagentur.de/amateurfunk\n\nPrüfungsfragen zum Erwerb von Amateurfunkprüfungsbescheinigungen\n\nÄnderungen: HTML Tags wurden aus den Fragen entfernt, kleine Fehler korrigiert', style: TextStyle(fontStyle: FontStyle.italic)),
                   ),
                 ),
               ),

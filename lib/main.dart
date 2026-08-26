@@ -26,6 +26,7 @@ void main() {
           final progressDatabase = data[0] as Box;
           final settingsDatabase = data[1] as Box;
           final learningStateRepository = data[2] as LearningStateRepository;
+          final bookmarksDatabase = data[3] as Box;
           final initialFontScale =
               (settingsDatabase.get("fontScale") as num?)?.toDouble() ?? 1.0;
 
@@ -34,6 +35,7 @@ void main() {
             settingsDatabase: settingsDatabase,
             learningStateRepository: learningStateRepository,
             initialFontScale: initialFontScale,
+            bookmarksDatabase: bookmarksDatabase,
           );
         }
         if (snapshot.hasError) {
@@ -57,6 +59,7 @@ class PocketApp extends StatefulWidget {
   final Box settingsDatabase;
   final double initialFontScale;
   final LearningStateRepository learningStateRepository;
+  final Box bookmarksDatabase;
 
   const PocketApp({
     super.key,
@@ -64,6 +67,7 @@ class PocketApp extends StatefulWidget {
     required this.settingsDatabase,
     required this.initialFontScale,
     required this.learningStateRepository,
+    required this.bookmarksDatabase,
   });
 
   @override
@@ -140,6 +144,7 @@ class _PocketAppState extends State<PocketApp> {
         prog_database: widget.progDatabase,
         settings_database: widget.settingsDatabase,
         learningStateRepository: widget.learningStateRepository,
+        bookmarks_database: widget.bookmarksDatabase,
         child: RepositoryProvider(
           create: (_) => SettingRepository(
             service: SettingService(

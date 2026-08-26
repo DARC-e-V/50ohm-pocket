@@ -82,6 +82,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   QuestionState state = QuestionState.answering;
 
   int highlighting = -1;
+  bool _isBookmarked = false;
 
   late int questionkey, subchapterkey;
   late List<String> ShuffledAnswers, Answers;
@@ -146,6 +147,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
 
       refreshAnswers();
+      _isBookmarked = _checkIsBookmarked();
 
     });
     // print("chapterorder" + "$chapterorder");
@@ -166,10 +168,37 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       ShuffledAnswers.shuffle();
 
       highlighting = -1;
-
       state = QuestionState.answering;
+      _isBookmarked = _checkIsBookmarked();
     });
   }
+
+  bool _checkIsBookmarked() {
+    final db = DatabaseWidget.maybeOf(context);
+    if (db == null) return false;
+    final bookmarks = db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
+    return bookmarks.contains(_questionId);
+  }
+
+  void _toggleBookmark() {
+    final db = DatabaseWidget.maybeOf(context);
+    if (db == null) return;
+
+    setState(() {
+      final bookmarks = db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
+      final bookmarksList = List<String>.from(bookmarks);
+
+      if (bookmarksList.contains(_questionId)) {
+        bookmarksList.remove(_questionId);
+      } else {
+        bookmarksList.add(_questionId);
+      }
+
+      db.bookmarks_database.put('bookmarks', bookmarksList);
+      _isBookmarked = bookmarksList.contains(_questionId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,6 +215,18 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
           titleSpacing: 0,
           title: Row(
             children: [
+              IconButton(
+                icon: Icon(
+                  _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                  color: _isBookmarked 
+                      ? Colors.red 
+                      : Theme.of(context).brightness == Brightness.dark 
+                          ? Colors.white 
+                          : Colors.black,
+                ),
+                tooltip: _isBookmarked ? "Aus Merkliste entfernen" : "Zu Merkliste hinzufügen",
+                onPressed: _toggleBookmark,
+              ),
               Expanded(
                 child: Tooltip(
                   message: "Frage $_questionId",

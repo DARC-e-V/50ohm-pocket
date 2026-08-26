@@ -9,6 +9,7 @@ import 'package:fuenfzigohm/custom_libs/video_index.dart';
 class Database {
   var progress;
   var settings;
+  var bookmarks;
 
   load() async {
     await Future.wait([
@@ -18,6 +19,7 @@ class Database {
     await Hive.initFlutter();
     settings = await Hive.openBox('settings');
     progress = await Hive.openBox('progress');
+    bookmarks = await Hive.openBox('bookmarks');
     final learningEvents = await Hive.openBox('learning_events_v1');
     final learningStateRepository = LearningStateRepository(
       eventsBox: learningEvents,
@@ -28,7 +30,7 @@ class Database {
       settingsBox: settings,
       learningStateRepository: learningStateRepository,
     ).migrateIfNeeded();
-    return [progress, settings, learningStateRepository];
+    return [progress, settings, learningStateRepository, bookmarks];
   }
 }
 
@@ -181,16 +183,21 @@ class DatabaseWidget extends InheritedWidget {
   final Box settings_database;
   final Box prog_database;
   final LearningStateRepository learningStateRepository;
+  final Box bookmarks_database;
 
   const DatabaseWidget({
     required this.settings_database,
     required this.prog_database,
     required this.learningStateRepository,
+    required this.bookmarks_database,
     required Widget child,
   }) : super(child: child);
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
+
+  static DatabaseWidget? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<DatabaseWidget>();
 
   static DatabaseWidget of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<DatabaseWidget>()!;

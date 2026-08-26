@@ -310,6 +310,9 @@ class JsonWidget extends InheritedWidget {
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
+  static JsonWidget? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<JsonWidget>();
+
   static JsonWidget of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<JsonWidget>()!;
 }
