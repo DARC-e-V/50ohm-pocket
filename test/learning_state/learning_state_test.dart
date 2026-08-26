@@ -76,6 +76,30 @@ void main() {
     expect(events.map((event) => event.deviceId).toSet(), hasLength(1));
   });
 
+  test('a single answer is persisted before the lesson is completed',
+      () async {
+    final repository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+
+    await repository.recordAnswer(
+      questionId: 'NA102',
+      correct: true,
+      selectedAnswerKey: 'a',
+    );
+
+    await eventsBox.close();
+    eventsBox = await Hive.openBox<dynamic>('events');
+
+    final reopenedRepository = LearningStateRepository(
+      eventsBox: eventsBox,
+      settingsBox: settingsBox,
+    );
+    expect(eventsBox, hasLength(1));
+    expect(reopenedRepository.scoreForQuestion('NA102'), 1);
+  });
+
   test('projection caps progress at learned threshold', () async {
     final repository = LearningStateRepository(
       eventsBox: eventsBox,
