@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/icons.dart';
@@ -9,6 +11,7 @@ import 'package:fuenfzigohm/screens/practice.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'pdfViewer.dart';
@@ -43,6 +46,35 @@ String? freeLearningSwipeHintForClasses(
   return pages.length == 1 ? null : freeLearningSwipeHints[pageIndex];
 }
 
+List<String> freeLearningOverviewQuestionIds(
+  Map<String, dynamic> catalog,
+  Iterable<int> selectedClasses,
+) {
+  final classes = selectedClasses.toSet();
+  final questionIds = <String>{};
+  final sections = catalog['sections'] as List;
+
+  for (final mainChapter
+      in freeLearningMainChaptersForClasses(selectedClasses)) {
+    final section = sections[mainChapter] as Map<String, dynamic>;
+    filterQuestionSections(section, classes);
+    questionIds.addAll(Json(section).getAllQuestionIds(mainChapter));
+  }
+
+  return questionIds.toList();
+}
+
+Future<List<String>> loadFreeLearningOverviewQuestionIds(
+  Iterable<int> selectedClasses,
+) async {
+  final rawCatalog =
+      await rootBundle.loadString('assets/questions/Questions.json');
+  return freeLearningOverviewQuestionIds(
+    jsonDecode(rawCatalog) as Map<String, dynamic>,
+    selectedClasses,
+  );
+}
+
 bool isDirectQuestionChapter(Json json, int chapter) =>
     json.chaptersize(chapter) == 0 && json.chapterQuestionCount(chapter) > 0;
 
@@ -61,6 +93,20 @@ class Learningmodule extends StatefulWidget {
 
 class _LearningmoduleState extends State<Learningmodule> {
   bool reload = false;
+  String? _overviewCourseKey;
+  Future<List<String>>? _overviewQuestionIds;
+
+  Future<List<String>> _overviewQuestionIdsFor(
+    Iterable<int> selectedClasses,
+  ) {
+    final sortedClasses = selectedClasses.toList()..sort();
+    final courseKey = sortedClasses.join(',');
+    if (_overviewQuestionIds == null || _overviewCourseKey != courseKey) {
+      _overviewCourseKey = courseKey;
+      _overviewQuestionIds = loadFreeLearningOverviewQuestionIds(sortedClasses);
+    }
+    return _overviewQuestionIds!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +120,8 @@ class _LearningmoduleState extends State<Learningmodule> {
         : <int>[];
     final freeLearningPages =
         freeLearningMainChaptersForClasses(selectedClasses);
+    final overviewQuestionIds =
+        courseOrdering ? null : _overviewQuestionIdsFor(selectedClasses);
     return Scaffold(
       appBar: AppBar(
         title:
@@ -134,6 +182,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                         context,
                         'assets/questions/Questions.json',
                         freeLearningPages[index],
+                        overviewQuestionIds: overviewQuestionIds,
                         swipeHint: freeLearningSwipeHintForClasses(
                           selectedClasses,
                           index,
@@ -179,15 +228,22 @@ class _LearningmoduleState extends State<Learningmodule> {
   }
 
   Widget chapterbuilder(var context, var path, var mainchapter,
-      {String? swipeHint}) {
+      {String? swipeHint, Future<List<String>>? overviewQuestionIds}) {
     return FutureBuilder(
-      future: Json(null).load(path, mainchapter, context),
+      future: Future.wait<Object>([
+        Json(null).load(path, mainchapter, context),
+        if (overviewQuestionIds != null) overviewQuestionIds,
+      ]),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          final results = snapshot.data as List<Object>;
+          final data = results.first as Map<String, dynamic>;
           return JsonWidget(
-              selectlesson(snapshot.data!, context, mainchapter,
-                  swipeHint: swipeHint),
-              (snapshot.data as Map<String, dynamic>),
+              selectlesson(data, context, mainchapter,
+                  swipeHint: swipeHint,
+                  overviewQuestionIds:
+                      results.length > 1 ? results[1] as List<String> : null),
+              data,
               mainchapter);
         } else if (snapshot.hasError) {
           print(snapshot.error);
@@ -211,10 +267,11 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   Widget selectlesson(
       Map<String, dynamic> data, BuildContext context, int mainchapter,
-      {String? swipeHint}) {
+      {String? swipeHint, List<String>? overviewQuestionIds}) {
     Json json = Json(data);
 
-    final questionIds = json.getAllQuestionIds(mainchapter);
+    final questionIds =
+        overviewQuestionIds ?? json.getAllQuestionIds(mainchapter);
     final learningStateRepository =
         DatabaseWidget.of(context).learningStateRepository;
     final questionScores =

@@ -305,6 +305,29 @@ void main() {
     );
   });
 
+  test('free learning overview merges all catalog parts of the course',
+      () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final expectedQuestionIds = <String>{};
+
+    for (final mainChapter in freeLearningMainChaptersForClasses({1})) {
+      final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+      final section =
+          (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
+      filterQuestionSections(section, {1});
+      expectedQuestionIds.addAll(Json(section).getAllQuestionIds(mainChapter));
+    }
+
+    final mergedQuestionIds = freeLearningOverviewQuestionIds(
+      jsonDecode(rawCatalog) as Map<String, dynamic>,
+      {1},
+    );
+
+    expect(mergedQuestionIds.toSet(), expectedQuestionIds);
+    expect(mergedQuestionIds, hasLength(expectedQuestionIds.length));
+  });
+
   test('free learning upgrades show only their technical additions', () {
     for (final course in <Set<int>>[
       {2},
