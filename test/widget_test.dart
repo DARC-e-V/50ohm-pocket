@@ -235,6 +235,39 @@ void main() {
     expect(find.text('8.0'), findsOneWidget);
   });
 
+  testWidgets('question actions use a compact overflow menu', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(375, 812));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('BA101'),
+            actions: [
+              QuestionActionsMenu(
+                hasVideo: true,
+                showLearningMaterial: true,
+                onSelected: (_) {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byTooltip('Weitere Funktionen'), findsOneWidget);
+    expect(find.text('Lernvideo von DL2YMR'), findsNothing);
+
+    await tester.tap(find.byTooltip('Weitere Funktionen'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Lernvideo von DL2YMR'), findsOneWidget);
+    expect(find.text('50Ω-Lernmaterial'), findsOneWidget);
+    expect(find.text('Taschenrechner'), findsOneWidget);
+    expect(find.text('Hilfsmittel'), findsOneWidget);
+  });
+
   test('question search finds questions by number only', () async {
     final raw = await rootBundle.loadString('assets/questions/Questions.json');
     final catalog = jsonDecode(raw) as Map<String, dynamic>;

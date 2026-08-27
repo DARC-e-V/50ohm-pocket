@@ -20,12 +20,69 @@ import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/semantics.dart';
 
-enum QuestionState{
-  answering,
-  evaluating
-}
-class Question extends StatefulWidget {
+enum QuestionState { answering, evaluating }
 
+enum QuestionMenuAction {
+  video,
+  learningMaterial,
+  calculator,
+  resources,
+}
+
+class QuestionActionsMenu extends StatelessWidget {
+  final bool hasVideo;
+  final bool showLearningMaterial;
+  final ValueChanged<QuestionMenuAction> onSelected;
+
+  const QuestionActionsMenu({
+    super.key,
+    required this.hasVideo,
+    required this.showLearningMaterial,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<QuestionMenuAction>(
+      tooltip: "Weitere Funktionen",
+      onSelected: onSelected,
+      itemBuilder: (context) => [
+        if (hasVideo)
+          const PopupMenuItem(
+            value: QuestionMenuAction.video,
+            child: ListTile(
+              leading: Icon(Icons.smart_display, color: Colors.red),
+              title: Text("Lernvideo von DL2YMR"),
+            ),
+          ),
+        if (showLearningMaterial)
+          const PopupMenuItem(
+            value: QuestionMenuAction.learningMaterial,
+            child: ListTile(
+              leading: Icon(Icons.menu_book),
+              title: Text("50Ω-Lernmaterial"),
+            ),
+          ),
+        const PopupMenuItem(
+          value: QuestionMenuAction.calculator,
+          child: ListTile(
+            leading: Icon(Icons.calculate),
+            title: Text("Taschenrechner"),
+          ),
+        ),
+        const PopupMenuItem(
+          value: QuestionMenuAction.resources,
+          child: ListTile(
+            leading: Icon(Icons.description),
+            title: Text("Hilfsmittel"),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Question extends StatefulWidget {
   final List subchapter;
   final int chapter;
   final BuildContext context;
@@ -33,25 +90,25 @@ class Question extends StatefulWidget {
   final List<QuestionReference> practiceQuestions;
   final QuestionReference? singleQuestion;
 
-  Question(this.context, this.subchapter,this.chapter)
+  Question(this.context, this.subchapter, this.chapter)
       : practiceData = null,
         practiceQuestions = const [],
         singleQuestion = null;
 
   Question.practice(
-      this.context,
-      Map<String, dynamic> data,
-      List<QuestionReference> questions,
-      ) : subchapter = const [],
+    this.context,
+    Map<String, dynamic> data,
+    List<QuestionReference> questions,
+  )   : subchapter = const [],
         chapter = 0,
         practiceData = data,
         practiceQuestions = questions,
         singleQuestion = null;
 
   Question.single(
-      this.context,
-      Map<String, dynamic> question,
-      ) : subchapter = const [],
+    this.context,
+    Map<String, dynamic> question,
+  )   : subchapter = const [],
         chapter = 0,
         practiceData = {
           "title": "Suchergebnis",
@@ -72,10 +129,10 @@ class Question extends StatefulWidget {
         );
 
   @override
-  createState() => _Questionstate(this.context, this.subchapter,this.chapter);
+  createState() => _Questionstate(this.context, this.subchapter, this.chapter);
 }
-class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
+class _Questionstate extends State<Question> with TickerProviderStateMixin {
   var questionorder, questreslist, pdfController, questionradio;
 
   final ScrollController _questionScrollController = ScrollController();
@@ -99,8 +156,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   bool correct = false;
   OverlayEntry? overlayEntry;
 
-
-  _Questionstate(this.context, this.subchapter,this.chapter);
+  _Questionstate(this.context, this.subchapter, this.chapter);
 
   @override
   void dispose() {
@@ -120,7 +176,9 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       ? widget.singleQuestion!.subchapter
       : _isPractice
           ? _practiceReference?.subchapter
-          : subchapter.isEmpty ? null : subchapter[subchapterkey];
+          : subchapter.isEmpty
+              ? null
+              : subchapter[subchapterkey];
 
   int get _questionIndex =>
       widget.singleQuestion?.questionIndex ??
@@ -132,7 +190,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
 
   @override
   initState() {
-    questreslist = List.generate(subchapter.length == 0 ? 1 :subchapter.length, (index) => List.empty(growable: true));
+    questreslist = List.generate(subchapter.length == 0 ? 1 : subchapter.length,
+        (index) => List.empty(growable: true));
     questionkey = 0;
     subchapterkey = 0;
     setState(() {
@@ -144,23 +203,25 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         _practiceSelector = PracticeQuestionSelector();
         questionorder = <int>[];
         _selectNextPracticeQuestion();
-      } else if(subchapter.length == 0) questionorder = orderlist(json.chapterQuestionCount(chapter), true);
-      else questionorder = orderlist(json.subchaptersize(chapter,subchapter[subchapterkey]), true);
+      } else if (subchapter.length == 0)
+        questionorder = orderlist(json.chapterQuestionCount(chapter), true);
+      else
+        questionorder = orderlist(
+            json.subchaptersize(chapter, subchapter[subchapterkey]), true);
 
       refreshAnswers();
       _isBookmarked = _checkIsBookmarked();
-
     });
     // print("chapterorder" + "$chapterorder");
     super.initState();
   }
 
-  refreshAnswers(){
+  refreshAnswers() {
     setState(() {
       imageQuestion = json.imageQuestion(_chapter, _subchapter, _questionIndex);
-      if(imageQuestion){
+      if (imageQuestion) {
         Answers = json.imageList(_chapter, _subchapter, _questionIndex);
-      }else{
+      } else {
         Answers = json.answerList(_chapter, _subchapter, _questionIndex);
       }
 
@@ -177,7 +238,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   bool _checkIsBookmarked() {
     final db = DatabaseWidget.maybeOf(context);
     if (db == null) return false;
-    final bookmarks = db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
+    final bookmarks =
+        db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
     return bookmarks.contains(_questionId);
   }
 
@@ -186,7 +248,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     if (db == null) return;
 
     setState(() {
-      final bookmarks = db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
+      final bookmarks =
+          db.bookmarks_database.get('bookmarks') as List<dynamic>? ?? [];
       final bookmarksList = List<String>.from(bookmarks);
 
       if (bookmarksList.contains(_questionId)) {
@@ -200,15 +263,46 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     });
   }
 
+  void _selectMenuAction(QuestionMenuAction action) {
+    switch (action) {
+      case QuestionMenuAction.video:
+        launchExternalURL(VideoIndex.urlFor(_questionId)!);
+        break;
+      case QuestionMenuAction.learningMaterial:
+        launchURL(_getSectionUrl());
+        break;
+      case QuestionMenuAction.calculator:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CalculatorPage(),
+          ),
+        );
+        break;
+      case QuestionMenuAction.resources:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PdfViewer(
+              1,
+              "assets/pdf/Hilfsmittel_12062024.pdf",
+              "Hilfsmittel",
+            ),
+          ),
+        );
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           leading: BackButton(
-            onPressed: (){
-              try{
+            onPressed: () {
+              try {
                 overlayEntry!.remove();
-              }catch(e){}
+              } catch (e) {}
               Navigator.of(context).pop(true);
             },
           ),
@@ -219,13 +313,15 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               IconButton(
                 icon: Icon(
                   _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: _isBookmarked 
-                      ? Colors.red 
-                      : Theme.of(context).brightness == Brightness.dark 
-                          ? Colors.white 
+                  color: _isBookmarked
+                      ? Colors.red
+                      : Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
                           : Colors.black,
                 ),
-                tooltip: _isBookmarked ? "Aus Merkliste entfernen" : "Zu Merkliste hinzufügen",
+                tooltip: _isBookmarked
+                    ? "Aus Merkliste entfernen"
+                    : "Zu Merkliste hinzufügen",
                 onPressed: _toggleBookmark,
               ),
               Expanded(
@@ -238,29 +334,30 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 ),
               ),
               if (!_isSingle) SizedBox(width: 8),
-              if (!_isSingle) Semantics(
-                label: _isPractice
-                    ? "Frage ${_practiceAnswered + 1}"
-                    : "Frage ${questionkey + 1} von ${questionorder.length}",
-                child: ExcludeSemantics(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: main_col.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      _isPractice
-                          ? "${_practiceAnswered + 1}"
-                          : "${questionkey + 1}/${questionorder.length}",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+              if (!_isSingle)
+                Semantics(
+                  label: _isPractice
+                      ? "Frage ${_practiceAnswered + 1}"
+                      : "Frage ${questionkey + 1} von ${questionorder.length}",
+                  child: ExcludeSemantics(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: main_col.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        _isPractice
+                            ? "${_practiceAnswered + 1}"
+                            : "${questionkey + 1}/${questionorder.length}",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
           actions: [
@@ -270,45 +367,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 tooltip: "Lösungshinweis auf 50ohm.de",
                 onPressed: () => launchURL(_getSolutionUrl()),
               ),
-            if (VideoIndex.hasVideo(_questionId))
-              IconButton(
-                icon: Icon(Icons.smart_display, color: Colors.red),
-                tooltip: "Lernvideo von DL2YMR",
-                onPressed: () => launchURL(VideoIndex.urlFor(_questionId)!),
-              ),
-            if (DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true)
-              IconButton(
-                icon: Icon(Icons.menu_book),
-                tooltip: "50Ω Lernmaterial",
-                onPressed: () => launchURL(_getSectionUrl()),
-              ),
-            IconButton(
-              icon: Icon(Icons.calculate),
-              tooltip: "Taschenrechner",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CalculatorPage(),
-                  ),
-                );
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.description),
-              tooltip: "Hilfsmittel",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PdfViewer(
-                      1,
-                      "assets/pdf/Hilfsmittel_12062024.pdf",
-                      "Hilfsmittel",
-                    ),
-                  ),
-                );
-              },
+            QuestionActionsMenu(
+              hasVideo: VideoIndex.hasVideo(_questionId),
+              showLearningMaterial: DatabaseWidget.of(context)
+                      .settings_database
+                      .get("courseOrdering") ??
+                  true,
+              onSelected: _selectMenuAction,
             ),
           ],
         ),
@@ -320,26 +385,34 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 children: [
                   //LinearProgressIndicator(value: json.procentofchapter(answerorder, questionkey),),
                   Padding(
-                    padding: EdgeInsets.only(top: std_padding, left: std_padding, right: std_padding),
+                    padding: EdgeInsets.only(
+                        top: std_padding,
+                        left: std_padding,
+                        right: std_padding),
                     child: Center(
                       child: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
-                              "${json.questionname(_chapter, _subchapter, _questionIndex)}",
-                              TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 22,
-                              ),
-                            )
-                        ),
+                          "${json.questionname(_chapter, _subchapter, _questionIndex)}",
+                          TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 22,
+                          ),
+                        )),
                         textAlign: TextAlign.left,
                       ),
                     ),
                   ),
-                  json.questionimage(_chapter, _subchapter, _questionIndex) != null
-                      ? questionImage(context, json.questionimage(_chapter,_subchapter, _questionIndex)!)
+                  json.questionimage(_chapter, _subchapter, _questionIndex) !=
+                          null
+                      ? questionImage(
+                          context,
+                          json.questionimage(
+                              _chapter, _subchapter, _questionIndex)!)
                       : SizedBox(),
-                  Divider(height: std_padding * 2,),
+                  Divider(
+                    height: std_padding * 2,
+                  ),
                   imageQuestion
                       ? radioSvgListBuilder()
                       : radioTextListBuilder(),
@@ -353,7 +426,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   child: ElevatedButton(
                     style: buttonstyle(main_col),
                     onPressed: () async {
-                      if(state == QuestionState.answering && questionradio != null){
+                      if (state == QuestionState.answering &&
+                          questionradio != null) {
                         await _questionhandler(
                           ShuffledAnswers,
                           Answers,
@@ -361,16 +435,17 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                         );
                       }
                     },
-                    child: Text("Überprüfen", style: TextStyle(color: Colors.black),),
+                    child: Text(
+                      "Überprüfen",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-        )
-    );
+        ));
   }
-
 
   String _getSectionUrl() {
     final selectedClasses = List<int>.from(
@@ -387,41 +462,82 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     return SolutionIndex.urlFor(_questionId);
   }
 
-  Widget questionImage(BuildContext context, String url, {bool useDarkForeground = false, String semanticsLabel = "Diagramm"}) {
-    List<String> illegalImages = ["BE207_q", "NF106_q", "BE209_q", "NF104_q", "NF102_q", "NF105_q", "BE208_q", "NE209_q", "NG302_q", "NF103_q", "NF101_q"];
+  Widget questionImage(BuildContext context, String url,
+      {bool useDarkForeground = false, String semanticsLabel = "Diagramm"}) {
+    List<String> illegalImages = [
+      "BE207_q",
+      "NF106_q",
+      "BE209_q",
+      "NF104_q",
+      "NF102_q",
+      "NF105_q",
+      "BE208_q",
+      "NE209_q",
+      "NG302_q",
+      "NF103_q",
+      "NF101_q"
+    ];
     Widget image;
     double imageScaleWidth = min(MediaQuery.sizeOf(context).width * 0.8, 500);
     ColorFilter colorFilter =
-    Theme.of(context).brightness == Brightness.dark && !useDarkForeground
-        ? ColorFilter.matrix(<double>[
-      -1.0, 0.0, 0.0, 0.0, 255.0,
-      0.0, -1.0, 0.0, 0.0, 255.0,
-      0.0, 0.0, -1.0, 0.0, 255.0,
-      0.0, 0.0, 0.0, 1.0, 0.0,
-    ])
-        : ColorFilter.matrix(<double>[
-      1.0, 0.0, 0.0, 0.0, 0.0,
-      0.0, 1.0, 0.0, 0.0, 0.0,
-      0.0, 0.0, 1.0, 0.0, 0.0,
-      0.0, 0.0, 0.0, 1.0, 0.0,
-    ]);
+        Theme.of(context).brightness == Brightness.dark && !useDarkForeground
+            ? ColorFilter.matrix(<double>[
+                -1.0,
+                0.0,
+                0.0,
+                0.0,
+                255.0,
+                0.0,
+                -1.0,
+                0.0,
+                0.0,
+                255.0,
+                0.0,
+                0.0,
+                -1.0,
+                0.0,
+                255.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+              ])
+            : ColorFilter.matrix(<double>[
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+              ]);
 
-    if(illegalImages.contains(url)){
+    if (illegalImages.contains(url)) {
       image = Padding(
         padding: const EdgeInsets.all(8.0),
         child: ColorFiltered(
             colorFilter: colorFilter,
-            child: Image.asset("assets/svgs/$url.png",
-                width: imageScaleWidth)
-        ),
+            child: Image.asset("assets/svgs/$url.png", width: imageScaleWidth)),
       );
     } else {
-      image = SvgPicture.asset(
-          "assets/svgs/$url.svg",
-          colorFilter: colorFilter,
-          width: imageScaleWidth
-      );
-    };
+      image = SvgPicture.asset("assets/svgs/$url.svg",
+          colorFilter: colorFilter, width: imageScaleWidth);
+    }
+    ;
     return Semantics(
       label: semanticsLabel,
       child: ExcludeSemantics(
@@ -434,6 +550,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       ),
     );
   }
+
   Color _answerBackgroundColor(int answerIndex) {
     if (state != QuestionState.evaluating) {
       return Colors.transparent;
@@ -481,7 +598,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         addAutomaticKeepAlives: true,
         shrinkWrap: true,
         itemCount: 4,
-        itemBuilder: (context, i){
+        itemBuilder: (context, i) {
           return Container(
             decoration: BoxDecoration(
               color: _answerBackgroundColor(i),
@@ -496,7 +613,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 groupValue: questionradio,
                 value: i,
                 onChanged: (var value) {
-                  if(state == QuestionState.answering){
+                  if (state == QuestionState.answering) {
                     setState(() {
                       questionradio = i;
                     });
@@ -513,8 +630,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               ),
             ),
           );
-        }
-    );
+        });
   }
 
   ListView radioTextListBuilder() {
@@ -523,7 +639,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         addAutomaticKeepAlives: true,
         shrinkWrap: true,
         itemCount: 4,
-        itemBuilder: (context, i){
+        itemBuilder: (context, i) {
           return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -534,12 +650,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                   ),
                   child: RadioListTile(
                       enableFeedback: true,
-                      fillColor: MaterialStateColor.resolveWith((states) => main_col),
+                      fillColor:
+                          MaterialStateColor.resolveWith((states) => main_col),
                       activeColor: main_col,
                       groupValue: questionradio,
                       value: i,
                       onChanged: (var value) {
-                        if(state == QuestionState.answering){
+                        if (state == QuestionState.answering) {
                           setState(() {
                             questionradio = i;
                           });
@@ -549,23 +666,20 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                       title: Text.rich(
                         TextSpan(
                             children: parseTextWithMath(
-                              "${ShuffledAnswers[i]}",
-                              TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 22,
-                                  color: _answerForegroundColor(i),
-                              ),
-                            )
-                        ),
+                          "${ShuffledAnswers[i]}",
+                          TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 22,
+                            color: _answerForegroundColor(i),
+                          ),
+                        )),
                         textAlign: TextAlign.left,
-                      )
-                  ),
+                      )),
                 ),
-              ]
-          );
-        }
-    );
+              ]);
+        });
   }
+
   Future<void> _questionhandler(ShuffledAnswers, Answers, i) async {
     setState(() {
       state = QuestionState.evaluating;
@@ -579,23 +693,23 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         ? ['a', 'b', 'c', 'd'][selectedAnswerIndex]
         : null;
     await DatabaseWidget.of(context).learningStateRepository.recordAnswer(
-      questionId: _questionId,
-      correct: correct,
-      selectedAnswerKey: selectedAnswerKey,
-    );
+          questionId: _questionId,
+          correct: correct,
+          selectedAnswerKey: selectedAnswerKey,
+        );
 
-    for(int i = 0; i < ShuffledAnswers.length; i++){
-      if(ShuffledAnswers[i] == Answers[0]){
+    for (int i = 0; i < ShuffledAnswers.length; i++) {
+      if (ShuffledAnswers[i] == Answers[0]) {
         setState(() {
           highlighting = i;
         });
         break;
-      };
+      }
+      ;
     }
-    if(correct){
+    if (correct) {
       _overlay(false, "Richtig!");
-    }
-    else{
+    } else {
       final hasMath = Answers[0].contains(RegExp(r'\$[^$]+\$'));
       final announcement = (imageQuestion || hasMath)
           ? "Falsch."
@@ -614,60 +728,61 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     OverlayState? overlayState = Overlay.of(context);
 
     overlayEntry = OverlayEntry(
-      builder: (buildcontext){
-        return  Container(
+      builder: (buildcontext) {
+        return Container(
             child: Stack(
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: wrong ? Colors.red.shade700 : Colors.green.shade700,
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 90, right: 20, left: 20),
-                        child:
-                        RichText(
-                          textAlign: TextAlign.left,
-                          text: TextSpan(
-                              children: parseTextWithMath(
-                                wrong ? "Die Antwort ist falsch!" : "Richtig!",
-                                TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    decoration: TextDecoration.none
-                                ),
-                              )
-                          ),
-                        ),
-                      ),
-                    )
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: wrong ? Colors.red.shade700 : Colors.green.shade700,
                 ),
-                SafeArea(
+                child: Center(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
-                    child: ElevatedButton(
-                      autofocus: true,
-                      style: buttonstyle(wrong ? Colors.red.shade300 : Colors.green.shade300),
-                      onPressed: (){
-                        overlayEntry!.remove();
-                        _nextquest();
-                      },
-                      child: Text("Weiter", style: TextStyle(color: Colors.black),),
+                    padding:
+                        const EdgeInsets.only(bottom: 90, right: 20, left: 20),
+                    child: RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                          children: parseTextWithMath(
+                        wrong ? "Die Antwort ist falsch!" : "Richtig!",
+                        TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: 30,
+                            decoration: TextDecoration.none),
+                      )),
                     ),
                   ),
+                )),
+            SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                child: ElevatedButton(
+                  autofocus: true,
+                  style: buttonstyle(
+                      wrong ? Colors.red.shade300 : Colors.green.shade300),
+                  onPressed: () {
+                    overlayEntry!.remove();
+                    _nextquest();
+                  },
+                  child: Text(
+                    "Weiter",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
-              ],
-            )
-        );
+              ),
+            ),
+          ],
+        ));
       },
     );
     overlayState.insert(overlayEntry!);
   }
-  _nextquest(){
+
+  _nextquest() {
     if (_isSingle) {
       Navigator.of(context).pop(true);
       return;
@@ -686,7 +801,7 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       refreshAnswers();
       return;
     }
-    try{
+    try {
       this.questionorder[this.questionkey + 1];
       this.questionradio = null;
       setState(() {
@@ -694,22 +809,24 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         questionkey += 1;
         refreshAnswers();
       });
-    }catch(e){
-      try{
+    } catch (e) {
+      try {
         this.subchapter[this.subchapterkey];
         setState(() {
           questionradio = null;
           subchapterkey += 1;
-          questionorder = buildquestionlist(chapter, subchapter[subchapterkey], json, true);
+          questionorder =
+              buildquestionlist(chapter, subchapter[subchapterkey], json, true);
           questionkey = 0;
           refreshAnswers();
         });
-      }catch(e){
+      } catch (e) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (con) => Finish(chapter,subchapter, questreslist, context)),
+          MaterialPageRoute(
+              builder: (con) =>
+                  Finish(chapter, subchapter, questreslist, context)),
         );
-
       }
     }
   }
@@ -729,17 +846,21 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       (reference) => reference.questionId == nextQuestionId,
     );
   }
-
 }
 
-orderlist(var elements, bool random){
-  int i = 0; List<int> orderlist = List.generate((elements),(generator) {i++; return i - 1;});
+orderlist(var elements, bool random) {
+  int i = 0;
+  List<int> orderlist = List.generate((elements), (generator) {
+    i++;
+    return i - 1;
+  });
 
-  if(!random) return orderlist;
-  else orderlist.shuffle(); return orderlist;
+  if (!random)
+    return orderlist;
+  else
+    orderlist.shuffle();
+  return orderlist;
 }
-
-
 
 List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
   List<InlineSpan> widgets = [];
@@ -748,7 +869,7 @@ List<InlineSpan> parseTextWithMath(String input, TextStyle Textstyle) {
   for (int i = 0; i < parts.length; i++) {
     if (i % 2 == 0) {
       if (parts[i].isNotEmpty) {
-          widgets.addAll(parseHtml(parts[i], Textstyle));
+        widgets.addAll(parseHtml(parts[i], Textstyle));
       }
     } else {
       widgets.add(WidgetSpan(
@@ -814,35 +935,35 @@ List<InlineSpan> parseHtml(String htmlString, TextStyle style) {
         spans.add(TextSpan(text: node.text, style: style));
       }
     } else if (node is dom.Element) {
-       TextStyle newStyle = style;
-       if (node.localName == 'b' || node.localName == 'strong') {
-         newStyle = style.copyWith(fontWeight: FontWeight.bold);
-       } else if (node.localName == 'i' || node.localName == 'em') {
-         newStyle = style.copyWith(fontStyle: FontStyle.italic);
-       } else if (node.localName == 'u' || node.localName == 'ins') {
-         newStyle = style.copyWith(decoration: TextDecoration.underline);
-       } else if (node.localName == 'br') {
-          spans.add(TextSpan(text: "\n", style: style));
-          continue;
-       }
-       
-       if (node.hasChildNodes()) {
-          for(var child in node.nodes) {
-              if (child is dom.Text) {
-                  spans.add(TextSpan(text: child.text, style: newStyle));
-              } else if (child is dom.Element) {
-                   if (child.localName == 'br') {
-                      spans.add(TextSpan(text: "\n", style: newStyle));
-                   } else {
-                       spans.add(TextSpan(text: child.text, style: newStyle));
-                   }
-              }
+      TextStyle newStyle = style;
+      if (node.localName == 'b' || node.localName == 'strong') {
+        newStyle = style.copyWith(fontWeight: FontWeight.bold);
+      } else if (node.localName == 'i' || node.localName == 'em') {
+        newStyle = style.copyWith(fontStyle: FontStyle.italic);
+      } else if (node.localName == 'u' || node.localName == 'ins') {
+        newStyle = style.copyWith(decoration: TextDecoration.underline);
+      } else if (node.localName == 'br') {
+        spans.add(TextSpan(text: "\n", style: style));
+        continue;
+      }
+
+      if (node.hasChildNodes()) {
+        for (var child in node.nodes) {
+          if (child is dom.Text) {
+            spans.add(TextSpan(text: child.text, style: newStyle));
+          } else if (child is dom.Element) {
+            if (child.localName == 'br') {
+              spans.add(TextSpan(text: "\n", style: newStyle));
+            } else {
+              spans.add(TextSpan(text: child.text, style: newStyle));
+            }
           }
-       } else {
-          if(node.text.isNotEmpty) {
-              spans.add(TextSpan(text: node.text, style: newStyle));
-          }
-       }
+        }
+      } else {
+        if (node.text.isNotEmpty) {
+          spans.add(TextSpan(text: node.text, style: newStyle));
+        }
+      }
     }
   }
   return spans;

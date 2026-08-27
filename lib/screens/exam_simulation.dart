@@ -997,7 +997,7 @@ class ExamReviewPage extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.smart_display, color: Colors.red),
               tooltip: 'Lernvideo von DL2YMR',
-              onPressed: () => launchURL(
+              onPressed: () => launchExternalURL(
                 VideoIndex.urlFor(result.question.id)!,
               ),
             ),
