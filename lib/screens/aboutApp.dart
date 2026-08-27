@@ -27,7 +27,8 @@ class AboutAppPage extends StatelessWidget {
                   title: Text('Entwickelt mit ❤'),
                   tiles: [
                     SettingsTile(
-                      title: Text("Version: ${packageInfo?.version}+${packageInfo?.buildNumber}"),
+                      title: Text(
+                          "Version: ${packageInfo?.version}+${packageInfo?.buildNumber}"),
                       leading: Icon(Icons.info),
                     ),
                     SettingsTile(
@@ -38,7 +39,8 @@ class AboutAppPage extends StatelessWidget {
                       },
                     ),
                     SettingsTile(
-                      title: Text("Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON \n Felix Pfannkuch, DO6FP \n Matthias Jung, DL9MJ \n und alle weiteren Mitwirkenden"),
+                      title: Text(
+                          "Ehrenamtliches Team des DARC e.V. \n \n Mit besonderen Dank an \n Konrad Gralher, DK7ON \n Felix Pfannkuch, DO6FP \n Matthias Jung, DL9MJ \n und alle weiteren Mitwirkenden"),
                       leading: Icon(Icons.flutter_dash),
                     ),
                   ],
@@ -51,7 +53,8 @@ class AboutAppPage extends StatelessWidget {
                       title: Text("app@darc.de"),
                       leading: Icon(Icons.email),
                       onPressed: (BuildContext context) {
-                        launchURL("mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A");
+                        launchURL(
+                            "mailto:app@darc.de?subject=App%20DARC&body=Hallo%20ehrenamtliches%20App-Team,%0D%0A%0D%0A");
                       },
                     ),
                     SettingsTile(
@@ -59,6 +62,16 @@ class AboutAppPage extends StatelessWidget {
                       leading: Icon(Icons.web),
                       onPressed: (BuildContext context) {
                         launchURL("https://app.darc.de");
+                      },
+                    ),
+                    SettingsTile(
+                      title: Text("Mitglied werden"),
+                      description:
+                          Text("Mitgliedschaft im DARC e.V. beantragen"),
+                      leading: Icon(Icons.person_add),
+                      onPressed: (BuildContext context) {
+                        launchExternalURL(
+                            "https://antrag.darc.de/antrag/schritt-1");
                       },
                     ),
                   ],
@@ -96,16 +109,19 @@ class AboutAppPage extends StatelessWidget {
                     ),
                     SettingsTile(
                       title: Text("Lizenzhinweis zu den Prüfungsfragen"),
-                      description: Text("Die Prüfungsfragen wurden vom DARC im Auftrag der Bundesnetzagentur erstellt."),
+                      description: Text(
+                          "Die Prüfungsfragen wurden vom DARC im Auftrag der Bundesnetzagentur erstellt."),
                       leading: Icon(Icons.assignment),
                       onPressed: (BuildContext context) {
-                        Navigator.of(context).pushNamed("/questionsLicenseNotice");
+                        Navigator.of(context)
+                            .pushNamed("/questionsLicenseNotice");
                       },
                     ),
                     SettingsTile(
-                        title: Text("Auszug der Anlage 1 AFuV"),
-                        description: Text("Die Übersicht wurde aus der Anlage 1 der Amateurfunkverordnung – AFuV 2023 entnommen."),
-                        leading: Icon(Icons.assignment),
+                      title: Text("Auszug der Anlage 1 AFuV"),
+                      description: Text(
+                          "Die Übersicht wurde aus der Anlage 1 der Amateurfunkverordnung – AFuV 2023 entnommen."),
+                      leading: Icon(Icons.assignment),
                     )
                   ],
                 ),

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
@@ -14,6 +15,7 @@ import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/exam/exam_simulation.dart';
 import 'package:fuenfzigohm/repository/models/course_class.dart';
 import 'package:fuenfzigohm/repository/setting_repository.dart';
+import 'package:fuenfzigohm/screens/aboutApp.dart';
 import 'package:fuenfzigohm/screens/calculator_page.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
@@ -137,6 +139,25 @@ void main() {
     expect(find.text('Übung starten'), findsOneWidget);
   });
 
+  testWidgets('about page offers DARC membership application', (tester) async {
+    PackageInfo.setMockInitialValues(
+      appName: '50Ohm',
+      packageName: 'de.darc.fuenfzigohm',
+      version: '1.2.0',
+      buildNumber: '36',
+      buildSignature: '',
+    );
+
+    await tester.pumpWidget(MaterialApp(home: AboutAppPage()));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Mitglied werden'), findsWidgets);
+    expect(
+      find.text('Mitgliedschaft im DARC e.V. beantragen'),
+      findsOneWidget,
+    );
+  });
+
   testWidgets('calculator only shows the scientific keypad', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(home: CalculatorPage()),
@@ -149,12 +170,16 @@ void main() {
     expect(find.text('log₁₀'), findsOneWidget);
     expect(find.text('xʸ'), findsOneWidget);
     expect(
-      tester.widget<MaterialButton>(
-        find.widgetWithText(MaterialButton, 'xʸ'),
-      ).color,
-      tester.widget<MaterialButton>(
-        find.widgetWithText(MaterialButton, 'sqrt'),
-      ).color,
+      tester
+          .widget<MaterialButton>(
+            find.widgetWithText(MaterialButton, 'xʸ'),
+          )
+          .color,
+      tester
+          .widget<MaterialButton>(
+            find.widgetWithText(MaterialButton, 'sqrt'),
+          )
+          .color,
     );
     expect(find.byType(Drawer), findsNothing);
     expect(find.text('Calculator'), findsNothing);
@@ -211,8 +236,7 @@ void main() {
   });
 
   test('question search finds questions by number only', () async {
-    final raw =
-        await rootBundle.loadString('assets/questions/Questions.json');
+    final raw = await rootBundle.loadString('assets/questions/Questions.json');
     final catalog = jsonDecode(raw) as Map<String, dynamic>;
     final questions = buildQuestionSearchIndex(catalog);
 

@@ -4,6 +4,7 @@ import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/icons.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
@@ -182,6 +183,13 @@ class _LearningmoduleState extends State<Learningmodule> {
                   title: Text("Über diese App"),
                 ),
               ),
+              PopupMenuItem(
+                value: 7,
+                child: ListTile(
+                  leading: Icon(Icons.person_add),
+                  title: Text("Mitglied werden"),
+                ),
+              ),
             ],
             onSelected: (item) => _selectItem(context, item),
           ),
@@ -249,6 +257,9 @@ class _LearningmoduleState extends State<Learningmodule> {
       case 0:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
+        break;
+      case 7:
+        launchExternalURL("https://antrag.darc.de/antrag/schritt-1");
         break;
     }
   }

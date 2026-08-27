@@ -12,6 +12,12 @@ Das Projekt wird derzeit von einem kleinen Entwicklerteam ehrenamtlich entwickel
 
 ## Update der Lizenzhinweise für verwendete Pakete
 
-`fvm flutter pub run flutter_oss_licenses:generate.dart`
+Die in der App unter „Über diese App“ angezeigten Paketlizenzen werden automatisch
+aus den aktuellen Abhängigkeiten erzeugt:
+
+`fvm dart run dart_pubspec_licenses:generate`
+
+Die generierte Datei `lib/oss_licenses.dart` muss anschließend mit committed
+werden. Die Lizenztexte werden nicht von Hand gepflegt.
 
 ![portal](https://github.com/Konradrundfunk/50ohm-pocket/assets/33392939/7ddb8cbc-5c60-4c5d-8e59-6541ce410919)
