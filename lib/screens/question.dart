@@ -12,6 +12,7 @@ import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/learning_state/practice_question_selector.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
+import 'package:fuenfzigohm/screens/calculator_page.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/style/style.dart';
 import 'package:flutter/material.dart';
@@ -281,6 +282,18 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
                 tooltip: "50Ω Lernmaterial",
                 onPressed: () => launchURL(_getSectionUrl()),
               ),
+            IconButton(
+              icon: Icon(Icons.calculate),
+              tooltip: "Taschenrechner",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CalculatorPage(),
+                  ),
+                );
+              },
+            ),
             IconButton(
               icon: Icon(Icons.description),
               tooltip: "Hilfsmittel",

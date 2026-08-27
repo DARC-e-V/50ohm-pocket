@@ -14,6 +14,7 @@ import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/exam/exam_simulation.dart';
 import 'package:fuenfzigohm/repository/models/course_class.dart';
 import 'package:fuenfzigohm/repository/setting_repository.dart';
+import 'package:fuenfzigohm/screens/calculator_page.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
 import 'package:fuenfzigohm/screens/exam_simulation.dart';
 import 'package:fuenfzigohm/screens/practice.dart';
@@ -134,6 +135,79 @@ void main() {
     expect(find.textContaining('bereits beantwortet'), findsOneWidget);
     expect(find.textContaining('sofort gespeichert'), findsOneWidget);
     expect(find.text('Übung starten'), findsOneWidget);
+  });
+
+  testWidgets('calculator only shows the scientific keypad', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: CalculatorPage()),
+    );
+
+    expect(find.text('Taschenrechner'), findsOneWidget);
+    expect(find.text('sin'), findsOneWidget);
+    expect(find.text('sqrt'), findsOneWidget);
+    expect(find.text('π'), findsOneWidget);
+    expect(find.text('log₁₀'), findsOneWidget);
+    expect(find.text('xʸ'), findsOneWidget);
+    expect(
+      tester.widget<MaterialButton>(
+        find.widgetWithText(MaterialButton, 'xʸ'),
+      ).color,
+      tester.widget<MaterialButton>(
+        find.widgetWithText(MaterialButton, 'sqrt'),
+      ).color,
+    );
+    expect(find.byType(Drawer), findsNothing);
+    expect(find.text('Calculator'), findsNothing);
+    expect(find.text('Standard Calculator'), findsNothing);
+
+    final seven = tester.getCenter(find.text('7'));
+    final four = tester.getCenter(find.text('4'));
+    final one = tester.getCenter(find.text('1'));
+    expect(seven.dx, four.dx);
+    expect(four.dx, one.dx);
+    expect(seven.dy, lessThan(four.dy));
+    expect(four.dy, lessThan(one.dy));
+    expect(
+      tester.getSize(find.widgetWithText(MaterialButton, '=')).width,
+      greaterThan(
+        tester.getSize(find.widgetWithText(MaterialButton, '0')).width * 1.8,
+      ),
+    );
+    expect(
+      tester.getSize(find.widgetWithText(MaterialButton, '7')).height,
+      greaterThanOrEqualTo(48),
+    );
+
+    await tester.tap(find.text('2'));
+    await tester.tap(find.text('+'));
+    await tester.tap(find.text('3'));
+    await tester.tap(find.text('='));
+    await tester.pump();
+    expect(find.text('5.0'), findsOneWidget);
+
+    await tester.tap(find.text('C'));
+    await tester.tap(find.text('π'));
+    await tester.tap(find.text('='));
+    await tester.pump();
+    expect(find.text('π'), findsNWidgets(2));
+
+    await tester.tap(find.text('C'));
+    await tester.tap(find.text('log₁₀'));
+    await tester.tap(find.text('1'));
+    await tester.tap(find.text('0'));
+    await tester.tap(find.text('0'));
+    await tester.tap(find.text(')'));
+    await tester.tap(find.text('='));
+    await tester.pump();
+    expect(find.text('2.0'), findsOneWidget);
+
+    await tester.tap(find.text('C'));
+    await tester.tap(find.text('2'));
+    await tester.tap(find.text('xʸ'));
+    await tester.tap(find.text('3'));
+    await tester.tap(find.text('='));
+    await tester.pump();
+    expect(find.text('8.0'), findsOneWidget);
   });
 
   test('question search finds questions by number only', () async {
