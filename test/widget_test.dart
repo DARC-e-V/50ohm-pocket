@@ -159,80 +159,111 @@ void main() {
   });
 
   testWidgets('calculator only shows the scientific keypad', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(375, 812));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
     await tester.pumpWidget(
       const MaterialApp(home: CalculatorPage()),
     );
 
+    Finder button(String label) =>
+        find.byKey(ValueKey('calculator-button-$label'));
+    Finder label(String label) =>
+        find.byKey(ValueKey('calculator-label-$label'));
+
     expect(find.text('Taschenrechner'), findsOneWidget);
-    expect(find.text('sin'), findsOneWidget);
-    expect(find.text('sqrt'), findsOneWidget);
-    expect(find.text('π'), findsOneWidget);
-    expect(find.text('log₁₀'), findsOneWidget);
-    expect(find.text('xʸ'), findsOneWidget);
+    expect(find.text('sin'), findsNothing);
+    expect(find.text('sqrt'), findsNothing);
+    expect(label('sqrt'), findsOneWidget);
+    expect(label('*'), findsOneWidget);
+    expect(label('/'), findsOneWidget);
+    expect(find.byType(Math), findsNWidgets(27));
     expect(
-      tester
-          .widget<MaterialButton>(
-            find.widgetWithText(MaterialButton, 'xʸ'),
-          )
-          .color,
-      tester
-          .widget<MaterialButton>(
-            find.widgetWithText(MaterialButton, 'sqrt'),
-          )
-          .color,
+      tester.widget<MaterialButton>(button('xʸ')).color,
+      tester.widget<MaterialButton>(button('sqrt')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button('e')).color,
+      tester.widget<MaterialButton>(button('sqrt')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button('(')).color,
+      tester.widget<MaterialButton>(button('+')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button(')')).color,
+      tester.widget<MaterialButton>(button('-')).color,
+    );
+    expect(
+      tester.getCenter(button('sin')).dy,
+      lessThan(tester.getCenter(button('xʸ')).dy),
     );
     expect(find.byType(Drawer), findsNothing);
     expect(find.text('Calculator'), findsNothing);
     expect(find.text('Standard Calculator'), findsNothing);
 
-    final seven = tester.getCenter(find.text('7'));
-    final four = tester.getCenter(find.text('4'));
-    final one = tester.getCenter(find.text('1'));
+    final seven = tester.getCenter(button('7'));
+    final four = tester.getCenter(button('4'));
+    final one = tester.getCenter(button('1'));
     expect(seven.dx, four.dx);
     expect(four.dx, one.dx);
     expect(seven.dy, lessThan(four.dy));
     expect(four.dy, lessThan(one.dy));
     expect(
-      tester.getSize(find.widgetWithText(MaterialButton, '=')).width,
+      tester.getSize(button('=')).width,
       greaterThan(
-        tester.getSize(find.widgetWithText(MaterialButton, '0')).width * 1.8,
+        tester.getSize(button('0')).width * 1.8,
       ),
     );
     expect(
-      tester.getSize(find.widgetWithText(MaterialButton, '7')).height,
+      tester.getSize(button('7')).height,
       greaterThanOrEqualTo(48),
     );
 
-    await tester.tap(find.text('2'));
-    await tester.tap(find.text('+'));
-    await tester.tap(find.text('3'));
-    await tester.tap(find.text('='));
+    await tester.tap(button('2'));
+    await tester.tap(button('+'));
+    await tester.tap(button('3'));
+    await tester.tap(button('='));
     await tester.pump();
     expect(find.text('5.0'), findsOneWidget);
 
-    await tester.tap(find.text('C'));
-    await tester.tap(find.text('π'));
-    await tester.tap(find.text('='));
+    await tester.tap(button('C'));
+    await tester.tap(button('π'));
+    await tester.tap(button('='));
     await tester.pump();
-    expect(find.text('π'), findsNWidgets(2));
+    expect(find.text('π'), findsOneWidget);
 
-    await tester.tap(find.text('C'));
-    await tester.tap(find.text('log₁₀'));
-    await tester.tap(find.text('1'));
-    await tester.tap(find.text('0'));
-    await tester.tap(find.text('0'));
-    await tester.tap(find.text(')'));
-    await tester.tap(find.text('='));
+    await tester.tap(button('C'));
+    await tester.tap(button('log₁₀'));
+    await tester.tap(button('1'));
+    await tester.tap(button('0'));
+    await tester.tap(button('0'));
+    await tester.tap(button(')'));
+    await tester.tap(button('='));
     await tester.pump();
     expect(find.text('2.0'), findsOneWidget);
 
-    await tester.tap(find.text('C'));
-    await tester.tap(find.text('2'));
-    await tester.tap(find.text('xʸ'));
-    await tester.tap(find.text('3'));
-    await tester.tap(find.text('='));
+    await tester.tap(button('C'));
+    await tester.tap(button('2'));
+    await tester.tap(button('xʸ'));
+    await tester.tap(button('3'));
+    await tester.tap(button('='));
     await tester.pump();
     expect(find.text('8.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('sin'));
+    await tester.tap(button('0'));
+    await tester.tap(button(')'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('0.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('e'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('e'), findsOneWidget);
   });
 
   testWidgets('question actions use a compact overflow menu', (tester) async {

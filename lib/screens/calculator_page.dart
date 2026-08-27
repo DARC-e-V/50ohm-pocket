@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_calculator/smart_calculator.dart';
 import 'package:smart_calculator/src/models/calculator_provider.dart';
 
 const _piInput = '3.141592653589793';
+const _eInput = '2.718281828459045';
 
 class CalculatorPage extends StatelessWidget {
   const CalculatorPage({super.key});
@@ -67,6 +69,7 @@ class _CalculatorDisplay extends StatelessWidget {
           child: Text(
             provider.output
                 .replaceAll(_piInput, 'π')
+                .replaceAll(_eInput, 'e')
                 .replaceAll('log(10,', 'log₁₀('),
             style: const TextStyle(fontSize: 34),
           ),
@@ -80,7 +83,8 @@ class _ScientificCalculatorKeypad extends StatelessWidget {
   const _ScientificCalculatorKeypad();
 
   static const rows = [
-    ['sin', 'cos', 'tan', 'sqrt', 'xʸ', 'π', 'log₁₀'],
+    ['sin', 'cos', 'tan', 'sqrt'],
+    ['xʸ', 'π', 'log₁₀', 'e'],
     ['7', '8', '9', '(', ')'],
     ['4', '5', '6', '+', '-'],
     ['1', '2', '3', '/', '*'],
@@ -103,7 +107,11 @@ class _ScientificCalculatorKeypad extends StatelessWidget {
                       label: button,
                       onPressed: () => provider.buttonPressed(
                         switch (button) {
+                          'sin' => 'sin(',
+                          'cos' => 'cos(',
+                          'tan' => 'tan(',
                           'π' => _piInput,
+                          'e' => _eInput,
                           'log₁₀' => 'log(10,',
                           'xʸ' => '^',
                           _ => button,
@@ -128,6 +136,38 @@ class _CalculatorButton extends StatelessWidget {
     required this.onPressed,
   });
 
+  String get _texLabel => switch (label) {
+        'sin' => r'\sin(x)',
+        'cos' => r'\cos(x)',
+        'tan' => r'\tan(x)',
+        'sqrt' => r'\sqrt{x}',
+        'xʸ' => r'x^y',
+        'π' => r'\pi',
+        'log₁₀' => r'\log_{10}(x)',
+        '*' => r'\times',
+        '/' => r'\div',
+        'C' => r'\mathrm{C}',
+        _ => label,
+      };
+
+  String get _semanticLabel => switch (label) {
+        'sin' => 'Sinus',
+        'cos' => 'Kosinus',
+        'tan' => 'Tangens',
+        'sqrt' => 'Quadratwurzel',
+        'xʸ' => 'Potenz',
+        'π' => 'Pi',
+        'log₁₀' => 'Zehnerlogarithmus',
+        'e' => 'Eulersche Zahl',
+        '*' => 'Mal',
+        '/' => 'Geteilt',
+        '-' => 'Minus',
+        '+' => 'Plus',
+        '=' => 'Ergebnis',
+        'C' => 'Löschen',
+        _ => label,
+      };
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -139,10 +179,9 @@ class _CalculatorButton extends StatelessWidget {
       'xʸ',
       'π',
       'log₁₀',
-      '(',
-      ')'
+      'e',
     }.contains(label);
-    final isOperator = const {'/', '*', '-', '+'}.contains(label);
+    final isOperator = const {'/', '*', '-', '+', '(', ')'}.contains(label);
 
     final Color background;
     final Color foreground;
@@ -167,17 +206,30 @@ class _CalculatorButton extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       child: SizedBox.expand(
         child: MaterialButton(
+          key: ValueKey('calculator-button-$label'),
           onPressed: onPressed,
           color: background,
           textColor: foreground,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: label.length > 2 ? 15 : 18,
-              fontWeight: FontWeight.w600,
+          child: Semantics(
+            label: _semanticLabel,
+            child: ExcludeSemantics(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Math.tex(
+                  _texLabel,
+                  key: ValueKey('calculator-label-$label'),
+                  mathStyle: MathStyle.text,
+                  textStyle: TextStyle(
+                    color: foreground,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
