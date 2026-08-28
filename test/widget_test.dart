@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -125,6 +126,22 @@ void main() {
 
     verify(() => repository.setShowWelcomeScreen(true)).called(1);
     expect(find.text('Einstellungen'), findsOneWidget);
+  });
+
+  testWidgets('welcome artwork preserves the embedded DARC blue in dark mode',
+      (tester) async {
+    final svg = await rootBundle.loadString('assets/welcome/Icons.svg');
+    expect(svg, contains('stroke="#00A0E3"'));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        home: const Scaffold(body: WelcomeGreeting()),
+      ),
+    );
+
+    final artwork = tester.widget<SvgPicture>(find.byType(SvgPicture));
+    expect(artwork.colorFilter, isNull);
   });
 
   testWidgets('practice intro explains the open-ended exercise',
