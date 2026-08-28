@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 
 const _courseIds = <String>{'N', 'E', 'NE', 'A', 'EA', 'NEA'};
 
