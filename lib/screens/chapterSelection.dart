@@ -1,12 +1,20 @@
+import 'dart:convert';
+
 import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/icons.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/screens/practice.dart';
+import 'package:fuenfzigohm/screens/exam_simulation.dart';
+import 'package:fuenfzigohm/screens/question_search.dart';
+import 'package:fuenfzigohm/screens/bookmarks.dart';
 import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'pdfViewer.dart';
@@ -19,18 +27,56 @@ int lessonListItemCount(int chapterCount) =>
 int lessonChapterIndex(int listItemIndex) =>
     listItemIndex - lessonListHeaderItemCount;
 
-const freeLearningMainChapters = [2, 1, 0];
+const fullCatalogMainChapters = [2, 1, 0];
 const freeLearningSwipeHints = [
   "Wische nach links, um zu den Betriebsfragen zu gelangen.",
   "Wische nach rechts zu den Vorschriftsfragen oder nach links zu den technischen Fragen.",
   "Wische nach rechts, um zu den Betriebsfragen zu gelangen.",
 ];
 
-int freeLearningMainChapter(int pageIndex) =>
-    freeLearningMainChapters[pageIndex];
+List<int> freeLearningMainChaptersForClasses(Iterable<int> selectedClasses) {
+  final classes = selectedClasses.toSet();
+  return classes.isEmpty || classes.contains(1)
+      ? fullCatalogMainChapters
+      : const [0];
+}
 
-String freeLearningSwipeHint(int pageIndex) =>
-    freeLearningSwipeHints[pageIndex];
+String? freeLearningSwipeHintForClasses(
+  Iterable<int> selectedClasses,
+  int pageIndex,
+) {
+  final pages = freeLearningMainChaptersForClasses(selectedClasses);
+  return pages.length == 1 ? null : freeLearningSwipeHints[pageIndex];
+}
+
+List<String> freeLearningOverviewQuestionIds(
+  Map<String, dynamic> catalog,
+  Iterable<int> selectedClasses,
+) {
+  final classes = selectedClasses.toSet();
+  final questionIds = <String>{};
+  final sections = catalog['sections'] as List;
+
+  for (final mainChapter
+      in freeLearningMainChaptersForClasses(selectedClasses)) {
+    final section = sections[mainChapter] as Map<String, dynamic>;
+    filterQuestionSections(section, classes);
+    questionIds.addAll(Json(section).getAllQuestionIds(mainChapter));
+  }
+
+  return questionIds.toList();
+}
+
+Future<List<String>> loadFreeLearningOverviewQuestionIds(
+  Iterable<int> selectedClasses,
+) async {
+  final rawCatalog =
+      await rootBundle.loadString('assets/questions/Questions.json');
+  return freeLearningOverviewQuestionIds(
+    jsonDecode(rawCatalog) as Map<String, dynamic>,
+    selectedClasses,
+  );
+}
 
 bool isDirectQuestionChapter(Json json, int chapter) =>
     json.chaptersize(chapter) == 0 && json.chapterQuestionCount(chapter) > 0;
@@ -43,7 +89,6 @@ String lessonRowTitle(Json json, int chapter, int row) =>
         ? json.chapter_names(chapter)
         : json.subchapter_name(chapter, row);
 
-
 class Learningmodule extends StatefulWidget {
   @override
   createState() => _LearningmoduleState();
@@ -51,18 +96,71 @@ class Learningmodule extends StatefulWidget {
 
 class _LearningmoduleState extends State<Learningmodule> {
   bool reload = false;
+  String? _overviewCourseKey;
+  Future<List<String>>? _overviewQuestionIds;
 
+  Future<List<String>> _overviewQuestionIdsFor(
+    Iterable<int> selectedClasses,
+  ) {
+    final sortedClasses = selectedClasses.toList()..sort();
+    final courseKey = sortedClasses.join(',');
+    if (_overviewQuestionIds == null || _overviewCourseKey != courseKey) {
+      _overviewCourseKey = courseKey;
+      _overviewQuestionIds = loadFreeLearningOverviewQuestionIds(sortedClasses);
+    }
+    return _overviewQuestionIds!;
+  }
 
   @override
   Widget build(BuildContext context) {
-    bool courseOrdering = DatabaseWidget.of(context).settings_database.get("courseOrdering") ?? true;
+    bool courseOrdering =
+        DatabaseWidget.of(context).settings_database.get("courseOrdering") ??
+            true;
+    final storedClasses =
+        DatabaseWidget.of(context).settings_database.get("Klasse");
+    final selectedClasses = storedClasses is Iterable
+        ? storedClasses.whereType<num>().map((value) => value.toInt()).toList()
+        : <int>[];
+    final freeLearningPages =
+        freeLearningMainChaptersForClasses(selectedClasses);
+    final overviewQuestionIds =
+        courseOrdering ? null : _overviewQuestionIdsFor(selectedClasses);
     return Scaffold(
       appBar: AppBar(
-        title: SvgPicture.asset("assets/icons/ohm2.svg", semanticsLabel: "50 Ohm"),
+        title:
+            SvgPicture.asset("assets/icons/ohm2.svg", semanticsLabel: "50 Ohm"),
         actions: [
           PopupMenuButton(
             tooltip: "Menü öffnen",
             itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 6,
+                child: ListTile(
+                  leading: Icon(Icons.bookmark),
+                  title: Text("Gemerkerte Fragen"),
+                ),
+              ),
+              PopupMenuItem(
+                value: 5,
+                child: ListTile(
+                  leading: Icon(Icons.search),
+                  title: Text("Frage suchen"),
+                ),
+              ),
+              PopupMenuItem(
+                value: 4,
+                child: ListTile(
+                  leading: Icon(Icons.quiz),
+                  title: Text("Prüfungssimulation"),
+                ),
+              ),
+              PopupMenuItem(
+                value: 3,
+                child: ListTile(
+                  leading: Icon(Icons.school),
+                  title: Text("Üben"),
+                ),
+              ),
               PopupMenuItem(
                 value: 2,
                 child: ListTile(
@@ -80,8 +178,16 @@ class _LearningmoduleState extends State<Learningmodule> {
               PopupMenuItem(
                 value: 0,
                 child: ListTile(
-                  leading: Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
+                  leading:
+                      Icon(Icons.privacy_tip), // Icon for Datenschutzerklärung
                   title: Text("Über diese App"),
+                ),
+              ),
+              PopupMenuItem(
+                value: 7,
+                child: ListTile(
+                  leading: Icon(Icons.person_add),
+                  title: Text("Mitglied werden"),
                 ),
               ),
             ],
@@ -90,31 +196,59 @@ class _LearningmoduleState extends State<Learningmodule> {
         ],
       ),
       body: DefaultTabController(
-        length: 3,
+        length: freeLearningPages.length,
         child: Scaffold(
             body: courseOrdering
                 ? getUserClass(context)
                 : PageView.builder(
-              itemBuilder: (content, index){
-                return chapterbuilder(
-                  context,
-                  'assets/questions/Questions.json',
-                  freeLearningMainChapter(index),
-                  swipeHint: freeLearningSwipeHint(index),
-                );
-              },
-              itemCount: 3,
-            )
-        ),
+                    itemBuilder: (content, index) {
+                      return chapterbuilder(
+                        context,
+                        'assets/questions/Questions.json',
+                        freeLearningPages[index],
+                        overviewQuestionIds: overviewQuestionIds,
+                        swipeHint: freeLearningSwipeHintForClasses(
+                          selectedClasses,
+                          index,
+                        ),
+                      );
+                    },
+                    itemCount: freeLearningPages.length,
+                  )),
       ),
     );
   }
 
   _selectItem(BuildContext context, Object item) {
     switch (item) {
-      case 2:
+      case 6:
         Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => PdfViewer(1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel")));
+            .push(MaterialPageRoute(builder: (context) => BookmarksPage()))
+            .then((_) => setState(() {}));
+        break;
+      case 5:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => QuestionSearchPage()))
+            .then((_) => setState(() {}));
+        break;
+      case 4:
+        Navigator.of(context)
+            .push(
+              MaterialPageRoute(
+                builder: (context) => const ExamSimulationPage(),
+              ),
+            )
+            .then((_) => setState(() {}));
+        break;
+      case 3:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => PracticePage()))
+            .then((_) => setState(() {}));
+        break;
+      case 2:
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => PdfViewer(
+                1, "assets/pdf/Hilfsmittel_12062024.pdf", "Hilfsmittel")));
         break;
       case 1:
         Navigator.of(context)
@@ -124,21 +258,31 @@ class _LearningmoduleState extends State<Learningmodule> {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
         break;
+      case 7:
+        launchExternalURL("https://antrag.darc.de/antrag/schritt-1");
+        break;
     }
   }
 
   Widget chapterbuilder(var context, var path, var mainchapter,
-      {String? swipeHint}) {
+      {String? swipeHint, Future<List<String>>? overviewQuestionIds}) {
     return FutureBuilder(
-      future: Json(null).load(path, mainchapter, context),
-      builder: (context, snapshot){
+      future: Future.wait<Object>([
+        Json(null).load(path, mainchapter, context),
+        if (overviewQuestionIds != null) overviewQuestionIds,
+      ]),
+      builder: (context, snapshot) {
         if (snapshot.hasData) {
+          final results = snapshot.data as List<Object>;
+          final data = results.first as Map<String, dynamic>;
           return JsonWidget(
-              selectlesson(snapshot.data!, context, mainchapter,
-                  swipeHint: swipeHint),
-              (snapshot.data as Map<String, dynamic>),
+              selectlesson(data, context, mainchapter,
+                  swipeHint: swipeHint,
+                  overviewQuestionIds:
+                      results.length > 1 ? results[1] as List<String> : null),
+              data,
               mainchapter);
-        } else if (snapshot.hasError){
+        } else if (snapshot.hasError) {
           print(snapshot.error);
           return Text("Konnte die Fragen nicht laden");
         } else {
@@ -158,61 +302,67 @@ class _LearningmoduleState extends State<Learningmodule> {
     );
   }
 
-
-  Widget selectlesson(Map<String, dynamic> data, BuildContext context,
-      int mainchapter,
-      {String? swipeHint}) {
+  Widget selectlesson(
+      Map<String, dynamic> data, BuildContext context, int mainchapter,
+      {String? swipeHint, List<String>? overviewQuestionIds}) {
     Json json = Json(data);
 
-    // Get all question keys from JSON, then get scores from database (including 0 for unanswered)
-    List<List<int>> questionKeys = json.getAllQuestionKeys(mainchapter);
-    List<int> questionScores = Databaseobj(context).getAllQuestionScoresFromKeys(questionKeys);
+    final questionIds =
+        overviewQuestionIds ?? json.getAllQuestionIds(mainchapter);
+    final learningStateRepository =
+        DatabaseWidget.of(context).learningStateRepository;
+    final questionScores =
+        learningStateRepository.scoresForQuestions(questionIds);
+    final answeredQuestions =
+        learningStateRepository.answeredForQuestions(questionIds);
 
-    return Center( child: ConstrainedBox(
+    return Center(
+        child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 800, minWidth: 0),
       child: Padding(
-          padding: EdgeInsets.only(left: 5,right: 5),
+          padding: EdgeInsets.only(left: 5, right: 5),
           child: ListView.builder(
               itemCount: lessonListItemCount(json.mainchaptersize()),
               itemBuilder: (context, i) {
-                if(i == 0){
+                if (i == 0) {
                   return Padding(
-                      padding: EdgeInsets.only(top:8, right: std_padding, left: std_padding),
-                      child:
-                      Column(children: [
-                        Text(
-                          "${json.main_chapter_name()}",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                          ),
-                        ),
-                        if (swipeHint != null) ...[
-                          SizedBox(height: 6),
+                      padding: EdgeInsets.only(
+                          top: 8, right: std_padding, left: std_padding),
+                      child: Column(
+                        children: [
                           Text(
-                            swipeHint,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            "${json.main_chapter_name()}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 35,
+                            ),
                           ),
+                          if (swipeHint != null) ...[
+                            SizedBox(height: 6),
+                            Text(
+                              swipeHint,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ],
+                          Divider(
+                            height: 20,
+                          )
                         ],
-                        Divider(height: 20,)
-                      ],)
-                  );
+                      ));
                 }
-                if(i == 1){
+                if (i == 1) {
                   return ProgressOverviewCard(
                     questionScores: questionScores,
+                    answeredQuestions: answeredQuestions,
                   );
                 }
                 return chapterwidget(json, lessonChapterIndex(i), context);
-              }
-          )
-      ),
+              })),
     ));
   }
 
-
-  Widget chapterwidget(var json, int currentmainchapter, var context){
+  Widget chapterwidget(var json, int currentmainchapter, var context) {
     int totalQuestions = json.getTotalQuestionCount(currentmainchapter);
 
     return SizedBox(
@@ -220,7 +370,9 @@ class _LearningmoduleState extends State<Learningmodule> {
       child: Container(
           margin: EdgeInsets.only(top: std_padding),
           decoration: BoxDecoration(
-            color: json.chaptersize(currentmainchapter) == 0 ? main_col.withOpacity(0.4) : main_col.withOpacity(0.4),
+            color: json.chaptersize(currentmainchapter) == 0
+                ? main_col.withOpacity(0.4)
+                : main_col.withOpacity(0.4),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Padding(
@@ -229,17 +381,17 @@ class _LearningmoduleState extends State<Learningmodule> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  ExcludeSemantics(child: TextButton(
+                  ExcludeSemantics(
+                      child: TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
                       minimumSize: Size.fromHeight(100),
                       backgroundColor: main_col.withOpacity(0.7),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(5),
-                            topRight: Radius.circular(5),
-                          )
-                      ),
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                      )),
                     ),
                     // onPressed: () async {
                     //   Navigator.of(context).push(
@@ -263,7 +415,8 @@ class _LearningmoduleState extends State<Learningmodule> {
                           if (totalQuestions > 0) ...[
                             SizedBox(height: 8),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.25),
                                 borderRadius: BorderRadius.circular(12),
@@ -282,13 +435,12 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ),
                     ),
                   )),
-                  SizedBox(height: 8,),
-
+                  SizedBox(
+                    height: 8,
+                  ),
                   chapterLesson(currentmainchapter, json),
                 ],
-              )
-          )
-      ),
+              ))),
     );
   }
 
@@ -305,25 +457,31 @@ class _LearningmoduleState extends State<Learningmodule> {
 
         return Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(5),
+                bottomRight: Radius.circular(5)),
           ),
           margin: EdgeInsets.only(top: 10),
           child: Column(
             children: [
               ExcludeSemantics(
                 child: LinearProgressIndicator(
-                  value: Databaseobj(context).read(
-                    JsonWidget.of(context).mainchapter,
-                    chapter,
-                    hasDirectQuestions ? null : subchapter,
-                  ),
+                  value: DatabaseWidget.of(context)
+                      .learningStateRepository
+                      .progressForQuestions(
+                        json.getQuestionIds(
+                          chapter,
+                          hasDirectQuestions ? null : subchapter,
+                        ),
+                      ),
                   color: main_col,
                 ),
               ),
               ListTile(
                 contentPadding: EdgeInsetsDirectional.only(start: 16, end: 8),
                 onTap: () async {
-                  Navigator.of(context).push(
+                  Navigator.of(context)
+                      .push(
                     MaterialPageRoute(
                       builder: (BuildContext materialcontext) => Question(
                         context,
@@ -331,13 +489,16 @@ class _LearningmoduleState extends State<Learningmodule> {
                         chapter,
                       ),
                     ),
-                  ).then((value){
-                    if(value ?? false){
+                  )
+                      .then((value) {
+                    if (value ?? false) {
                       setState(() {});
                     }
                   });
                 },
-                leading: ExcludeSemantics(child: Icon(starticon(json.chaptericon(chapter, subchapter)))),
+                leading: ExcludeSemantics(
+                    child:
+                        Icon(starticon(json.chaptericon(chapter, subchapter)))),
                 title: Text(
                   lessonRowTitle(json, chapter, subchapter),
                   style: TextStyle(fontWeight: FontWeight.w500),
@@ -372,12 +533,11 @@ class _LearningmoduleState extends State<Learningmodule> {
             ],
           ),
         );
-      }
-  );
+      });
 
   getUserClass(BuildContext context) {
     print(DatabaseWidget.of(context).settings_database.get("Klasse"));
-    switch(DatabaseWidget.of(context).settings_database.get("Klasse")){
+    switch (DatabaseWidget.of(context).settings_database.get("Klasse")) {
       case [1]:
         return chapterbuilder(context, 'assets/questions/N.json', -1);
       case [1, 2]:
@@ -390,24 +550,29 @@ class _LearningmoduleState extends State<Learningmodule> {
         return chapterbuilder(context, 'assets/questions/A.json', -1);
       case [2, 3]:
         return chapterbuilder(context, 'assets/questions/EA.json', -1);
-
     }
   }
-
 }
 
-buildquestionlist(var chapter, var subchapter, Json json, bool random){
-  int i = 0; List<int> orderlist = List.generate((json.subchaptersize(chapter,subchapter)),(generator) {i++; return i - 1;});
+buildquestionlist(var chapter, var subchapter, Json json, bool random) {
+  int i = 0;
+  List<int> orderlist =
+      List.generate((json.subchaptersize(chapter, subchapter)), (generator) {
+    i++;
+    return i - 1;
+  });
 
-  if(!random) return orderlist;
-  else orderlist.shuffle(); return orderlist;
-
+  if (!random)
+    return orderlist;
+  else
+    orderlist.shuffle();
+  return orderlist;
 }
 
-starticon(var string){
-  if(string == null){
+starticon(var string) {
+  if (string == null) {
     return Icons.keyboard_arrow_right;
   }
-  var icon = getMaterialIcon( name: '$string');
+  var icon = getMaterialIcon(name: '$string');
   return icon;
 }

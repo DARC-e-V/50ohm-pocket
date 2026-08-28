@@ -1,4 +1,5 @@
 import 'package:fuenfzigohm/custom_libs/database.dart';
+import 'package:fuenfzigohm/learning_state/reset_learning_state.dart';
 import 'package:fuenfzigohm/main.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -30,6 +31,17 @@ class _settingsstate extends State<Settingspage> {
     }
 
     return "Standard";
+  }
+
+  String _themeModeLabel(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.light:
+        return "Hell";
+      case ThemeMode.dark:
+        return "Dunkel";
+      case ThemeMode.system:
+        return "Systemeinstellung";
+    }
   }
 
   Future<void> _showFontSizeDialog(
@@ -86,6 +98,128 @@ class _settingsstate extends State<Settingspage> {
     }
   }
 
+  Future<void> _showThemeModeDialog(
+    BuildContext context,
+    AppSettingsScope appSettings,
+  ) async {
+    ThemeMode selectedThemeMode = appSettings.themeMode;
+
+    final newThemeMode = await showDialog<ThemeMode>(
+      context: context,
+      builder: (dialogContext) {
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              title: const Text("Design"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Hell"),
+                    value: ThemeMode.light,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Dunkel"),
+                    value: ThemeMode.dark,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                  RadioListTile<ThemeMode>(
+                    title: const Text("Systemeinstellung"),
+                    value: ThemeMode.system,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setDialogState(() {
+                        selectedThemeMode = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(),
+                  child: const Text("Abbrechen"),
+                ),
+                FilledButton(
+                  onPressed: () =>
+                      Navigator.of(dialogContext).pop(selectedThemeMode),
+                  child: const Text("Speichern"),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+
+    if (newThemeMode != null) {
+      appSettings.onThemeModeChanged(newThemeMode);
+    }
+  }
+
+  Future<void> _confirmLearningStateReset(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text("Lernstand wirklich zurücksetzen?"),
+        content: const Text(
+          "Alle beantworteten Fragen und der gesamte Lernfortschritt werden "
+          "dauerhaft gelöscht. Deine Kursauswahl und die übrigen "
+          "Einstellungen bleiben erhalten.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: const Text("Abbrechen"),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onError,
+            ),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: const Text("Lernstand löschen"),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+
+    await resetLearningState(
+      repository: DatabaseWidget.of(context).learningStateRepository,
+      legacyProgressBox: DatabaseWidget.of(context).prog_database,
+    );
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Der Lernstand wurde zurückgesetzt.")),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     bool courseOrdering =
@@ -120,6 +254,15 @@ class _settingsstate extends State<Settingspage> {
                 },
               ),
               SettingsTile.navigation(
+                title: Text("Design"),
+                value: Text(_themeModeLabel(appSettings.themeMode)),
+                description: Text("Wähle zwischen Hell-, Dunkel- oder Systemeinstellung."),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onPressed: (BuildContext context) {
+                  _showThemeModeDialog(context, appSettings);
+                },
+              ),
+              SettingsTile.navigation(
                 title: Text("Zu trainierende Fragen"),
                 description: Text(
                   "Wähle hier die Fragen aus die du lernen möchtest. Wenn du bereits eine Prüfung abgelegt hast, kannst du hier einzelne Teile abwählen.",
@@ -129,7 +272,7 @@ class _settingsstate extends State<Settingspage> {
                   DatabaseWidget.of(
                     context,
                   ).settings_database.delete("welcomePage");
-                  Navigator.of(context).popAndPushNamed("/welcome");
+                  Navigator.of(context).pushNamed("/welcome");
                 },
               ),
               SettingsTile.switchTile(
@@ -143,6 +286,39 @@ class _settingsstate extends State<Settingspage> {
                   ).settings_database.put("courseOrdering", value);
                 },
                 title: Text("Ausbildungsmaterial nach 50Ohm.de"),
+                description: Text(
+                  "Ist der Schalter aktiviert, werden die Fragen in der "
+                  "didaktisch aufbereiteten Reihenfolge von 50ohm.de "
+                  "angezeigt. Ist er deaktiviert, folgt die Reihenfolge dem "
+                  "amtlichen Fragenkatalog der Bundesnetzagentur. Zum Lernen "
+                  "empfehlen wir die Reihenfolge von 50ohm.de.",
+                ),
+              ),
+            ],
+          ),
+          SettingsSection(
+            margin: EdgeInsetsDirectional.all(8.0),
+            title: Text(
+              'Danger Zone',
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
+            tiles: <SettingsTile>[
+              SettingsTile(
+                leading: Icon(
+                  Icons.delete_forever,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                title: Text(
+                  "Lernstand zurücksetzen",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+                description: Text(
+                  "Löscht alle beantworteten Fragen und den gesamten "
+                  "Lernfortschritt.",
+                ),
+                onPressed: _confirmLearningStateReset,
               ),
             ],
           ),

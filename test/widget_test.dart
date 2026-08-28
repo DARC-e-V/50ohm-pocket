@@ -1,13 +1,473 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
+import 'package:fuenfzigohm/constants.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
+import 'package:fuenfzigohm/custom_libs/solution_index.dart';
+import 'package:fuenfzigohm/custom_libs/video_index.dart';
+import 'package:fuenfzigohm/exam/exam_simulation.dart';
+import 'package:fuenfzigohm/repository/models/course_class.dart';
+import 'package:fuenfzigohm/repository/setting_repository.dart';
+import 'package:fuenfzigohm/screens/aboutApp.dart';
+import 'package:fuenfzigohm/screens/calculator_page.dart';
 import 'package:fuenfzigohm/screens/chapterSelection.dart';
+import 'package:fuenfzigohm/screens/exam_simulation.dart';
+import 'package:fuenfzigohm/screens/practice.dart';
+import 'package:fuenfzigohm/screens/question.dart';
+import 'package:fuenfzigohm/screens/question_search.dart';
+import 'package:fuenfzigohm/ui/welcome/bloc/welcome_bloc.dart';
+import 'package:fuenfzigohm/ui/welcome/pages/welcome_layout.dart';
+import 'package:fuenfzigohm/widgets/progress_overview_bar.dart';
+
+class _MockSettingRepository extends Mock implements SettingRepository {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('course selection shows all six courses on one page',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    expect(
+      completeCourseOptions.map((option) => option.course),
+      [
+        CourseClass.COURSE_CLASS_N,
+        CourseClass.COURSE_CLASS_NE,
+        CourseClass.COURSE_CLASS_NEA,
+      ],
+    );
+    expect(
+      upgradeCourseOptions.map((option) => option.course),
+      [
+        CourseClass.COURSE_CLASS_E,
+        CourseClass.COURSE_CLASS_EA,
+        CourseClass.COURSE_CLASS_A,
+      ],
+    );
+
+    final repository = _MockSettingRepository();
+    when(() => repository.courseClass).thenReturn({});
+    when(() => repository.setCourseClass(any())).thenAnswer((_) async {});
+    when(() => repository.setShowWelcomeScreen(any())).thenAnswer((_) async {});
+    final bloc = WelcomeBloc(settingRepository: repository);
+    addTearDown(bloc.close);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: BlocProvider.value(
+          value: bloc,
+          child: const WelcomeCourseSelection(),
+        ),
+      ),
+    );
+
+    expect(
+        find.text('Lernen auf 50ohm.de. Üben, wo du willst.'), findsOneWidget);
+    expect(find.textContaining('in der Bahn'), findsOneWidget);
+    expect(find.text('Kurs auswählen'), findsNothing);
+    expect(find.text('Gesamtkurse'), findsOneWidget);
+    expect(find.text('Aufbaukurse'), findsOneWidget);
+    expect(find.textContaining('noch kein Amateurfunkzeugnis'), findsOneWidget);
+    expect(find.textContaining('Klasse N oder E'), findsOneWidget);
+    for (final label in [
+      'N',
+      'N + E',
+      'N + E + A',
+      'N → E',
+      'N → A',
+      'E → A'
+    ]) {
+      expect(find.text(label), findsOneWidget);
+    }
+
+    await tester.scrollUntilVisible(find.text('N → A'), 400);
+    await tester.tap(find.text('N → A'));
+    await tester.pump();
+    verify(() => repository.setCourseClass(CourseClass.COURSE_CLASS_EA))
+        .called(1);
+  });
+
+  testWidgets('course selection returns to settings without losing setup',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    final repository = _MockSettingRepository();
+    when(() => repository.courseClass).thenReturn({1});
+    when(() => repository.setShowWelcomeScreen(any())).thenAnswer((_) async {});
+    final bloc = WelcomeBloc(settingRepository: repository);
+    addTearDown(bloc.close);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        initialRoute: '/course-selection',
+        routes: {
+          '/': (_) => const Scaffold(body: Text('Einstellungen')),
+          '/course-selection': (_) => BlocProvider.value(
+                value: bloc,
+                child: const Scaffold(body: WelcomeCourseSelection()),
+              ),
+        },
+      ),
+    );
+
+    await tester.scrollUntilVisible(find.text('Zurück'), 500);
+    await tester.tap(find.text('Zurück'));
+    await tester.pumpAndSettle();
+
+    verify(() => repository.setShowWelcomeScreen(true)).called(1);
+    expect(find.text('Einstellungen'), findsOneWidget);
+  });
+
+  testWidgets('welcome artwork preserves the embedded DARC blue in dark mode',
+      (tester) async {
+    final svg = await rootBundle.loadString('assets/welcome/Icons.svg');
+    expect(svg, contains('stroke="#00A0E3"'));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        home: const Scaffold(body: WelcomeGreeting()),
+      ),
+    );
+
+    final artwork = tester.widget<SvgPicture>(find.byType(SvgPicture));
+    expect(artwork.colorFilter, isNull);
+  });
+
+  testWidgets('practice intro explains the open-ended exercise',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: PracticePage()),
+    );
+
+    expect(find.text('Übungsrunde'), findsOneWidget);
+    expect(find.textContaining('bereits beantwortet'), findsOneWidget);
+    expect(find.textContaining('sofort gespeichert'), findsOneWidget);
+    expect(find.text('Übung starten'), findsOneWidget);
+  });
+
+  testWidgets('about page offers DARC membership application', (tester) async {
+    PackageInfo.setMockInitialValues(
+      appName: '50Ohm',
+      packageName: 'de.darc.fuenfzigohm',
+      version: '1.2.0',
+      buildNumber: '36',
+      buildSignature: '',
+    );
+
+    await tester.pumpWidget(MaterialApp(home: AboutAppPage()));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Mitglied werden'), findsWidgets);
+    expect(
+      find.text('Mitgliedschaft im DARC e.V. beantragen'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('calculator only shows the scientific keypad', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(375, 812));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(home: CalculatorPage()),
+    );
+
+    Finder button(String label) =>
+        find.byKey(ValueKey('calculator-button-$label'));
+    Finder label(String label) =>
+        find.byKey(ValueKey('calculator-label-$label'));
+
+    expect(find.text('Taschenrechner'), findsOneWidget);
+    expect(find.text('sin'), findsNothing);
+    expect(find.text('sqrt'), findsNothing);
+    expect(label('sqrt'), findsOneWidget);
+    expect(label('*'), findsOneWidget);
+    expect(label('/'), findsOneWidget);
+    expect(find.byType(Math), findsNWidgets(27));
+    expect(
+      tester.widget<MaterialButton>(button('xʸ')).color,
+      tester.widget<MaterialButton>(button('sqrt')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button('e')).color,
+      tester.widget<MaterialButton>(button('sqrt')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button('(')).color,
+      tester.widget<MaterialButton>(button('+')).color,
+    );
+    expect(
+      tester.widget<MaterialButton>(button(')')).color,
+      tester.widget<MaterialButton>(button('-')).color,
+    );
+    expect(
+      tester.getCenter(button('sin')).dy,
+      lessThan(tester.getCenter(button('xʸ')).dy),
+    );
+    expect(find.byType(Drawer), findsNothing);
+    expect(find.text('Calculator'), findsNothing);
+    expect(find.text('Standard Calculator'), findsNothing);
+
+    final seven = tester.getCenter(button('7'));
+    final four = tester.getCenter(button('4'));
+    final one = tester.getCenter(button('1'));
+    expect(seven.dx, four.dx);
+    expect(four.dx, one.dx);
+    expect(seven.dy, lessThan(four.dy));
+    expect(four.dy, lessThan(one.dy));
+    expect(
+      tester.getSize(button('=')).width,
+      greaterThan(
+        tester.getSize(button('0')).width * 1.8,
+      ),
+    );
+    expect(
+      tester.getSize(button('7')).height,
+      greaterThanOrEqualTo(48),
+    );
+
+    await tester.tap(button('2'));
+    await tester.tap(button('+'));
+    await tester.tap(button('3'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('5.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('π'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('π'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('log₁₀'));
+    await tester.tap(button('1'));
+    await tester.tap(button('0'));
+    await tester.tap(button('0'));
+    await tester.tap(button(')'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('2.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('2'));
+    await tester.tap(button('xʸ'));
+    await tester.tap(button('3'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('8.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('sin'));
+    await tester.tap(button('0'));
+    await tester.tap(button(')'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('0.0'), findsOneWidget);
+
+    await tester.tap(button('C'));
+    await tester.tap(button('e'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('e'), findsOneWidget);
+  });
+
+  testWidgets('question actions use a compact overflow menu', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(375, 812));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('BA101'),
+            actions: [
+              QuestionActionsMenu(
+                hasVideo: true,
+                showLearningMaterial: true,
+                onSelected: (_) {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byTooltip('Weitere Funktionen'), findsOneWidget);
+    expect(find.text('Lernvideo von DL2YMR'), findsNothing);
+
+    await tester.tap(find.byTooltip('Weitere Funktionen'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Lernvideo von DL2YMR'), findsOneWidget);
+    expect(find.text('50Ω-Lernmaterial'), findsOneWidget);
+    expect(find.text('Taschenrechner'), findsOneWidget);
+    expect(find.text('Hilfsmittel'), findsOneWidget);
+  });
+
+  test('question search finds questions by number only', () async {
+    final raw = await rootBundle.loadString('assets/questions/Questions.json');
+    final catalog = jsonDecode(raw) as Map<String, dynamic>;
+    final questions = buildQuestionSearchIndex(catalog);
+
+    expect(questions, hasLength(1750));
+    expect(
+      searchQuestionNumbers(questions, 'na 103')
+          .map((question) => question.questionId),
+      ['NA103'],
+    );
+    expect(
+      searchQuestionNumbers(questions, '103')
+          .map((question) => question.questionId),
+      contains('NA103'),
+    );
+  });
+
+  testWidgets('exam simulation offers all official exam variants',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: ExamSimulationPage(initialCatalog: []),
+      ),
+    );
+
+    expect(find.text('Erstprüfung'), findsOneWidget);
+    expect(find.text('Aufstockungsprüfung'), findsOneWidget);
+    expect(find.text('Einzelne Prüfungsteile'), findsOneWidget);
+    expect(find.text('Klasse N'), findsOneWidget);
+    expect(find.text('N → E'), findsOneWidget);
+    expect(find.text('Technik Klasse A'), findsOneWidget);
+  });
+
+  testWidgets('exam review uses training feedback and shows solution hint',
+      (tester) async {
+    await SolutionIndex.load(
+      loadAsset: (_) async => '{"question_ids":["AB101"]}',
+    );
+    await VideoIndex.load(
+      loadAsset: (_) async =>
+          '{"question_urls":{"AB101":"https://www.youtube.com/watch?v=test&t=12s"}}',
+    );
+    final result = ExamQuestionResult(
+      question: const ExamCatalogQuestion(
+        id: 'AB101',
+        part: 'A',
+        category: [],
+        data: {
+          'question': 'Testfrage',
+          'answer_a': 'Richtige Antwort',
+          'answer_b': 'Falsche Antwort',
+          'answer_c': 'Antwort C',
+          'answer_d': 'Antwort D',
+        },
+      ),
+      answerOrder: const [0, 1, 2, 3],
+      selectedAnswer: 1,
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ExamReviewPage(result: result)),
+    );
+
+    expect(find.byTooltip('Lösungshinweis auf 50ohm.de'), findsOneWidget);
+    expect(find.byTooltip('Lernvideo von DL2YMR'), findsOneWidget);
+    expect(find.text('AB101'), findsOneWidget);
+    expect(find.text('Frage AB101'), findsNothing);
+    expect(
+      tester.widget<Icon>(find.byIcon(Icons.check_circle)).color,
+      Colors.green.shade800,
+    );
+    expect(
+      tester.widget<Icon>(find.byIcon(Icons.cancel)).color,
+      Colors.red.shade800,
+    );
+    expect(
+      tester
+          .widgetList<Container>(find.byType(Container))
+          .where((container) => container.color == correctFeedbackColor),
+      hasLength(1),
+    );
+    expect(
+      tester
+          .widgetList<Container>(find.byType(Container))
+          .where((container) => container.color == incorrectFeedbackColor),
+      hasLength(1),
+    );
+  });
+
+  testWidgets('wrongly answered questions count as in progress',
+      (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ProgressOverviewCard(
+            questionScores: [0, 0, 1, 2, 3],
+            answeredQuestions: [false, true, true, true, true],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Gelernt: 1'), findsOneWidget);
+    expect(find.text('In Arbeit: 3'), findsOneWidget);
+    expect(find.text('Offen: 1'), findsOneWidget);
+    expect(find.byTooltip(learningProgressExplanation), findsOneWidget);
+
+    await tester.tap(find.text('Lernstand'));
+    await tester.pump();
+    expect(find.text(learningProgressExplanation), findsOneWidget);
+  });
+
+  testWidgets('long formulas wrap inside the available answer width',
+      (tester) async {
+    const availableWidth = 280.0;
+    final formulaKey = GlobalKey();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            key: formulaKey,
+            width: availableWidth,
+            child: Text.rich(
+              TextSpan(
+                children: parseTextWithMath(
+                  r'$P_{\textrm{ERP}} = (P_{\textrm{Sender}} - '
+                  r'P_{\textrm{Verluste}}) \cdot G_{\textrm{Antenne}}$ '
+                  'bezogen auf einen Halbwellendipol',
+                  const TextStyle(fontSize: 22),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsAtLeastNWidgets(2));
+    final availableRight = tester.getTopRight(find.byKey(formulaKey)).dx;
+    for (final math in find.byType(Math).evaluate()) {
+      expect(
+        tester.getTopRight(find.byWidget(math.widget)).dx,
+        lessThanOrEqualTo(availableRight + 0.01),
+      );
+    }
+    expect(tester.takeException(), isNull);
+  });
 
   test('lesson list maps all chapters without skipping or exceeding bounds',
       () {
@@ -32,17 +492,63 @@ void main() {
 
   test('free learning pages use regulations, operation, technique order', () {
     expect(
-      List.generate(3, freeLearningMainChapter),
+      freeLearningMainChaptersForClasses({1}),
       [2, 1, 0],
     );
-    expect(freeLearningSwipeHint(0), contains('links'));
-    expect(freeLearningSwipeHint(0), contains('Betriebsfragen'));
-    expect(freeLearningSwipeHint(1), contains('rechts'));
-    expect(freeLearningSwipeHint(1), contains('links'));
-    expect(freeLearningSwipeHint(1), contains('Vorschriftsfragen'));
-    expect(freeLearningSwipeHint(1), contains('technischen Fragen'));
-    expect(freeLearningSwipeHint(2), contains('rechts'));
-    expect(freeLearningSwipeHint(2), contains('Betriebsfragen'));
+    expect(freeLearningSwipeHintForClasses({1}, 0), contains('links'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 0),
+      contains('Betriebsfragen'),
+    );
+    expect(freeLearningSwipeHintForClasses({1}, 1), contains('rechts'));
+    expect(freeLearningSwipeHintForClasses({1}, 1), contains('links'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 1),
+      contains('Vorschriftsfragen'),
+    );
+    expect(
+      freeLearningSwipeHintForClasses({1}, 1),
+      contains('technischen Fragen'),
+    );
+    expect(freeLearningSwipeHintForClasses({1}, 2), contains('rechts'));
+    expect(
+      freeLearningSwipeHintForClasses({1}, 2),
+      contains('Betriebsfragen'),
+    );
+  });
+
+  test('free learning overview merges all catalog parts of the course',
+      () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final expectedQuestionIds = <String>{};
+
+    for (final mainChapter in freeLearningMainChaptersForClasses({1})) {
+      final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+      final section =
+          (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
+      filterQuestionSections(section, {1});
+      expectedQuestionIds.addAll(Json(section).getAllQuestionIds(mainChapter));
+    }
+
+    final mergedQuestionIds = freeLearningOverviewQuestionIds(
+      jsonDecode(rawCatalog) as Map<String, dynamic>,
+      {1},
+    );
+
+    expect(mergedQuestionIds.toSet(), expectedQuestionIds);
+    expect(mergedQuestionIds, hasLength(expectedQuestionIds.length));
+  });
+
+  test('free learning upgrades show only their technical additions', () {
+    for (final course in <Set<int>>[
+      {2},
+      {3},
+      {2, 3},
+    ]) {
+      expect(freeLearningMainChaptersForClasses(course), [0]);
+      expect(freeLearningSwipeHintForClasses(course, 0), isNull);
+    }
   });
 
   test('question filter supports direct and nested question sections', () {
@@ -119,7 +625,7 @@ void main() {
         await rootBundle.loadString('assets/questions/Questions.json');
     final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
 
-    for (final mainChapter in freeLearningMainChapters) {
+    for (final mainChapter in fullCatalogMainChapters) {
       final section =
           (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
       filterQuestionSections(section, {1, 2, 3});
@@ -129,4 +635,143 @@ void main() {
       expect(json.getAllQuestionKeys(mainChapter), isNotEmpty);
     }
   });
+
+  test('real catalog is non-empty on every page exposed for a course',
+      () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final selectableCourses = <Set<int>>[
+      {1},
+      {2},
+      {1, 2},
+      {3},
+      {2, 3},
+      {1, 2, 3},
+    ];
+
+    for (final course in selectableCourses) {
+      for (final mainChapter in freeLearningMainChaptersForClasses(course)) {
+        final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+        final section =
+            (catalog['sections'] as List)[mainChapter] as Map<String, dynamic>;
+        filterQuestionSections(section, course);
+
+        final json = Json(section);
+        expect(
+          json.getAllQuestionIds(mainChapter),
+          isNotEmpty,
+          reason: 'Empty catalog page $mainChapter for course $course',
+        );
+      }
+    }
+  });
+
+  test('upgrade catalog contains exactly the selected additional classes',
+      () async {
+    final rawCatalog =
+        await rootBundle.loadString('assets/questions/Questions.json');
+    final cases = [
+      (classes: <int>{2}, expectedQuestions: 463),
+      (classes: <int>{3}, expectedQuestions: 716),
+      (classes: <int>{2, 3}, expectedQuestions: 1179),
+    ];
+
+    for (final testCase in cases) {
+      final catalog = jsonDecode(rawCatalog) as Map<String, dynamic>;
+      final technique =
+          (catalog['sections'] as List)[0] as Map<String, dynamic>;
+      filterQuestionSections(technique, testCase.classes);
+
+      expect(
+        Json(technique).getAllQuestionIds(0),
+        hasLength(testCase.expectedQuestions),
+      );
+    }
+  });
+
+  test('current guided courses contain exactly their indexed question sets',
+      () async {
+    final expectedCounts = {
+      'N': 571,
+      'E': 462,
+      'NE': 1033,
+      'A': 717,
+      'EA': 1179,
+      'NEA': 1750,
+    };
+
+    for (final entry in expectedCounts.entries) {
+      final course = jsonDecode(
+        await rootBundle.loadString('assets/questions/${entry.key}.json'),
+      );
+      final ids = _allQuestionIds(course);
+      expect(ids, hasLength(entry.value), reason: entry.key);
+      expect(ids.toSet(), hasLength(entry.value), reason: entry.key);
+    }
+
+    final aCourse = jsonDecode(
+      await rootBundle.loadString('assets/questions/A.json'),
+    );
+    final aQuestions = _questionsById(aCourse);
+    expect(aQuestions['EI303']?['class'], '2');
+  });
+
+  test('solution availability is bundled for every question view', () async {
+    await SolutionIndex.load();
+    expect(SolutionIndex.hasSolution('AB101'), isTrue);
+    expect(SolutionIndex.hasSolution('AB103'), isFalse);
+    expect(SolutionIndex.urlFor('AB101'), 'https://50ohm.de/AB101.html');
+  });
+
+  test('video availability is bundled for every question view', () async {
+    await VideoIndex.load();
+    expect(VideoIndex.hasVideo('NA103'), isTrue);
+    expect(VideoIndex.hasVideo('AB101'), isFalse);
+    expect(
+      VideoIndex.urlFor('NA103'),
+      'https://www.youtube.com/watch?v=WnOBk1UogjM&t=0s',
+    );
+  });
+}
+
+List<String> _allQuestionIds(dynamic node) {
+  final ids = <String>[];
+
+  void visit(dynamic value) {
+    if (value is Map) {
+      if (value['number'] is String) ids.add(value['number'] as String);
+      for (final child in value.values) {
+        visit(child);
+      }
+    } else if (value is List) {
+      for (final child in value) {
+        visit(child);
+      }
+    }
+  }
+
+  visit(node);
+  return ids;
+}
+
+Map<String, Map> _questionsById(dynamic node) {
+  final questions = <String, Map>{};
+
+  void visit(dynamic value) {
+    if (value is Map) {
+      if (value['number'] is String) {
+        questions[value['number'] as String] = value;
+      }
+      for (final child in value.values) {
+        visit(child);
+      }
+    } else if (value is List) {
+      for (final child in value) {
+        visit(child);
+      }
+    }
+  }
+
+  visit(node);
+  return questions;
 }

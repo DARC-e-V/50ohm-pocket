@@ -3,7 +3,6 @@ part of 'welcome_bloc.dart';
 enum WelcomeStatus {
   initial,
   courseSelection,
-  updateCourseSelection,
   courseSelected,
 }
 

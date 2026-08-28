@@ -35,7 +35,7 @@ jobs:
 
       #5 Updating licenses
       - name: fetching licenses
-        run: flutter pub run flutter_oss_licenses:generate.dart
+        run: dart run dart_pubspec_licenses:generate
 
       #6 Building APK
       - name: Build APK
