@@ -35,7 +35,7 @@
                         {
                             "number": "NA103",
                             "class": "1",
-                            "question": "Laut Datenblatt wiegen 100 m eines bestimmten Drahtes 210 g. Ein vorliegendes Drahtstück des selben Materials wiegt 55 g. Wie lang ist das Drahtstück in etwa?",
+                            "question": "Laut Datenblatt wiegen 100 m eines bestimmten Drahtes 210 g. Ein vorliegendes Drahtstück desselben Materials wiegt 55 g. Wie lang ist das Drahtstück in etwa?",
                             "answer_a": "26,2 m",
                             "answer_b": "382 m",
                             "answer_c": "115 m",
@@ -121,7 +121,7 @@
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DL1FLO\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
                             "answer_a": "Delta Lima 1 Foxtrot Lima Oscar",
-                            "answer_b": "Delta London 1 Foxtrott London Oslo",
+                            "answer_b": "Delta London 1 Foxtrot London Oslo",
                             "answer_c": "Delta Lima 1 Florida Lima Oslo",
                             "answer_d": "Delta London 1 Florida London Oscar"
                         },
@@ -138,10 +138,10 @@
                             "number": "BA106",
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DM4EAX\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
-                            "answer_a": "Delta Mike 4 Echo Alfa X-Ray",
-                            "answer_b": "Delta Mike 4 Ecuador Amerika X-Ray",
-                            "answer_c": "Delta Madagascar 4 Echo Amerika X-Ray",
-                            "answer_d": "Delta Madagascar 4 Ecuador Alfa X-Ray"
+                            "answer_a": "Delta Mike 4 Echo Alfa X-ray",
+                            "answer_b": "Delta Mike 4 Ecuador Amerika X-ray",
+                            "answer_c": "Delta Madagascar 4 Echo Amerika X-ray",
+                            "answer_d": "Delta Madagascar 4 Ecuador Alfa X-ray"
                         },
                         {
                             "number": "BA107",
@@ -165,8 +165,8 @@
                             "number": "BA109",
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DO9XJZ\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
-                            "answer_a": "Delta Oscar 9 X-Ray Juliett Zulu",
-                            "answer_b": "Delta Oscar 9 X-Ray Japan Zebra",
+                            "answer_a": "Delta Oscar 9 X-ray Juliett Zulu",
+                            "answer_b": "Delta Oscar 9 X-ray Japan Zebra",
                             "answer_c": "Delta Oscar 9 Xavier Juliett Zebra",
                             "answer_d": "Delta Oscar 9 Xavier Japan Zulu"
                         },
@@ -284,7 +284,7 @@
                         {
                             "number": "BE204",
                             "class": "1",
-                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                             "answer_a": "55",
                             "answer_b": "29",
                             "answer_c": "52",
@@ -294,7 +294,7 @@
                         {
                             "number": "BE205",
                             "class": "1",
-                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                             "answer_a": "59",
                             "answer_b": "39",
                             "answer_c": "95",
@@ -304,7 +304,7 @@
                         {
                             "number": "BE206",
                             "class": "1",
-                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkgerätes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                             "answer_a": "59+20 dB",
                             "answer_b": "69",
                             "answer_c": "4,2",
@@ -314,7 +314,7 @@
                         {
                             "number": "BE207",
                             "class": "1",
-                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                             "answer_a": "55",
                             "answer_b": "7",
                             "answer_c": "100",
@@ -324,7 +324,7 @@
                         {
                             "number": "BE208",
                             "class": "1",
-                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                             "answer_a": "59",
                             "answer_b": "12,5",
                             "answer_c": "80",
@@ -334,7 +334,7 @@
                         {
                             "number": "BE209",
                             "class": "1",
-                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                            "question": "Sie hören in einem Funkgespräch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkgerätes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                             "answer_a": "59+20 dB",
                             "answer_b": "520",
                             "answer_c": "50",
@@ -540,10 +540,10 @@
                             "number": "NB401",
                             "class": "1",
                             "question": "Welches Bild zeigt eine sinusförmige Wechselspannung?",
-                            "answer_a": null,
-                            "answer_b": null,
-                            "answer_c": null,
-                            "answer_d": null,
+                            "answer_a": "",
+                            "answer_b": "",
+                            "answer_c": "",
+                            "answer_d": "",
                             "picture_a": "NB401_a",
                             "picture_b": "NB401_b",
                             "picture_c": "NB401_c",
@@ -733,7 +733,7 @@
                         {
                             "number": "BC104",
                             "class": "1",
-                            "question": "Wie wird der Frequenzbereich zwischen 3 bis 30 MHz bezeichnet?",
+                            "question": "Wie wird der Frequenzbereich von 3 bis 30 MHz bezeichnet?",
                             "answer_a": "High Frequency (HF), Short Wave (SW) oder Kurzwelle (KW)",
                             "answer_b": "Very High Frequency (VHF) oder Ultrakurzwelle (UKW)",
                             "answer_c": "Ultra High Frequency (UHF) oder Dezimeterwelle",
@@ -1079,7 +1079,7 @@
                             "number": "BC214",
                             "class": "1",
                             "question": "Warum sollten Sie auf 144,125 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
-                            "answer_a": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_a": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_b": "Repeater.",
                             "answer_c": "Weltraumkommunikation.",
                             "answer_d": "Baken."
@@ -1091,7 +1091,7 @@
                             "answer_a": "Baken vor.",
                             "answer_b": "Repeater vor.",
                             "answer_c": "Weltraumkommunikation vor.",
-                            "answer_d": "Telegrafie und schmalbandige digitale Übertragungsverfahren vor."
+                            "answer_d": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren vor."
                         },
                         {
                             "number": "BC217",
@@ -1099,7 +1099,7 @@
                             "question": "Warum sollten Sie auf 145,600 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
                             "answer_a": "Repeater.",
                             "answer_b": "Weltraumkommunikation.",
-                            "answer_c": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_c": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_d": "Baken."
                         },
                         {
@@ -1108,7 +1108,7 @@
                             "question": "Warum sollten Sie auf 145,800 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
                             "answer_a": "Weltraumkommunikation.",
                             "answer_b": "Repeater.",
-                            "answer_c": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_c": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_d": "Baken."
                         }
                     ]
@@ -1148,7 +1148,7 @@
                             "number": "BC219",
                             "class": "1",
                             "question": "Warum sollten Sie auf 432,040 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
-                            "answer_a": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_a": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_b": "Satellitenfunk.",
                             "answer_c": "Weltraumkommunikation.",
                             "answer_d": "Baken."
@@ -1156,11 +1156,11 @@
                         {
                             "number": "BC220",
                             "class": "1",
-                            "question": "Warum sollten Sie auf 432,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv für die Nutzung durch ...",
-                            "answer_a": "Baken vor.",
-                            "answer_b": "Satellitenfunk vor.",
-                            "answer_c": "Repeater vor.",
-                            "answer_d": "Telegrafie und schmalbandige digitale Übertragungsverfahren vor."
+                            "question": "Warum sollten Sie auf 432,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich exklusiv für die Nutzung durch ...",
+                            "answer_a": "Baken.",
+                            "answer_b": "Satellitenfunk.",
+                            "answer_c": "Repeater.",
+                            "answer_d": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren."
                         },
                         {
                             "number": "BC221",
@@ -1168,7 +1168,7 @@
                             "question": "Warum sollten Sie auf 435,500 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
                             "answer_a": "Satellitenfunk.",
                             "answer_b": "Repeater.",
-                            "answer_c": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_c": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_d": "Baken."
                         },
                         {
@@ -1177,7 +1177,7 @@
                             "question": "Warum sollten Sie auf 439,200 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich für die Nutzung durch ...",
                             "answer_a": "Repeater.",
                             "answer_b": "Satellitenfunk.",
-                            "answer_c": "Telegrafie und schmalbandige digitale Übertragungsverfahren.",
+                            "answer_c": "Morsetelegrafie und schmalbandige digitale Übertragungsverfahren.",
                             "answer_d": "Baken."
                         }
                     ]
@@ -1225,7 +1225,7 @@
                             "class": "1",
                             "question": "Welcher Effekt ist normalerweise für die Ausbreitung eines VHF-Signals über 800 bis 1 000 km verantwortlich?",
                             "answer_a": "Troposphärische Inversionsbildung",
-                            "answer_b": "Reflektion an der Mondoberfläche",
+                            "answer_b": "Reflexion an der Mondoberfläche",
                             "answer_c": "Bodenwellenausbreitung",
                             "answer_d": "Atmosphärische Absorption"
                         }
@@ -1281,8 +1281,8 @@
                             "number": "NH102",
                             "class": "1",
                             "question": "Warum ist die Ionosphäre ausschlaggebend für die Kurzwellenausbreitung? In der Ionosphäre werden elektromagnetische Wellen durch ...",
-                            "answer_a": "elektrisch geladene Teilchen gebrochen (refraktiert).\n ",
-                            "answer_b": "Wärme verstärkt und reflektiert.\n ",
+                            "answer_a": "elektrisch geladene Teilchen gebrochen (refraktiert).",
+                            "answer_b": "Wärme verstärkt und reflektiert.",
                             "answer_c": "Kälte gebrochen und reflektiert.",
                             "answer_d": "Temperaturübergänge gebrochen (refraktiert)."
                         },
@@ -1432,14 +1432,14 @@
                             "question": "Sie hören in einem Contest die Station DL0XK. Um welche Art von Amateurfunkstelle handelt es sich? Es handelt sich um eine Amateurfunkstelle ...",
                             "answer_a": "mit Klubstationsrufzeichen der Klasse A.",
                             "answer_b": "mit Klubstationsrufzeichen der Klasse E.",
-                            "answer_c": "mit personengebundenen Rufzeichen der Klasse A.",
-                            "answer_d": "mit personengebundenen Rufzeichen der Klasse E."
+                            "answer_c": "mit personengebundenem Rufzeichen der Klasse A.",
+                            "answer_d": "mit personengebundenem Rufzeichen der Klasse E."
                         },
                         {
                             "number": "VD117",
                             "class": "1",
                             "question": "Wie ist der Begriff \"Klubstation\" nach dem Wortlaut der Amateurfunkverordnung (AFuV) definiert?",
-                            "answer_a": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens vier Mitgliedern einer Gruppe von Funkamateuren unter Verwendung eines gemeinschaftlich genutzten Rufzeichens betrieben wird.",
+                            "answer_a": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens drei Mitgliedern einer Gruppe von Funkamateuren unter Verwendung eines gemeinschaftlich genutzten Rufzeichens betrieben wird.",
                             "answer_b": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens vier Mitgliedern einer Gruppe von Funkamateuren unter Verwendung ihres personengebundenen Rufzeichens betrieben wird.",
                             "answer_c": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die an einem geografisch exponierten Standort betrieben wird.",
                             "answer_d": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die nur von einem eingetragenen Verein betrieben werden darf."
@@ -1553,7 +1553,7 @@
                             "number": "VD302",
                             "class": "1",
                             "question": "Unter welcher Voraussetzung nach der Amateurfunkverordnung (AFuV) darf ein Funkamateur Ausbildungsfunkbetrieb durchführen?",
-                            "answer_a": "Wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A oder E ist\n",
+                            "answer_a": "Wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A oder E ist",
                             "answer_b": "Nur wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A ist",
                             "answer_c": "Nur wenn er mindestens 1 Jahr lang Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst ist",
                             "answer_d": "Wenn er eine gültige Rufzeichenzuteilung für ein Ausbildungsrufzeichen besitzt"
@@ -1673,9 +1673,9 @@
                             "number": "BD201",
                             "class": "1",
                             "question": "Was bedeutet der Rufzeichenzusatz \"/am\"? Die Amateurfunkstelle ...",
-                            "answer_a": "wird an Bord eines Luftfahrzeuges betrieben.",
+                            "answer_a": "wird an Bord eines Luftfahrzeugs betrieben.",
                             "answer_b": "verwendet Amplitudenmodulation.",
-                            "answer_c": "wird an Bord eines Wasserfahrzeuges betrieben.",
+                            "answer_c": "wird an Bord eines Wasserfahrzeugs betrieben.",
                             "answer_d": "arbeitet mit geringer Leistung."
                         },
                         {
@@ -1691,7 +1691,7 @@
                             "number": "BD203",
                             "class": "1",
                             "question": "Ein Rufzeichen mit dem Zusatz \"/m\" kann bei einer Amateurfunkstelle bedeuten, dass sie ...",
-                            "answer_a": "sich beweglich in einem Landfahrzeug befindet.",
+                            "answer_a": "beweglich ist und sich in einem Landfahrzeug befindet.",
                             "answer_b": "mit minimaler Leistung sendet.",
                             "answer_c": "vorübergehend ortsfest betrieben wird oder tragbar ist.",
                             "answer_d": "an Bord eines Wasserfahrzeugs betrieben wird, das sich auf See befindet."
@@ -1781,7 +1781,7 @@
                             "answer_a": "Weil der Rufzeichenplan zu besonderen allgemeinen Anlässen auch Rufzeichen mit bis zu 7 Zeichen langem Suffix vorsieht, der Ziffern enthalten kann und mit einem Buchstaben endet.",
                             "answer_b": "Weil für besonders verdiente Funkamateure auch personengebundene Rufzeichen ausgegeben werden, für die der Rufzeichenplan keine Anwendung findet.",
                             "answer_c": "Weil an bestimmte öffentliche Stellen, wie z. B. Kunst- und Kultureinrichtungen, besondere Rufzeichen mit mindestens 3 Ziffern ausgegeben werden.",
-                            "answer_d": "Weil dies in einer Sonderverfügung der Bundesnetzagentur aufgrund besonderem historischen Anlass mit internationaler Wirkung festgelegt wurde."
+                            "answer_d": "Weil dies in einer Sonderverfügung der Bundesnetzagentur aufgrund besonderen historischen Anlass mit internationaler Wirkung festgelegt wurde."
                         }
                     ]
                 },
@@ -1817,10 +1817,10 @@
                             "number": "BE401",
                             "class": "1",
                             "question": "Was ist damit gemeint, wenn man sagt, die Relaisfunkstelle hat eine Eingabe- und eine Ausgabefrequenz?",
-                            "answer_a": "Die Relaisfunkstelle empfängt auf der Eingabefrequenz und sendet auf einer Ausgabefrequenz.",
+                            "answer_a": "Die Relaisfunkstelle empfängt auf der Eingabefrequenz und sendet auf der Ausgabefrequenz.",
                             "answer_b": "Die Relaisfunkstelle stellt bei starker Belegung der Eingabefrequenz eine zusätzliche Ausgabefrequenz zur Verfügung.",
                             "answer_c": "Die Relaisfunkstelle benutzt eine Eingabefrequenz zur Umsetzung des empfangenen Signals und die Ausgabefrequenz zur Fernsteuerung.",
-                            "answer_d": "Die Relaisfunkstelle muss auf der Ausgabefrequenz mit einem Tonruf geöffnet werden, bevor es auf der Eingabefrequenz in Betrieb gehen kann."
+                            "answer_d": "Die Relaisfunkstelle muss auf der Ausgabefrequenz mit einem Tonruf geöffnet werden, bevor sie auf der Eingabefrequenz in Betrieb gehen kann."
                         },
                         {
                             "number": "BE402",
@@ -1925,7 +1925,7 @@
                             "number": "VD118",
                             "class": "1",
                             "question": "Wie ist der Begriff \"Relaisfunkstelle\" nach dem Wortlaut der Amateurfunkverordnung (AFuV) definiert?",
-                            "answer_a": "Eine \"Relaisfunkstelle\" ist eine fernbediente oder automatisch arbeitende oder fernbedient und automatisch arbeitende Amateurfunkstelle in Satelliten, die empfangene Amateurfunk-Aussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Inhalte fernausgelöst wieder aussendet oder weiterleitet.",
+                            "answer_a": "Eine \"Relaisfunkstelle\" ist eine fernbediente oder automatisch arbeitende Amateurfunkstelle oder fernbedient und automatisch arbeitende Amateurfunkstelle in Satelliten, die empfangene Amateurfunk-Aussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Inhalte fernausgelöst wieder aussendet oder weiterleitet.",
                             "answer_b": "Eine \"Relaisfunkstelle\" ist eine von einem Funkamateur ständig besetzte Amateurfunkstelle, die empfangene Amateurfunkaussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Signale fern ausgelöst aussendet und dabei zur Erhöhung der Erreichbarkeit von Amateurfunkstellen dient.",
                             "answer_c": "Eine \"Relaisfunkstelle\" ist eine fernbediente Amateurfunkstelle, die mit dem persönlichen Rufzeichen des Inhabers betrieben wird.",
                             "answer_d": "Eine \"Relaisfunkstelle\" ist eine fernbediente Amateurfunkstelle, die nur an einem geografisch exponierten Standort betrieben werden darf."
@@ -2051,7 +2051,7 @@
                             "number": "BE416",
                             "class": "1",
                             "question": "Was versteht man unter dem Transponder eines \"OSCAR\" und wie arbeitet er?",
-                            "answer_a": "Einen Umsetzer an Bord eines Amateurfunksatelliten, der die aufgenommenen Signale in einen anderen Frequenzbereich umsetzt und wieder zur Erde sendet.",
+                            "answer_a": "Dies ist ein Umsetzer an Bord eines Amateurfunksatelliten, der die aufgenommenen Signale in einen anderen Frequenzbereich umsetzt und wieder zur Erde sendet.",
                             "answer_b": "Es handelt sich um einen mit einer fernbedienten Amateurfunkstelle bestückten Stratosphärenballon, der empfangene Signale aufbereitet zur Erde zurücksendet.",
                             "answer_c": "Dies ist ein Umsetzer an Bord eines Amateurfunksatelliten, der die vom Satelliten aufgenommenen Wetterbilder und weitere Telemetriedaten automatisch zur Erde sendet.",
                             "answer_d": "Dies ist ein Bakensender an Bord eines Amateurfunksatelliten, der zur Beobachtung der Ausbreitungsbedingungen im VHF-, UHF- und SHF-Bereich dient."
@@ -2060,7 +2060,7 @@
                             "number": "NF113",
                             "class": "1",
                             "question": "Warum befinden sich bei Satellitenbetrieb Up- und Downlink in der Regel nicht im gleichen Frequenzband? Man benutzt unterschiedliche Frequenzbänder, weil ...",
-                            "answer_a": "dies eine einfachere Trennung von Sende- und Empfangssignals ermöglicht und die Baugröße von Filtern auf dem Satelliten reduziert wird.",
+                            "answer_a": "dies eine einfachere Trennung von Sende- und Empfangssignal ermöglicht und die Baugröße von Filtern auf dem Satelliten reduziert wird.",
                             "answer_b": "der Uplink durch die Ionosphäre stärker bedämpft wird als der Downlink.",
                             "answer_c": "die Bandbreite auf beiden Frequenzbändern aufgeteilt wird und Bandbereiche besser ausgenutzt werden können. ",
                             "answer_d": "man damit den Dopplereffekt vermindert."
@@ -2322,7 +2322,7 @@
                         {
                             "number": "VA402",
                             "class": "1",
-                            "question": "Nach den Radio Regulations (RR) ist die Welt für die Zuweisung von Funkdiensten an Frequenzbereiche in Regionen aufgeteilt. Wie viele Regionen gibt es?",
+                            "question": "Nach den Radio Regulations (RR) ist die Welt für die Zuweisung von Frequenzbereichen an Funkdienste in Regionen aufgeteilt. Wie viele Regionen gibt es?",
                             "answer_a": "Drei",
                             "answer_b": "Fünf",
                             "answer_c": "Vier",
@@ -2506,7 +2506,7 @@
                             "number": "VB104",
                             "class": "1",
                             "question": "Welche Bedeutung haben die CEPT-Empfehlungen T/R 61-01 und T/R 61-02 sowie der ERC-Report 32 und die ECC-Empfehlung (05)06 für den Amateurfunk? Sie bilden die Grundlage für...",
-                            "answer_a": "den vorübergehenden Amateurfunkbetrieb und die gegenseitige Anerkennung von Amateurfunkzeugnissen in den umsetzenden Ländern.\n",
+                            "answer_a": "den vorübergehenden Amateurfunkbetrieb und die gegenseitige Anerkennung von Amateurfunkzeugnissen in den umsetzenden Ländern.",
                             "answer_b": "den Funkverkehr zwischen den umsetzenden Ländern und die Harmonisierung der nationalen Frequenzzuweisungen für den Amateurfunkdienst.",
                             "answer_c": "den Amateurfunkverkehr in den umsetzenden Ländern und die weltweite Anerkennung von Amateurfunkzeugnissen.",
                             "answer_d": "den grenzüberschreitenden Warenverkehr von Amateurfunkgeräten in der Europäischen Union und weiteren umsetzenden Ländern."
@@ -2524,7 +2524,7 @@
                             "number": "VB106",
                             "class": "1",
                             "question": "Darf ein Funkamateur mit einer \"CEPT-Novice-Amateurfunkgenehmigung\" in allen CEPT-Ländern Amateurfunkverkehr abwickeln?",
-                            "answer_a": "Nein, nur in den Staaten der CEPT, die die ECC-Empfehlung (05)06 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
+                            "answer_a": "Nein, nur in Ländern, die die ECC-Empfehlung (05)06 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
                             "answer_b": "Ja, alle CEPT-Mitgliedsländer müssen die ECC-Empfehlung (05)06 anwenden.",
                             "answer_c": "Nein, die Anwendung der ECC-Empfehlung (05)06 ist nur in den Mitgliedsstaaten der Europäischen Union zulässig.",
                             "answer_d": "Ja, er muss sich aber an die Amateurfunkregelungen des Heimatlandes halten."
@@ -2533,7 +2533,7 @@
                             "number": "VB107",
                             "class": "1",
                             "question": "Darf ein deutscher Funkamateur mit einer Amateurfunkzulassung der Klasse A in allen CEPT-Ländern Amateurfunkverkehr abwickeln?",
-                            "answer_a": "Nein, nur in den Staaten der CEPT, die die Empfehlung T/R 61-01 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
+                            "answer_a": "Nein, nur in den Ländern, die die Empfehlung T/R 61-01 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
                             "answer_b": "Ja, alle CEPT-Mitgliedsländer müssen die Empfehlung T/R 61-01 anwenden.",
                             "answer_c": "Nein, die Anwendung der CEPT-Empfehlung T/R 61-01 ist nur in den Mitgliedsstaaten der Europäischen Union zulässig.",
                             "answer_d": "Ja, er muss sich aber an die Amateurfunkregelungen des Heimatlandes halten."
@@ -2800,15 +2800,15 @@
                             "number": "VD738",
                             "class": "1",
                             "question": "In welchen Amateurfunkfrequenzbereichen beträgt die maximal zulässige belegte Bandbreite einer Aussendung 800 Hz?",
-                            "answer_a": "135,7 bis 137,8 kHz und 10100 bis 10150 kHz",
-                            "answer_b": "1810 bis 2000 kHz und 3500 bis 3800 kHz",
+                            "answer_a": "135,7 bis 137,8 kHz, 472 bis 479 kHz und 10100 bis 10150 kHz",
+                            "answer_b": "1810 bis 2000 kHz, 3500 bis 3800 kHz und 7000 bis 7200 kHz",
                             "answer_c": "7000 bis 7100 kHz und 14000 bis 14350 kHz",
                             "answer_d": "18068 bis 18168 kHz und 24890 bis 24990 kHz"
                         },
                         {
                             "number": "VD739",
                             "class": "1",
-                            "question": "In welchen Amateurfunkfrequenzbereichen beträgt die maximal zulässige belegte Bandbreite einer Aussendung 2,7 kHz?",
+                            "question": "In welchem der folgenden Amateurfunkfrequenzbereiche beträgt die maximal zulässige belegte Bandbreite einer Aussendung 2,7 kHz?",
                             "answer_a": "3500 bis 3800 kHz",
                             "answer_b": "10100 bis 10150 kHz",
                             "answer_c": "135,7 bis 137,8 kHz",
@@ -2817,7 +2817,7 @@
                         {
                             "number": "VD740",
                             "class": "1",
-                            "question": "In welchem Amateurfunkfrequenzbereich beträgt die maximal zulässige belegte Bandbreite einer Aussendung 7 kHz?",
+                            "question": "In welchem der folgenden Amateurfunkfrequenzbereiche beträgt die maximal zulässige belegte Bandbreite einer Aussendung 7 kHz?",
                             "answer_a": "28000 bis 29000 kHz",
                             "answer_b": "14000 bis 14350 kHz",
                             "answer_c": "21000 bis 21450 kHz",
@@ -2826,7 +2826,7 @@
                         {
                             "number": "VD741",
                             "class": "1",
-                            "question": "In welchem Amateurfunkfrequenzbereich beträgt die maximal zulässige belegte Bandbreite einer Aussendung 40 kHz?",
+                            "question": "In welchem der folgenden Amateurfunkfrequenzbereiche beträgt die maximal zulässige belegte Bandbreite einer Aussendung 40 kHz?",
                             "answer_a": "144 bis 146 MHz",
                             "answer_b": "430 bis 440 MHz",
                             "answer_c": "1240 bis 1300 MHz",
@@ -2835,7 +2835,7 @@
                         {
                             "number": "VD742",
                             "class": "1",
-                            "question": "In welchem Amateurfunkfrequenzbereich beträgt die maximal zulässige belegte Bandbreite einer Aussendung 2 MHz bzw. für amplitudenmodulierte Fernsehaussendungen 7 MHz?",
+                            "question": "In welchem der folgenden Amateurfunkfrequenzbereiche beträgt die maximal zulässige belegte Bandbreite einer Aussendung 2 MHz bzw. für amplitudenmodulierte Fernsehaussendungen 7 MHz?",
                             "answer_a": "430 bis 440 MHz",
                             "answer_b": "2320 bis 2450 MHz",
                             "answer_c": "3400 bis 3475 MHz",
@@ -2862,7 +2862,7 @@
                             "question": "Welches Seitenband wird bei SSB-Telefonie nach Empfehlung der IARU im 20 m-Band in der Regel benutzt?",
                             "answer_a": "Im 20 m-Band wird das obere Seitenband benutzt.",
                             "answer_b": "Im Europaverkehr wird das untere, ansonsten das obere Seitenband benutzt.",
-                            "answer_c": "Um den Nachteil der relativ niedrigen Sendefrequenz des 20 m-Bandes auszugleichen, das untere Seitenband benutzt.",
+                            "answer_c": "Um den Nachteil der relativ niedrigen Sendefrequenz des 20 m-Bandes auszugleichen, wird das untere Seitenband benutzt.",
                             "answer_d": "In der unteren Bandhälfte das untere Seitenband, in der oberen Bandhälfte das obere Seitenband."
                         },
                         {
@@ -2929,13 +2929,13 @@
                             "answer_a": "genauso schnell oder langsamer als der Anruf.",
                             "answer_b": "mit meiner gewohnten Geschwindigkeit.",
                             "answer_c": "mit einem Gebetempo von maximal 60 CPM.",
-                            "answer_d": "mit den höchsten Tempo, das ich fehlerfrei geben kann."
+                            "answer_d": "mit dem höchsten Tempo, das ich fehlerfrei geben kann."
                         },
                         {
                             "number": "BE118",
                             "class": "1",
                             "question": "Was sollten Sie hinsichtlich der Geschwindigkeit bei Morsetelegrafie beachten? Ich gebe in der Regel ...",
-                            "answer_a": "nicht schneller als ich auch aufnehmen kann und passe mich an langsamere Stationen an.",
+                            "answer_a": "nicht schneller, als ich auch aufnehmen kann, und passe mich an langsamere Stationen an.",
                             "answer_b": "im international festgelegten Einheitstempo von 12 WPM, um eine automatische Dekodierung zu ermöglichen.",
                             "answer_c": "so schnell ich kann, damit es nicht zu unnötigen Verzögerungen im Betriebsablauf kommt.",
                             "answer_d": "in dem Tempo, das mir am besten liegt. Andere müssen sich an mich anpassen."
@@ -2944,7 +2944,7 @@
                             "number": "VA304",
                             "class": "1",
                             "question": "Was ist in den Radio Regulations (RR) bezüglich der Morsequalifikation für Funkamateure festgelegt?",
-                            "answer_a": "Die nationale Verwaltung eines jeden Landes legt eigenständig fest, ob eine Morseprüfung erforderlich ist.\n",
+                            "answer_a": "Die nationale Verwaltung eines jeden Landes legt eigenständig fest, ob eine Morseprüfung erforderlich ist.",
                             "answer_b": "Bei einer Sendeleistung von mehr als 100 W benötigt der Funkamateur den Nachweis einer erfolgreich abgelegten Morseprüfung.",
                             "answer_c": "Wer Frequenzen unter 30 MHz nutzen will, muss eine Morseprüfung ablegen.",
                             "answer_d": "In den Radio Regulations (RR) werden bezüglich der Morsequalifikation keine Regelungen getroffen."
@@ -3150,10 +3150,10 @@
                             "number": "BB203",
                             "class": "1",
                             "question": "Was bedeuten die Q-Gruppen \"QRT\", \"QRZ?\" und \"QSL?\"?",
-                            "answer_a": "Stellen Sie die Übermittlung ein. Von wem werde ich gerufen? Können Sie mir Empfangsbestätigung geben?",
+                            "answer_a": "Stellen Sie die Übermittlung ein. Von wem werde ich gerufen? Können Sie den Empfang bestätigen??",
                             "answer_b": "Stellen Sie die Übermittlung ein. Ich bin bereit. Schicken Sie eine QSL-Karte?",
-                            "answer_c": "Stellen Sie die Übermittlung ein. Wie ist Ihr Standort? Können Sie mir Empfangsbestätigung geben?",
-                            "answer_d": "Ich habe nichts für Sie. Von wem werde ich gerufen? Können Sie mir Empfangsbestätigung geben?"
+                            "answer_c": "Stellen Sie die Übermittlung ein. Wie ist Ihr Standort? Können Sie den Empfang bestätigen??",
+                            "answer_d": "Ich habe nichts für Sie. Von wem werde ich gerufen? Können Sie den Empfang bestätigen??"
                         },
                         {
                             "number": "BB204",
@@ -3410,7 +3410,7 @@
                             "answer_a": "Lichtbogen und Fahrzeugbrand",
                             "answer_b": "Elektrischer Schock durch Überschläge aus der Zündspule",
                             "answer_c": "Überlastung der Sendeendstufe im Funkgerät durch zu hohe Versorgungsspannung",
-                            "answer_d": "Keine, da 12 V-Gleichspannung aus der Kfz-Batterie für den Menschen ungefährlich sind"
+                            "answer_d": "Keine, da 12 V-Gleichspannung aus der Kfz-Batterie für den Menschen ungefährlich ist"
                         },
                         {
                             "number": "NK308",
@@ -3556,9 +3556,9 @@
                             "number": "NG208",
                             "class": "1",
                             "question": "Das koaxiale 50 Ohm-Antennenkabel der 2 m-Amateurfunkstation wird mit einem gleichwertigen Koaxialkabel verlängert. Die Messung des SWR ergibt nach der Verlängerung einen besseren Wert. Was schließen Sie daraus? Durch die Verlängerung wird...",
-                            "answer_a": "die Dämpfung erhöht und das reflektierte Signal verringert.\n",
+                            "answer_a": "die Dämpfung erhöht und das reflektierte Signal verringert.",
                             "answer_b": "die Dämpfung verringert und das reflektierte Signal verstärkt.",
-                            "answer_c": "die Dämpfung erhöht und das reflektierte Signal verstärkt\n ",
+                            "answer_c": "die Dämpfung erhöht und das reflektierte Signal verstärkt",
                             "answer_d": "die Dämpfung verringert und das reflektierte Signal verringert."
                         },
                         {
@@ -3838,8 +3838,8 @@
                         {
                             "number": "VE514",
                             "class": "1",
-                            "question": "Was hat ein Funkamateur zu beachten nachdem er seine ortsfeste Amateurfunkstelle bei der Bundesnetzagentur gemäß BEMFV angezeigt hat?",
-                            "answer_a": "Er hat eine Dokumentation über die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen bereitzuhalten und fortlaufend zu prüfen, ob die Bedingungen unter denen die Anzeige durchgeführt wurde noch zutreffend sind. Bei wesentlichen Änderungen ist die Amateurfunkstelle erneut anzuzeigen.",
+                            "question": "Was hat ein Funkamateur zu beachten, nachdem er seine ortsfeste Amateurfunkstelle bei der Bundesnetzagentur gemäß BEMFV angezeigt hat?",
+                            "answer_a": "Er hat eine Dokumentation über die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen bereitzuhalten und fortlaufend zu prüfen, ob die Bedingungen, unter denen die Anzeige durchgeführt wurde, noch zutreffend sind. Bei wesentlichen Änderungen ist die Amateurfunkstelle erneut anzuzeigen.",
                             "answer_b": "Mit der Anzeige seiner ortsfesten Amateurfunkstelle ist ein Funkamateur seinen Verpflichtungen zum Schutz von Personen in elektromagnetischen Feldern nachgekommen und muss diesbezüglich nichts weiter beachten.",
                             "answer_c": "Das Anzeigeverfahren ist jedes Jahr erneut durchzuführen, um die Aktualität zu gewährleisten.",
                             "answer_d": "Nachdem die ortsfeste Amateurfunkstelle in Betrieb genommen wurde, ist die Dokumentation über die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen der zuständigen Außenstelle der Bundesnetzagentur vorzulegen."
@@ -3892,7 +3892,7 @@
                             "question": "Sie wollen eine Amateurfunkstelle an einem Standort errichten, an dem sich bereits andere ortsfeste Funkanlagen befinden. Welche Besonderheit müssen Sie in Bezug auf den Schutz von Personen in elektromagnetischen Feldern beachten?",
                             "answer_a": "Sofern die Gesamtleistung aller Funkanlagen am Standort 10 W EIRP erreicht oder überschreitet, ist eine Standortbescheinigung erforderlich.",
                             "answer_b": "Sofern die Senderausgangsleistung der Amateurfunkstelle 10 W überschreitet, darf sie an diesem Standort nicht betrieben werden.",
-                            "answer_c": "Es ist unzulässig eine Amateurfunkstelle an einem Standort zu betreiben, an dem sich auch Funkanlagen anderer Funkdienste befinden.",
+                            "answer_c": "Es ist unzulässig, eine Amateurfunkstelle an einem Standort zu betreiben, an dem sich auch Funkanlagen anderer Funkdienste befinden.",
                             "answer_d": "Es ist ein mechanischer Sendeumschalter erforderlich, der verhindert, dass die Amateurfunkanlage gleichzeitig mit einer der anderen Funkanlagen sendet."
                         },
                         {
@@ -4012,7 +4012,7 @@
                         {
                             "number": "NF111",
                             "class": "1",
-                            "question": "Die Gegenstation antwortet Ihrem Anruf in SSB-Sprechfunk auf einer geringfügig abweichenden Frequenz. Was sollten Sie tun, um die Empfangsfrequenz Ihres Transceivers anzupassen ohne dabei die Sendefrequenz zu verstellen?",
+                            "question": "Die Gegenstation antwortet Ihrem Anruf in SSB-Sprechfunk auf einer geringfügig abweichenden Frequenz. Was sollten Sie tun, um die Empfangsfrequenz Ihres Transceivers anzupassen, ohne dabei die Sendefrequenz zu verstellen?",
                             "answer_a": "RIT-Einstellung ändern",
                             "answer_b": "Notchfilter einschalten",
                             "answer_c": "Passband-Tuning verstellen",
@@ -4219,7 +4219,7 @@
                         {
                             "number": "VD737",
                             "class": "1",
-                            "question": "Welche maximale Sendeleistung gilt für die Rufzeicheninhaber der Klasse E im Frequenzbereich 10 GHz - 10,5 GHz?",
+                            "question": "Wie hoch ist die maximal zulässige Senderausgangsleistung für Rufzeicheninhaber der\nKlasse E in den Amateurfunkbändern zwischen 1300 MHz und 250 GHz?",
                             "answer_a": "Maximal 5 W PEP ",
                             "answer_b": "Maximal 75 W PEP",
                             "answer_c": "Maximal 100 W PEP",
@@ -4236,7 +4236,7 @@
                             "class": "1",
                             "question": "Warum sollte ein Sender nie ohne angepasste Antenne oder Dummy Load betrieben werden?",
                             "answer_a": "Durch die reflektierte Welle könnte die Senderendstufe beschädigt werden.",
-                            "answer_b": "Durch die fehlende Last wird die Versorgungsspannung hoch geregelt, was zu Überspannungen führen kann. ",
+                            "answer_b": "Durch die fehlende Last wird die Versorgungsspannung hochgeregelt, was zu Überspannungen führen kann. ",
                             "answer_c": "Durch die absorbierte Leistung kann das Netzteil des Senders überlastet werden.  ",
                             "answer_d": "Das Stehwellenmessgerät könnte beschädigt werden."
                         },
@@ -4327,7 +4327,7 @@
                         {
                             "number": "NK102",
                             "class": "1",
-                            "question": "Um eine Amateurfunkstelle in Bezug auf EMV zu optimieren ...",
+                            "question": "Um eine Amateurfunkstelle in Bezug auf EMV zu optimieren, ...",
                             "answer_a": "sollten alle Einrichtungen mit einer guten HF-Erdung versehen werden.",
                             "answer_b": "sollte der Sender mit der Wasserleitung im Haus verbunden werden.",
                             "answer_c": "sollten alle hochohmigen Erdverbindungen entfernt werden.",
@@ -4373,7 +4373,7 @@
                             "answer_a": "Sie bieten höflich an, die erforderlichen Prüfungen in die Wege zu leiten.",
                             "answer_b": "Er sollte höflich darauf hingewiesen werden, dass es an seiner eigenen Einrichtung liegt.",
                             "answer_c": "Er sollte darauf hingewiesen werden, dass Sie hierfür nicht zuständig sind.",
-                            "answer_d": "Sie bieten an, dass örtlich zuständige Hauptzollamt zu benachrichtigen."
+                            "answer_d": "Sie bieten an, das örtlich zuständige Hauptzollamt zu benachrichtigen."
                         },
                         {
                             "number": "VE301",
@@ -4405,7 +4405,7 @@
                         {
                             "number": "VE304",
                             "class": "1",
-                            "question": "Durch den Betrieb einer Amateurfunkstelle wird der Fernsehempfang eines Nachbarn beeinträchtigt. Eine Überprüfung ergibt, dass sowohl das Fernsehgerät wie auch die Amateurfunkstelle die Vorschriften einhalten und Nachbesserungen nicht mehr möglich sind. Wozu ist die BNetzA in diesem Fall befugt?",
+                            "question": "Durch den Betrieb einer Amateurfunkstelle wird der Fernsehempfang eines Nachbarn beeinträchtigt. Eine Überprüfung ergibt, dass sowohl das Fernsehgerät als auch die Amateurfunkstelle die Vorschriften einhalten und Nachbesserungen nicht mehr möglich sind. Wozu ist die BNetzA in diesem Fall befugt?",
                             "answer_a": "Die BNetzA kann Abhilfemaßnahmen in Zusammenarbeit mit den Beteiligten veranlassen.",
                             "answer_b": "Die BNetzA hat diesbezüglich keine Befugnisse.",
                             "answer_c": "Zum sofortigen Widerruf der Zulassung zum Amateurfunkdienst",
@@ -4537,10 +4537,10 @@
                             "number": "BG105",
                             "class": "1",
                             "question": "Welche Angaben sollten QSL-Karten mindestens enthalten?",
-                            "answer_a": "Verwendetes Rufzeichen, Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Band, Übertragungsverfahren und der Signal-Rapport.",
-                            "answer_b": "Verwendetes Rufzeichen, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, Übertragungsverfahren, Signal-Rapport sowie den eigenen Namen, Standort, Locator, die eigene Sendeleistung und Angaben zur eingesetzten technischen Ausrüstung.",
-                            "answer_c": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, genaue Frequenz, Übertragungsverfahren, Signal-Rapport und weitere übliche Angaben wie den eigenen Namen, Standort, Locator und die eigene Sendeleistung.",
-                            "answer_d": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, Übertragungsverfahren, Angaben über das Funkwetter und die Unterschrift des Operators."
+                            "answer_a": "Verwendetes Rufzeichen, Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Band, Übertragungsverfahren und Signal-Rapport",
+                            "answer_b": "Verwendetes Rufzeichen, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, Übertragungsverfahren, Signal-Rapport sowie den eigenen Namen, Standort, Locator, die eigene Sendeleistung und Angaben zur eingesetzten technischen Ausrüstung",
+                            "answer_c": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, genaue Frequenz, Übertragungsverfahren, Signal-Rapport und weitere übliche Angaben wie den eigenen Namen, Standort, Locator und die eigene Sendeleistung",
+                            "answer_d": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, Übertragungsverfahren, Angaben über das Funkwetter und die Unterschrift des Operators"
                         },
                         {
                             "number": "BG106",
@@ -4629,7 +4629,7 @@
                             "number": "BE307",
                             "class": "1",
                             "question": "Was verstehen Sie bei einer seltenen Station unter der Aufforderung zu \"Listenbetrieb\"?",
-                            "answer_a": "Eine gut hörbare andere Station nimmt anrufenden Stationen in eine Liste und ruft später diese Stationen zur Aufnahme einer Funkverbindung mit der seltenen Station auf.",
+                            "answer_a": "Eine gut hörbare andere Station nimmt anrufende Stationen in eine Liste und ruft später diese Stationen zur Aufnahme einer Funkverbindung mit der seltenen Station auf.",
                             "answer_b": "Eine gut hörbare andere Station schickt per Internet Listen anrufender Stationen an die seltene Station.",
                             "answer_c": "Die seltene Station ruft Stationen nach einer Liste der Landeskenner alphabetisch auf.",
                             "answer_d": "Die seltene Station oder ihr QSL-Manager veröffentlicht eine Liste der gearbeiteten Stationen in den Amateurfunkzeitschriften."
@@ -4656,7 +4656,7 @@
                             "answer_a": "hört oberhalb ihrer Sendefrequenz auf wechselnden Frequenzen im angegebenen Bereich.",
                             "answer_b": "kündigt einen Wechsel ihrer Sendefrequenz in den angegebenen Bereich an.",
                             "answer_c": "bittet anrufende Stationen in dem angegebenen Bereich CW zu verwenden.",
-                            "answer_d": "wird im angegeben Bereich mit einer Bandbreite von 10 kHz senden."
+                            "answer_d": "wird im angegebenen Bereich mit einer Bandbreite von 10 kHz senden."
                         },
                         {
                             "number": "BE310",
@@ -4671,9 +4671,9 @@
                             "number": "BE311",
                             "class": "1",
                             "question": "Eine Station, die auf 14205 kHz CQ gerufen hat, sagt am Ende ihres Rufes \"tuning 290 to 300 up\". Welche Frequenzen nutzen Sie, wenn Sie diese Station anrufen wollen?",
-                            "answer_a": "Ich rufe zwischen 14290 bis 14300 kHz und höre auf 14205 kHz.",
-                            "answer_b": "Ich rufe und höre zwischen 14290 bis 14300 kHz.",
-                            "answer_c": "Ich rufe auf 14205 kHz und höre zwischen 14290 bis 14300 kHz.",
+                            "answer_a": "Ich rufe zwischen 14290 und 14300 kHz und höre auf 14205 kHz.",
+                            "answer_b": "Ich rufe und höre zwischen 14290 und 14300 kHz.",
+                            "answer_c": "Ich rufe auf 14205 kHz und höre zwischen 14290 und 14300 kHz.",
                             "answer_d": "Ich rufe auf 14290 kHz und höre auf 14300 kHz."
                         }
                     ]
@@ -4802,7 +4802,7 @@
                         {
                             "number": "BF104",
                             "class": "1",
-                            "question": "Sie hören eine Notmeldung. Was tun Sie als erstes?",
+                            "question": "Sie hören eine Notmeldung. Was tun Sie als Erstes?",
                             "answer_a": "Ich höre aufmerksam zu und notiere alle wichtigen Informationen.",
                             "answer_b": "Ich sende dreimal MAYDAY, mein Rufzeichen und warte auf Antwort.",
                             "answer_c": "Ich stimme meinen Sender auf der Frequenz ab.",
@@ -4830,7 +4830,7 @@
                             "number": "BF107",
                             "class": "1",
                             "question": "Sie haben eine Notmeldung beantwortet und die Polizei oder Rettungsleitstelle informiert. Welches Verhalten ist im Anschluss vorbildlich?",
-                            "answer_a": "Ich bleibe erreichbar und gebe Informationen weiter bis Hilfe eingetroffen ist.",
+                            "answer_a": "Ich bleibe erreichbar und gebe Informationen weiter, bis Hilfe eingetroffen ist.",
                             "answer_b": "Ich rufe regelmäßig die Polizei oder Rettungsleitstelle an und erkundige mich nach dem Stand.",
                             "answer_c": "Ich schalte mein Funkgerät ab, da ich meiner Pflicht nachgekommen bin.",
                             "answer_d": "Ich informiere die Medien, damit über den Rettungseinsatz live berichtet werden kann."
@@ -4847,7 +4847,7 @@
                         {
                             "number": "BF109",
                             "class": "1",
-                            "question": "Nach den Empfehlungen der International Amateur Radio Union (IARU) gibt es bei 3760, 7110, 14300, 18160 und 21360 kHz so genannte Aktivitätszentren für Notfunkverkehr. Was ist das besondere an diesen Frequenzen? Sie sollen ...",
+                            "question": "Nach den Empfehlungen der International Amateur Radio Union (IARU) gibt es bei 3760, 7110, 14300, 18160 und 21360 kHz so genannte Aktivitätszentren für Notfunkverkehr. Was ist das Besondere an diesen Frequenzen? Sie sollen ...",
                             "answer_a": "in der ITU-Region 1 dem Notfunkverkehr dienen und für diesen freigehalten werden.",
                             "answer_b": "permanent abgehört werden, sofern das Funkgerät über einen 2. VFO verfügt.",
                             "answer_c": "exklusiv der Nutzung durch Rettungsdienste dienen und nicht durch Funkamateure genutzt werden.",
@@ -5130,8 +5130,8 @@
                         {
                             "number": "VC109",
                             "class": "1",
-                            "question": "Welches Recht haben Funkamateure im Bezug auf den Betrieb von Sendeanlagen? Ein Funkamateur ...",
-                            "answer_a": "ist berechtigt im Handel erhältliche, selbstgefertigte oder auf Amateurfunkfrequenzen umgebaute Sendeanlagen zu betreiben.",
+                            "question": "Welches Recht haben Funkamateure in Bezug auf den Betrieb von Sendeanlagen? Ein Funkamateur ...",
+                            "answer_a": "ist berechtigt, im Handel erhältliche, selbst gefertigte oder auf Amateurfunkfrequenzen umgebaute Sendeanlagen zu betreiben.",
                             "answer_b": "benötigt in keinem Fall eine Standortbescheinigung der BNetzA für seine Amateurfunkstelle.",
                             "answer_c": "muss die einschlägigen Bestimmungen der BNetzA zur elektrischen Sicherheit nicht beachten.",
                             "answer_d": "darf mit seiner Amateurfunkstelle jederzeit Nachrichten für und an Dritte übermitteln, die nicht den Amateurfunkdienst betreffen."
@@ -5311,11 +5311,11 @@
                         {
                             "number": "NI103",
                             "class": "1",
-                            "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt um die Spannung der Batterie im laufenden Betrieb zu messen?",
-                            "answer_a": null,
-                            "answer_b": null,
-                            "answer_c": null,
-                            "answer_d": null,
+                            "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt, um die Spannung der Batterie im laufenden Betrieb zu messen?",
+                            "answer_a": "",
+                            "answer_b": "",
+                            "answer_c": "",
+                            "answer_d": "",
                             "picture_a": "NI103_a",
                             "picture_b": "NI103_b",
                             "picture_c": "NI103_c",
@@ -5341,10 +5341,10 @@
                             "number": "NI104",
                             "class": "1",
                             "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt, um den Strom durch den Widerstand und die LED zu messen? ",
-                            "answer_a": null,
-                            "answer_b": null,
-                            "answer_c": null,
-                            "answer_d": null,
+                            "answer_a": "",
+                            "answer_b": "",
+                            "answer_c": "",
+                            "answer_d": "",
                             "picture_a": "NI104_a",
                             "picture_b": "NI104_b",
                             "picture_c": "NI104_c",
@@ -5475,7 +5475,7 @@
                         {
                             "number": "NC108",
                             "class": "1",
-                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein silberner Farbring ist.",
+                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein silberner Farbring ist?",
                             "answer_a": " $±$10 %",
                             "answer_b": " $±$5 %",
                             "answer_c": " $±$0,1 %",
@@ -5484,7 +5484,7 @@
                         {
                             "number": "NC109",
                             "class": "1",
-                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein goldener Farbring ist.",
+                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein goldener Farbring ist?",
                             "answer_a": " $±$5 %",
                             "answer_b": " $±$0,5 %",
                             "answer_c": " $±$0,1 %",
@@ -5493,7 +5493,7 @@
                         {
                             "number": "NC110",
                             "class": "1",
-                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring braun ist.",
+                            "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring braun ist?",
                             "answer_a": "$±$1 %",
                             "answer_b": "$±$0,1 %",
                             "answer_c": "$±$5 %",
@@ -5509,10 +5509,10 @@
                             "number": "NB703",
                             "class": "1",
                             "question": "Bei welchem der abgebildeten Stromkreise leuchtet die LED?",
-                            "answer_a": null,
-                            "answer_b": null,
-                            "answer_c": null,
-                            "answer_d": null,
+                            "answer_a": "",
+                            "answer_b": "",
+                            "answer_c": "",
+                            "answer_d": "",
                             "picture_a": "NB703_a",
                             "picture_b": "NB703_b",
                             "picture_c": "NB703_c",
@@ -5855,7 +5855,7 @@
                             "question": "Nach dem Amateurfunkgesetz ist ein Funkamateur der Inhaber eines Amateurfunkzeugnisses oder einer harmonisierten Prüfungsbescheinigung, der sich aus persönlicher Neigung und nicht ...",
                             "answer_a": "aus gewerblich-wirtschaftlichem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_b": "aus politischem oder religiösem Interesse mit dem Amateurfunkdienst befasst.",
-                            "answer_c": "aus technisch-wissenschaftlichen Interesse mit dem Amateurfunkdienst befasst.",
+                            "answer_c": "aus technisch-wissenschaftlichem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_d": "aus sozialem oder kulturellem Interesse mit dem Amateurfunkdienst befasst."
                         }
                     ]
@@ -5957,10 +5957,10 @@
                         {
                             "number": "VE201",
                             "class": "1",
-                            "question": "Darf ein Funkamateur seine Amateurfunkstelle zum Abhören des nicht-öffentlich gesprochenen Wortes verwenden?",
-                            "answer_a": "Das Abhören des nicht-öffentlich gesprochenen Wortes ist ein Straftatbestand.",
+                            "question": "Darf ein Funkamateur seine Amateurfunkstelle zum Abhören des nichtöffentlich gesprochenen Wortes verwenden?",
+                            "answer_a": "Das Abhören des nichtöffentlich gesprochenen Wortes ist ein Straftatbestand.",
                             "answer_b": "Der Funkamateur gilt als sachkundige Person und darf daher selbst entscheiden, auf welchen Frequenzen er hören darf.",
-                            "answer_c": "Das Abhören des nicht-öffentlich gesprochenen Wortes durch den Funkamateur bedarf einer besonderen Zulassung der BNetzA. ",
+                            "answer_c": "Das Abhören des nichtöffentlich gesprochenen Wortes durch den Funkamateur bedarf einer besonderen Zulassung der BNetzA. ",
                             "answer_d": "Der Funkamateur ist dazu berechtigt, wenn er dazu technisch zugelassene Empfänger benutzt."
                         },
                         {
@@ -5984,10 +5984,10 @@
                         {
                             "number": "VE204",
                             "class": "1",
-                            "question": "Bei welcher der genannten Geräte sind nach dem Telekommunikation-Telemedien-Datenschutz-Gesetz (TTDSG) sowohl die Herstellung als auch der Besitz verboten? Bei ...",
-                            "answer_a": "Sendeanlagen, die einen anderen Gegenstand vortäuschen und somit zum Abhören des nicht-öffentlich gesprochenen Wortes brauchbar sind",
+                            "question": "Bei welchen der genannten Geräte sind nach dem Telekommunikation-Telemedien-Datenschutz-Gesetz (TTDSG) sowohl die Herstellung als auch der Besitz verboten? Bei ...",
+                            "answer_a": "Sendeanlagen, die einen anderen Gegenstand vortäuschen und somit zum Abhören des nichtöffentlich gesprochenen Wortes brauchbar sind",
                             "answer_b": "Scannern, die ein breitbandiges Abhören des Funkspektrums ermöglichen",
-                            "answer_c": "Richtmikrofonen, die geeignet sind, das nicht-öffentlich gesprochene Wort eines anderen unbemerkt abzuhören",
+                            "answer_c": "Richtmikrofonen, die geeignet sind, das nichtöffentlich gesprochene Wort eines anderen unbemerkt abzuhören",
                             "answer_d": "digitalen Tonabspielgeräten, welche auch geeignet sind, Tonaufnahmen anzufertigen"
                         }
                     ]
@@ -6017,9 +6017,9 @@
                         {
                             "number": "VC124",
                             "class": "1",
-                            "question": "Welche der folgenden Handlungen sind Ordnungswidrigkeiten im Sinne des Amateurfunkgesetzes (AFuG) und können mit Bußgeldern bis zu 5000 bzw. 10000 Euro geahndet werden?",
+                            "question": "Welche der folgenden Handlungen sind Ordnungswidrigkeiten im Sinne des Amateurfunkgesetzes (AFuG) und können mit Bußgeldern von bis zu 5000 bzw. 10000 Euro geahndet werden?",
                             "answer_a": "(1) Betrieb ohne Zulassung und Zuteilung eines Rufzeichens; (2) Geschäftsmäßiges Erbringen von Telekommunikationsdiensten; (3) Nachrichtenübermittlung an Dritte",
-                            "answer_b": "(1) Überschreiten der zulässigen Sendeleistung; (2) Dauerhafte Verlegung der Amateurfunkstelle an einem anderen Standort; (3) Funkbetrieb ohne Mitführen der Zulassungsurkunde",
+                            "answer_b": "(1) Überschreiten der zulässigen Sendeleistung; (2) Dauerhafte Verlegung der Amateurfunkstelle an einen anderen Standort; (3) Funkbetrieb ohne Mitführen der Zulassungsurkunde",
                             "answer_c": "(1) Unzureichende Rufzeichennennung; (2) Überschreiten der zulässigen Bandbreite einer Aussendung; (3) Gleichzeitige Nutzung eines Rufzeichens von verschiedenen Standorten",
                             "answer_d": "(1) Verschlüsselung von Amateurfunkverkehr zur Verschleierung des Inhalts; (2) Betrieb einer Remote-Station ohne Betriebsmeldung; (3) Überlassung des Rufzeichens an Dritte;"
                         },

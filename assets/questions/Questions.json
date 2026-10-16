@@ -12,7 +12,7 @@
                                 {
                                     "number": "NA103",
                                     "class": "1",
-                                    "question": "Laut Datenblatt wiegen 100 m eines bestimmten Drahtes 210 g. Ein vorliegendes Drahtst\u00fcck des selben Materials wiegt 55 g. Wie lang ist das Drahtst\u00fcck in etwa?",
+                                    "question": "Laut Datenblatt wiegen 100 m eines bestimmten Drahtes 210 g. Ein vorliegendes Drahtst\u00fcck desselben Materials wiegt 55 g. Wie lang ist das Drahtst\u00fcck in etwa?",
                                     "answer_a": "26,2 m",
                                     "answer_b": "382 m",
                                     "answer_c": "115 m",
@@ -575,19 +575,19 @@
                                     "number": "AB105",
                                     "class": "3",
                                     "question": "Was versteht man unter Dotierung?",
-                                    "answer_a": "Das Einbringen von chemisch anderswertigen Fremdatomen in einen Halbleitergrundstoff um freie Ladungstr\u00e4ger zur Verf\u00fcgung zu stellen.",
-                                    "answer_b": "Das Entfernen von Atomen aus dem Halbleitergrundstoff um die elektrische Leitf\u00e4higkeit zu senken.",
-                                    "answer_c": "Das Einbringen von magnetischen Nord- oder S\u00fcdpolen in einen Halbleitergrundstoff um die Induktivit\u00e4t zu erh\u00f6hen.",
-                                    "answer_d": "Das Entfernen von Verunreinigungen aus einem Halbleitergrundstoff um Elektronen zu generieren."
+                                    "answer_a": "Das Einbringen von chemisch anderswertigen Fremdatomen in einen Halbleitergrundstoff, um freie Ladungstr\u00e4ger zur Verf\u00fcgung zu stellen.",
+                                    "answer_b": "Das Entfernen von Atomen aus dem Halbleitergrundstoff, um die elektrische Leitf\u00e4higkeit zu senken.",
+                                    "answer_c": "Das Einbringen von magnetischen Nord- oder S\u00fcdpolen in einen Halbleitergrundstoff, um die Induktivit\u00e4t zu erh\u00f6hen.",
+                                    "answer_d": "Das Entfernen von Verunreinigungen aus einem Halbleitergrundstoff, um Elektronen zu generieren."
                                 },
                                 {
                                     "number": "AB104",
                                     "class": "3",
-                                    "question": "Was verstehen man unter Halbleitermaterialien?",
-                                    "answer_a": "Einige Stoffe (z. B. Silizium, Germanium) sind in reinem Zustand bei Raumtemperatur gute Isolatoren. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bor, Phosphor) oder bei hohen Temperaturen werden sie jedoch zu Leitern.",
-                                    "answer_b": "Einige Stoffe (z. B. Silizium, Germanium) sind in reinem Zustand bei Raumtemperatur gute Leiter. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bor, Phosphor) oder bei hohen Temperaturen nimmt jedoch ihre Leitf\u00e4higkeit ab.",
-                                    "answer_c": "Einige Stoffe (z. B. Silizium, Germanium) sind in reinem Zustand bei Raumtemperatur gute Leiter. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bismut, Tellur) f\u00e4llt ihr Widerstand auf den halben Wert.",
-                                    "answer_d": "Einige Stoffe (z. B. Silizium, Germanium) sind in reinem Zustand bei Raumtemperatur gute Elektrolyten. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bismut, Tellur) kann man daraus entweder N-leitendes- oder P-leitendes Material f\u00fcr Anoden bzw. Kathoden von Batterien herstellen."
+                                    "question": "Was versteht man unter Halbleitermaterialien?",
+                                    "answer_a": "Einige Stoffe (z. B. Silizium) sind in reinem Zustand bei Raumtemperatur gute Isolatoren. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bor, Phosphor) oder bei hohen Temperaturen werden sie jedoch zu Leitern.",
+                                    "answer_b": "Einige Stoffe (z. B. Silizium) sind in reinem Zustand bei Raumtemperatur gute Leiter. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bor, Phosphor) oder bei hohen Temperaturen nimmt jedoch ihre Leitf\u00e4higkeit ab.",
+                                    "answer_c": "Einige Stoffe (z. B. Silizium) sind in reinem Zustand bei Raumtemperatur gute Leiter. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bismut, Tellur) f\u00e4llt ihr Widerstand auf den halben Wert.",
+                                    "answer_d": "Einige Stoffe (z. B. Silizium) sind in reinem Zustand bei Raumtemperatur gute Elektrolyten. Durch geringf\u00fcgige Zus\u00e4tze von geeigneten anderen Stoffen (z. B. Bismut, Tellur) kann man daraus entweder N-leitendes- oder P-leitendes Material f\u00fcr Anoden bzw. Kathoden von Batterien herstellen."
                                 },
                                 {
                                     "number": "AB103",
@@ -602,7 +602,7 @@
                                     "number": "AB102",
                                     "class": "3",
                                     "question": "Zwischen den Enden eines Kupferdrahtes mit einem Querschnitt von 0,5 mm\u00b2 messen Sie einen Widerstand von 1,5 Ohm. Wie lang ist der Draht etwa?",
-                                    "answer_a": "42,0 m",
+                                    "answer_a": "41,7 m",
                                     "answer_b": "3,0 m",
                                     "answer_c": "4,2 m",
                                     "answer_d": "16,5 m"
@@ -891,7 +891,7 @@
                                 {
                                     "number": "EB102",
                                     "class": "2",
-                                    "question": "An einem Plattenkondensator mit 0.6 cm Plattenabstand werden 9 V angelegt. Wie gro\u00df ist die elektrische Feldst\u00e4rke zwischen den beiden Platten n\u00e4herungsweise?",
+                                    "question": "An einem Plattenkondensator mit 0,6 cm Plattenabstand werden 9 V angelegt. Wie gro\u00df ist die elektrische Feldst\u00e4rke zwischen den beiden Platten n\u00e4herungsweise?",
                                     "answer_a": "1500 V/m",
                                     "answer_b": "150 V/m",
                                     "answer_c": "540 V/m",
@@ -1342,10 +1342,10 @@
                                     "number": "NB401",
                                     "class": "1",
                                     "question": "Welches Bild zeigt eine sinusf\u00f6rmige Wechselspannung?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "NB401_a",
                                     "picture_b": "NB401_b",
                                     "picture_c": "NB401_c",
@@ -1368,10 +1368,10 @@
                                 {
                                     "number": "AB408",
                                     "class": "3",
-                                    "question": "F\u00fcr Messzwecke speisen Sie in den Antenneneingang ihres Empf\u00e4ngers ein gleichm\u00e4\u00dfig \u00fcber alle Frequenzen verteiltes Rauschsignal aus einem Messender ein (wei\u00dfes Rauschen). Welche Aussage \u00fcber die Leistung, die man beim Empfang dieses Signals misst, stimmt?",
+                                    "question": "F\u00fcr Messzwecke speisen Sie in den Antenneneingang Ihres Empf\u00e4ngers ein gleichm\u00e4\u00dfig \u00fcber alle Frequenzen verteiltes Rauschsignal aus einem Messender ein (wei\u00dfes Rauschen). Welche Aussage \u00fcber die Leistung, die man beim Empfang dieses Signals misst, stimmt?",
                                     "answer_a": "Sie ist proportional zur Bandbreite des Empf\u00e4ngers.",
                                     "answer_b": "Sie ist umgekehrt proportional zur Bandbreite des Empf\u00e4ngers.",
-                                    "answer_c": "Sie ist proportional zum Signal-Rauschabstand des Empf\u00e4ngers",
+                                    "answer_c": "Sie ist proportional zum Signal-Rausch-Abstand des Empf\u00e4ngers",
                                     "answer_d": "Sie ist umgekehrt proportional zum Eingangswiderstand des Empf\u00e4ngers."
                                 },
                                 {
@@ -1554,7 +1554,7 @@
                                 {
                                     "number": "EB510",
                                     "class": "2",
-                                    "question": "Ein Widerstand von 10 kOhm hat eine maximale Spannungsfestigkeit von 700 V und eine maximale Belastbarkeit von 1 W. Welche Gleichspannung darf h\u00f6chstens an den Widerstand angelegt werden um ihn im spezifizierten Bereich zu betreiben?",
+                                    "question": "Ein Widerstand von 10 kOhm hat eine maximale Spannungsfestigkeit von 700 V und eine maximale Belastbarkeit von 1 W. Welche Gleichspannung darf h\u00f6chstens an den Widerstand angelegt werden, um ihn im spezifizierten Bereich zu betreiben?",
                                     "answer_a": "100 V",
                                     "answer_b": "0,01 kV",
                                     "answer_c": "0,7 kV",
@@ -1619,7 +1619,7 @@
                                     "class": "2",
                                     "question": "Gelten die Formeln f\u00fcr die Leistung an einem rein ohmschen Widerstand auch bei Wechselspannung?",
                                     "answer_a": "Ja, wenn mit den Effektivwerten gerechnet wird.",
-                                    "answer_b": "Nein, da die periodische \u00c4nderung von Strom und Spannung dann vernachl\u00e4ssigt werden.",
+                                    "answer_b": "Nein, da die periodische \u00c4nderung von Strom und Spannung dann vernachl\u00e4ssigt wird.",
                                     "answer_c": "Ja, wenn mit den Spitzenwerten gerechnet wird.",
                                     "answer_d": "Nein, da die Blindleistung nicht ber\u00fccksichtigt wird."
                                 },
@@ -1628,9 +1628,9 @@
                                     "class": "2",
                                     "question": "Die mittlere Leistung eines Senders ist ...",
                                     "answer_a": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen an die Antennenspeiseleitung w\u00e4hrend eines Zeitintervalls abgibt, das im Verh\u00e4ltnis zur Periode der tiefsten Modulationsfrequenz ausreichend lang ist.",
-                                    "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung \u00fcber die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzger\u00e4te (z.B. Anpassger\u00e4te) durchlaufen werden.",
+                                    "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung \u00fcber die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzger\u00e4te (z. B. Anpassger\u00e4te) durchlaufen werden.",
                                     "answer_c": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen w\u00e4hrend einer Periode der Hochfrequenzschwingung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve der Antennenspeiseleitung zuf\u00fchrt.",
-                                    "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
+                                    "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
                                 },
                                 {
                                     "number": "EB501",
@@ -1639,7 +1639,7 @@
                                     "answer_a": "die Leistung, die der Sender unter normalen Betriebsbedingungen w\u00e4hrend einer Periode der Hochfrequenzschwingung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve durchschnittlich an einen reellen Abschlusswiderstand abgeben kann.",
                                     "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung \u00fcber die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzger\u00e4te (z. B. Anpassger\u00e4te) durchlaufen werden.",
                                     "answer_c": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen an die Antennenspeiseleitung w\u00e4hrend eines Zeitintervalls abgibt, das im Verh\u00e4ltnis zur Periode der tiefsten Modulationsfrequenz ausreichend lang ist.",
-                                    "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
+                                    "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
                                 },
                                 {
                                     "number": "NB606",
@@ -1737,10 +1737,10 @@
                                     "number": "AB601",
                                     "class": "3",
                                     "question": "Welches Bild zeigt die physikalische Stromrichtung korrekt an?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "AB601_a",
                                     "picture_b": "AB601_b",
                                     "picture_c": "AB601_c",
@@ -1750,10 +1750,10 @@
                                     "number": "NB703",
                                     "class": "1",
                                     "question": "Bei welchem der abgebildeten Stromkreise leuchtet die LED?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "NB703_a",
                                     "picture_b": "NB703_b",
                                     "picture_c": "NB703_c",
@@ -1832,7 +1832,7 @@
                                 {
                                     "number": "EC113",
                                     "class": "2",
-                                    "question": "Die Farbringe gr\u00fcn, blau und rot sowie ein Silberner auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert zwischen ...",
+                                    "question": "Die Farbringe gr\u00fcn, blau und rot sowie ein silberner auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert zwischen ...",
                                     "answer_a": "5040 bis 6160 Ohm.",
                                     "answer_b": "4760 bis 6440 Ohm.",
                                     "answer_c": "4760 bis 6840 Ohm.",
@@ -1931,7 +1931,7 @@
                                 {
                                     "number": "EC103",
                                     "class": "2",
-                                    "question": "Welche Widerst\u00e4nde sind induktionsarm und eignen sich besonders f\u00fcr den Einsatz bei Frequenz oberhalb von 30 MHz.",
+                                    "question": "Welche Widerst\u00e4nde sind induktionsarm und eignen sich besonders f\u00fcr den Einsatz bei Frequenzen oberhalb von 30 MHz.",
                                     "answer_a": "Metalloxidschichtwiderst\u00e4nde",
                                     "answer_b": "Metallschichtwiderst\u00e4nde",
                                     "answer_c": "Drahtwiderst\u00e4nde",
@@ -1958,7 +1958,7 @@
                                 {
                                     "number": "NC110",
                                     "class": "1",
-                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring braun ist.",
+                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring braun ist?",
                                     "answer_a": "$\u00b1$1 %",
                                     "answer_b": "$\u00b1$0,1 %",
                                     "answer_c": "$\u00b1$5 %",
@@ -1967,7 +1967,7 @@
                                 {
                                     "number": "NC109",
                                     "class": "1",
-                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein goldener Farbring ist.",
+                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein goldener Farbring ist?",
                                     "answer_a": " $\u00b1$5 %",
                                     "answer_b": " $\u00b1$0,5 %",
                                     "answer_c": " $\u00b1$0,1 %",
@@ -1976,7 +1976,7 @@
                                 {
                                     "number": "NC108",
                                     "class": "1",
-                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein silberner Farbring ist.",
+                                    "question": "Welche Toleranz weist ein Widerstand mit 4 Farbcodes auf, wenn der vierte Farbring ein silberner Farbring ist?",
                                     "answer_a": " $\u00b1$10 %",
                                     "answer_b": " $\u00b1$5 %",
                                     "answer_c": " $\u00b1$0,1 %",
@@ -2153,7 +2153,7 @@
                                 {
                                     "number": "EC207",
                                     "class": "2",
-                                    "question": "Bei welchem der folgenden Bauformen von Kondensatoren muss beim Einbau auf die Polarit\u00e4t geachtet werden?",
+                                    "question": "Bei welcher der folgenden Bauformen von Kondensatoren muss beim Einbau auf die Polarit\u00e4t geachtet werden?",
                                     "answer_a": "Elektrolytkondensator",
                                     "answer_b": "Keramikkondensator",
                                     "answer_c": "Styroflexkondensator",
@@ -2281,7 +2281,7 @@
                                 {
                                     "number": "AC206",
                                     "class": "3",
-                                    "question": "Wie gro\u00df ist die Induktivit\u00e4t einer Spule mit 300 Windungen, die auf einen Kern mit einem Induktivit\u00e4tskonstante ($A_{\\textrm{L}}$-Wert) von 1250 nH gewickelt ist?",
+                                    "question": "Wie gro\u00df ist die Induktivit\u00e4t einer Spule mit 300 Windungen, die auf einen Kern mit einer Induktivit\u00e4tskonstante ($A_{\\textrm{L}}$-Wert) von 1250 nH gewickelt ist?",
                                     "answer_a": "112,5 mH",
                                     "answer_b": "112,5 \u03bcH",
                                     "answer_c": "11,25 mH",
@@ -2898,7 +2898,7 @@
                                 {
                                     "number": "AC523",
                                     "class": "3",
-                                    "question": "Welche Verlustleistung erzeugt ein Power-MOS-FET mit $R_{\\textrm{DSon}}=4 m\\Omega$ bei einem Strom von 25 A?",
+                                    "question": "Welche Verlustleistung erzeugt ein Power-MOS-FET mit $R_{\\textrm{DSon}}$ = 4 \\mOhm bei einem Strom von 25 A?",
                                     "answer_a": "2,5 W",
                                     "answer_b": "1 W",
                                     "answer_c": "0,1 W",
@@ -2967,7 +2967,7 @@
                                 {
                                     "number": "AC516",
                                     "class": "3",
-                                    "question": "Warum soll bei dem gezeigten Basisspannungsteiler der Strom durch $R_2$ etwa 10 mal gr\u00f6\u00dfer als der Basisstrom sein?",
+                                    "question": "Warum soll bei dem gezeigten Basisspannungsteiler der Strom durch $R_2$ etwa 10-mal gr\u00f6\u00dfer als der Basisstrom sein?",
                                     "answer_a": "Damit der Arbeitspunkt stabil bleibt.",
                                     "answer_b": "Damit sich der Basisstrom bei Erw\u00e4rmung nicht \u00e4ndert.",
                                     "answer_c": "Damit $R_2$ eine Stromgegenkopplung bewirkt.",
@@ -3015,7 +3015,7 @@
                                 {
                                     "number": "AC511",
                                     "class": "3",
-                                    "question": "Welcher der folgenden Transistoren ist ein selbstleitender P-Kanal MOSFET?",
+                                    "question": "Welcher der folgenden Transistoren ist ein selbstleitender P-Kanal-MOSFET?",
                                     "answer_a": "",
                                     "answer_b": "",
                                     "answer_c": "",
@@ -3028,11 +3028,11 @@
                                 {
                                     "number": "AC510",
                                     "class": "3",
-                                    "question": "Welcher der folgenden Transistoren ist ein selbstleitender N-Kanal MOSFET?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "question": "Welcher der folgenden Transistoren ist ein selbstleitender N-Kanal-MOSFET?",
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "AC510_a",
                                     "picture_b": "AC510_b",
                                     "picture_c": "AC510_c",
@@ -3041,7 +3041,7 @@
                                 {
                                     "number": "AC509",
                                     "class": "3",
-                                    "question": "Welcher der folgenden Transistoren ist ein selbstsperrender N-Kanal MOSFET?",
+                                    "question": "Welcher der folgenden Transistoren ist ein selbstsperrender N-Kanal-MOSFET?",
                                     "answer_a": "",
                                     "answer_b": "",
                                     "answer_c": "",
@@ -3055,10 +3055,10 @@
                                     "number": "AC508",
                                     "class": "3",
                                     "question": "Der folgende Transistor ist ein ...",
-                                    "answer_a": "Selbstsperrender N-Kanal-Isolierschicht FET (MOSFET).",
-                                    "answer_b": "Selbstsperrender P-Kanal-Isolierschicht FET (MOSFET).",
-                                    "answer_c": "Selbstleitender N-Kanal-Isolierschicht FET (MOSFET).",
-                                    "answer_d": "Selbstleitender P-Kanal-Isolierschicht FET (MOSFET).",
+                                    "answer_a": "Selbstsperrender N-Kanal-Isolierschicht-FET (MOSFET).",
+                                    "answer_b": "Selbstsperrender P-Kanal-Isolierschicht-FET (MOSFET).",
+                                    "answer_c": "Selbstleitender N-Kanal-Isolierschicht-FET (MOSFET).",
+                                    "answer_d": "Selbstleitender P-Kanal-Isolierschicht-FET (MOSFET).",
                                     "picture_question": "AC508_q"
                                 },
                                 {
@@ -3255,8 +3255,8 @@
                                     "question": "Welche Transistortypen sind bipolare Transistoren?",
                                     "answer_a": "NPN- und PNP-Transistoren",
                                     "answer_b": "Dual-Gate-MOS-FETs",
-                                    "answer_c": "Isolierschicht FETs",
-                                    "answer_d": "Sperrschicht FETs"
+                                    "answer_c": "Isolierschicht-FETs",
+                                    "answer_d": "Sperrschicht-FETs"
                                 },
                                 {
                                     "number": "EC603",
@@ -3323,7 +3323,7 @@
                                     "class": "3",
                                     "question": "Welche Bauteile sind in einem Monolithic Microwave Integrated Circuit (MMIC) enthalten?",
                                     "answer_a": "Ein MMIC enth\u00e4lt alle aktiven und passiven Bauteile auf einem Halbleiter-Substrat.",
-                                    "answer_b": "Ein MMIC enth\u00e4lt nur aktiven Bauteile auf einem Halbleiter-Substrat.",
+                                    "answer_b": "Ein MMIC enth\u00e4lt nur aktive Bauteile auf einem Halbleiter-Substrat.",
                                     "answer_c": "Ein MMIC enth\u00e4lt nur passive Bauteile auf einem Halbleiter-Substrat.",
                                     "answer_d": "Ein MMIC enth\u00e4lt alle aktiven und passiven Bauteile auf einer Leiterplatte."
                                 },
@@ -3369,7 +3369,7 @@
                                 {
                                     "number": "AD113",
                                     "class": "3",
-                                    "question": "Die Spannung an der Br\u00fcckenschaltung betr\u00e4gt 11 V. Die Widerst\u00e4nde haben folgende Werte: $R_1$ = 1 kOhm;  $R_2$ = 10 kOhm; $R_3$ = 10 kOhm;  $R_4$ = 1 kOhm. Wie gro\u00df ist die Spannung zwischen A und B im Br\u00fcckenzweig (gemessen von A nach B)?",
+                                    "question": "Die Spannung an der Br\u00fcckenschaltung betr\u00e4gt 11 V. Die Widerst\u00e4nde haben folgende Werte: $R_1$ = 1 kOhm; $R_2$ = 10 kOhm; $R_3$ = 10 kOhm; $R_4$ = 1 kOhm. Wie gro\u00df ist die Spannung zwischen A und B im Br\u00fcckenzweig (gemessen von A nach B)?",
                                     "answer_a": "$U_{AB} = 9 V$ ",
                                     "answer_b": "$U_{AB} = -9 V$",
                                     "answer_c": "$U_{AB} = 10 V$",
@@ -3399,7 +3399,7 @@
                                 {
                                     "number": "AD110",
                                     "class": "3",
-                                    "question": "Wenn $\\textrm{R}_1$ und $\\textrm{R}_3$ je 2,2 kOhm hat und $\\textrm{R}_2$ und $\\textrm{R}_4$ je 220 Ohm betragen, hat die Schaltung zwischen den Punkten a und b einen Gesamtwiderstand von ...",
+                                    "question": "Wenn $\\textrm{R}_1$ und $\\textrm{R}_3$ je 2,2 kOhm haben und $\\textrm{R}_2$ und $\\textrm{R}_4$ je 220 Ohm betragen, hat die Schaltung zwischen den Punkten a und b einen Gesamtwiderstand von ...",
                                     "answer_a": "1210 Ohm.",
                                     "answer_b": "1540 Ohm.",
                                     "answer_c": "4840 Ohm.",
@@ -3495,7 +3495,7 @@
                                 {
                                     "number": "ED124",
                                     "class": "2",
-                                    "question": "Welche Gesamtkapazit\u00e4t hat diese Schaltung, wenn $C_1 = 200 nF$, $C_2 = 100 nF$ und $C_3 = 100000 pF$ betragen?",
+                                    "question": "Welche Gesamtkapazit\u00e4t hat diese Schaltung, wenn $C_1$ = 200 nF, $C_2$ = 100 nF und $C_3$ = 100000 pF betragen?",
                                     "answer_a": "100 nF",
                                     "answer_b": "250 nF",
                                     "answer_c": "400 nF",
@@ -3717,7 +3717,7 @@
                                 {
                                     "number": "ED101",
                                     "class": "2",
-                                    "question": "Wie teilt sich die Spannung an zwei in Reihe geschalteten Widerst\u00e4nden auf, wenn $R_1$ = 5 mal so gro\u00df ist wie $R_2$?",
+                                    "question": "Wie teilt sich die Spannung an zwei in Reihe geschalteten Widerst\u00e4nden auf, wenn $R_1$ = 5-mal so gro\u00df ist wie $R_2$?",
                                     "answer_a": "$U_1 = 5\\cdot U_2$",
                                     "answer_b": "$U_1 = \\frac{U_2}{5}$",
                                     "answer_c": "$U_1 = 6\\cdot U_2$",
@@ -3981,7 +3981,7 @@
                                 {
                                     "number": "AD203",
                                     "class": "3",
-                                    "question": "Wo liegt die Grenzfrequenz des Audio-Verst\u00e4rkers, wenn $R_{1}=$4,7 \\kiloOhm, $C_1=$6,8 nF und $C_2=$47 nF betragen? Der Verst\u00e4rker hat eine Grenzfrequenz von 1 MHz und die Impedanz des Eingangs PIN 2 ist mit 1 MOhm sehr hochohmig.",
+                                    "question": "Wo liegt die Grenzfrequenz des Audio-Verst\u00e4rkers, wenn $R_{1}$ = 4,7 \\kiloOhm, $C_1$ = 6,8 nF und $C_2$ = 47 nF betragen? Der Verst\u00e4rker hat eine Grenzfrequenz von 1 MHz und die Impedanz des Eingangs PIN 2 ist mit 1 MOhm sehr hochohmig.",
                                     "answer_a": "ca. 5 kHz",
                                     "answer_b": "ca. 720 Hz",
                                     "answer_c": "ca. 2,7 kHz",
@@ -4180,7 +4180,7 @@
                                 {
                                     "number": "AD325",
                                     "class": "3",
-                                    "question": "Was ist bei der Dimensionierung der Spule in dem dargestellten BIAS-T zu beachten?",
+                                    "question": "Was ist bei der Dimensionierung der Spule in dem dargestellten Bias-T zu beachten?",
                                     "answer_a": "Strombelastbarkeit",
                                     "answer_b": "Spannungsfestigkeit",
                                     "answer_c": "Temperaturkoeffizient",
@@ -4190,7 +4190,7 @@
                                 {
                                     "number": "AD324",
                                     "class": "3",
-                                    "question": "Zu welchem Zweck dient $C_1$ in dem dargestellten BIAS-T?",
+                                    "question": "Zu welchem Zweck dient $C_1$ in dem dargestellten Bias-T?",
                                     "answer_a": "Zur Trennung der Gleichspannung vom Empf\u00e4ngereingang.",
                                     "answer_b": "Zur Siebung der Gleichspannung.",
                                     "answer_c": "Zur HF-Trennung von RX und LNA.",
@@ -4201,7 +4201,7 @@
                                     "number": "AD323",
                                     "class": "3",
                                     "question": "Was stellt die folgende Schaltung dar? ",
-                                    "answer_a": "BIAS-T",
+                                    "answer_a": "Bias-T",
                                     "answer_b": "Bandsperre",
                                     "answer_c": "PI-Filter",
                                     "answer_d": "Netzfilter",
@@ -4210,7 +4210,7 @@
                                 {
                                     "number": "AD322",
                                     "class": "3",
-                                    "question": "Zu welchem Zweck wird ein BIAS-T (Fernspeiseweiche) eingesetzt?",
+                                    "question": "Zu welchem Zweck wird ein Bias-T (Fernspeiseweiche) eingesetzt?",
                                     "answer_a": "Zur Gleichspannungsversorgung und HF-Signal\u00fcbertragung \u00fcber eine gemeinsame Leitung.",
                                     "answer_b": "Zur Verteilung der Gleichspannung auf zwei unterschiedliche Ger\u00e4te.",
                                     "answer_c": "Zur Verteilung eines HF-Signals auf zwei Ausg\u00e4nge.",
@@ -4319,7 +4319,7 @@
                                 {
                                     "number": "AD311",
                                     "class": "3",
-                                    "question": "Welche Funktion \u00fcbernimmt der elektronischen Schalter (Block E) des Schaltnetzteils?",
+                                    "question": "Welche Funktion \u00fcbernimmt der elektronische Schalter (Block E) des Schaltnetzteils?",
                                     "answer_a": "Impulsbreitenmodulator",
                                     "answer_b": "\u00dcberspannungsableiter",
                                     "answer_c": "Gleichrichter",
@@ -4610,7 +4610,7 @@
                                 {
                                     "number": "AD429",
                                     "class": "3",
-                                    "question": "Eine Treiberstufe eines HF-Verst\u00e4rkers braucht am Eingang eine Leistung von 1 W um am Ausgang 10 W an die Endstufe abgeben zu k\u00f6nnen. Sie ben\u00f6tigt dazu eine Gleichstromleistung von 25 W. Wie hoch ist der Wirkungsgrad der Treiberstufe?",
+                                    "question": "Eine Treiberstufe eines HF-Verst\u00e4rkers braucht am Eingang eine Leistung von 1 W, um am Ausgang 10 W an die Endstufe abgeben zu k\u00f6nnen. Sie ben\u00f6tigt dazu eine Gleichstromleistung von 25 W. Wie hoch ist der Wirkungsgrad der Treiberstufe?",
                                     "answer_a": "40 %",
                                     "answer_b": "25 %",
                                     "answer_c": "15 %",
@@ -4655,7 +4655,7 @@
                                 {
                                     "number": "AD424",
                                     "class": "3",
-                                    "question": "Ein HF-Leistungsverst\u00e4rker im A-Betrieb wird mit einer Drainspannung von $50 V$ und einem Drainstrom von $2 A$ betrieben. Wie hoch ist die zu erwartende Ausgangsleistung des Verst\u00e4rkers?",
+                                    "question": "Ein HF-Leistungsverst\u00e4rker im A-Betrieb wird mit einer Drainspannung von 50 V und einem Drainstrom von 2 A betrieben. Wie hoch ist die zu erwartende Ausgangsleistung des Verst\u00e4rkers?",
                                     "answer_a": "$\\approx$ 40 W",
                                     "answer_b": "$\\approx$ 85 W",
                                     "answer_c": "$\\approx$ 60 W",
@@ -5023,7 +5023,7 @@
                                     "answer_a": "H\u00fcllkurvendemodulator zur Demodulation von AM-Signalen.",
                                     "answer_b": "SSB-Modulator.",
                                     "answer_c": "FM-Demodulator.",
-                                    "answer_d": "Produktdetektor zu Demodulation von SSB Signalen.",
+                                    "answer_d": "Produktdetektor zur Demodulation von SSB Signalen.",
                                     "picture_question": "AD501_q"
                                 }
                             ]
@@ -5140,7 +5140,7 @@
                                 {
                                     "number": "AD609",
                                     "class": "3",
-                                    "question": "Wodurch wird \"Chirp\" bei Telegrafie hervorgerufen?",
+                                    "question": "Wodurch wird \"Chirp\" bei Morsetelegrafie hervorgerufen?",
                                     "answer_a": "Durch Betriebsspannungs\u00e4nderungen des Oszillators bei der Tastung.",
                                     "answer_b": "Durch Amplituden\u00e4nderungen des Oszillators, weil die Tastung in der falschen Stufe erfolgt.",
                                     "answer_c": "Durch zu steile Flanken des Tastsignals.",
@@ -5176,7 +5176,7 @@
                                 {
                                     "number": "AD605",
                                     "class": "3",
-                                    "question": "Welcher der angegebenen Oszillator hat die gr\u00f6\u00dfte Frequenzstabilit\u00e4t?",
+                                    "question": "Welcher der angegebenen Oszillatoren hat die gr\u00f6\u00dfte Frequenzstabilit\u00e4t?",
                                     "answer_a": "OCXO",
                                     "answer_b": "TCXO",
                                     "answer_c": "VCO",
@@ -5416,7 +5416,7 @@
                     "title": "Modulations- und \u00dcbertragungsverfahren",
                     "sections": [
                         {
-                            "title": "Modulation Allgemein",
+                            "title": "Modulation allgemein",
                             "questions": [
                                 {
                                     "number": "AE101",
@@ -5525,7 +5525,7 @@
                                 {
                                     "number": "AE208",
                                     "class": "3",
-                                    "question": "Um Bandbreite einzusparen sollte der Frequenzumfang eines NF-Sprachsignals, das an einen SSB-Modulator angelegt wird, ...",
+                                    "question": "Um Bandbreite einzusparen, sollte der Frequenzumfang eines NF-Sprachsignals, das an einen SSB-Modulator angelegt wird, ...",
                                     "answer_a": "2,7 kHz nicht \u00fcberschreiten.",
                                     "answer_b": "1,8 kHz nicht \u00fcberschreiten.",
                                     "answer_c": "800 Hz nicht \u00fcberschreiten.",
@@ -5873,10 +5873,10 @@
                                     "number": "AE305",
                                     "class": "3",
                                     "question": "Was bewirkt die Erh\u00f6hung des Hubes eines frequenzmodulierten Senders im Empf\u00e4nger?",
-                                    "answer_a": "Eine gr\u00f6\u00dfere Lautst\u00e4rke.",
-                                    "answer_b": "Eine gr\u00f6\u00dfere Sprachkomprimierung.",
-                                    "answer_c": "Eine Verringerung des Signal-Rauschabstandes.",
-                                    "answer_d": "Eine geringere Lautst\u00e4rke."
+                                    "answer_a": "Eine gr\u00f6\u00dfere Lautst\u00e4rke",
+                                    "answer_b": "Eine gr\u00f6\u00dfere Sprachkomprimierung",
+                                    "answer_c": "Eine Verringerung des Signal-Rausch-Abstandes",
+                                    "answer_d": "Eine geringere Lautst\u00e4rke"
                                 },
                                 {
                                     "number": "AE304",
@@ -6212,19 +6212,19 @@
                                     "number": "AE406",
                                     "class": "3",
                                     "question": "Bei einem digitalen \u00dcbertragungsverfahren (z. B. FT4) wird die Frequenz eines Senders zwischen vier Symbolfrequenzen (z. B. 14081,20 kHz, 14081,40 kHz, 14081,61 kHz und 14081,83 kHz) umgetastet, so dass pro Symbol zwei Bit (00, 01, 10 oder 11) \u00fcbertragen werden k\u00f6nnen. Die Symbolrate betr\u00e4gt 23,4 baud. Welcher Datenrate entspricht das?",
-                                    "answer_a": "ca. 46,8 kBit/s",
-                                    "answer_b": "ca. 11,7 kBit/s",
-                                    "answer_c": "ca. 23,4 kBit/s",
-                                    "answer_d": "ca. 93,6 kBit/s"
+                                    "answer_a": "46,8 Bit/s",
+                                    "answer_b": "11,7 Bit/s",
+                                    "answer_c": "23,4 Bit/s",
+                                    "answer_d": "93,6 Bit/s"
                                 },
                                 {
                                     "number": "AE405",
                                     "class": "3",
                                     "question": "Bei einem digitalen \u00dcbertragungsverfahren (z. B. RTTY) wird die Frequenz eines Senders zwischen zwei Symbolfrequenzen (z. B. 14072,43 kHz und 14072,60 kHz) umgetastet, so dass pro Symbol ein Bit (0 oder 1) \u00fcbertragen werden kann. Die Symbolrate betr\u00e4gt 45,45 baud. Welcher Datenrate entspricht das?",
-                                    "answer_a": "ca. 45,45 kBit/s",
-                                    "answer_b": "ca. 90,9 kBit/s",
-                                    "answer_c": "ca. 22,725 kBit/s",
-                                    "answer_d": "ca. 181,8 kBit/s"
+                                    "answer_a": "45,45 Bit/s",
+                                    "answer_b": "90,9 Bit/s",
+                                    "answer_c": "22,725 Bit/s",
+                                    "answer_d": "181,8 Bit/s"
                                 },
                                 {
                                     "number": "AE404",
@@ -6513,7 +6513,7 @@
                                     "number": "NF113",
                                     "class": "1",
                                     "question": "Warum befinden sich bei Satellitenbetrieb Up- und Downlink in der Regel nicht im gleichen Frequenzband? Man benutzt unterschiedliche Frequenzb\u00e4nder, weil ...",
-                                    "answer_a": "dies eine einfachere Trennung von Sende- und Empfangssignals erm\u00f6glicht und die Baugr\u00f6\u00dfe von Filtern auf dem Satelliten reduziert wird.",
+                                    "answer_a": "dies eine einfachere Trennung von Sende- und Empfangssignal erm\u00f6glicht und die Baugr\u00f6\u00dfe von Filtern auf dem Satelliten reduziert wird.",
                                     "answer_b": "der Uplink durch die Ionosph\u00e4re st\u00e4rker bed\u00e4mpft wird als der Downlink.",
                                     "answer_c": "die Bandbreite auf beiden Frequenzb\u00e4ndern aufgeteilt wird und Bandbereiche besser ausgenutzt werden k\u00f6nnen. ",
                                     "answer_d": "man damit den Dopplereffekt vermindert."
@@ -6530,7 +6530,7 @@
                                 {
                                     "number": "NF111",
                                     "class": "1",
-                                    "question": "Die Gegenstation antwortet Ihrem Anruf in SSB-Sprechfunk auf einer geringf\u00fcgig abweichenden Frequenz. Was sollten Sie tun, um die Empfangsfrequenz Ihres Transceivers anzupassen ohne dabei die Sendefrequenz zu verstellen?",
+                                    "question": "Die Gegenstation antwortet Ihrem Anruf in SSB-Sprechfunk auf einer geringf\u00fcgig abweichenden Frequenz. Was sollten Sie tun, um die Empfangsfrequenz Ihres Transceivers anzupassen, ohne dabei die Sendefrequenz zu verstellen?",
                                     "answer_a": "RIT-Einstellung \u00e4ndern",
                                     "answer_b": "Notchfilter einschalten",
                                     "answer_c": "Passband-Tuning verstellen",
@@ -6568,7 +6568,7 @@
                                     "class": "1",
                                     "question": "Warum sollte ein Sender nie ohne angepasste Antenne oder Dummy Load betrieben werden?",
                                     "answer_a": "Durch die reflektierte Welle k\u00f6nnte die Senderendstufe besch\u00e4digt werden.",
-                                    "answer_b": "Durch die fehlende Last wird die Versorgungsspannung hoch geregelt, was zu \u00dcberspannungen f\u00fchren kann. ",
+                                    "answer_b": "Durch die fehlende Last wird die Versorgungsspannung hochgeregelt, was zu \u00dcberspannungen f\u00fchren kann. ",
                                     "answer_c": "Durch die absorbierte Leistung kann das Netzteil des Senders \u00fcberlastet werden.  ",
                                     "answer_d": "Das Stehwellenmessger\u00e4t k\u00f6nnte besch\u00e4digt werden."
                                 },
@@ -6640,7 +6640,7 @@
                                 {
                                     "number": "AF120",
                                     "class": "3",
-                                    "question": "Welchen Frequenzen k\u00f6nnen die drei Oszillatoren des im folgenden Blockschaltbild gezeichneten Empf\u00e4ngers haben, wenn eine Frequenz von 3,65 MHz empfangen wird? Bei welcher Antwort sind alle drei Frequenzen richtig?",
+                                    "question": "Welche Frequenzen k\u00f6nnen die drei Oszillatoren des im folgenden Blockschaltbild gezeichneten Empf\u00e4ngers haben, wenn eine Frequenz von 3,65 MHz empfangen wird? Bei welcher Antwort sind alle drei Frequenzen richtig?",
                                     "answer_a": "VFO: 46,35 MHz CO1: 41 MHz CO2: 9,455 MHz",
                                     "answer_b": "VFO: 23,65 MHz CO1: 59 MHz CO2: 8,545 MHz",
                                     "answer_c": "VFO: 46,35 MHz CO1: 41 MHz CO2: 9,545 MHz",
@@ -6817,7 +6817,7 @@
                                 {
                                     "number": "AF101",
                                     "class": "3",
-                                    "question": "Um wie viel S-Stufen m\u00fcsste die S-Meter-Anzeige Ihres Empf\u00e4ngers steigen, wenn Ihr Partner die Sendeleistung von 25 W auf 100 W erh\u00f6ht?",
+                                    "question": "Um wie viele S-Stufen m\u00fcsste die S-Meter-Anzeige Ihres Empf\u00e4ngers steigen, wenn Ihr Partner die Sendeleistung von 25 W auf 100 W erh\u00f6ht?",
                                     "answer_a": "Um eine S-Stufe",
                                     "answer_b": "Um zwei S-Stufen",
                                     "answer_c": "Um vier S-Stufen",
@@ -6881,24 +6881,24 @@
                                     "number": "AF229",
                                     "class": "3",
                                     "question": "Was bedeutet die Rauschzahl F = 2 bei einem UHF-Vorverst\u00e4rker?",
-                                    "answer_a": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 3 dB geringeres Signal-Rauschverh\u00e4ltnis als das Eingangssignal.",
-                                    "answer_b": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 3 dB h\u00f6heres Signal-Rauschverh\u00e4ltnis als das Eingangssignal.",
-                                    "answer_c": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 6 dB geringeres Signal-Rauschverh\u00e4ltnis als das Eingangssignal.",
-                                    "answer_d": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 6 dB h\u00f6heres Signal-Rauschverh\u00e4ltnis als das Eingangssignal."
+                                    "answer_a": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 3 dB geringeres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal.",
+                                    "answer_b": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 3 dB h\u00f6heres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal.",
+                                    "answer_c": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 6 dB geringeres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal.",
+                                    "answer_d": "Das Ausgangssignal des Verst\u00e4rkers hat ein um 6 dB h\u00f6heres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal."
                                 },
                                 {
                                     "number": "AF228",
                                     "class": "3",
                                     "question": "Was bedeutet die Rauschzahl von 1,8 dB bei einem UHF-Vorverst\u00e4rker?",
-                                    "answer_a": "Das Ausgangssignal des Vorverst\u00e4rkers hat ein um 1,8 dB geringeres Signal-Rauschverh\u00e4ltnis als das Eingangssignal.",
-                                    "answer_b": "Das Ausgangssignal des Vorverst\u00e4rkers hat ein um 1,8 dB h\u00f6heres Signal-Rauschverh\u00e4ltnis als das Eingangssignal.",
+                                    "answer_a": "Das Ausgangssignal des Vorverst\u00e4rkers hat ein um 1,8 dB geringeres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal.",
+                                    "answer_b": "Das Ausgangssignal des Vorverst\u00e4rkers hat ein um 1,8 dB h\u00f6heres Signal-Rausch-Verh\u00e4ltnis als das Eingangssignal.",
                                     "answer_c": "Das Rauschen des Ausgangssignals ist um 1,8 dB niedriger als das Rauschen des Eingangssignals.",
                                     "answer_d": "Die Verst\u00e4rkung des Nutzsignals betr\u00e4gt 1,8 dB, die Rauschleistung bleibt unver\u00e4ndert."
                                 },
                                 {
                                     "number": "AF227",
                                     "class": "3",
-                                    "question": "Was bedeutet Signal-Rauschabstand (SNR) bei einem Empf\u00e4nger?",
+                                    "question": "Was bedeutet Signal-Rausch-Abstand (SNR) bei einem Empf\u00e4nger?",
                                     "answer_a": "Er gibt an, in welchem Verh\u00e4ltnis das Nutzsignal st\u00e4rker ist als das Rauschsignal.",
                                     "answer_b": "Er gibt an, in welchem Verh\u00e4ltnis das Rauschsignal st\u00e4rker ist als das Nutzsignal.",
                                     "answer_c": "Es ist der Frequenzabstand zwischen Empfangssignal und St\u00f6rsignal.",
@@ -6925,7 +6925,7 @@
                                 {
                                     "number": "AF224",
                                     "class": "3",
-                                    "question": "Was bewirkt die AGC (automatic gain control) bei einem starken Eingangssignal?",
+                                    "question": "Was bewirkt die AGC (Automatic Gain Control) bei einem starken Eingangssignal?",
                                     "answer_a": "Sie reduziert die Verst\u00e4rkung von Verst\u00e4rkerstufen im Empfangsteil.",
                                     "answer_b": "Sie reduziert die Amplitude des VFO.",
                                     "answer_c": "Sie reduziert die Amplitude des BFO.",
@@ -6978,7 +6978,7 @@
                                     "answer_a": "Durch Vermischung eines starken unerw\u00fcnschten Signals mit dem Nutzsignal.",
                                     "answer_b": "Durch Reflexion der Oberwellen im Empfangsverst\u00e4rker.",
                                     "answer_c": "Durch die \u00dcbersteuerung eines Verst\u00e4rkers.",
-                                    "answer_d": "Durch \u00dcbermodulation oder zu gro\u00dfem Hub."
+                                    "answer_d": "Durch \u00dcbermodulation oder zu gro\u00dfen Hub."
                                 },
                                 {
                                     "number": "AF218",
@@ -7321,7 +7321,7 @@
                                     "question": "Welche wesentlichen Ausgangsfrequenzen erzeugt die in der Abbildung dargestellte Stufe?",
                                     "answer_a": "10,7 MHz und 52,7 MHz",
                                     "answer_b": "42 MHz und 63,4 MHz",
-                                    "answer_c": "21 MHz 63,4 MHz",
+                                    "answer_c": "21 MHz und 63,4 MHz",
                                     "answer_d": "21,4 MHz und 105,4 MHz",
                                     "picture_question": "EF201_q"
                                 },
@@ -7493,7 +7493,7 @@
                                 {
                                     "number": "EF310",
                                     "class": "2",
-                                    "question": "Welche Bandbreite sollte der nachgeschaltete Filter zur Unterdr\u00fcckung eines Seitenbandes bei der Erzeugung eines SSB-Telefoniesignals haben?",
+                                    "question": "Welche Bandbreite sollte das nachgeschaltete Filter zur Unterdr\u00fcckung eines Seitenbandes bei der Erzeugung eines SSB-Telefoniesignals haben?",
                                     "answer_a": "2,4 kHz ",
                                     "answer_b": "800 Hz ",
                                     "answer_c": "455 kHz ",
@@ -7645,7 +7645,7 @@
                                 {
                                     "number": "AF427",
                                     "class": "3",
-                                    "question": "Wieviel W\u00e4rmeleistung wird im MMIC in W\u00e4rme umgesetzt, wenn die Betriebsspannung $9 V$ betr\u00e4gt und $R_\\text{BIAS}$ einen Wert von $470 Ohm$ hat?",
+                                    "question": "Wieviel W\u00e4rmeleistung wird im MMIC in W\u00e4rme umgesetzt, wenn die Betriebsspannung 9 V betr\u00e4gt und $R_\\text{BIAS}$ einen Wert von 470 Ohm hat?",
                                     "answer_a": "43 mW",
                                     "answer_b": "47 mW",
                                     "answer_c": "90 mW",
@@ -7665,7 +7665,7 @@
                                 {
                                     "number": "AF425",
                                     "class": "3",
-                                    "question": "Der optimale Arbeitspunkt des dargestellten MMIC ist mit $4 V$ und $10 mA$ angegeben. Die Betriebsspannung betr\u00e4gt $13,5 V$. Berechnen Sie den Vorwiderstand ($R_\\text{BIAS}$).",
+                                    "question": "Der optimale Arbeitspunkt des dargestellten MMIC ist mit 4 V und 10 mA angegeben. Die Betriebsspannung betr\u00e4gt 13,5 V. Berechnen Sie den Vorwiderstand ($R_\\text{BIAS}$).",
                                     "answer_a": "950 Ohm",
                                     "answer_b": "1350 Ohm",
                                     "answer_c": "95 Ohm",
@@ -7729,7 +7729,7 @@
                                     "answer_a": "Sie reduziert HF-Anteile auf der Betriebsspannungsleitung.",
                                     "answer_b": "Sie reduziert Brummspannungsanteile auf dem Sendesignal.",
                                     "answer_c": "Sie reduziert Oberschwingungen auf dem Sendesignal.",
-                                    "answer_d": "Sie wirkt als PI - Filter f\u00fcr das Sendesignal.",
+                                    "answer_d": "Sie wirkt als Pi-Filter f\u00fcr das Sendesignal.",
                                     "picture_question": "AF419_q"
                                 },
                                 {
@@ -8020,9 +8020,9 @@
                                     "class": "2",
                                     "question": "Welche der nachfolgenden Antworten trifft f\u00fcr die Wirkungsweise eines Transverters zu? Ein Transverter setzt...",
                                     "answer_a": "beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band und beim Senden das 10 m-Sendesignal auf das 70 cm-Band um.",
-                                    "answer_b": "beim Senden sowohl beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band um.",
-                                    "answer_c": "beim Senden sowohl beim Empfangen z. B. ein frequenzmoduliertes Signal in ein amplitudenmoduliertes Signal um.",
-                                    "answer_d": "beim Senden sowohl beim Empfangen z. B. ein DMR-Signal in ein D-Star-Signal um."
+                                    "answer_b": "sowohl beim Senden als auch beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band um.",
+                                    "answer_c": "sowohl beim Senden als auch beim Empfangen z. B. ein frequenzmoduliertes Signal in ein amplitudenmoduliertes Signal um.",
+                                    "answer_d": "sowohl beim Senden als auch beim Empfangen z. B. ein DMR-Signal in ein D-Star-Signal um."
                                 }
                             ]
                         },
@@ -8270,10 +8270,10 @@
                                     "number": "AF614",
                                     "class": "3",
                                     "question": "Eine Sinusschwingung mit einem Spitzenwert von 1,5 V wird in einen A/D-Umsetzer eingegeben, dessen Ausgang direkt mit einem D/A-Umsetzer verbunden ist. Beide Umsetzer arbeiten linear mit einer Aufl\u00f6sung von 12 Bit und einem Wertebereich von -1 V bis 1 V. Welches Signal ist am Ausgang des D/A-Umsetzers zu erwarten?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "AF614_a",
                                     "picture_b": "AF614_b",
                                     "picture_c": "AF614_c",
@@ -8283,10 +8283,10 @@
                                     "number": "AF613",
                                     "class": "3",
                                     "question": "Eine Sinusschwingung mit einem Spitzenwert von 1,5 V wird in einen A/D-Umsetzer eingegeben, dessen Ausgang direkt mit einem D/A-Umsetzer verbunden ist. Beide Umsetzer arbeiten linear mit einer Aufl\u00f6sung von 12 Bit und einem Wertebereich von -2 V bis 2 V. Welches Signal ist am Ausgang des D/A-Umsetzers zu erwarten?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "AF613_a",
                                     "picture_b": "AF613_b",
                                     "picture_c": "AF613_c",
@@ -8296,10 +8296,10 @@
                                     "number": "AF612",
                                     "class": "3",
                                     "question": "Eine Sinusschwingung mit einem Spitzenwert von 1,5 V wird in einen A/D-Umsetzer eingegeben, dessen Ausgang direkt mit einem D/A-Umsetzer verbunden ist. Beide Umsetzer arbeiten linear mit einer Aufl\u00f6sung von 4 Bit und einem Wertebereich von -2 V bis 2 V. Welches Signal ist am Ausgang des D/A-Umsetzers zu erwarten?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "AF612_a",
                                     "picture_b": "AF612_b",
                                     "picture_c": "AF612_c",
@@ -8344,7 +8344,7 @@
                                 {
                                     "number": "AF607",
                                     "class": "3",
-                                    "question": "Warum kommt es in einem A/D-Umsetzer zu Quantisierungfehlern?",
+                                    "question": "Warum kommt es in einem A/D-Umsetzer zu Quantisierungsfehlern?",
                                     "answer_a": "Es steht nur eine begrenzte Anzahl diskreter Werte zur Verf\u00fcgung.",
                                     "answer_b": "Die Bandbreite des Eingangssignals ist begrenzt.",
                                     "answer_c": "Es k\u00f6nnen nur ganzzahlige Frequenzen verwendet werden.",
@@ -8676,7 +8676,7 @@
                                 {
                                     "number": "AG115",
                                     "class": "3",
-                                    "question": "Das folgende Bild stellt einen Dreiband-Dipol f\u00fcr die Frequenzb\u00e4nder 20, 15 bis 10 m dar. Die mit b gekennzeichneten Schwingkreise sind abgestimmt auf:",
+                                    "question": "Das folgende Bild stellt einen Dreiband-Dipol f\u00fcr die Frequenzb\u00e4nder 20, 15 und 10 m dar. Die mit b gekennzeichneten Schwingkreise sind abgestimmt auf:",
                                     "answer_a": "29,0 MHz",
                                     "answer_b": "10,1 MHz",
                                     "answer_c": "14,2 MHz",
@@ -8686,7 +8686,7 @@
                                 {
                                     "number": "AG114",
                                     "class": "3",
-                                    "question": "Das folgende Bild stellt einen Dreiband-Dipol f\u00fcr die Frequenzb\u00e4nder 20, 15 bis 10 m dar. Die mit a gekennzeichneten Schwingkreise sind abgestimmt auf:",
+                                    "question": "Das folgende Bild stellt einen Dreiband-Dipol f\u00fcr die Frequenzb\u00e4nder 20, 15 und 10 m dar. Die mit a gekennzeichneten Schwingkreise sind abgestimmt auf:",
                                     "answer_a": "21,2 MHz",
                                     "answer_b": "10,1 MHz",
                                     "answer_c": "14,2 MHz",
@@ -8865,7 +8865,7 @@
                                 {
                                     "number": "EG109",
                                     "class": "2",
-                                    "question": "Berechnen Sie die elektrische L\u00e4nge eines 5/8 $\\lambda$-langen Vertikalstrahlers f\u00fcr das 10 m-Band (28,5 MHz).",
+                                    "question": "Berechnen Sie die elektrische L\u00e4nge eines 5/8 $\\lambda$ langen Vertikalstrahlers f\u00fcr das 10 m-Band (28,5 MHz).",
                                     "answer_a": "6,58 m",
                                     "answer_b": "3,29 m",
                                     "answer_c": "2,08 m",
@@ -8941,8 +8941,8 @@
                                     "class": "2",
                                     "question": "Wie nennt man eine Schleifenantenne, die aus drei gleich langen Drahtst\u00fccken besteht?",
                                     "answer_a": "Delta-Loop-Antenne",
-                                    "answer_b": "3-Element Quad-Loop-Antenne",
-                                    "answer_c": "W3DZZ Antenne",
+                                    "answer_b": "3-Element-Quad-Loop-Antenne",
+                                    "answer_c": "W3DZZ-Antenne",
                                     "answer_d": "3-Element-Beam"
                                 },
                                 {
@@ -9067,7 +9067,7 @@
                                 {
                                     "number": "AG228",
                                     "class": "3",
-                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 80 cm und mit einem Wirkungsgrad von ($\\eta_{\\textrm{eff}}$ = 1) bei einer Arbeitsfrequenz von 10,4 GHz?",
+                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 80 cm und mit einem Wirkungsgrad von $\\eta_{\\textrm{eff}}$ = 1 bei einer Arbeitsfrequenz von 10,4 GHz?",
                                     "answer_a": "38,8 dBi",
                                     "answer_b": "19,4 dBi",
                                     "answer_c": "42,4 dBi",
@@ -9076,7 +9076,7 @@
                                 {
                                     "number": "AG227",
                                     "class": "3",
-                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 80 cm und mit einem Wirkungsgrad von ($\\eta_{\\textrm{eff}}$ = 1) bei einer Arbeitsfrequenz von 5,7 GHz?",
+                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 80 cm und mit einem Wirkungsgrad von $\\eta_{\\textrm{eff}}$ = 1 bei einer Arbeitsfrequenz von 5,7 GHz?",
                                     "answer_a": "33,6 dBi",
                                     "answer_b": "16,8 dBi",
                                     "answer_c": "36,4 dBi",
@@ -9085,7 +9085,7 @@
                                 {
                                     "number": "AG226",
                                     "class": "3",
-                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 30 cm und mit einem Wirkungsgrad ($\\eta_{\\textrm{eff}}$ = 1) bei einer Arbeitsfrequenz von 5,7 GHz?",
+                                    "question": "Wie hoch ist der Gewinn eines Parabolspiegels mit einem Durchmesser von 30 cm und mit einem Wirkungsgrad von $\\eta_{\\textrm{eff}}$ = 1 bei einer Arbeitsfrequenz von 5,7 GHz?",
                                     "answer_a": "25,1 dBi",
                                     "answer_b": "12,5 dBi",
                                     "answer_c": "28,1 dBi",
@@ -9121,7 +9121,7 @@
                                 {
                                     "number": "AG222",
                                     "class": "3",
-                                    "question": "Worin unterscheidet sich eine Yagi-Uda-Antenne mit 11 Elementen von einer mit 3-Elementen? Bei der Antenne mit 11-Elementen ist ...",
+                                    "question": "Worin unterscheidet sich eine Yagi-Uda-Antenne mit 11 Elementen von einer mit 3 Elementen? Bei der Antenne mit 11 Elementen ist ...",
                                     "answer_a": "der \u00d6ffnungswinkel verringert.",
                                     "answer_b": "der \u00d6ffnungswinkel erh\u00f6ht.",
                                     "answer_c": "der Strahlungswiderstand erh\u00f6ht.",
@@ -9140,7 +9140,7 @@
                                 {
                                     "number": "AG220",
                                     "class": "3",
-                                    "question": "In dem folgenden Richtdiagramm sind auf der Skala der relativen Feldst\u00e4rke $\\frac{E}{{E}_{\\textrm{max}}}$ die Punkte a bis d markiert. Durch welchen der Punkte a bis d ziehen sie den Kreisbogen, um die Halbwertsbreite der Antenne an den Schnittpunkten des Kreises mit der Richtkeule ablesen zu k\u00f6nnen?",
+                                    "question": "In dem folgenden Richtdiagramm sind auf der Skala der relativen Feldst\u00e4rke $\\frac{E}{{E}_{\\textrm{max}}}$ die Punkte a bis d markiert. Durch welchen der Punkte a bis d ziehen Sie den Kreisbogen, um die Halbwertsbreite der Antenne an den Schnittpunkten des Kreises mit der Richtkeule ablesen zu k\u00f6nnen?",
                                     "answer_a": "Durch den Punkt c.",
                                     "answer_b": "Durch den Punkt b.",
                                     "answer_c": "Durch den Punkt d.",
@@ -9151,7 +9151,7 @@
                                     "number": "AG219",
                                     "class": "3",
                                     "question": "Die Halbwertsbreite einer Antenne ist der Winkelbereich, innerhalb dessen ...",
-                                    "answer_a": "die Feldst\u00e4rke auf nicht weniger als den $0,707$-fachen Wert der maximalen Feldst\u00e4rke absinkt.",
+                                    "answer_a": "die Feldst\u00e4rke auf nicht weniger als den 0,707-fachen Wert der maximalen Feldst\u00e4rke absinkt.",
                                     "answer_b": "die Feldst\u00e4rke auf nicht weniger als die H\u00e4lfte der maximalen Feldst\u00e4rke absinkt.",
                                     "answer_c": "die Strahlungsdichte auf nicht weniger als den $\\dfrac{1}{\\sqrt{2}}$-fachen Wert der maximalen Strahlungsdichte absinkt.",
                                     "answer_d": "die abgestrahlte Leistung auf nicht weniger als den $\\dfrac{1}{\\sqrt{2}}$-fachen Wert des Leistungsmaximums absinkt."
@@ -9575,7 +9575,7 @@
                                 {
                                     "number": "AG317",
                                     "class": "3",
-                                    "question": "Welche mechanische L\u00e4nge hat ein elektrisch $\\lambda$/4-langes Koaxkabel mit Vollpolyethylenisolierung bei 145 MHz?",
+                                    "question": "Welche mechanische L\u00e4nge hat ein elektrisch $\\lambda$/4 langes Koaxkabel mit Vollpolyethylenisolierung bei 145 MHz?",
                                     "answer_a": "34,2 cm",
                                     "answer_b": "51,7 cm",
                                     "answer_c": "103 cm",
@@ -9874,9 +9874,9 @@
                                     "number": "NG208",
                                     "class": "1",
                                     "question": "Das koaxiale 50 Ohm-Antennenkabel der 2 m-Amateurfunkstation wird mit einem gleichwertigen Koaxialkabel verl\u00e4ngert. Die Messung des SWR ergibt nach der Verl\u00e4ngerung einen besseren Wert. Was schlie\u00dfen Sie daraus? Durch die Verl\u00e4ngerung wird...",
-                                    "answer_a": "die D\u00e4mpfung erh\u00f6ht und das reflektierte Signal verringert.\n",
+                                    "answer_a": "die D\u00e4mpfung erh\u00f6ht und das reflektierte Signal verringert.",
                                     "answer_b": "die D\u00e4mpfung verringert und das reflektierte Signal verst\u00e4rkt.",
-                                    "answer_c": "die D\u00e4mpfung erh\u00f6ht und das reflektierte Signal verst\u00e4rkt\n ",
+                                    "answer_c": "die D\u00e4mpfung erh\u00f6ht und das reflektierte Signal verst\u00e4rkt",
                                     "answer_d": "die D\u00e4mpfung verringert und das reflektierte Signal verringert."
                                 },
                                 {
@@ -10003,7 +10003,7 @@
                                     "question": "Zur Anpassung von Antennen werden h\u00e4ufig Umwegleitungen verwendet. Wie arbeitet die folgende Schaltung?",
                                     "answer_a": "Der $\\lambda$/2-Faltdipol hat an jedem seiner Anschl\u00fcsse eine Impedanz von 120 Ohm gegen Erde. Durch die $\\lambda$/2-Umwegleitung erfolgt eine 1:1-Widerstandstransformation mit Phasendrehung um 180 \u00b0. An der Seite der Antennenleitung erfolgt eine phasenrichtige Parallelschaltung von 2 mal 120 Ohm gegen Erde, womit eine Ausgangsimpedanz von 60 Ohm erreicht wird.\n",
                                     "answer_b": "Der $\\lambda$/2-Faltdipol hat eine Impedanz von 240 Ohm. Durch die $\\lambda$/2-Umwegleitung erfolgt eine Widerstandstransformation von 4:1 mit Phasendrehung um 360 \u00b0, womit an der Seite der Antennenleitung eine Ausgangsimpedanz von 60 Ohm erreicht wird.",
-                                    "answer_c": "Der $\\lambda$/2-Dipol hat eine Impedanz von 60 Ohm. Durch die $\\lambda$/2-Umwegleitung erfolgt eine Widerstandstransformation von 1:2 mit Phasendrehung um 180 \u00b0. An der Seite der Antennenleitung erfolgt eine phasenrichtige Parallelschaltung von 2-mal 120 Ohm gegen Erde, womit eine Ausgangsimpedanz von 60 Ohm erreicht wird.",
+                                    "answer_c": "Der $\\lambda$/2-Dipol hat eine Impedanz von 60 Ohm. Durch die $\\lambda$/2-Umwegleitung erfolgt eine Widerstandstransformation von 1:2 mit Phasendrehung um 180 \u00b0. An der Seite der Antennenleitung erfolgt eine phasenrichtige Parallelschaltung von 2 mal 120 Ohm gegen Erde, womit eine Ausgangsimpedanz von 60 Ohm erreicht wird.",
                                     "answer_d": "Der $\\lambda$/2-Dipol hat eine Impedanz von 240 Ohm. Durch die $\\lambda$/2-Umwegleitung erfolgt eine Widerstandstransformation von 4:1 mit Phasendrehung um 360 \u00b0, womit an der Seite der Antennenleitung eine Ausgangsimpedanz von 60 Ohm erreicht wird.",
                                     "picture_question": "AG424_q"
                                 },
@@ -10043,8 +10043,8 @@
                                     "question": "Ein Dipol soll mit einem Koaxkabel gleicher Impedanz gespeist werden. Dabei erreicht man einen Symmetriereffekt zum Beispiel durch ...",
                                     "answer_a": "Symmetrierglieder wie Umwegleitung oder Balun.",
                                     "answer_b": "die Einf\u00fcgung von Sperrkreisen (Traps) in den Dipol.",
-                                    "answer_c": "Parallelschalten eines am freien Ende offenen $\\lambda$/4-langen Leitungsst\u00fccks (Stub) am Speisepunkt der Antenne.",
-                                    "answer_d": "Parallelschalten eines am freien Ende kurzgeschlossenen $\\lambda$/2-langen Leitungsst\u00fccks (Stub) am Speisepunkt der Antenne."
+                                    "answer_c": "Parallelschalten eines am freien Ende offenen $\\lambda$/4 langen Leitungsst\u00fccks (Stub) am Speisepunkt der Antenne.",
+                                    "answer_d": "Parallelschalten eines am freien Ende kurzgeschlossenen $\\lambda$/2 langen Leitungsst\u00fccks (Stub) am Speisepunkt der Antenne."
                                 },
                                 {
                                     "number": "AG419",
@@ -10059,7 +10059,7 @@
                                 {
                                     "number": "AG418",
                                     "class": "3",
-                                    "question": "Ein Faltdipol mit einem Fu\u00dfpunktwiderstand von 240 Ohm soll mit einer H\u00fchnerleiter gespeist werden, deren Wellenwiderstand 600 Ohm betr\u00e4gt. Zur Anpassung soll ein $\\lambda$/4-langes St\u00fcck H\u00fchnerleiter mit einem anderem Wellenwiderstand verwendet werden. Welchen Wellenwiderstand muss die Transformationsleitung haben?",
+                                    "question": "Ein Faltdipol mit einem Fu\u00dfpunktwiderstand von 240 Ohm soll mit einer H\u00fchnerleiter gespeist werden, deren Wellenwiderstand 600 Ohm betr\u00e4gt. Zur Anpassung soll ein $\\lambda$/4 langes St\u00fcck H\u00fchnerleiter mit einem anderen Wellenwiderstand verwendet werden. Welchen Wellenwiderstand muss die Transformationsleitung haben?",
                                     "answer_a": "380 Ohm",
                                     "answer_b": "420 Ohm",
                                     "answer_c": "840 Ohm",
@@ -10126,7 +10126,7 @@
                                     "number": "AG411",
                                     "class": "3",
                                     "question": "Eine Viertelwellen-\u00dcbertragungsleitung ist an einem Ende offen. Die Impedanz am anderen Ende ...",
-                                    "answer_a": "betr\u00e4gt nahezu Null Ohm.",
+                                    "answer_a": "betr\u00e4gt nahezu null Ohm.",
                                     "answer_b": "ist gleich dem Wellenwiderstand.",
                                     "answer_c": "betr\u00e4gt das Dreifache des Wellenwiderstandes.",
                                     "answer_d": "ist nahezu unendlich hochohmig."
@@ -10381,7 +10381,7 @@
                                 {
                                     "number": "EG511",
                                     "class": "2",
-                                    "question": "Sie m\u00f6chten f\u00fcr ihre Sendeanlage keine Anzeige einer ortsfesten Amateurfunkanlage nach \u00a7 9 BEMFV abgeben. Wie hoch darf die Sendeleistung f\u00fcr ihre Vertikalantenne mit 5,15 dBi Gewinn ohne Ber\u00fccksichtigung der Kabelverluste maximal sein, damit die Strahlungsleistung von 10 W EIRP nicht \u00fcberschritten wird?",
+                                    "question": "Sie m\u00f6chten f\u00fcr Ihre Sendeanlage keine Anzeige einer ortsfesten Amateurfunkanlage nach \u00a7 9 BEMFV abgeben. Wie hoch darf die Sendeleistung f\u00fcr ihre Vertikalantenne mit 5,15 dBi Gewinn ohne Ber\u00fccksichtigung der Kabelverluste maximal sein, damit die Strahlungsleistung von 10 W EIRP nicht \u00fcberschritten wird?",
                                     "answer_a": "3 W",
                                     "answer_b": "10 W",
                                     "answer_c": "5 W",
@@ -10463,19 +10463,19 @@
                                     "number": "EG502",
                                     "class": "2",
                                     "question": "Nach welcher der Antworten kann die EIRP berechnet werden?",
-                                    "answer_a": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$ bezogen auf einen isotropen Strahler",
-                                    "answer_b": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} \\cdot P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$ bezogen auf einen Halbwellendipol",
-                                    "answer_c": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$ bezogen auf einen isotropen Strahler",
-                                    "answer_d": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$ bezogen auf einen Halbwellendipol"
+                                    "answer_a": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$, bezogen auf einen isotropen Strahler",
+                                    "answer_b": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} \\cdot P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$, bezogen auf einen Halbwellendipol",
+                                    "answer_c": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$, bezogen auf einen isotropen Strahler",
+                                    "answer_d": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$, bezogen auf einen Halbwellendipol"
                                 },
                                 {
                                     "number": "EG501",
                                     "class": "2",
                                     "question": "Die \u00e4quivalente isotrope Strahlungsleistung (EIRP) ist ...",
-                                    "answer_a": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung bezogen auf den isotropen Strahler.",
-                                    "answer_b": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung bezogen auf den Dipol.",
-                                    "answer_c": "die durchschnittliche Leistung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve, die der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung bezogen auf den isotropen Strahler.",
-                                    "answer_d": "die durchschnittliche Leistung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve, die der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung bezogen auf den Dipol."
+                                    "answer_a": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung, bezogen auf den isotropen Strahler.",
+                                    "answer_b": "das Produkt aus der Leistung, die unmittelbar der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung, bezogen auf den Dipol.",
+                                    "answer_c": "die durchschnittliche Leistung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve, die der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung, bezogen auf den isotropen Strahler.",
+                                    "answer_d": "die durchschnittliche Leistung bei der h\u00f6chsten Spitze der Modulationsh\u00fcllkurve, die der Antenne zugef\u00fchrt wird, und ihrem Gewinn in einer Richtung, bezogen auf den Dipol."
                                 },
                                 {
                                     "number": "NG402",
@@ -10526,7 +10526,7 @@
                                 {
                                     "number": "AH106",
                                     "class": "3",
-                                    "question": "In welcher H\u00f6he befindet sich die f\u00fcr die Fernausbreitung (DX) wichtige F2-Region) w\u00e4hrend der Tagesstunden an einem Sommertag? Sie befindet sich in ungef\u00e4hr ...",
+                                    "question": "In welcher H\u00f6he befindet sich die f\u00fcr die Fernausbreitung (DX) wichtige F2-Region w\u00e4hrend der Tagesstunden an einem Sommertag? Sie befindet sich in ungef\u00e4hr ...",
                                     "answer_a": "250 bis 450 km H\u00f6he.",
                                     "answer_b": "130 bis 200 km H\u00f6he.",
                                     "answer_c": "90 bis 130 km H\u00f6he.",
@@ -10644,8 +10644,8 @@
                                     "number": "NH102",
                                     "class": "1",
                                     "question": "Warum ist die Ionosph\u00e4re ausschlaggebend f\u00fcr die Kurzwellenausbreitung? In der Ionosph\u00e4re werden elektromagnetische Wellen durch ...",
-                                    "answer_a": "elektrisch geladene Teilchen gebrochen (refraktiert).\n ",
-                                    "answer_b": "W\u00e4rme verst\u00e4rkt und reflektiert.\n ",
+                                    "answer_a": "elektrisch geladene Teilchen gebrochen (refraktiert).",
+                                    "answer_b": "W\u00e4rme verst\u00e4rkt und reflektiert.",
                                     "answer_c": "K\u00e4lte gebrochen und reflektiert.",
                                     "answer_d": "Temperatur\u00fcberg\u00e4nge gebrochen (refraktiert)."
                                 },
@@ -10731,7 +10731,7 @@
                                     "class": "3",
                                     "question": "Wie erkennt ein Funkamateur in der Regel, dass er mit \"PY\" auf dem indirekten und somit l\u00e4ngeren Weg gearbeitet hat?",
                                     "answer_a": "Aus der Stellung seiner Richtantenne erkennt er, dass diese der Richtung des k\u00fcrzesten Weges nach Brasilien um 180 \u00b0 entgegengesetzt ist. Das hei\u00dft, er hat \"PY\" auf dem \"langen Weg\" gearbeitet.",
-                                    "answer_b": "Durch die verhallte Tonlage der Verbindung erkennt er, dass diese in zwei Richtungen nach Brasilien stattgefunden hat. Das hei\u00dft, er hat \"PY\" nicht nur direkt sondern auf einem l\u00e4ngeren Weg gearbeitet.",
+                                    "answer_b": "Durch die verhallte Tonlage der Verbindung erkennt er, dass diese in zwei Richtungen nach Brasilien stattgefunden hat. Das hei\u00dft, er hat \"PY\" nicht nur direkt, sondern auf einem l\u00e4ngeren Weg gearbeitet.",
                                     "answer_c": "Aus der Stellung seiner Richtantenne erkennt er, dass diese in Richtung des l\u00e4ngeren Weges nach Brasilien eingesetzt ist. Das hei\u00dft, er hat \"PY\" auf dem direkten Weg gearbeitet.",
                                     "answer_d": "Durch die verhallte Tonlage der Verbindung nach Brasilien, Ausbreitung der Funkwellen \u00fcber zwei entgegengesetzte Wege."
                                 },
@@ -10930,7 +10930,7 @@
                                     "question": "Bei der Ausbreitung auf Kurzwelle spielt die so genannte \"Greyline\" eine besondere Rolle. Was ist die \"Greyline\"?",
                                     "answer_a": "Die Zone der D\u00e4mmerung um Sonnenauf- und -untergang herum.",
                                     "answer_b": "Die instabilen Ausbreitungsbedingungen in der \u00c4quatorialzone.",
-                                    "answer_c": "Die Zeit mit den besten M\u00f6glichkeiten f\u00fcr \"Short Skip\" Ausbreitung.",
+                                    "answer_c": "Die Zeit mit den besten M\u00f6glichkeiten f\u00fcr \"Short-Skip\"-Ausbreitung.",
                                     "answer_d": "Die \u00dcbergangszeit vor und nach dem Winter, in der sich die D-Region ab- und wieder aufbaut."
                                 },
                                 {
@@ -10981,7 +10981,7 @@
                                 {
                                     "number": "EH207",
                                     "class": "2",
-                                    "question": "Sie f\u00fchren Funkbetrieb nahe der aktuell h\u00f6chstm\u00f6glichen Frequenz (MUF) durch. Um den Funkbetrieb auf noch h\u00f6heren Frequenz fortsetzen zu k\u00f6nnen, muss die Ionisation der brechenden Region ...",
+                                    "question": "Sie f\u00fchren Funkbetrieb nahe der aktuell h\u00f6chstm\u00f6glichen Frequenz (MUF) durch. Um den Funkbetrieb auf noch h\u00f6heren Frequenzen fortsetzen zu k\u00f6nnen, muss die Ionisation der brechenden Region ...",
                                     "answer_a": "zunehmen.",
                                     "answer_b": "abnehmen.",
                                     "answer_c": "verschwinden.",
@@ -11148,7 +11148,7 @@
                                 {
                                     "number": "AH301",
                                     "class": "3",
-                                    "question": "Bei \"Sporadic E\"-Ausbreitung\" werden Wellen im VHF-Bereich gebrochen an ...",
+                                    "question": "Bei \"Sporadic E\"-Ausbreitung werden Wellen im VHF-Bereich gebrochen an ...",
                                     "answer_a": "besonders stark ionisierten Bereichen der E-Region.",
                                     "answer_b": "Inversionen am unteren Rand der E-Region.",
                                     "answer_c": "geomagnetischen St\u00f6rungen am unteren Rand der E-Region.",
@@ -11197,7 +11197,7 @@
                                     "answer_a": "in der die Erscheinungen des Wetters stattfinden.",
                                     "answer_b": "der sich \u00fcber den Tropen befindet.",
                                     "answer_c": "in dem es zur Bildung sporadischer E-Regionen kommen kann.",
-                                    "answer_d": "in welcher Aurora-Erscheinungen auftreten k\u00f6nnen."
+                                    "answer_d": "in welchem Aurora-Erscheinungen auftreten k\u00f6nnen."
                                 },
                                 {
                                     "number": "NH306",
@@ -11222,7 +11222,7 @@
                                     "class": "1",
                                     "question": "Welcher Effekt ist normalerweise f\u00fcr die Ausbreitung eines VHF-Signals \u00fcber 800 bis 1 000 km verantwortlich?",
                                     "answer_a": "Troposph\u00e4rische Inversionsbildung",
-                                    "answer_b": "Reflektion an der Mondoberfl\u00e4che",
+                                    "answer_b": "Reflexion an der Mondoberfl\u00e4che",
                                     "answer_c": "Bodenwellenausbreitung",
                                     "answer_d": "Atmosph\u00e4rische Absorption"
                                 },
@@ -11294,7 +11294,7 @@
                                 {
                                     "number": "AI102",
                                     "class": "3",
-                                    "question": "F\u00fcr die Messung der Gleichstrom-Eingangsleistung werden verschiedene Messger\u00e4te verwendet. Bei welchen der Instrumente in der Abbildung handelt es sich um Strommessger\u00e4t?",
+                                    "question": "F\u00fcr die Messung der Gleichstrom-Eingangsleistung werden verschiedene Messger\u00e4te verwendet. Bei welchen der Instrumente in der Abbildung handelt es sich um Strommessger\u00e4te?",
                                     "answer_a": "2, 3 und 4",
                                     "answer_b": "1, 2 und 3",
                                     "answer_c": "2, 4 und 1",
@@ -11357,10 +11357,10 @@
                                     "number": "NI104",
                                     "class": "1",
                                     "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt, um den Strom durch den Widerstand und die LED zu messen? ",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "NI104_a",
                                     "picture_b": "NI104_b",
                                     "picture_c": "NI104_c",
@@ -11369,11 +11369,11 @@
                                 {
                                     "number": "NI103",
                                     "class": "1",
-                                    "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt um die Spannung der Batterie im laufenden Betrieb zu messen?",
-                                    "answer_a": null,
-                                    "answer_b": null,
-                                    "answer_c": null,
-                                    "answer_d": null,
+                                    "question": "In welcher Schaltung ist ein Multimeter richtig eingesetzt, um die Spannung der Batterie im laufenden Betrieb zu messen?",
+                                    "answer_a": "",
+                                    "answer_b": "",
+                                    "answer_c": "",
+                                    "answer_d": "",
                                     "picture_a": "NI103_a",
                                     "picture_b": "NI103_b",
                                     "picture_c": "NI103_c",
@@ -11407,7 +11407,7 @@
                                 {
                                     "number": "AI208",
                                     "class": "3",
-                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an einen selbstgebauten Halbwellendipol angeschlossen und messen den dargestellten Resonanzverlauf. Was m\u00fcssen Sie tun um diese Antenne auf das 80 m-Band abzustimmen? ",
+                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an einen selbstgebauten Halbwellendipol angeschlossen und messen den dargestellten Resonanzverlauf. Was m\u00fcssen Sie tun, um diese Antenne auf das 80 m-Band abzustimmen? ",
                                     "answer_a": "Sie verl\u00e4ngern beide Drahtenden gleichm\u00e4\u00dfig.",
                                     "answer_b": "Sie verk\u00fcrzen beide Drahtenden gleichm\u00e4\u00dfig.",
                                     "answer_c": "Sie f\u00fcgen in beide Strahlerh\u00e4lften jeweils eine Kapazit\u00e4t ein.",
@@ -11417,7 +11417,7 @@
                                 {
                                     "number": "AI207",
                                     "class": "3",
-                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an einen selbstgebauten Halbwellendipol angeschlossen und messen den dargestellten Resonanzverlauf. Was m\u00fcssen Sie tun um diese Antenne auf das 80 m-Band abzustimmen? ",
+                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an einen selbstgebauten Halbwellendipol angeschlossen und messen den dargestellten Resonanzverlauf. Was m\u00fcssen Sie tun, um diese Antenne auf das 80 m-Band abzustimmen? ",
                                     "answer_a": "Sie verk\u00fcrzen beide Enden gleichm\u00e4\u00dfig.",
                                     "answer_b": "Sie verl\u00e4ngern beide Enden gleichm\u00e4\u00dfig.",
                                     "answer_c": "Sie f\u00fcgen in beide Strahlerh\u00e4lften jeweils eine Induktivit\u00e4t ein.",
@@ -11427,7 +11427,7 @@
                                 {
                                     "number": "AI206",
                                     "class": "3",
-                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an den Speisepunkt ihrer Kurzwellenantenne angeschlossen. Das Ger\u00e4t zeigt R: 54 Ohm und jX: +12 Ohm an. Was bedeutet das Messergebnis?",
+                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an den Speisepunkt Ihrer Kurzwellenantenne angeschlossen. Das Ger\u00e4t zeigt R = 54 Ohm und jX = +12 Ohm an. Was bedeutet das Messergebnis?",
                                     "answer_a": "Der ohmsche Anteil der Antennenimpedanz betr\u00e4gt 54 Ohm, der Blindanteil betr\u00e4gt 12 Ohm und ist induktiv.",
                                     "answer_b": "Die Impedanz der Antenne betr\u00e4gt 66 Ohm. Es entsteht eine gro\u00dfe induktive Fehlanpassung.",
                                     "answer_c": "Der ohmsche Widerstand der Antennenimpedanz betr\u00e4gt 54 Ohm, der Blindanteil betr\u00e4gt 12 Ohm und ist kapazitiv.",
@@ -11445,7 +11445,7 @@
                                 {
                                     "number": "AI204",
                                     "class": "3",
-                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an den Speisepunkt ihrer Kurzwellenantenne angeschlossen. Das Ger\u00e4t zeigt R: 54 Ohm und jX: -12 Ohm an. Was bedeutet das Messergebnis?",
+                                    "question": "Sie haben einen vektoriellen Netzwerkanalysator (VNA) an den Speisepunkt ihrer Kurzwellenantenne angeschlossen. Das Ger\u00e4t zeigt R = 54 Ohm und jX = -12 Ohm an. Was bedeutet das Messergebnis?",
                                     "answer_a": "Der ohmsche Widerstand der Antennenimpedanz betr\u00e4gt 54 Ohm, der Blindanteil betr\u00e4gt 12 Ohm und ist kapazitiv.",
                                     "answer_b": "Die Impedanz der Antenne betr\u00e4gt 66 Ohm. Es entsteht eine gro\u00dfe induktive Fehlanpassung.",
                                     "answer_c": "Der ohmsche Anteil der Antennenimpedanz betr\u00e4gt 54 Ohm, der Blindanteil betr\u00e4gt 12 Ohm und ist induktiv.",
@@ -11521,7 +11521,7 @@
                                     "answer_a": "durch Messung von $L$ und $C$ und Berechnung oder z. B. mit einem vektoriellen Netzwerkanalysator (VNA).",
                                     "answer_b": "mit einem Frequenzmesser oder einem Oszilloskop.",
                                     "answer_c": "mit einem Digital-Multimeter in der Stellung Frequenzmessung.",
-                                    "answer_d": "mit Hilfe der S-Meter Anzeige bei Anschluss des Schwingkreises an den Empf\u00e4ngereingang."
+                                    "answer_d": "mit Hilfe der S-Meter-Anzeige bei Anschluss des Schwingkreises an den Empf\u00e4ngereingang."
                                 },
                                 {
                                     "number": "EI201",
@@ -11540,7 +11540,7 @@
                                 {
                                     "number": "AI306",
                                     "class": "3",
-                                    "question": "Das folgende Bild zeigt das Zweiton-SSB-Ausgangssignal eines KW-Senders, das mit einem Oszilloskop ausreichender Bandbreite am um 10 dB ged\u00e4mpften Messausgang einer k\u00fcnstlichen 50 Ohm-Antenne gemessen wurde. Welche Ausgangsleistung (PEP) liefert der Sender?",
+                                    "question": "Das folgende Bild zeigt das Zweiton-SSB-Ausgangssignal eines KW-Senders, das mit einem Oszilloskop ausreichender Bandbreite \u00fcber einen 10:1-Tastkopf direkt an der angeschlossenen k\u00fcnstlichen 50 Ohm-Antenne gemessen wurde. Welche Ausgangsleistung (PEP) liefert der Sender?",
                                     "answer_a": "36 W",
                                     "answer_b": "72 W",
                                     "answer_c": "144 W",
@@ -11782,7 +11782,7 @@
                                 {
                                     "number": "AI507",
                                     "class": "3",
-                                    "question": "Ein TRX mit einem eingebauten OCXO besitzt eine Anzeigegenauigkeit von $\u00b1$0,00001 %. Wie gro\u00df ist die maximale Abweichung wenn eine Frequenz von 14100 kHz angezeigt wird?",
+                                    "question": "Ein TRX mit einem eingebauten OCXO besitzt eine Anzeigegenauigkeit von $\u00b1$0,00001 %. Wie gro\u00df ist die maximale Abweichung, wenn eine Frequenz von 14100 kHz angezeigt wird?",
                                     "answer_a": "$\u00b1$ 1,410 Hz",
                                     "answer_b": "$\u00b1$ 0,141 Hz",
                                     "answer_c": "$\u00b1$ 1,141 Hz",
@@ -11812,8 +11812,8 @@
                                     "question": "Eine Frequenzmessung wird genauer, wenn bei einem Frequenzz\u00e4hler ...",
                                     "answer_a": "der Hauptoszillator temperaturstabilisiert wird.",
                                     "answer_b": "ein Vorteiler mit h\u00f6herem Teilverh\u00e4ltnis benutzt wird.",
-                                    "answer_c": "Die Messdauer m\u00f6glichst kurz gehalten wird.",
-                                    "answer_d": "eine Triggereinrichtung eingesetzt wird."
+                                    "answer_c": "die Messdauer m\u00f6glichst kurz gehalten wird.",
+                                    "answer_d": "das Eingangssignal gleichgerichtet wird."
                                 },
                                 {
                                     "number": "AI503",
@@ -11845,7 +11845,7 @@
                                 {
                                     "number": "EI504",
                                     "class": "2",
-                                    "question": "Wenn ein Faktor-10-Frequenzteiler vor einem Frequenzz\u00e4hler geschaltet wird und der Z\u00e4hler 14,5625 MHz anzeigt, betr\u00e4gt die tats\u00e4chliche Frequenz ...",
+                                    "question": "Wenn ein 10:1-Frequenzteiler vor einem Frequenzz\u00e4hler geschaltet wird und der Z\u00e4hler 14,5625 MHz anzeigt, betr\u00e4gt die tats\u00e4chliche Frequenz ...",
                                     "answer_a": "145,625 MHz.",
                                     "answer_b": "1,45625 MHz.",
                                     "answer_c": "14,5625 MHz.",
@@ -11935,7 +11935,7 @@
                                 {
                                     "number": "AI611",
                                     "class": "3",
-                                    "question": "Bei der folgenden Schaltung besteht $R_1$ aus einer Zusammenschaltung von Widerst\u00e4nden, die einen Gesamtwiderstand von 54,1 Ohm hat und etwa 200 W aufnehmen kann. D ist eine Siliziumdiode mit $U_{\\textrm{F}}$ = 0,7 V. Am Ausgang wird mit einem digitalen Spannungsmessger\u00e4t eine Gleichspannung von 14,9 V gemessen. Wie gro\u00df ist etwa die HF-Leistung am Eingang der Schaltung?",
+                                    "question": "Bei der folgenden Schaltung besteht $R_1$ aus einer Zusammenschaltung von Widerst\u00e4nden, die einen Gesamtwiderstand von 54,1 Ohm hat und etwa 200 W aufnehmen kann. Die Diode ist eine Siliziumdiode mit $U_{\\textrm{F}}$ = 0,7 V. Am Ausgang wird mit einem digitalen Spannungsmessger\u00e4t eine Gleichspannung von 14,9 V gemessen. Wie gro\u00df ist etwa die HF-Leistung am Eingang der Schaltung?",
                                     "answer_a": "9,7 W",
                                     "answer_b": "37,8 W",
                                     "answer_c": "4,9 W",
@@ -12122,9 +12122,9 @@
                                     "class": "3",
                                     "question": "In der N\u00e4he eines 144 MHz-Senders befindet sich die passive Antenne eines DVB-T2-Fernsehempf\u00e4ngers. Es kommt zu einer \u00dcbersteuerung des Empf\u00e4ngers. Das Problem l\u00e4sst sich durch den Einbau eines ...",
                                     "answer_a": "Hochpassfilters ab 460 MHz in das Antennenzuf\u00fchrungskabel des Fernsehempf\u00e4ngers l\u00f6sen.",
-                                    "answer_b": "Tiefpassfilter bis 460 MHz in das Antennenzuf\u00fchrungskabel des Fernsehempf\u00e4ngers l\u00f6sen.",
-                                    "answer_c": "Bandpass-Filter f\u00fcr das 2 m-Band vor dem Tuner des Fernsehempf\u00e4ngers l\u00f6sen.",
-                                    "answer_d": "460 MHz-Notchfilter hinter dem Tuner des Fernsehempf\u00e4ngers l\u00f6sen."
+                                    "answer_b": "Tiefpassfilters bis 460 MHz in das Antennenzuf\u00fchrungskabel des Fernsehempf\u00e4ngers l\u00f6sen.",
+                                    "answer_c": "Bandpassfilters f\u00fcr das 2 m-Band vor dem Tuner des Fernsehempf\u00e4ngers l\u00f6sen.",
+                                    "answer_d": "460 MHz-Notchfilters hinter dem Tuner des Fernsehempf\u00e4ngers l\u00f6sen."
                                 },
                                 {
                                     "number": "AJ112",
@@ -12174,7 +12174,7 @@
                                 {
                                     "number": "AJ107",
                                     "class": "3",
-                                    "question": "Welche Sendeverfahren weisen das gr\u00f6\u00dfte St\u00f6rpotential in Bezug auf NF-Verst\u00e4rkersysteme auf?",
+                                    "question": "Welche Modulationsverfahren haben das gr\u00f6\u00dfte Potenzial, einen NF-Verst\u00e4rker zu beeinflussen, der eine unzureichende St\u00f6rfestigkeit aufweist?",
                                     "answer_a": "Einseitenbandmodulation (SSB) und Morsetelegrafie (CW).",
                                     "answer_b": "Frequenzmodulation (FM) und Frequenzumtastung (FSK).",
                                     "answer_c": "Frequenzumtastung (FSK) und Morsetelegrafie (CW).",
@@ -12210,7 +12210,7 @@
                                 {
                                     "number": "AJ103",
                                     "class": "3",
-                                    "question": "Beim Betrieb eines digitalen Eigenbau-Funkempf\u00e4ngers ist dessen Empfang durch St\u00f6rungen erheblich beeintr\u00e4chtigt. Dies kann verbessert werden, indem die Leiterplatte ...",
+                                    "question": "Beim Betrieb eines digitalen Eigenbau-Funkempf\u00e4ngers ist dessen Empfang erheblich beeintr\u00e4chtigt. Dies kann verbessert werden, indem die Leiterplatte ...",
                                     "answer_a": "in einem geerdeten Metallgeh\u00e4use untergebracht wird.",
                                     "answer_b": "in Epoxydharz eingegossen wird.",
                                     "answer_c": "\u00fcber kunststoffisolierte Leitungen angeschlossen wird.",
@@ -12228,7 +12228,7 @@
                                 {
                                     "number": "AJ101",
                                     "class": "3",
-                                    "question": "Um die Wahrscheinlichkeit zur verringern, andere Stationen zu st\u00f6ren, sollte die benutzte Sendeleistung ...",
+                                    "question": "Um die Wahrscheinlichkeit zu verringern, andere Stationen zu st\u00f6ren, sollte die benutzte Sendeleistung ...",
                                     "answer_a": "auf das f\u00fcr eine zufriedenstellende Kommunikation erforderliche Minimum eingestellt werden.",
                                     "answer_b": "auf den maximal zul\u00e4ssigen Pegel eingestellt werden.",
                                     "answer_c": "auf die f\u00fcr eine zufriedenstellende Kommunikation erforderlichen 750 W eingestellt werden.",
@@ -12461,7 +12461,7 @@
                                     "answer_a": "Sie bieten h\u00f6flich an, die erforderlichen Pr\u00fcfungen in die Wege zu leiten.",
                                     "answer_b": "Er sollte h\u00f6flich darauf hingewiesen werden, dass es an seiner eigenen Einrichtung liegt.",
                                     "answer_c": "Er sollte darauf hingewiesen werden, dass Sie hierf\u00fcr nicht zust\u00e4ndig sind.",
-                                    "answer_d": "Sie bieten an, dass \u00f6rtlich zust\u00e4ndige Hauptzollamt zu benachrichtigen."
+                                    "answer_d": "Sie bieten an, das \u00f6rtlich zust\u00e4ndige Hauptzollamt zu benachrichtigen."
                                 },
                                 {
                                     "number": "NJ101",
@@ -12480,7 +12480,7 @@
                                 {
                                     "number": "AJ225",
                                     "class": "3",
-                                    "question": "Was gilt beim Sendebetrieb f\u00fcr unerw\u00fcnschte Aussendungen im Frequenzbereich zwischen 50 bis 1000 MHz? Sofern die Leistung einer unerw\u00fcnschten Aussendung ...",
+                                    "question": "Was gilt beim Sendebetrieb f\u00fcr unerw\u00fcnschte Aussendungen im Frequenzbereich zwischen 50 und 1000 MHz? Sofern die Leistung einer unerw\u00fcnschten Aussendung ...",
                                     "answer_a": "0,25 \u03bcW \u00fcberschreitet, sollte sie um mindestens 60 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
                                     "answer_b": "0,25 \u03bcW \u00fcberschreitet, sollte sie um mindestens 40 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
                                     "answer_c": "1 \u03bcW \u00fcberschreitet, sollte sie um mindestens 60 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
@@ -12489,7 +12489,7 @@
                                 {
                                     "number": "AJ224",
                                     "class": "3",
-                                    "question": "Was gilt beim Sendebetrieb f\u00fcr unerw\u00fcnschte Aussendungen im Frequenzbereich zwischen 1,7 bis 35 MHz? Sofern die Leistung einer unerw\u00fcnschten Aussendung ...",
+                                    "question": "Was gilt beim Sendebetrieb f\u00fcr unerw\u00fcnschte Aussendungen im Frequenzbereich zwischen 1,7 und 35 MHz? Sofern die Leistung einer unerw\u00fcnschten Aussendung ...",
                                     "answer_a": "0,25 \u03bcW \u00fcberschreitet, sollte sie um mindestens 40 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
                                     "answer_b": "0,25 \u03bcW \u00fcberschreitet, sollte sie um mindestens 60 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
                                     "answer_c": "1 \u03bcW \u00fcberschreitet, sollte sie um mindestens 60 dB gegen\u00fcber der maximalen PEP des Senders ged\u00e4mpft werden.",
@@ -12615,7 +12615,7 @@
                                     "answer_a": "Das Ausgangssignal des Mischers wird \u00fcber einen Bandpass ausgekoppelt.",
                                     "answer_b": "Das Ausgangssignal des Mischers wird \u00fcber einen Hochpass ausgekoppelt.",
                                     "answer_c": "Das Ausgangssignal des Mischers wird \u00fcber ein breitbandiges D\u00e4mpfungsglied ausgekoppelt.",
-                                    "answer_d": "Das Ausgangssignal des Mischers wird von einer linearen Klasse A-Treiberstufe verst\u00e4rkt."
+                                    "answer_d": "Das Ausgangssignal des Mischers wird von einer linearen Klasse-A-Treiberstufe verst\u00e4rkt."
                                 },
                                 {
                                     "number": "AJ210",
@@ -12926,7 +12926,7 @@
                                 {
                                     "number": "NK102",
                                     "class": "1",
-                                    "question": "Um eine Amateurfunkstelle in Bezug auf EMV zu optimieren ...",
+                                    "question": "Um eine Amateurfunkstelle in Bezug auf EMV zu optimieren, ...",
                                     "answer_a": "sollten alle Einrichtungen mit einer guten HF-Erdung versehen werden.",
                                     "answer_b": "sollte der Sender mit der Wasserleitung im Haus verbunden werden.",
                                     "answer_c": "sollten alle hochohmigen Erdverbindungen entfernt werden.",
@@ -12976,7 +12976,7 @@
                                 {
                                     "number": "AK112",
                                     "class": "3",
-                                    "question": "Sie m\u00f6chten den Personenschutz-Sicherheitsabstand f\u00fcr das 13 cm-Band und dem Modulationsverfahren FM berechnen. Der Grenzwert im Fall des Personenschutzes betr\u00e4gt 61 V/m. Sie betreiben einen Parabolspiegel mit einem Gewinn von 18 dBd. Die Antenne wird von einem Sender mit einer Leistung von 40 W \u00fcber ein PE-Schaum-Massivschirm-Kabel mit einer D\u00e4mpfung von 2 dB gespeist. Wie gro\u00df muss der Personenschutz-Sicherheitsabstand in Hauptstrahlrichtung sein?",
+                                    "question": "Sie m\u00f6chten den Personenschutz-Sicherheitsabstand f\u00fcr das 13 cm-Band und das Modulationsverfahren FM berechnen. Der Grenzwert im Fall des Personenschutzes betr\u00e4gt 61 V/m. Sie betreiben einen Parabolspiegel mit einem Gewinn von 18 dBd. Die Antenne wird von einem Sender mit einer Leistung von 40 W \u00fcber ein PE-Schaum-Massivschirm-Kabel mit einer D\u00e4mpfung von 2 dB gespeist. Wie gro\u00df muss der Personenschutz-Sicherheitsabstand in Hauptstrahlrichtung sein?",
                                     "answer_a": "4,6 m",
                                     "answer_b": "5,8 m",
                                     "answer_c": "14,5 m",
@@ -12985,7 +12985,7 @@
                                 {
                                     "number": "AK111",
                                     "class": "3",
-                                    "question": "Sie m\u00f6chten den Personenschutz-Sicherheitsabstand f\u00fcr die Antenne Ihrer Amateurfunkstelle f\u00fcr das 2 m-Band und das Modulationsverfahren FM berechnen. Der Grenzwert im Fall des Personenschutzes betr\u00e4gt 28 V/m. Sie betreiben eine Yagi-Uda-Antenne mit einem Gewinn von $10,5 $dBd. Die Antenne wird von einem Sender mit einer Leistung von 100 W \u00fcber ein Koaxialkabel gespeist. Die Kabeld\u00e4mpfung betr\u00e4gt 1,5 dB. Wie gro\u00df ist der Sicherheitsabstand?",
+                                    "question": "Sie m\u00f6chten den Personenschutz-Sicherheitsabstand f\u00fcr die Antenne Ihrer Amateurfunkstelle f\u00fcr das 2 m-Band und das Modulationsverfahren FM berechnen. Der Grenzwert im Fall des Personenschutzes betr\u00e4gt 28 V/m. Sie betreiben eine Yagi-Uda-Antenne mit einem Gewinn von 10,5 dBd. Die Antenne wird von einem Sender mit einer Leistung von 100 W \u00fcber ein Koaxialkabel gespeist. Die Kabeld\u00e4mpfung betr\u00e4gt 1,5 dB. Wie gro\u00df ist der Sicherheitsabstand?",
                                     "answer_a": "7,1 m",
                                     "answer_b": "6,6 m",
                                     "answer_c": "8,4 m",
@@ -13021,7 +13021,7 @@
                                 {
                                     "number": "AK107",
                                     "class": "3",
-                                    "question": "Sie betreiben eine Amateurfunkstelle auf dem 2 m-Band im Modulationsverfahren FM mit einer Rundstrahlantenne mit 6 dB Gewinn bezogen auf einen Dipol. Wie hoch darf die maximale Ausgangsleistung Ihres Senders unter Vernachl\u00e4ssigung der Kabeld\u00e4mpfung sein, wenn der Grenzwert f\u00fcr den Personenschutz 28 V\\perm und der zur Verf\u00fcgung stehende Sicherheitsabstand 5 m betr\u00e4gt?",
+                                    "question": "Sie betreiben eine Amateurfunkstelle auf dem 2 m-Band im Modulationsverfahren FM mit einer Rundstrahlantenne mit 6 dB Gewinn bezogen auf einen Dipol. Wie hoch darf die maximale Ausgangsleistung Ihres Senders unter Vernachl\u00e4ssigung der Kabeld\u00e4mpfung sein, wenn der Grenzwert f\u00fcr den Personenschutz 28 Volt/m und der zur Verf\u00fcgung stehende Sicherheitsabstand 5 m betr\u00e4gt?",
                                     "answer_a": "ca. 100 W",
                                     "answer_b": "ca. 75 W",
                                     "answer_c": "ca. 160 W",
@@ -13112,7 +13112,7 @@
                                     "number": "EK105",
                                     "class": "2",
                                     "question": "Sie m\u00f6chten den Personenschutz-Sicherheitsabstand f\u00fcr ihren neuen, fest aufgebauten Halbwellendipol f\u00fcr das 80 m-Band (3,5 - 3,8 MHz) bestimmen. Bei 100 W Sendeleistung errechnen Sie mit Hilfe der N\u00e4herungsformel f\u00fcr die Fernfeldberechnung einen erforderlichen Abstand von 3,65 m. Ist dieser Sicherheitsabstand g\u00fcltig?",
-                                    "answer_a": "Der errechnete Abstand ist ung\u00fcltig, da er im reaktiven Nahfeld der Antenne liegt und muss deshalb durch andere Methoden wie z. B. Messungen der E- und H-Feldanteile, Simulations- oder Nahfeldberechnungen bestimmt werden.",
+                                    "answer_a": "Der errechnete Abstand ist ung\u00fcltig, da er im reaktiven Nahfeld der Antenne liegt, und muss deshalb durch andere Methoden wie z. B. Messungen der E- und H-Feldanteile, Simulations- oder Nahfeldberechnungen bestimmt werden.",
                                     "answer_b": "Der errechnete Personenschutz-Sicherheitsabstand ist g\u00fcltig, da Berechnungen mit der N\u00e4herungsformel f\u00fcr die Fernfeldberechnung im Amateurfunk hinreichend genau sind.",
                                     "answer_c": "Der errechnete Personenschutz-Sicherheitsabstand muss erst noch mit einem Sicherheitszuschlag ($\\sqrt{2}$) multipliziert werden.",
                                     "answer_d": "Der errechnete Personenschutz-Sicherheitsabstand ist akzeptiert, sofern die vor Inbetriebnahme einzureichende \"Anzeige ortsfester Amateurfunkanlagen\" gem\u00e4\u00df \u00a7 9 BEMFV von der Bundesnetzagentur nicht beanstandet wird."
@@ -13179,7 +13179,7 @@
                                 {
                                     "number": "AK203",
                                     "class": "3",
-                                    "question": "Ihr 400 W-Kurzwellensender ist \u00fcber eine separate Erdungsleitung mit dem Potentialausgleich ihres Hauses verbunden. Im Sendebetrieb stellen sie fest, dass auf bestimmten B\u00e4ndern das Geh\u00e4use des Senders \"heiss\" ist, d. h. Hochfrequenzspannung merklicher Amplitude auf dem Ger\u00e4tegeh\u00e4use liegt. Was kann die Ursache hierf\u00fcr sein?",
+                                    "question": "Ihr 400 W-Kurzwellensender ist \u00fcber eine separate Erdungsleitung mit dem Potentialausgleich Ihres Hauses verbunden. Im Sendebetrieb stellen Sie fest, dass auf bestimmten B\u00e4ndern das Geh\u00e4use des Senders \"hei\u00df\" ist, d. h. Hochfrequenzspannung merklicher Amplitude auf dem Ger\u00e4tegeh\u00e4use liegt. Was kann die Ursache hierf\u00fcr sein?",
                                     "answer_a": "Die L\u00e4nge der Erdleitung entspricht ann\u00e4hernd einem Viertel der Wellenl\u00e4nge der\nSendefrequenz oder einem ungeraden Vielfachen davon.",
                                     "answer_b": "Die verwendete Kupfer-Erdleitung ist nicht versilbert und somit zur guten Ableitung von Hochfrequenz nicht geeignet.",
                                     "answer_c": "Die L\u00e4nge der Erdleitung entspricht ann\u00e4hernd einer halben Wellenl\u00e4nge der Sendefrequenz oder Vielfachen davon.",
@@ -13227,7 +13227,7 @@
                                     "question": "Unter welchen Bedingungen darf eine Geb\u00e4udeerdungsanlage f\u00fcr die Antennenerdung verwendet werden?",
                                     "answer_a": "Jede Geb\u00e4udeerdungsanlage kann verwendet werden.",
                                     "answer_b": "F\u00fcr jede Antenne muss eine separate Erdungsanlage unabh\u00e4ngig von der Geb\u00e4udeerdungsanlage aufgebaut werden.",
-                                    "answer_c": "Wenn die Geb\u00e4udeerdung \u00fcber einen au\u00dfenliegendem Ringerder verf\u00fcgt.",
+                                    "answer_c": "Wenn die Geb\u00e4udeerdung vom Pr\u00fcf- und Messdienst der Bundesnetzagentur abgenommen wurde.",
                                     "answer_d": "Die Antennenanlage darf nicht \u00fcber die von der Geb\u00e4udeerdungsanlage eingeschlossenen Fl\u00e4che hinausragen."
                                 },
                                 {
@@ -13242,7 +13242,7 @@
                                 {
                                     "number": "EK207",
                                     "class": "2",
-                                    "question": "Wie lassen sich elektrostatische Aufladungen, die insbesondere bei ungeerdeten Drahtantennen auftreten k\u00f6nnen, wirkungsvoll vermeiden?",
+                                    "question": "Wie lassen sich elektrostatische Aufladungen, die insbesondere bei ungeerdeten Drahtantennen auftreten k\u00f6nnen, wirkungsvoll vermeiden, ohne die Funktion der Funkanlage zu beeintr\u00e4chtigen?",
                                     "answer_a": "Durch hochohmige Ableitwiderst\u00e4nde zwischen den Anschl\u00fcssen an der Antenne und dem Erdanschluss der Amateurfunkstelle.",
                                     "answer_b": "Durch niederohmige Ableitwiderst\u00e4nde zwischen den Anschl\u00fcssen an der Antenne und dem Erdanschluss der Amateurfunkstelle.",
                                     "answer_c": "Das Einschleifen eines Anpassger\u00e4tes zwischen Transceiver und Antenne neutralisiert die Aufladungen.",
@@ -13254,8 +13254,8 @@
                                     "question": "Auf welchen besonderen Sicherheitsaspekt ist speziell bei ungeerdeten Drahtantennen zu achten?",
                                     "answer_a": "Bereits durch Regen oder Hagel kann es zu elektrischen Aufladungen der Antenne kommen.",
                                     "answer_b": "Durch die Sendeleistung entstehen hohe Spannungen gegen Erde, die eine dickere Isolierung des Antennendrahtes erfordern.",
-                                    "answer_c": "Bei Sonnenst\u00fcrmen entstehen elektrische Aufladungen die hohe Spannungen erzeugen k\u00f6nnen.",
-                                    "answer_d": "Durch die fehlende Erdung und dem Strombauch im Speisepunkt kann der Mittenisolator zu stark erhitzt werden und durchschmelzen."
+                                    "answer_c": "Bei Sonnenst\u00fcrmen entstehen elektrische Aufladungen, die hohe Spannungen erzeugen k\u00f6nnen.",
+                                    "answer_d": "Durch die fehlende Erdung und den Strombauch im Speisepunkt kann der Mittenisolator zu stark erhitzt werden und durchschmelzen."
                                 },
                                 {
                                     "number": "EK205",
@@ -13289,7 +13289,7 @@
                                     "class": "2",
                                     "question": "Welche m\u00f6glichen Gefahren bestehen beim Ber\u00fchren von im Sendebetrieb befindlichen Antennen?",
                                     "answer_a": "Verletzungen und Verbrennungen durch hochfrequente Spannungen.",
-                                    "answer_b": "Keine, da durch den \"Skin-Effekt\" ein Stromflu\u00df durch den menschlichen K\u00f6rper verhindert wird.",
+                                    "answer_b": "Keine, da durch den \"Skin-Effekt\" ein Stromfluss durch den menschlichen K\u00f6rper verhindert wird.",
                                     "answer_c": "Keine, sofern die Antenne ordnungsgem\u00e4\u00df \u00fcber ein Blitzschutzsystem mit Erde verbunden ist.",
                                     "answer_d": "Stromschlag durch die Gleichspannungsversorgung der Sender-Endstufe, die direkt am Antennenausgang anliegt."
                                 },
@@ -13345,7 +13345,7 @@
                                     "answer_a": "Lichtbogen und Fahrzeugbrand",
                                     "answer_b": "Elektrischer Schock durch \u00dcberschl\u00e4ge aus der Z\u00fcndspule",
                                     "answer_c": "\u00dcberlastung der Sendeendstufe im Funkger\u00e4t durch zu hohe Versorgungsspannung",
-                                    "answer_d": "Keine, da 12 V-Gleichspannung aus der Kfz-Batterie f\u00fcr den Menschen ungef\u00e4hrlich sind"
+                                    "answer_d": "Keine, da 12 V-Gleichspannung aus der Kfz-Batterie f\u00fcr den Menschen ungef\u00e4hrlich ist"
                                 },
                                 {
                                     "number": "NK306",
@@ -13426,8 +13426,8 @@
                             "number": "BA109",
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DO9XJZ\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
-                            "answer_a": "Delta Oscar 9 X-Ray Juliett Zulu",
-                            "answer_b": "Delta Oscar 9 X-Ray Japan Zebra",
+                            "answer_a": "Delta Oscar 9 X-ray Juliett Zulu",
+                            "answer_b": "Delta Oscar 9 X-ray Japan Zebra",
                             "answer_c": "Delta Oscar 9 Xavier Juliett Zebra",
                             "answer_d": "Delta Oscar 9 Xavier Japan Zulu"
                         },
@@ -13453,10 +13453,10 @@
                             "number": "BA106",
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DM4EAX\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
-                            "answer_a": "Delta Mike 4 Echo Alfa X-Ray",
-                            "answer_b": "Delta Mike 4 Ecuador Amerika X-Ray",
-                            "answer_c": "Delta Madagascar 4 Echo Amerika X-Ray",
-                            "answer_d": "Delta Madagascar 4 Ecuador Alfa X-Ray"
+                            "answer_a": "Delta Mike 4 Echo Alfa X-ray",
+                            "answer_b": "Delta Mike 4 Ecuador Amerika X-ray",
+                            "answer_c": "Delta Madagascar 4 Echo Amerika X-ray",
+                            "answer_d": "Delta Madagascar 4 Ecuador Alfa X-ray"
                         },
                         {
                             "number": "BA105",
@@ -13472,7 +13472,7 @@
                             "class": "1",
                             "question": "Wie wird das Rufzeichen \"DL1FLO\" mit dem internationalen Buchstabieralphabet  buchstabiert?",
                             "answer_a": "Delta Lima 1 Foxtrot Lima Oscar",
-                            "answer_b": "Delta London 1 Foxtrott London Oslo",
+                            "answer_b": "Delta London 1 Foxtrot London Oslo",
                             "answer_c": "Delta Lima 1 Florida Lima Oslo",
                             "answer_d": "Delta London 1 Florida London Oscar"
                         },
@@ -13637,10 +13637,10 @@
                                     "number": "BB203",
                                     "class": "1",
                                     "question": "Was bedeuten die Q-Gruppen \"QRT\", \"QRZ?\" und \"QSL?\"?",
-                                    "answer_a": "Stellen Sie die \u00dcbermittlung ein. Von wem werde ich gerufen? K\u00f6nnen Sie mir Empfangsbest\u00e4tigung geben?",
+                                    "answer_a": "Stellen Sie die \u00dcbermittlung ein. Von wem werde ich gerufen? K\u00f6nnen Sie den Empfang best\u00e4tigen??",
                                     "answer_b": "Stellen Sie die \u00dcbermittlung ein. Ich bin bereit. Schicken Sie eine QSL-Karte?",
-                                    "answer_c": "Stellen Sie die \u00dcbermittlung ein. Wie ist Ihr Standort? K\u00f6nnen Sie mir Empfangsbest\u00e4tigung geben?",
-                                    "answer_d": "Ich habe nichts f\u00fcr Sie. Von wem werde ich gerufen? K\u00f6nnen Sie mir Empfangsbest\u00e4tigung geben?"
+                                    "answer_c": "Stellen Sie die \u00dcbermittlung ein. Wie ist Ihr Standort? K\u00f6nnen Sie den Empfang best\u00e4tigen??",
+                                    "answer_d": "Ich habe nichts f\u00fcr Sie. Von wem werde ich gerufen? K\u00f6nnen Sie den Empfang best\u00e4tigen??"
                                 },
                                 {
                                     "number": "BB202",
@@ -13691,7 +13691,7 @@
                                 {
                                     "number": "BC104",
                                     "class": "1",
-                                    "question": "Wie wird der Frequenzbereich zwischen 3 bis 30 MHz bezeichnet?",
+                                    "question": "Wie wird der Frequenzbereich von 3 bis 30 MHz bezeichnet?",
                                     "answer_a": "High Frequency (HF), Short Wave (SW) oder Kurzwelle (KW)",
                                     "answer_b": "Very High Frequency (VHF) oder Ultrakurzwelle (UKW)",
                                     "answer_c": "Ultra High Frequency (UHF) oder Dezimeterwelle",
@@ -13735,7 +13735,7 @@
                                     "question": "Warum sollten Sie auf 439,200 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                                     "answer_a": "Repeater.",
                                     "answer_b": "Satellitenfunk.",
-                                    "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_c": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_d": "Baken."
                                 },
                                 {
@@ -13744,23 +13744,23 @@
                                     "question": "Warum sollten Sie auf 435,500 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                                     "answer_a": "Satellitenfunk.",
                                     "answer_b": "Repeater.",
-                                    "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_c": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_d": "Baken."
                                 },
                                 {
                                     "number": "BC220",
                                     "class": "1",
-                                    "question": "Warum sollten Sie auf 432,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan sieht diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
-                                    "answer_a": "Baken vor.",
-                                    "answer_b": "Satellitenfunk vor.",
-                                    "answer_c": "Repeater vor.",
-                                    "answer_d": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren vor."
+                                    "question": "Warum sollten Sie auf 432,450 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich exklusiv f\u00fcr die Nutzung durch ...",
+                                    "answer_a": "Baken.",
+                                    "answer_b": "Satellitenfunk.",
+                                    "answer_c": "Repeater.",
+                                    "answer_d": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren."
                                 },
                                 {
                                     "number": "BC219",
                                     "class": "1",
                                     "question": "Warum sollten Sie auf 432,040 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
-                                    "answer_a": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_a": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_b": "Satellitenfunk.",
                                     "answer_c": "Weltraumkommunikation.",
                                     "answer_d": "Baken."
@@ -13771,7 +13771,7 @@
                                     "question": "Warum sollten Sie auf 145,800 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                                     "answer_a": "Weltraumkommunikation.",
                                     "answer_b": "Repeater.",
-                                    "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_c": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_d": "Baken."
                                 },
                                 {
@@ -13780,7 +13780,7 @@
                                     "question": "Warum sollten Sie auf 145,600 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
                                     "answer_a": "Repeater.",
                                     "answer_b": "Weltraumkommunikation.",
-                                    "answer_c": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_c": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_d": "Baken."
                                 },
                                 {
@@ -13799,13 +13799,13 @@
                                     "answer_a": "Baken vor.",
                                     "answer_b": "Repeater vor.",
                                     "answer_c": "Weltraumkommunikation vor.",
-                                    "answer_d": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren vor."
+                                    "answer_d": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren vor."
                                 },
                                 {
                                     "number": "BC214",
                                     "class": "1",
                                     "question": "Warum sollten Sie auf 144,125 MHz keine Direktverbindung in FM-Telefonie zu einem Funkamateur aufnehmen, der sich im Nachbarort befindet? Der IARU-Bandplan empfiehlt diesen Bereich f\u00fcr die Nutzung durch ...",
-                                    "answer_a": "Telegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
+                                    "answer_a": "Morsetelegrafie und schmalbandige digitale \u00dcbertragungsverfahren.",
                                     "answer_b": "Repeater.",
                                     "answer_c": "Weltraumkommunikation.",
                                     "answer_d": "Baken."
@@ -13906,7 +13906,7 @@
                                     "question": "Welches Seitenband wird bei SSB-Telefonie nach Empfehlung der IARU im 20 m-Band in der Regel benutzt?",
                                     "answer_a": "Im 20 m-Band wird das obere Seitenband benutzt.",
                                     "answer_b": "Im Europaverkehr wird das untere, ansonsten das obere Seitenband benutzt.",
-                                    "answer_c": "Um den Nachteil der relativ niedrigen Sendefrequenz des 20 m-Bandes auszugleichen, das untere Seitenband benutzt.",
+                                    "answer_c": "Um den Nachteil der relativ niedrigen Sendefrequenz des 20 m-Bandes auszugleichen, wird das untere Seitenband benutzt.",
                                     "answer_d": "In der unteren Bandh\u00e4lfte das untere Seitenband, in der oberen Bandh\u00e4lfte das obere Seitenband."
                                 },
                                 {
@@ -13997,8 +13997,8 @@
                                     "question": "Sie h\u00f6ren in einem Contest die Station DL0XK. Um welche Art von Amateurfunkstelle handelt es sich? Es handelt sich um eine Amateurfunkstelle ...",
                                     "answer_a": "mit Klubstationsrufzeichen der Klasse A.",
                                     "answer_b": "mit Klubstationsrufzeichen der Klasse E.",
-                                    "answer_c": "mit personengebundenen Rufzeichen der Klasse A.",
-                                    "answer_d": "mit personengebundenen Rufzeichen der Klasse E."
+                                    "answer_c": "mit personengebundenem Rufzeichen der Klasse A.",
+                                    "answer_d": "mit personengebundenem Rufzeichen der Klasse E."
                                 },
                                 {
                                     "number": "BD102",
@@ -14126,7 +14126,7 @@
                                     "number": "BD203",
                                     "class": "1",
                                     "question": "Ein Rufzeichen mit dem Zusatz \"/m\" kann bei einer Amateurfunkstelle bedeuten, dass sie ...",
-                                    "answer_a": "sich beweglich in einem Landfahrzeug befindet.",
+                                    "answer_a": "beweglich ist und sich in einem Landfahrzeug befindet.",
                                     "answer_b": "mit minimaler Leistung sendet.",
                                     "answer_c": "vor\u00fcbergehend ortsfest betrieben wird oder tragbar ist.",
                                     "answer_d": "an Bord eines Wasserfahrzeugs betrieben wird, das sich auf See befindet."
@@ -14144,9 +14144,9 @@
                                     "number": "BD201",
                                     "class": "1",
                                     "question": "Was bedeutet der Rufzeichenzusatz \"/am\"? Die Amateurfunkstelle ...",
-                                    "answer_a": "wird an Bord eines Luftfahrzeuges betrieben.",
+                                    "answer_a": "wird an Bord eines Luftfahrzeugs betrieben.",
                                     "answer_b": "verwendet Amplitudenmodulation.",
-                                    "answer_c": "wird an Bord eines Wasserfahrzeuges betrieben.",
+                                    "answer_c": "wird an Bord eines Wasserfahrzeugs betrieben.",
                                     "answer_d": "arbeitet mit geringer Leistung."
                                 }
                             ]
@@ -14330,7 +14330,7 @@
                                     "number": "BE118",
                                     "class": "1",
                                     "question": "Was sollten Sie hinsichtlich der Geschwindigkeit bei Morsetelegrafie beachten? Ich gebe in der Regel ...",
-                                    "answer_a": "nicht schneller als ich auch aufnehmen kann und passe mich an langsamere Stationen an.",
+                                    "answer_a": "nicht schneller, als ich auch aufnehmen kann, und passe mich an langsamere Stationen an.",
                                     "answer_b": "im international festgelegten Einheitstempo von 12 WPM, um eine automatische Dekodierung zu erm\u00f6glichen.",
                                     "answer_c": "so schnell ich kann, damit es nicht zu unn\u00f6tigen Verz\u00f6gerungen im Betriebsablauf kommt.",
                                     "answer_d": "in dem Tempo, das mir am besten liegt. Andere m\u00fcssen sich an mich anpassen."
@@ -14342,7 +14342,7 @@
                                     "answer_a": "genauso schnell oder langsamer als der Anruf.",
                                     "answer_b": "mit meiner gewohnten Geschwindigkeit.",
                                     "answer_c": "mit einem Gebetempo von maximal 60 CPM.",
-                                    "answer_d": "mit den h\u00f6chsten Tempo, das ich fehlerfrei geben kann."
+                                    "answer_d": "mit dem h\u00f6chsten Tempo, das ich fehlerfrei geben kann."
                                 },
                                 {
                                     "number": "BE116",
@@ -14505,7 +14505,7 @@
                                 {
                                     "number": "BE209",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                                     "answer_a": "59+20 dB",
                                     "answer_b": "520",
                                     "answer_c": "50",
@@ -14515,7 +14515,7 @@
                                 {
                                     "number": "BE208",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                                     "answer_a": "59",
                                     "answer_b": "12,5",
                                     "answer_c": "80",
@@ -14525,7 +14525,7 @@
                                 {
                                     "number": "BE207",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren in einem Funkgespr\u00e4ch in SSB-Telefonie die Gegenstation einwandfrei. Das Display Ihres Funkger\u00e4tes zeigt die abgebildeten Informationen an. Welchen Empfangsrapport nach dem RST-System geben Sie?",
                                     "answer_a": "55",
                                     "answer_b": "7",
                                     "answer_c": "100",
@@ -14535,7 +14535,7 @@
                                 {
                                     "number": "BE206",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                                     "answer_a": "59+20 dB",
                                     "answer_b": "69",
                                     "answer_c": "4,2",
@@ -14545,7 +14545,7 @@
                                 {
                                     "number": "BE205",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                                     "answer_a": "59",
                                     "answer_b": "39",
                                     "answer_c": "95",
@@ -14555,7 +14555,7 @@
                                 {
                                     "number": "BE204",
                                     "class": "1",
-                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
+                                    "question": "Sie h\u00f6ren die Gegenstation in SSB-Telefonie einwandfrei. Das Anzeigeinstrument Ihres Funkger\u00e4tes zeigt den dargestellten Zeigerausschlag. Welchen Rapport nach dem RST-System geben Sie?",
                                     "answer_a": "55",
                                     "answer_b": "29",
                                     "answer_c": "52",
@@ -14616,9 +14616,9 @@
                                     "number": "BE311",
                                     "class": "1",
                                     "question": "Eine Station, die auf 14205 kHz CQ gerufen hat, sagt am Ende ihres Rufes \"tuning 290 to 300 up\". Welche Frequenzen nutzen Sie, wenn Sie diese Station anrufen wollen?",
-                                    "answer_a": "Ich rufe zwischen 14290 bis 14300 kHz und h\u00f6re auf 14205 kHz.",
-                                    "answer_b": "Ich rufe und h\u00f6re zwischen 14290 bis 14300 kHz.",
-                                    "answer_c": "Ich rufe auf 14205 kHz und h\u00f6re zwischen 14290 bis 14300 kHz.",
+                                    "answer_a": "Ich rufe zwischen 14290 und 14300 kHz und h\u00f6re auf 14205 kHz.",
+                                    "answer_b": "Ich rufe und h\u00f6re zwischen 14290 und 14300 kHz.",
+                                    "answer_c": "Ich rufe auf 14205 kHz und h\u00f6re zwischen 14290 und 14300 kHz.",
                                     "answer_d": "Ich rufe auf 14290 kHz und h\u00f6re auf 14300 kHz."
                                 },
                                 {
@@ -14637,7 +14637,7 @@
                                     "answer_a": "h\u00f6rt oberhalb ihrer Sendefrequenz auf wechselnden Frequenzen im angegebenen Bereich.",
                                     "answer_b": "k\u00fcndigt einen Wechsel ihrer Sendefrequenz in den angegebenen Bereich an.",
                                     "answer_c": "bittet anrufende Stationen in dem angegebenen Bereich CW zu verwenden.",
-                                    "answer_d": "wird im angegeben Bereich mit einer Bandbreite von 10 kHz senden."
+                                    "answer_d": "wird im angegebenen Bereich mit einer Bandbreite von 10 kHz senden."
                                 },
                                 {
                                     "number": "BE308",
@@ -14652,7 +14652,7 @@
                                     "number": "BE307",
                                     "class": "1",
                                     "question": "Was verstehen Sie bei einer seltenen Station unter der Aufforderung zu \"Listenbetrieb\"?",
-                                    "answer_a": "Eine gut h\u00f6rbare andere Station nimmt anrufenden Stationen in eine Liste und ruft sp\u00e4ter diese Stationen zur Aufnahme einer Funkverbindung mit der seltenen Station auf.",
+                                    "answer_a": "Eine gut h\u00f6rbare andere Station nimmt anrufende Stationen in eine Liste und ruft sp\u00e4ter diese Stationen zur Aufnahme einer Funkverbindung mit der seltenen Station auf.",
                                     "answer_b": "Eine gut h\u00f6rbare andere Station schickt per Internet Listen anrufender Stationen an die seltene Station.",
                                     "answer_c": "Die seltene Station ruft Stationen nach einer Liste der Landeskenner alphabetisch auf.",
                                     "answer_d": "Die seltene Station oder ihr QSL-Manager ver\u00f6ffentlicht eine Liste der gearbeiteten Stationen in den Amateurfunkzeitschriften."
@@ -14720,7 +14720,7 @@
                                     "number": "BE416",
                                     "class": "1",
                                     "question": "Was versteht man unter dem Transponder eines \"OSCAR\" und wie arbeitet er?",
-                                    "answer_a": "Einen Umsetzer an Bord eines Amateurfunksatelliten, der die aufgenommenen Signale in einen anderen Frequenzbereich umsetzt und wieder zur Erde sendet.",
+                                    "answer_a": "Dies ist ein Umsetzer an Bord eines Amateurfunksatelliten, der die aufgenommenen Signale in einen anderen Frequenzbereich umsetzt und wieder zur Erde sendet.",
                                     "answer_b": "Es handelt sich um einen mit einer fernbedienten Amateurfunkstelle best\u00fcckten Stratosph\u00e4renballon, der empfangene Signale aufbereitet zur Erde zur\u00fccksendet.",
                                     "answer_c": "Dies ist ein Umsetzer an Bord eines Amateurfunksatelliten, der die vom Satelliten aufgenommenen Wetterbilder und weitere Telemetriedaten automatisch zur Erde sendet.",
                                     "answer_d": "Dies ist ein Bakensender an Bord eines Amateurfunksatelliten, der zur Beobachtung der Ausbreitungsbedingungen im VHF-, UHF- und SHF-Bereich dient."
@@ -14855,10 +14855,10 @@
                                     "number": "BE401",
                                     "class": "1",
                                     "question": "Was ist damit gemeint, wenn man sagt, die Relaisfunkstelle hat eine Eingabe- und eine Ausgabefrequenz?",
-                                    "answer_a": "Die Relaisfunkstelle empf\u00e4ngt auf der Eingabefrequenz und sendet auf einer Ausgabefrequenz.",
+                                    "answer_a": "Die Relaisfunkstelle empf\u00e4ngt auf der Eingabefrequenz und sendet auf der Ausgabefrequenz.",
                                     "answer_b": "Die Relaisfunkstelle stellt bei starker Belegung der Eingabefrequenz eine zus\u00e4tzliche Ausgabefrequenz zur Verf\u00fcgung.",
                                     "answer_c": "Die Relaisfunkstelle benutzt eine Eingabefrequenz zur Umsetzung des empfangenen Signals und die Ausgabefrequenz zur Fernsteuerung.",
-                                    "answer_d": "Die Relaisfunkstelle muss auf der Ausgabefrequenz mit einem Tonruf ge\u00f6ffnet werden, bevor es auf der Eingabefrequenz in Betrieb gehen kann."
+                                    "answer_d": "Die Relaisfunkstelle muss auf der Ausgabefrequenz mit einem Tonruf ge\u00f6ffnet werden, bevor sie auf der Eingabefrequenz in Betrieb gehen kann."
                                 }
                             ]
                         }
@@ -14870,7 +14870,7 @@
                         {
                             "number": "BF109",
                             "class": "1",
-                            "question": "Nach den Empfehlungen der International Amateur Radio Union (IARU) gibt es bei 3760, 7110, 14300, 18160 und 21360 kHz so genannte Aktivit\u00e4tszentren f\u00fcr Notfunkverkehr. Was ist das besondere an diesen Frequenzen? Sie sollen ...",
+                            "question": "Nach den Empfehlungen der International Amateur Radio Union (IARU) gibt es bei 3760, 7110, 14300, 18160 und 21360 kHz so genannte Aktivit\u00e4tszentren f\u00fcr Notfunkverkehr. Was ist das Besondere an diesen Frequenzen? Sie sollen ...",
                             "answer_a": "in der ITU-Region 1 dem Notfunkverkehr dienen und f\u00fcr diesen freigehalten werden.",
                             "answer_b": "permanent abgeh\u00f6rt werden, sofern das Funkger\u00e4t \u00fcber einen 2. VFO verf\u00fcgt.",
                             "answer_c": "exklusiv der Nutzung durch Rettungsdienste dienen und nicht durch Funkamateure genutzt werden.",
@@ -14889,7 +14889,7 @@
                             "number": "BF107",
                             "class": "1",
                             "question": "Sie haben eine Notmeldung beantwortet und die Polizei oder Rettungsleitstelle informiert. Welches Verhalten ist im Anschluss vorbildlich?",
-                            "answer_a": "Ich bleibe erreichbar und gebe Informationen weiter bis Hilfe eingetroffen ist.",
+                            "answer_a": "Ich bleibe erreichbar und gebe Informationen weiter, bis Hilfe eingetroffen ist.",
                             "answer_b": "Ich rufe regelm\u00e4\u00dfig die Polizei oder Rettungsleitstelle an und erkundige mich nach dem Stand.",
                             "answer_c": "Ich schalte mein Funkger\u00e4t ab, da ich meiner Pflicht nachgekommen bin.",
                             "answer_d": "Ich informiere die Medien, damit \u00fcber den Rettungseinsatz live berichtet werden kann."
@@ -14915,7 +14915,7 @@
                         {
                             "number": "BF104",
                             "class": "1",
-                            "question": "Sie h\u00f6ren eine Notmeldung. Was tun Sie als erstes?",
+                            "question": "Sie h\u00f6ren eine Notmeldung. Was tun Sie als Erstes?",
                             "answer_a": "Ich h\u00f6re aufmerksam zu und notiere alle wichtigen Informationen.",
                             "answer_b": "Ich sende dreimal MAYDAY, mein Rufzeichen und warte auf Antwort.",
                             "answer_c": "Ich stimme meinen Sender auf der Frequenz ab.",
@@ -15011,10 +15011,10 @@
                             "number": "BG105",
                             "class": "1",
                             "question": "Welche Angaben sollten QSL-Karten mindestens enthalten?",
-                            "answer_a": "Verwendetes Rufzeichen, Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Band, \u00dcbertragungsverfahren und der Signal-Rapport.",
-                            "answer_b": "Verwendetes Rufzeichen, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, \u00dcbertragungsverfahren, Signal-Rapport sowie den eigenen Namen, Standort, Locator, die eigene Sendeleistung und Angaben zur eingesetzten technischen Ausr\u00fcstung.",
-                            "answer_c": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, genaue Frequenz, \u00dcbertragungsverfahren, Signal-Rapport und weitere \u00fcbliche Angaben wie den eigenen Namen, Standort, Locator und die eigene Sendeleistung.",
-                            "answer_d": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, \u00dcbertragungsverfahren, Angaben \u00fcber das Funkwetter und die Unterschrift des Operators."
+                            "answer_a": "Verwendetes Rufzeichen, Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Band, \u00dcbertragungsverfahren und Signal-Rapport",
+                            "answer_b": "Verwendetes Rufzeichen, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, \u00dcbertragungsverfahren, Signal-Rapport sowie den eigenen Namen, Standort, Locator, die eigene Sendeleistung und Angaben zur eingesetzten technischen Ausr\u00fcstung",
+                            "answer_c": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, genaue Frequenz, \u00dcbertragungsverfahren, Signal-Rapport und weitere \u00fcbliche Angaben wie den eigenen Namen, Standort, Locator und die eigene Sendeleistung",
+                            "answer_d": "Rufzeichen der Gegenstation, Datum und Uhrzeit der Funkverbindung in UTC, Frequenz, \u00dcbertragungsverfahren, Angaben \u00fcber das Funkwetter und die Unterschrift des Operators"
                         },
                         {
                             "number": "BG104",
@@ -15133,7 +15133,7 @@
                                     "number": "VA304",
                                     "class": "1",
                                     "question": "Was ist in den Radio Regulations (RR) bez\u00fcglich der Morsequalifikation f\u00fcr Funkamateure festgelegt?",
-                                    "answer_a": "Die nationale Verwaltung eines jeden Landes legt eigenst\u00e4ndig fest, ob eine Morsepr\u00fcfung erforderlich ist.\n",
+                                    "answer_a": "Die nationale Verwaltung eines jeden Landes legt eigenst\u00e4ndig fest, ob eine Morsepr\u00fcfung erforderlich ist.",
                                     "answer_b": "Bei einer Sendeleistung von mehr als 100 W ben\u00f6tigt der Funkamateur den Nachweis einer erfolgreich abgelegten Morsepr\u00fcfung.",
                                     "answer_c": "Wer Frequenzen unter 30 MHz nutzen will, muss eine Morsepr\u00fcfung ablegen.",
                                     "answer_d": "In den Radio Regulations (RR) werden bez\u00fcglich der Morsequalifikation keine Regelungen getroffen."
@@ -15218,7 +15218,7 @@
                                 {
                                     "number": "VA402",
                                     "class": "1",
-                                    "question": "Nach den Radio Regulations (RR) ist die Welt f\u00fcr die Zuweisung von Funkdiensten an Frequenzbereiche in Regionen aufgeteilt. Wie viele Regionen gibt es?",
+                                    "question": "Nach den Radio Regulations (RR) ist die Welt f\u00fcr die Zuweisung von Frequenzbereichen an Funkdienste in Regionen aufgeteilt. Wie viele Regionen gibt es?",
                                     "answer_a": "Drei",
                                     "answer_b": "F\u00fcnf",
                                     "answer_c": "Vier",
@@ -15307,7 +15307,7 @@
                             "number": "VB107",
                             "class": "1",
                             "question": "Darf ein deutscher Funkamateur mit einer Amateurfunkzulassung der Klasse A in allen CEPT-L\u00e4ndern Amateurfunkverkehr abwickeln?",
-                            "answer_a": "Nein, nur in den Staaten der CEPT, die die Empfehlung T/R 61-01 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
+                            "answer_a": "Nein, nur in den L\u00e4ndern, die die Empfehlung T/R 61-01 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
                             "answer_b": "Ja, alle CEPT-Mitgliedsl\u00e4nder m\u00fcssen die Empfehlung T/R 61-01 anwenden.",
                             "answer_c": "Nein, die Anwendung der CEPT-Empfehlung T/R 61-01 ist nur in den Mitgliedsstaaten der Europ\u00e4ischen Union zul\u00e4ssig.",
                             "answer_d": "Ja, er muss sich aber an die Amateurfunkregelungen des Heimatlandes halten."
@@ -15316,7 +15316,7 @@
                             "number": "VB106",
                             "class": "1",
                             "question": "Darf ein Funkamateur mit einer \"CEPT-Novice-Amateurfunkgenehmigung\" in allen CEPT-L\u00e4ndern Amateurfunkverkehr abwickeln?",
-                            "answer_a": "Nein, nur in den Staaten der CEPT, die die ECC-Empfehlung (05)06 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
+                            "answer_a": "Nein, nur in L\u00e4ndern, die die ECC-Empfehlung (05)06 umgesetzt haben, sofern er dort keinen festen Wohnsitz hat.",
                             "answer_b": "Ja, alle CEPT-Mitgliedsl\u00e4nder m\u00fcssen die ECC-Empfehlung (05)06 anwenden.",
                             "answer_c": "Nein, die Anwendung der ECC-Empfehlung (05)06 ist nur in den Mitgliedsstaaten der Europ\u00e4ischen Union zul\u00e4ssig.",
                             "answer_d": "Ja, er muss sich aber an die Amateurfunkregelungen des Heimatlandes halten."
@@ -15334,7 +15334,7 @@
                             "number": "VB104",
                             "class": "1",
                             "question": "Welche Bedeutung haben die CEPT-Empfehlungen T/R 61-01 und T/R 61-02 sowie der ERC-Report 32 und die ECC-Empfehlung (05)06 f\u00fcr den Amateurfunk? Sie bilden die Grundlage f\u00fcr...",
-                            "answer_a": "den vor\u00fcbergehenden Amateurfunkbetrieb und die gegenseitige Anerkennung von Amateurfunkzeugnissen in den umsetzenden L\u00e4ndern.\n",
+                            "answer_a": "den vor\u00fcbergehenden Amateurfunkbetrieb und die gegenseitige Anerkennung von Amateurfunkzeugnissen in den umsetzenden L\u00e4ndern.",
                             "answer_b": "den Funkverkehr zwischen den umsetzenden L\u00e4ndern und die Harmonisierung der nationalen Frequenzzuweisungen f\u00fcr den Amateurfunkdienst.",
                             "answer_c": "den Amateurfunkverkehr in den umsetzenden L\u00e4ndern und die weltweite Anerkennung von Amateurfunkzeugnissen.",
                             "answer_d": "den grenz\u00fcberschreitenden Warenverkehr von Amateurfunkger\u00e4ten in der Europ\u00e4ischen Union und weiteren umsetzenden L\u00e4ndern."
@@ -15383,9 +15383,9 @@
                         {
                             "number": "VC124",
                             "class": "1",
-                            "question": "Welche der folgenden Handlungen sind Ordnungswidrigkeiten im Sinne des Amateurfunkgesetzes (AFuG)\u00a0und k\u00f6nnen mit Bu\u00dfgeldern bis zu 5000 bzw. 10000 Euro geahndet werden?",
+                            "question": "Welche der folgenden Handlungen sind Ordnungswidrigkeiten im Sinne des Amateurfunkgesetzes (AFuG)\u00a0und k\u00f6nnen mit Bu\u00dfgeldern von bis zu 5000 bzw. 10000 Euro geahndet werden?",
                             "answer_a": "(1) Betrieb ohne Zulassung und Zuteilung eines Rufzeichens; (2) Gesch\u00e4ftsm\u00e4\u00dfiges Erbringen von Telekommunikationsdiensten; (3) Nachrichten\u00fcbermittlung an Dritte",
-                            "answer_b": "(1) \u00dcberschreiten der zul\u00e4ssigen Sendeleistung; (2) Dauerhafte Verlegung der Amateurfunkstelle an einem anderen Standort; (3) Funkbetrieb ohne Mitf\u00fchren der Zulassungsurkunde",
+                            "answer_b": "(1) \u00dcberschreiten der zul\u00e4ssigen Sendeleistung; (2) Dauerhafte Verlegung der Amateurfunkstelle an einen anderen Standort; (3) Funkbetrieb ohne Mitf\u00fchren der Zulassungsurkunde",
                             "answer_c": "(1) Unzureichende Rufzeichennennung; (2) \u00dcberschreiten der zul\u00e4ssigen Bandbreite einer Aussendung; (3) Gleichzeitige Nutzung eines Rufzeichens von verschiedenen Standorten",
                             "answer_d": "(1) Verschl\u00fcsselung von Amateurfunkverkehr zur Verschleierung des Inhalts; (2) Betrieb einer Remote-Station ohne Betriebsmeldung; (3) \u00dcberlassung des Rufzeichens an Dritte;"
                         },
@@ -15485,7 +15485,7 @@
                             "question": "Nach dem Amateurfunkgesetz ist ein Funkamateur der Inhaber eines Amateurfunkzeugnisses oder einer harmonisierten Pr\u00fcfungsbescheinigung, der sich aus pers\u00f6nlicher Neigung und nicht ...",
                             "answer_a": "aus gewerblich-wirtschaftlichem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_b": "aus politischem oder religi\u00f6sem Interesse mit dem Amateurfunkdienst befasst.",
-                            "answer_c": "aus technisch-wissenschaftlichen Interesse mit dem Amateurfunkdienst befasst.",
+                            "answer_c": "aus technisch-wissenschaftlichem Interesse mit dem Amateurfunkdienst befasst.",
                             "answer_d": "aus sozialem oder kulturellem Interesse mit dem Amateurfunkdienst befasst."
                         },
                         {
@@ -15518,8 +15518,8 @@
                         {
                             "number": "VC109",
                             "class": "1",
-                            "question": "Welches Recht haben Funkamateure im Bezug auf den Betrieb von Sendeanlagen? Ein Funkamateur ...",
-                            "answer_a": "ist berechtigt im Handel erh\u00e4ltliche, selbstgefertigte oder auf Amateurfunkfrequenzen umgebaute Sendeanlagen zu betreiben.",
+                            "question": "Welches Recht haben Funkamateure in Bezug auf den Betrieb von Sendeanlagen? Ein Funkamateur ...",
+                            "answer_a": "ist berechtigt, im Handel erh\u00e4ltliche, selbst gefertigte oder auf Amateurfunkfrequenzen umgebaute Sendeanlagen zu betreiben.",
                             "answer_b": "ben\u00f6tigt in keinem Fall eine Standortbescheinigung der BNetzA f\u00fcr seine Amateurfunkstelle.",
                             "answer_c": "muss die einschl\u00e4gigen Bestimmungen der BNetzA zur elektrischen Sicherheit nicht beachten.",
                             "answer_d": "darf mit seiner Amateurfunkstelle jederzeit Nachrichten f\u00fcr und an Dritte \u00fcbermitteln, die nicht den Amateurfunkdienst betreffen."
@@ -15617,7 +15617,7 @@
                                     "number": "VD118",
                                     "class": "1",
                                     "question": "Wie ist der Begriff \"Relaisfunkstelle\" nach dem Wortlaut der Amateurfunkverordnung (AFuV) definiert?",
-                                    "answer_a": "Eine \"Relaisfunkstelle\" ist eine fernbediente oder automatisch arbeitende oder fernbedient und automatisch arbeitende Amateurfunkstelle in Satelliten, die empfangene Amateurfunk-Aussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Inhalte fernausgel\u00f6st wieder aussendet oder weiterleitet.",
+                                    "answer_a": "Eine \"Relaisfunkstelle\" ist eine fernbediente oder automatisch arbeitende Amateurfunkstelle oder fernbedient und automatisch arbeitende Amateurfunkstelle in Satelliten, die empfangene Amateurfunk-Aussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Inhalte fernausgel\u00f6st wieder aussendet oder weiterleitet.",
                                     "answer_b": "Eine \"Relaisfunkstelle\" ist eine von einem Funkamateur st\u00e4ndig besetzte Amateurfunkstelle, die empfangene Amateurfunkaussendungen, Teile davon oder sonstige eingespeiste oder eingespeicherte Signale fern ausgel\u00f6st aussendet und dabei zur Erh\u00f6hung der Erreichbarkeit von Amateurfunkstellen dient.",
                                     "answer_c": "Eine \"Relaisfunkstelle\" ist eine fernbediente Amateurfunkstelle, die mit dem pers\u00f6nlichen Rufzeichen des Inhabers betrieben wird.",
                                     "answer_d": "Eine \"Relaisfunkstelle\" ist eine fernbediente Amateurfunkstelle, die nur an einem geografisch exponierten Standort betrieben werden darf."
@@ -15626,7 +15626,7 @@
                                     "number": "VD117",
                                     "class": "1",
                                     "question": "Wie ist der Begriff \"Klubstation\" nach dem Wortlaut der Amateurfunkverordnung (AFuV) definiert?",
-                                    "answer_a": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens vier Mitgliedern einer Gruppe von Funkamateuren unter Verwendung eines gemeinschaftlich genutzten Rufzeichens betrieben wird.",
+                                    "answer_a": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens drei Mitgliedern einer Gruppe von Funkamateuren unter Verwendung eines gemeinschaftlich genutzten Rufzeichens betrieben wird.",
                                     "answer_b": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die von mindestens vier Mitgliedern einer Gruppe von Funkamateuren unter Verwendung ihres personengebundenen Rufzeichens betrieben wird.",
                                     "answer_c": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die an einem geografisch exponierten Standort betrieben wird.",
                                     "answer_d": "Eine \"Klubstation\" ist eine Amateurfunkstelle, die nur von einem eingetragenen Verein betrieben werden darf."
@@ -15823,7 +15823,7 @@
                                     "answer_a": "Weil der Rufzeichenplan zu besonderen allgemeinen Anl\u00e4ssen auch Rufzeichen mit bis zu 7 Zeichen langem Suffix vorsieht, der Ziffern enthalten kann und mit einem Buchstaben endet.",
                                     "answer_b": "Weil f\u00fcr besonders verdiente Funkamateure auch personengebundene Rufzeichen ausgegeben werden, f\u00fcr die der Rufzeichenplan keine Anwendung findet.",
                                     "answer_c": "Weil an bestimmte \u00f6ffentliche Stellen, wie z. B. Kunst- und Kultureinrichtungen, besondere Rufzeichen mit mindestens 3 Ziffern ausgegeben werden.",
-                                    "answer_d": "Weil dies in einer Sonderverf\u00fcgung der Bundesnetzagentur aufgrund besonderem historischen Anlass mit internationaler Wirkung festgelegt wurde."
+                                    "answer_d": "Weil dies in einer Sonderverf\u00fcgung der Bundesnetzagentur aufgrund besonderen historischen Anlass mit internationaler Wirkung festgelegt wurde."
                                 },
                                 {
                                     "number": "VD203",
@@ -15897,7 +15897,7 @@
                                     "number": "VD302",
                                     "class": "1",
                                     "question": "Unter welcher Voraussetzung nach der Amateurfunkverordnung (AFuV) darf ein Funkamateur Ausbildungsfunkbetrieb durchf\u00fchren?",
-                                    "answer_a": "Wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A oder E ist\n",
+                                    "answer_a": "Wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A oder E ist",
                                     "answer_b": "Nur wenn er Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst der Klasse A ist",
                                     "answer_c": "Nur wenn er mindestens 1 Jahr lang Inhaber einer Zulassung zur Teilnahme am Amateurfunkdienst ist",
                                     "answer_d": "Wenn er eine g\u00fcltige Rufzeichenzuteilung f\u00fcr ein Ausbildungsrufzeichen besitzt"
@@ -16132,7 +16132,7 @@
                                 {
                                     "number": "VD742",
                                     "class": "1",
-                                    "question": "In welchem Amateurfunkfrequenzbereich betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 2 MHz bzw. f\u00fcr amplitudenmodulierte Fernsehaussendungen 7 MHz?",
+                                    "question": "In welchem der folgenden Amateurfunkfrequenzbereiche betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 2 MHz bzw. f\u00fcr amplitudenmodulierte Fernsehaussendungen 7 MHz?",
                                     "answer_a": "430 bis 440 MHz",
                                     "answer_b": "2320 bis 2450 MHz",
                                     "answer_c": "3400 bis 3475 MHz",
@@ -16141,7 +16141,7 @@
                                 {
                                     "number": "VD741",
                                     "class": "1",
-                                    "question": "In welchem Amateurfunkfrequenzbereich betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 40 kHz?",
+                                    "question": "In welchem der folgenden Amateurfunkfrequenzbereiche betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 40 kHz?",
                                     "answer_a": "144 bis 146 MHz",
                                     "answer_b": "430 bis 440 MHz",
                                     "answer_c": "1240 bis 1300 MHz",
@@ -16150,7 +16150,7 @@
                                 {
                                     "number": "VD740",
                                     "class": "1",
-                                    "question": "In welchem Amateurfunkfrequenzbereich betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 7 kHz?",
+                                    "question": "In welchem der folgenden Amateurfunkfrequenzbereiche betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 7 kHz?",
                                     "answer_a": "28000 bis 29000 kHz",
                                     "answer_b": "14000 bis 14350 kHz",
                                     "answer_c": "21000 bis 21450 kHz",
@@ -16159,7 +16159,7 @@
                                 {
                                     "number": "VD739",
                                     "class": "1",
-                                    "question": "In welchen Amateurfunkfrequenzbereichen betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 2,7 kHz?",
+                                    "question": "In welchem der folgenden Amateurfunkfrequenzbereiche betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 2,7 kHz?",
                                     "answer_a": "3500 bis 3800 kHz",
                                     "answer_b": "10100 bis 10150 kHz",
                                     "answer_c": "135,7 bis 137,8 kHz",
@@ -16169,15 +16169,15 @@
                                     "number": "VD738",
                                     "class": "1",
                                     "question": "In welchen Amateurfunkfrequenzbereichen betr\u00e4gt die maximal zul\u00e4ssige belegte Bandbreite einer Aussendung 800 Hz?",
-                                    "answer_a": "135,7 bis 137,8 kHz und 10100 bis 10150 kHz",
-                                    "answer_b": "1810 bis 2000 kHz und 3500 bis 3800 kHz",
+                                    "answer_a": "135,7 bis 137,8 kHz, 472 bis 479 kHz und 10100 bis 10150 kHz",
+                                    "answer_b": "1810 bis 2000 kHz, 3500 bis 3800 kHz und 7000 bis 7200 kHz",
                                     "answer_c": "7000 bis 7100 kHz und 14000 bis 14350 kHz",
                                     "answer_d": "18068 bis 18168 kHz und 24890 bis 24990 kHz"
                                 },
                                 {
                                     "number": "VD737",
                                     "class": "1",
-                                    "question": "Welche maximale Sendeleistung gilt f\u00fcr die Rufzeicheninhaber der Klasse E im Frequenzbereich 10 GHz - 10,5 GHz?",
+                                    "question": "Wie hoch ist die maximal zul\u00e4ssige Senderausgangsleistung f\u00fcr Rufzeicheninhaber der\nKlasse E in den Amateurfunkb\u00e4ndern zwischen 1300 MHz und 250 GHz?",
                                     "answer_a": "Maximal 5 W PEP ",
                                     "answer_b": "Maximal 75 W PEP",
                                     "answer_c": "Maximal 100 W PEP",
@@ -16552,10 +16552,10 @@
                                 {
                                     "number": "VE204",
                                     "class": "1",
-                                    "question": "Bei welcher der genannten Ger\u00e4te sind nach dem Telekommunikation-Telemedien-Datenschutz-Gesetz (TTDSG) sowohl die Herstellung als auch der Besitz verboten? Bei ...",
-                                    "answer_a": "Sendeanlagen, die einen anderen Gegenstand vort\u00e4uschen und somit zum Abh\u00f6ren des nicht-\u00f6ffentlich gesprochenen Wortes brauchbar sind",
+                                    "question": "Bei welchen der genannten Ger\u00e4te sind nach dem Telekommunikation-Telemedien-Datenschutz-Gesetz (TTDSG) sowohl die Herstellung als auch der Besitz verboten? Bei ...",
+                                    "answer_a": "Sendeanlagen, die einen anderen Gegenstand vort\u00e4uschen und somit zum Abh\u00f6ren des nicht\u00f6ffentlich gesprochenen Wortes brauchbar sind",
                                     "answer_b": "Scannern, die ein breitbandiges Abh\u00f6ren des Funkspektrums erm\u00f6glichen",
-                                    "answer_c": "Richtmikrofonen, die geeignet sind, das nicht-\u00f6ffentlich gesprochene Wort eines anderen unbemerkt abzuh\u00f6ren",
+                                    "answer_c": "Richtmikrofonen, die geeignet sind, das nicht\u00f6ffentlich gesprochene Wort eines anderen unbemerkt abzuh\u00f6ren",
                                     "answer_d": "digitalen Tonabspielger\u00e4ten, welche auch geeignet sind, Tonaufnahmen anzufertigen"
                                 },
                                 {
@@ -16579,10 +16579,10 @@
                                 {
                                     "number": "VE201",
                                     "class": "1",
-                                    "question": "Darf ein Funkamateur seine Amateurfunkstelle zum Abh\u00f6ren des nicht-\u00f6ffentlich gesprochenen Wortes verwenden?",
-                                    "answer_a": "Das Abh\u00f6ren des nicht-\u00f6ffentlich gesprochenen Wortes ist ein Straftatbestand.",
+                                    "question": "Darf ein Funkamateur seine Amateurfunkstelle zum Abh\u00f6ren des nicht\u00f6ffentlich gesprochenen Wortes verwenden?",
+                                    "answer_a": "Das Abh\u00f6ren des nicht\u00f6ffentlich gesprochenen Wortes ist ein Straftatbestand.",
                                     "answer_b": "Der Funkamateur gilt als sachkundige Person und darf daher selbst entscheiden, auf welchen Frequenzen er h\u00f6ren darf.",
-                                    "answer_c": "Das Abh\u00f6ren des nicht-\u00f6ffentlich gesprochenen Wortes durch den Funkamateur bedarf einer besonderen Zulassung der BNetzA. ",
+                                    "answer_c": "Das Abh\u00f6ren des nicht\u00f6ffentlich gesprochenen Wortes durch den Funkamateur bedarf einer besonderen Zulassung der BNetzA. ",
                                     "answer_d": "Der Funkamateur ist dazu berechtigt, wenn er dazu technisch zugelassene Empf\u00e4nger benutzt."
                                 }
                             ]
@@ -16638,7 +16638,7 @@
                                 {
                                     "number": "VE304",
                                     "class": "1",
-                                    "question": "Durch den Betrieb einer Amateurfunkstelle wird der Fernsehempfang eines Nachbarn beeintr\u00e4chtigt. Eine \u00dcberpr\u00fcfung ergibt, dass sowohl das Fernsehger\u00e4t wie auch die Amateurfunkstelle die Vorschriften einhalten und Nachbesserungen nicht mehr m\u00f6glich sind. Wozu ist die BNetzA in diesem Fall befugt?",
+                                    "question": "Durch den Betrieb einer Amateurfunkstelle wird der Fernsehempfang eines Nachbarn beeintr\u00e4chtigt. Eine \u00dcberpr\u00fcfung ergibt, dass sowohl das Fernsehger\u00e4t als auch die Amateurfunkstelle die Vorschriften einhalten und Nachbesserungen nicht mehr m\u00f6glich sind. Wozu ist die BNetzA in diesem Fall befugt?",
                                     "answer_a": "Die BNetzA kann Abhilfema\u00dfnahmen in Zusammenarbeit mit den Beteiligten veranlassen.",
                                     "answer_b": "Die BNetzA hat diesbez\u00fcglich keine Befugnisse.",
                                     "answer_c": "Zum sofortigen Widerruf der Zulassung zum Amateurfunkdienst",
@@ -16741,7 +16741,7 @@
                                     "question": "Sie wollen eine Amateurfunkstelle an einem Standort errichten, an dem sich bereits andere ortsfeste Funkanlagen befinden. Welche Besonderheit m\u00fcssen Sie in Bezug auf den Schutz von Personen in elektromagnetischen Feldern beachten?",
                                     "answer_a": "Sofern die Gesamtleistung aller Funkanlagen am Standort 10 W EIRP erreicht oder \u00fcberschreitet, ist eine Standortbescheinigung erforderlich.",
                                     "answer_b": "Sofern die Senderausgangsleistung der Amateurfunkstelle 10 W \u00fcberschreitet, darf sie an diesem Standort nicht betrieben werden.",
-                                    "answer_c": "Es ist unzul\u00e4ssig eine Amateurfunkstelle an einem Standort zu betreiben, an dem sich auch Funkanlagen anderer Funkdienste befinden.",
+                                    "answer_c": "Es ist unzul\u00e4ssig, eine Amateurfunkstelle an einem Standort zu betreiben, an dem sich auch Funkanlagen anderer Funkdienste befinden.",
                                     "answer_d": "Es ist ein mechanischer Sendeumschalter erforderlich, der verhindert, dass die Amateurfunkanlage gleichzeitig mit einer der anderen Funkanlagen sendet."
                                 },
                                 {
@@ -16774,8 +16774,8 @@
                                 {
                                     "number": "VE514",
                                     "class": "1",
-                                    "question": "Was hat ein Funkamateur zu beachten nachdem er seine ortsfeste Amateurfunkstelle bei der Bundesnetzagentur gem\u00e4\u00df BEMFV angezeigt hat?",
-                                    "answer_a": "Er hat eine Dokumentation \u00fcber die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen bereitzuhalten und fortlaufend zu pr\u00fcfen, ob die Bedingungen unter denen die Anzeige durchgef\u00fchrt wurde noch zutreffend sind. Bei wesentlichen \u00c4nderungen ist die Amateurfunkstelle erneut anzuzeigen.",
+                                    "question": "Was hat ein Funkamateur zu beachten, nachdem er seine ortsfeste Amateurfunkstelle bei der Bundesnetzagentur gem\u00e4\u00df BEMFV angezeigt hat?",
+                                    "answer_a": "Er hat eine Dokumentation \u00fcber die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen bereitzuhalten und fortlaufend zu pr\u00fcfen, ob die Bedingungen, unter denen die Anzeige durchgef\u00fchrt wurde, noch zutreffend sind. Bei wesentlichen \u00c4nderungen ist die Amateurfunkstelle erneut anzuzeigen.",
                                     "answer_b": "Mit der Anzeige seiner ortsfesten Amateurfunkstelle ist ein Funkamateur seinen Verpflichtungen zum Schutz von Personen in elektromagnetischen Feldern nachgekommen und muss diesbez\u00fcglich nichts weiter beachten.",
                                     "answer_c": "Das Anzeigeverfahren ist jedes Jahr erneut durchzuf\u00fchren, um die Aktualit\u00e4t zu gew\u00e4hrleisten.",
                                     "answer_d": "Nachdem die ortsfeste Amateurfunkstelle in Betrieb genommen wurde, ist die Dokumentation \u00fcber die Einhaltung der Anforderungen mit allen erforderlichen Unterlagen der zust\u00e4ndigen Au\u00dfenstelle der Bundesnetzagentur vorzulegen."
@@ -17012,5 +17012,11 @@
                 }
             ]
         }
-    ]
+    ],
+    "metadata": {
+        "edition": "3. Auflage, M\u00e4rz 2024",
+        "issued_on": "2024-03-20",
+        "valid_from": "2024-06-24",
+        "license": "DL-DE->BY-2.0"
+    }
 }

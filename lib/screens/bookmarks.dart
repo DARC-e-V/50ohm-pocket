@@ -111,7 +111,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gemerkerte Fragen (${questions.length})"),
+        title: Text("Gemerkte Fragen (${questions.length})"),
         centerTitle: false,
       ),
       body: questions.isEmpty
@@ -122,7 +122,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                   Icon(Icons.bookmark_border, size: 64, color: Colors.grey),
                   SizedBox(height: 16),
                   Text(
-                    "Keine gemerkerten Fragen",
+                    "Keine gemerkte Fragen",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(height: 8),
