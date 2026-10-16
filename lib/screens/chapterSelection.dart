@@ -137,7 +137,7 @@ class _LearningmoduleState extends State<Learningmodule> {
                 value: 6,
                 child: ListTile(
                   leading: Icon(Icons.bookmark),
-                  title: Text("Gemerkerte Fragen"),
+                  title: Text("Gemerkte Fragen"),
                 ),
               ),
               PopupMenuItem(
