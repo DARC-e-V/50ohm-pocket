@@ -173,7 +173,7 @@
                             "answer_a": "in der die Erscheinungen des Wetters stattfinden.",
                             "answer_b": "der sich über den Tropen befindet.",
                             "answer_c": "in dem es zur Bildung sporadischer E-Regionen kommen kann.",
-                            "answer_d": "in welcher Aurora-Erscheinungen auftreten können."
+                            "answer_d": "in welchem Aurora-Erscheinungen auftreten können."
                         },
                         {
                             "number": "EH302",
@@ -409,7 +409,7 @@
                         {
                             "number": "EH207",
                             "class": "2",
-                            "question": "Sie führen Funkbetrieb nahe der aktuell höchstmöglichen Frequenz (MUF) durch. Um den Funkbetrieb auf noch höheren Frequenz fortsetzen zu können, muss die Ionisation der brechenden Region ...",
+                            "question": "Sie führen Funkbetrieb nahe der aktuell höchstmöglichen Frequenz (MUF) durch. Um den Funkbetrieb auf noch höheren Frequenzen fortsetzen zu können, muss die Ionisation der brechenden Region ...",
                             "answer_a": "zunehmen.",
                             "answer_b": "abnehmen.",
                             "answer_c": "verschwinden.",
@@ -460,7 +460,7 @@
                             "question": "Bei der Ausbreitung auf Kurzwelle spielt die so genannte \"Greyline\" eine besondere Rolle. Was ist die \"Greyline\"?",
                             "answer_a": "Die Zone der Dämmerung um Sonnenauf- und -untergang herum.",
                             "answer_b": "Die instabilen Ausbreitungsbedingungen in der Äquatorialzone.",
-                            "answer_c": "Die Zeit mit den besten Möglichkeiten für \"Short Skip\" Ausbreitung.",
+                            "answer_c": "Die Zeit mit den besten Möglichkeiten für \"Short-Skip\"-Ausbreitung.",
                             "answer_d": "Die Übergangszeit vor und nach dem Winter, in der sich die D-Region ab- und wieder aufbaut."
                         }
                     ]
@@ -786,7 +786,7 @@
                         {
                             "number": "EC103",
                             "class": "2",
-                            "question": "Welche Widerstände sind induktionsarm und eignen sich besonders für den Einsatz bei Frequenz oberhalb von 30 MHz.",
+                            "question": "Welche Widerstände sind induktionsarm und eignen sich besonders für den Einsatz bei Frequenzen oberhalb von 30 MHz.",
                             "answer_a": "Metalloxidschichtwiderstände",
                             "answer_b": "Metallschichtwiderstände",
                             "answer_c": "Drahtwiderstände",
@@ -846,7 +846,7 @@
                         {
                             "number": "EC113",
                             "class": "2",
-                            "question": "Die Farbringe grün, blau und rot sowie ein Silberner auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert zwischen ...",
+                            "question": "Die Farbringe grün, blau und rot sowie ein silberner auf einem Widerstand mit 4 Farbringen bedeuten einen Widerstandswert zwischen ...",
                             "answer_a": "5040 bis 6160 Ohm.",
                             "answer_b": "4760 bis 6440 Ohm.",
                             "answer_c": "4760 bis 6840 Ohm.",
@@ -914,7 +914,7 @@
                             "class": "2",
                             "question": "Gelten die Formeln für die Leistung an einem rein ohmschen Widerstand auch bei Wechselspannung?",
                             "answer_a": "Ja, wenn mit den Effektivwerten gerechnet wird.",
-                            "answer_b": "Nein, da die periodische Änderung von Strom und Spannung dann vernachlässigt werden.",
+                            "answer_b": "Nein, da die periodische Änderung von Strom und Spannung dann vernachlässigt wird.",
                             "answer_c": "Ja, wenn mit den Spitzenwerten gerechnet wird.",
                             "answer_d": "Nein, da die Blindleistung nicht berücksichtigt wird."
                         },
@@ -975,7 +975,7 @@
                         {
                             "number": "EB510",
                             "class": "2",
-                            "question": "Ein Widerstand von 10 kOhm hat eine maximale Spannungsfestigkeit von 700 V und eine maximale Belastbarkeit von 1 W. Welche Gleichspannung darf höchstens an den Widerstand angelegt werden um ihn im spezifizierten Bereich zu betreiben?",
+                            "question": "Ein Widerstand von 10 kOhm hat eine maximale Spannungsfestigkeit von 700 V und eine maximale Belastbarkeit von 1 W. Welche Gleichspannung darf höchstens an den Widerstand angelegt werden, um ihn im spezifizierten Bereich zu betreiben?",
                             "answer_a": "100 V",
                             "answer_b": "0,01 kV",
                             "answer_c": "0,7 kV",
@@ -1065,7 +1065,7 @@
                         {
                             "number": "EB102",
                             "class": "2",
-                            "question": "An einem Plattenkondensator mit 0.6 cm Plattenabstand werden 9 V angelegt. Wie groß ist die elektrische Feldstärke zwischen den beiden Platten näherungsweise?",
+                            "question": "An einem Plattenkondensator mit 0,6 cm Plattenabstand werden 9 V angelegt. Wie groß ist die elektrische Feldstärke zwischen den beiden Platten näherungsweise?",
                             "answer_a": "1500 V/m",
                             "answer_b": "150 V/m",
                             "answer_c": "540 V/m",
@@ -1277,7 +1277,7 @@
                         {
                             "number": "EC207",
                             "class": "2",
-                            "question": "Bei welchem der folgenden Bauformen von Kondensatoren muss beim Einbau auf die Polarität geachtet werden?",
+                            "question": "Bei welcher der folgenden Bauformen von Kondensatoren muss beim Einbau auf die Polarität geachtet werden?",
                             "answer_a": "Elektrolytkondensator",
                             "answer_b": "Keramikkondensator",
                             "answer_c": "Styroflexkondensator",
@@ -1711,8 +1711,8 @@
                             "question": "Welche Transistortypen sind bipolare Transistoren?",
                             "answer_a": "NPN- und PNP-Transistoren",
                             "answer_b": "Dual-Gate-MOS-FETs",
-                            "answer_c": "Isolierschicht FETs",
-                            "answer_d": "Sperrschicht FETs"
+                            "answer_c": "Isolierschicht-FETs",
+                            "answer_d": "Sperrschicht-FETs"
                         },
                         {
                             "number": "EC605",
@@ -1989,7 +1989,7 @@
                         {
                             "number": "ED101",
                             "class": "2",
-                            "question": "Wie teilt sich die Spannung an zwei in Reihe geschalteten Widerständen auf, wenn $R_1$ = 5 mal so groß ist wie $R_2$?",
+                            "question": "Wie teilt sich die Spannung an zwei in Reihe geschalteten Widerständen auf, wenn $R_1$ = 5-mal so groß ist wie $R_2$?",
                             "answer_a": "$U_1 = 5\\cdot U_2$",
                             "answer_b": "$U_1 = \\frac{U_2}{5}$",
                             "answer_c": "$U_1 = 6\\cdot U_2$",
@@ -2091,7 +2091,7 @@
                         {
                             "number": "ED124",
                             "class": "2",
-                            "question": "Welche Gesamtkapazität hat diese Schaltung, wenn $C_1 = 200 nF$, $C_2 = 100 nF$ und $C_3 = 100000 pF$ betragen?",
+                            "question": "Welche Gesamtkapazität hat diese Schaltung, wenn $C_1$ = 200 nF, $C_2$ = 100 nF und $C_3$ = 100000 pF betragen?",
                             "answer_a": "100 nF",
                             "answer_b": "250 nF",
                             "answer_c": "400 nF",
@@ -2487,7 +2487,7 @@
                             "question": "Welche wesentlichen Ausgangsfrequenzen erzeugt die in der Abbildung dargestellte Stufe?",
                             "answer_a": "10,7 MHz und 52,7 MHz",
                             "answer_b": "42 MHz und 63,4 MHz",
-                            "answer_c": "21 MHz 63,4 MHz",
+                            "answer_c": "21 MHz und 63,4 MHz",
                             "answer_d": "21,4 MHz und 105,4 MHz",
                             "picture_question": "EF201_q"
                         },
@@ -2547,9 +2547,9 @@
                             "class": "2",
                             "question": "Welche der nachfolgenden Antworten trifft für die Wirkungsweise eines Transverters zu? Ein Transverter setzt...",
                             "answer_a": "beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band und beim Senden das 10 m-Sendesignal auf das 70 cm-Band um.",
-                            "answer_b": "beim Senden sowohl beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band um.",
-                            "answer_c": "beim Senden sowohl beim Empfangen z. B. ein frequenzmoduliertes Signal in ein amplitudenmoduliertes Signal um.",
-                            "answer_d": "beim Senden sowohl beim Empfangen z. B. ein DMR-Signal in ein D-Star-Signal um."
+                            "answer_b": "sowohl beim Senden als auch beim Empfangen z. B. ein 70 cm-Signal in das 10 m-Band um.",
+                            "answer_c": "sowohl beim Senden als auch beim Empfangen z. B. ein frequenzmoduliertes Signal in ein amplitudenmoduliertes Signal um.",
+                            "answer_d": "sowohl beim Senden als auch beim Empfangen z. B. ein DMR-Signal in ein D-Star-Signal um."
                         },
                         {
                             "number": "EF502",
@@ -2760,7 +2760,7 @@
                         {
                             "number": "EF310",
                             "class": "2",
-                            "question": "Welche Bandbreite sollte der nachgeschaltete Filter zur Unterdrückung eines Seitenbandes bei der Erzeugung eines SSB-Telefoniesignals haben?",
+                            "question": "Welche Bandbreite sollte das nachgeschaltete Filter zur Unterdrückung eines Seitenbandes bei der Erzeugung eines SSB-Telefoniesignals haben?",
                             "answer_a": "2,4 kHz ",
                             "answer_b": "800 Hz ",
                             "answer_c": "455 kHz ",
@@ -3098,7 +3098,7 @@
                         {
                             "number": "EI504",
                             "class": "2",
-                            "question": "Wenn ein Faktor-10-Frequenzteiler vor einem Frequenzzähler geschaltet wird und der Zähler 14,5625 MHz anzeigt, beträgt die tatsächliche Frequenz ...",
+                            "question": "Wenn ein 10:1-Frequenzteiler vor einem Frequenzzähler geschaltet wird und der Zähler 14,5625 MHz anzeigt, beträgt die tatsächliche Frequenz ...",
                             "answer_a": "145,625 MHz.",
                             "answer_b": "1,45625 MHz.",
                             "answer_c": "14,5625 MHz.",
@@ -3137,16 +3137,16 @@
                             "answer_a": "die Leistung, die der Sender unter normalen Betriebsbedingungen während einer Periode der Hochfrequenzschwingung bei der höchsten Spitze der Modulationshüllkurve durchschnittlich an einen reellen Abschlusswiderstand abgeben kann.",
                             "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung über die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzgeräte (z. B. Anpassgeräte) durchlaufen werden.",
                             "answer_c": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen an die Antennenspeiseleitung während eines Zeitintervalls abgibt, das im Verhältnis zur Periode der tiefsten Modulationsfrequenz ausreichend lang ist.",
-                            "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
+                            "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
                         },
                         {
                             "number": "EB502",
                             "class": "2",
                             "question": "Die mittlere Leistung eines Senders ist ...",
                             "answer_a": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen an die Antennenspeiseleitung während eines Zeitintervalls abgibt, das im Verhältnis zur Periode der tiefsten Modulationsfrequenz ausreichend lang ist.",
-                            "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung über die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzgeräte (z.B. Anpassgeräte) durchlaufen werden.",
+                            "answer_b": "die unmittelbar nach dem Senderausgang messbare Leistung über die Spitzen der Periode einer durchschnittlichen Hochfrequenzschwingung, bevor Zusatzgeräte (z. B. Anpassgeräte) durchlaufen werden.",
                             "answer_c": "die durchschnittliche Leistung, die ein Sender unter normalen Betriebsbedingungen während einer Periode der Hochfrequenzschwingung bei der höchsten Spitze der Modulationshüllkurve der Antennenspeiseleitung zuführt.",
-                            "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
+                            "answer_d": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinnfaktor in einer Richtung, bezogen auf den Halbwellendipol."
                         },
                         {
                             "number": "EF401",
@@ -3992,8 +3992,8 @@
                             "class": "2",
                             "question": "Wie nennt man eine Schleifenantenne, die aus drei gleich langen Drahtstücken besteht?",
                             "answer_a": "Delta-Loop-Antenne",
-                            "answer_b": "3-Element Quad-Loop-Antenne",
-                            "answer_c": "W3DZZ Antenne",
+                            "answer_b": "3-Element-Quad-Loop-Antenne",
+                            "answer_c": "W3DZZ-Antenne",
                             "answer_d": "3-Element-Beam"
                         },
                         {
@@ -4131,7 +4131,7 @@
                         {
                             "number": "EG109",
                             "class": "2",
-                            "question": "Berechnen Sie die elektrische Länge eines 5/8 $\\lambda$-langen Vertikalstrahlers für das 10 m-Band (28,5 MHz).",
+                            "question": "Berechnen Sie die elektrische Länge eines 5/8 $\\lambda$ langen Vertikalstrahlers für das 10 m-Band (28,5 MHz).",
                             "answer_a": "6,58 m",
                             "answer_b": "3,29 m",
                             "answer_c": "2,08 m",
@@ -4643,7 +4643,7 @@
                             "answer_a": "durch Messung von $L$ und $C$ und Berechnung oder z. B. mit einem vektoriellen Netzwerkanalysator (VNA).",
                             "answer_b": "mit einem Frequenzmesser oder einem Oszilloskop.",
                             "answer_c": "mit einem Digital-Multimeter in der Stellung Frequenzmessung.",
-                            "answer_d": "mit Hilfe der S-Meter Anzeige bei Anschluss des Schwingkreises an den Empfängereingang."
+                            "answer_d": "mit Hilfe der S-Meter-Anzeige bei Anschluss des Schwingkreises an den Empfängereingang."
                         },
                         {
                             "number": "EI203",
@@ -4749,19 +4749,19 @@
                             "number": "EG501",
                             "class": "2",
                             "question": "Die äquivalente isotrope Strahlungsleistung (EIRP) ist ...",
-                            "answer_a": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung bezogen auf den isotropen Strahler.",
-                            "answer_b": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung bezogen auf den Dipol.",
-                            "answer_c": "die durchschnittliche Leistung bei der höchsten Spitze der Modulationshüllkurve, die der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung bezogen auf den isotropen Strahler.",
-                            "answer_d": "die durchschnittliche Leistung bei der höchsten Spitze der Modulationshüllkurve, die der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung bezogen auf den Dipol."
+                            "answer_a": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung, bezogen auf den isotropen Strahler.",
+                            "answer_b": "das Produkt aus der Leistung, die unmittelbar der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung, bezogen auf den Dipol.",
+                            "answer_c": "die durchschnittliche Leistung bei der höchsten Spitze der Modulationshüllkurve, die der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung, bezogen auf den isotropen Strahler.",
+                            "answer_d": "die durchschnittliche Leistung bei der höchsten Spitze der Modulationshüllkurve, die der Antenne zugeführt wird, und ihrem Gewinn in einer Richtung, bezogen auf den Dipol."
                         },
                         {
                             "number": "EG502",
                             "class": "2",
                             "question": "Nach welcher der Antworten kann die EIRP berechnet werden?",
-                            "answer_a": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$ bezogen auf einen isotropen Strahler",
-                            "answer_b": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} \\cdot P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$ bezogen auf einen Halbwellendipol",
-                            "answer_c": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$ bezogen auf einen isotropen Strahler",
-                            "answer_d": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$ bezogen auf einen Halbwellendipol"
+                            "answer_a": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$, bezogen auf einen isotropen Strahler",
+                            "answer_b": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} \\cdot P_{\\textrm{Verluste}}) \\cdot G_{\\textrm{Antenne}}$, bezogen auf einen Halbwellendipol",
+                            "answer_c": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$, bezogen auf einen isotropen Strahler",
+                            "answer_d": "$P_{\\textrm{EIRP}} = (P_{\\textrm{Sender}} - P_{\\textrm{Verluste}}) + G_{\\textrm{Antenne}}$, bezogen auf einen Halbwellendipol"
                         },
                         {
                             "number": "EG503",
@@ -4838,7 +4838,7 @@
                         {
                             "number": "EG511",
                             "class": "2",
-                            "question": "Sie möchten für ihre Sendeanlage keine Anzeige einer ortsfesten Amateurfunkanlage nach § 9 BEMFV abgeben. Wie hoch darf die Sendeleistung für ihre Vertikalantenne mit 5,15 dBi Gewinn ohne Berücksichtigung der Kabelverluste maximal sein, damit die Strahlungsleistung von 10 W EIRP nicht überschritten wird?",
+                            "question": "Sie möchten für Ihre Sendeanlage keine Anzeige einer ortsfesten Amateurfunkanlage nach § 9 BEMFV abgeben. Wie hoch darf die Sendeleistung für ihre Vertikalantenne mit 5,15 dBi Gewinn ohne Berücksichtigung der Kabelverluste maximal sein, damit die Strahlungsleistung von 10 W EIRP nicht überschritten wird?",
                             "answer_a": "3 W",
                             "answer_b": "10 W",
                             "answer_c": "5 W",
@@ -4911,7 +4911,7 @@
                             "number": "EK105",
                             "class": "2",
                             "question": "Sie möchten den Personenschutz-Sicherheitsabstand für ihren neuen, fest aufgebauten Halbwellendipol für das 80 m-Band (3,5 - 3,8 MHz) bestimmen. Bei 100 W Sendeleistung errechnen Sie mit Hilfe der Näherungsformel für die Fernfeldberechnung einen erforderlichen Abstand von 3,65 m. Ist dieser Sicherheitsabstand gültig?",
-                            "answer_a": "Der errechnete Abstand ist ungültig, da er im reaktiven Nahfeld der Antenne liegt und muss deshalb durch andere Methoden wie z. B. Messungen der E- und H-Feldanteile, Simulations- oder Nahfeldberechnungen bestimmt werden.",
+                            "answer_a": "Der errechnete Abstand ist ungültig, da er im reaktiven Nahfeld der Antenne liegt, und muss deshalb durch andere Methoden wie z. B. Messungen der E- und H-Feldanteile, Simulations- oder Nahfeldberechnungen bestimmt werden.",
                             "answer_b": "Der errechnete Personenschutz-Sicherheitsabstand ist gültig, da Berechnungen mit der Näherungsformel für die Fernfeldberechnung im Amateurfunk hinreichend genau sind.",
                             "answer_c": "Der errechnete Personenschutz-Sicherheitsabstand muss erst noch mit einem Sicherheitszuschlag ($\\sqrt{2}$) multipliziert werden.",
                             "answer_d": "Der errechnete Personenschutz-Sicherheitsabstand ist akzeptiert, sofern die vor Inbetriebnahme einzureichende \"Anzeige ortsfester Amateurfunkanlagen\" gemäß § 9 BEMFV von der Bundesnetzagentur nicht beanstandet wird."
@@ -4966,7 +4966,7 @@
                             "question": "Unter welchen Bedingungen darf eine Gebäudeerdungsanlage für die Antennenerdung verwendet werden?",
                             "answer_a": "Jede Gebäudeerdungsanlage kann verwendet werden.",
                             "answer_b": "Für jede Antenne muss eine separate Erdungsanlage unabhängig von der Gebäudeerdungsanlage aufgebaut werden.",
-                            "answer_c": "Wenn die Gebäudeerdung über einen außenliegendem Ringerder verfügt.",
+                            "answer_c": "Wenn die Gebäudeerdung vom Prüf- und Messdienst der Bundesnetzagentur abgenommen wurde.",
                             "answer_d": "Die Antennenanlage darf nicht über die von der Gebäudeerdungsanlage eingeschlossenen Fläche hinausragen."
                         },
                         {
@@ -5014,13 +5014,13 @@
                             "question": "Auf welchen besonderen Sicherheitsaspekt ist speziell bei ungeerdeten Drahtantennen zu achten?",
                             "answer_a": "Bereits durch Regen oder Hagel kann es zu elektrischen Aufladungen der Antenne kommen.",
                             "answer_b": "Durch die Sendeleistung entstehen hohe Spannungen gegen Erde, die eine dickere Isolierung des Antennendrahtes erfordern.",
-                            "answer_c": "Bei Sonnenstürmen entstehen elektrische Aufladungen die hohe Spannungen erzeugen können.",
-                            "answer_d": "Durch die fehlende Erdung und dem Strombauch im Speisepunkt kann der Mittenisolator zu stark erhitzt werden und durchschmelzen."
+                            "answer_c": "Bei Sonnenstürmen entstehen elektrische Aufladungen, die hohe Spannungen erzeugen können.",
+                            "answer_d": "Durch die fehlende Erdung und den Strombauch im Speisepunkt kann der Mittenisolator zu stark erhitzt werden und durchschmelzen."
                         },
                         {
                             "number": "EK207",
                             "class": "2",
-                            "question": "Wie lassen sich elektrostatische Aufladungen, die insbesondere bei ungeerdeten Drahtantennen auftreten können, wirkungsvoll vermeiden?",
+                            "question": "Wie lassen sich elektrostatische Aufladungen, die insbesondere bei ungeerdeten Drahtantennen auftreten können, wirkungsvoll vermeiden, ohne die Funktion der Funkanlage zu beeinträchtigen?",
                             "answer_a": "Durch hochohmige Ableitwiderstände zwischen den Anschlüssen an der Antenne und dem Erdanschluss der Amateurfunkstelle.",
                             "answer_b": "Durch niederohmige Ableitwiderstände zwischen den Anschlüssen an der Antenne und dem Erdanschluss der Amateurfunkstelle.",
                             "answer_c": "Das Einschleifen eines Anpassgerätes zwischen Transceiver und Antenne neutralisiert die Aufladungen.",
@@ -5037,7 +5037,7 @@
                             "class": "2",
                             "question": "Welche möglichen Gefahren bestehen beim Berühren von im Sendebetrieb befindlichen Antennen?",
                             "answer_a": "Verletzungen und Verbrennungen durch hochfrequente Spannungen.",
-                            "answer_b": "Keine, da durch den \"Skin-Effekt\" ein Stromfluß durch den menschlichen Körper verhindert wird.",
+                            "answer_b": "Keine, da durch den \"Skin-Effekt\" ein Stromfluss durch den menschlichen Körper verhindert wird.",
                             "answer_c": "Keine, sofern die Antenne ordnungsgemäß über ein Blitzschutzsystem mit Erde verbunden ist.",
                             "answer_d": "Stromschlag durch die Gleichspannungsversorgung der Sender-Endstufe, die direkt am Antennenausgang anliegt."
                         }
