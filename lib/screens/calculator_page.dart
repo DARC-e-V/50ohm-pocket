@@ -83,13 +83,32 @@ class _ScientificCalculatorKeypad extends StatelessWidget {
   const _ScientificCalculatorKeypad();
 
   static const rows = [
-    ['sin', 'cos', 'tan', 'sqrt'],
-    ['xʸ', 'π', 'log₁₀', 'e'],
+    ['sin', 'cos', 'tan', 'sqrt', '⌫'],
+    ['xʸ', 'π', 'log₁₀', 'e', 'x²'],
     ['7', '8', '9', '(', ')'],
     ['4', '5', '6', '+', '-'],
     ['1', '2', '3', '/', '*'],
     ['.', '0', 'C', '='],
   ];
+
+  static void _backspace(CalculatorProvider provider) {
+    final output = provider.output;
+    var remaining = '';
+    if (output != 'Error' && output != '0') {
+      final token = [
+        'log(10,',
+        'sqrt(',
+        'sin(',
+        'cos(',
+        'tan(',
+        _piInput,
+        _eInput,
+      ].where(output.endsWith).firstOrNull;
+      remaining = output.substring(0, output.length - (token?.length ?? 1));
+    }
+    provider.buttonPressed('C');
+    if (remaining.isNotEmpty) provider.buttonPressed(remaining);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,18 +124,24 @@ class _ScientificCalculatorKeypad extends StatelessWidget {
                     flex: button == '=' ? 2 : 1,
                     child: _CalculatorButton(
                       label: button,
-                      onPressed: () => provider.buttonPressed(
-                        switch (button) {
+                      onPressed: () {
+                        if (button == '⌫') {
+                          _backspace(provider);
+                          return;
+                        }
+                        provider.buttonPressed(switch (button) {
                           'sin' => 'sin(',
                           'cos' => 'cos(',
                           'tan' => 'tan(',
+                          'sqrt' => 'sqrt(',
+                          'x²' => '^2',
                           'π' => _piInput,
                           'e' => _eInput,
                           'log₁₀' => 'log(10,',
                           'xʸ' => '^',
                           _ => button,
-                        },
-                      ),
+                        });
+                      },
                     ),
                   ),
               ],
@@ -142,6 +167,7 @@ class _CalculatorButton extends StatelessWidget {
         'tan' => r'\tan(x)',
         'sqrt' => r'\sqrt{x}',
         'xʸ' => r'x^y',
+        'x²' => r'x^2',
         'π' => r'\pi',
         'log₁₀' => r'\log_{10}(x)',
         '*' => r'\times',
@@ -156,6 +182,8 @@ class _CalculatorButton extends StatelessWidget {
         'tan' => 'Tangens',
         'sqrt' => 'Quadratwurzel',
         'xʸ' => 'Potenz',
+        'x²' => 'Quadrieren',
+        '⌫' => 'Letzte Eingabe löschen',
         'π' => 'Pi',
         'log₁₀' => 'Zehnerlogarithmus',
         'e' => 'Eulersche Zahl',
@@ -177,6 +205,7 @@ class _CalculatorButton extends StatelessWidget {
       'tan',
       'sqrt',
       'xʸ',
+      'x²',
       'π',
       'log₁₀',
       'e',
@@ -188,7 +217,7 @@ class _CalculatorButton extends StatelessWidget {
     if (label == '=') {
       background = colors.primary;
       foreground = colors.onPrimary;
-    } else if (label == 'C') {
+    } else if (label == 'C' || label == '⌫') {
       background = colors.errorContainer;
       foreground = colors.onErrorContainer;
     } else if (isOperator) {
@@ -219,16 +248,18 @@ class _CalculatorButton extends StatelessWidget {
             child: ExcludeSemantics(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Math.tex(
-                  _texLabel,
-                  key: ValueKey('calculator-label-$label'),
-                  mathStyle: MathStyle.text,
-                  textStyle: TextStyle(
-                    color: foreground,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                child: label == '⌫'
+                    ? Icon(Icons.backspace_outlined, color: foreground)
+                    : Math.tex(
+                        _texLabel,
+                        key: ValueKey('calculator-label-$label'),
+                        mathStyle: MathStyle.text,
+                        textStyle: TextStyle(
+                          color: foreground,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
               ),
             ),
           ),

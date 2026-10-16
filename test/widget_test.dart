@@ -194,7 +194,7 @@ void main() {
     expect(label('sqrt'), findsOneWidget);
     expect(label('*'), findsOneWidget);
     expect(label('/'), findsOneWidget);
-    expect(find.byType(Math), findsNWidgets(27));
+    expect(find.byType(Math), findsNWidgets(28));
     expect(
       tester.widget<MaterialButton>(button('xʸ')).color,
       tester.widget<MaterialButton>(button('sqrt')).color,
@@ -236,6 +236,37 @@ void main() {
       tester.getSize(button('7')).height,
       greaterThanOrEqualTo(48),
     );
+
+    expect(tester.getSize(button('sin')), tester.getSize(button('7')));
+    expect(tester.getSize(button('⌫')), tester.getSize(button('7')));
+
+    await tester.tap(button('sqrt'));
+    await tester.pump();
+    expect(find.text('sqrt('), findsOneWidget);
+    await tester.tap(button('9'));
+    await tester.tap(button('⌫'));
+    await tester.pump();
+    expect(find.text('sqrt('), findsOneWidget);
+    await tester.tap(button('⌫'));
+    await tester.pump();
+    expect(find.text('0'), findsOneWidget);
+    await tester.tap(button('sqrt'));
+    await tester.tap(button('9'));
+    await tester.tap(button(')'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('3.0'), findsOneWidget);
+    await tester.tap(button('C'));
+    await tester.tap(button('π'));
+    await tester.tap(button('⌫'));
+    await tester.pump();
+    expect(find.text('0'), findsOneWidget);
+    await tester.tap(button('3'));
+    await tester.tap(button('x²'));
+    await tester.tap(button('='));
+    await tester.pump();
+    expect(find.text('9.0'), findsOneWidget);
+    await tester.tap(button('C'));
 
     await tester.tap(button('2'));
     await tester.tap(button('+'));
