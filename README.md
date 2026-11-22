@@ -27,6 +27,17 @@ mit `fvm flutter doctor` prüfen.
 Builds erzeugt man beispielsweise mit `fvm flutter build appbundle` für Android
 oder `fvm flutter build ios` für iOS.
 
+### VS Code Dev Container
+
+Mit Docker und der VS-Code-Erweiterung [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+**Dev Containers: Reopen in Container** ausführen. Die Webversion im Container starten:
+
+```bash
+flutter run -d web-server --web-hostname 0.0.0.0 --web-port 8080
+```
+
+Port **8080** im VS-Code-Tab **Ports** im Browser öffnen.
+
 ## Entwicklungsdokumentation
 
 - [Fragen- und Kursdaten aktualisieren](docs/question-assets.md) (Das ist wichtig bei neuen Releases!)
