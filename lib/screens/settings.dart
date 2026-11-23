@@ -1,5 +1,6 @@
 import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/learning_state/reset_learning_state.dart';
+import 'package:fuenfzigohm/learning/learning_mode.dart';
 import 'package:fuenfzigohm/main.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -220,11 +221,40 @@ class _settingsstate extends State<Settingspage> {
     );
   }
 
+  Future<void> _showLearningModeDialog() async {
+    final settings = DatabaseWidget.of(context).settings_database;
+    final selectedMode = LearningMode.read(settings);
+    final mode = await showDialog<LearningMode>(
+      context: context,
+      builder: (dialogContext) => SimpleDialog(
+        title: const Text('Lernmodus'),
+        children: [
+          RadioGroup<LearningMode>(
+            groupValue: selectedMode,
+            onChanged: (value) => Navigator.of(dialogContext).pop(value),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: LearningMode.values.map((mode) {
+                return RadioListTile<LearningMode>(
+                  title: Text(mode.label),
+                  subtitle: Text(mode.description),
+                  value: mode,
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (mode == null || !mounted) return;
+    await mode.save(settings);
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool courseOrdering =
-        DatabaseWidget.of(context).settings_database.get("courseOrdering") ??
-            true;
+    final learningMode =
+        LearningMode.read(DatabaseWidget.of(context).settings_database);
     final appSettings = AppSettingsScope.of(context);
 
     return Scaffold(
@@ -275,24 +305,13 @@ class _settingsstate extends State<Settingspage> {
                   Navigator.of(context).pushNamed("/welcome");
                 },
               ),
-              SettingsTile.switchTile(
-                initialValue: courseOrdering,
-                onToggle: (bool value) {
-                  setState(() {
-                    courseOrdering = value;
-                  });
-                  DatabaseWidget.of(
-                    context,
-                  ).settings_database.put("courseOrdering", value);
-                },
-                title: Text("Ausbildungsmaterial nach 50Ohm.de"),
-                description: Text(
-                  "Ist der Schalter aktiviert, werden die Fragen in der "
-                  "didaktisch aufbereiteten Reihenfolge von 50ohm.de "
-                  "angezeigt. Ist er deaktiviert, folgt die Reihenfolge dem "
-                  "amtlichen Fragenkatalog der Bundesnetzagentur. Zum Lernen "
-                  "empfehlen wir die Reihenfolge von 50ohm.de.",
-                ),
+              SettingsTile.navigation(
+                title: const Text('Lernmodus'),
+                value: Text(learningMode.label),
+                description: const Text(
+                    'Zum Lernen empfehlen wir die Reihenfolge von 50ohm.de.'),
+                trailing: const Icon(Icons.keyboard_arrow_right),
+                onPressed: (_) => _showLearningModeDialog(),
               ),
             ],
           ),

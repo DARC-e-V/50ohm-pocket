@@ -10,6 +10,7 @@ import 'package:fuenfzigohm/custom_libs/solution_index.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
 import 'package:fuenfzigohm/custom_libs/video_index.dart';
 import 'package:fuenfzigohm/learning_state/practice_question_selector.dart';
+import 'package:fuenfzigohm/learning/continuous_learning_session.dart';
 import 'package:fuenfzigohm/screens/completeLesson.dart';
 import 'package:fuenfzigohm/screens/pdfViewer.dart';
 import 'package:fuenfzigohm/screens/calculator_page.dart';
@@ -89,17 +90,20 @@ class Question extends StatefulWidget {
   final Map<String, dynamic>? practiceData;
   final List<QuestionReference> practiceQuestions;
   final QuestionReference? singleQuestion;
+  final ContinuousLearningSession? continuousSession;
 
   Question(this.context, this.subchapter, this.chapter)
       : practiceData = null,
         practiceQuestions = const [],
+        continuousSession = null,
         singleQuestion = null;
 
   Question.practice(
     this.context,
     Map<String, dynamic> data,
-    List<QuestionReference> questions,
-  )   : subchapter = const [],
+    List<QuestionReference> questions, {
+    this.continuousSession,
+  })  : subchapter = const [],
         chapter = 0,
         practiceData = data,
         practiceQuestions = questions,
@@ -120,6 +124,7 @@ class Question extends StatefulWidget {
           ],
         },
         practiceQuestions = const [],
+        continuousSession = null,
         singleQuestion = QuestionReference(
           mainChapter: -1,
           chapter: 0,
@@ -200,9 +205,13 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
       if (_isSingle) {
         questionorder = <int>[widget.singleQuestion!.questionIndex];
       } else if (_isPractice) {
-        _practiceSelector = PracticeQuestionSelector();
         questionorder = <int>[];
-        _selectNextPracticeQuestion();
+        if (widget.continuousSession != null) {
+          _practiceReference = widget.practiceQuestions.first;
+        } else {
+          _practiceSelector = PracticeQuestionSelector();
+          _selectNextPracticeQuestion();
+        }
       } else if (subchapter.length == 0)
         questionorder = orderlist(json.chapterQuestionCount(chapter), true);
       else
@@ -298,6 +307,20 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          bottom: widget.continuousSession == null
+              ? null
+              : PreferredSize(
+                  preferredSize: const Size.fromHeight(40),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                    child: Text(
+                      '${widget.continuousSession!.isReview ? 'Wiederholung' : 'Neue Frage'} · '
+                      '${_subchapter == null ? json.chapter_names(_chapter) : json.subchapter_name(_chapter, _subchapter)}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
           leading: BackButton(
             onPressed: () {
               try {
@@ -599,10 +622,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
         shrinkWrap: true,
         itemCount: 4,
         itemBuilder: (context, i) {
-          return Container(
-            decoration: BoxDecoration(
-              color: _answerBackgroundColor(i),
-            ),
+          return Material(
+            color: _answerBackgroundColor(i),
             child: Semantics(
               label: "Antwort ${i + 1} von 4",
               selected: i == questionradio,
@@ -644,10 +665,8 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: _answerBackgroundColor(i),
-                  ),
+                Material(
+                  color: _answerBackgroundColor(i),
                   child: RadioListTile(
                       enableFeedback: true,
                       fillColor:
@@ -797,38 +816,44 @@ class _Questionstate extends State<Question> with TickerProviderStateMixin {
     if (_isPractice) {
       questionradio = null;
       _practiceAnswered += 1;
-      _selectNextPracticeQuestion();
+      final session = widget.continuousSession;
+      if (session != null) {
+        final next = session.nextQuestion(previousQuestionId: _questionId);
+        if (next == null) {
+          Navigator.of(context).pop(true);
+          return;
+        }
+        _practiceReference = next;
+      } else {
+        _selectNextPracticeQuestion();
+      }
       refreshAnswers();
       return;
     }
-    try {
-      this.questionorder[this.questionkey + 1];
-      this.questionradio = null;
+    if (questionkey + 1 < questionorder.length) {
       setState(() {
         questionradio = null;
         questionkey += 1;
         refreshAnswers();
       });
-    } catch (e) {
-      try {
-        this.subchapter[this.subchapterkey];
-        setState(() {
-          questionradio = null;
-          subchapterkey += 1;
-          questionorder =
-              buildquestionlist(chapter, subchapter[subchapterkey], json, true);
-          questionkey = 0;
-          refreshAnswers();
-        });
-      } catch (e) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (con) =>
-                  Finish(chapter, subchapter, questreslist, context)),
-        );
-      }
+      return;
     }
+    if (subchapterkey + 1 < subchapter.length) {
+      setState(() {
+        questionradio = null;
+        subchapterkey += 1;
+        questionorder =
+            buildquestionlist(chapter, subchapter[subchapterkey], json, true);
+        questionkey = 0;
+        refreshAnswers();
+      });
+      return;
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (con) => Finish(chapter, subchapter, questreslist, context)),
+    );
   }
 
   void _selectNextPracticeQuestion() {
