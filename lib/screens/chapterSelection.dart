@@ -5,6 +5,10 @@ import 'package:fuenfzigohm/custom_libs/database.dart';
 import 'package:fuenfzigohm/custom_libs/icons.dart';
 import 'package:fuenfzigohm/custom_libs/json.dart';
 import 'package:fuenfzigohm/custom_libs/url_launcher.dart';
+import 'package:fuenfzigohm/custom_libs/section_urls.dart';
+import 'package:fuenfzigohm/learning/continuous_course.dart';
+import 'package:fuenfzigohm/learning/learning_mode.dart';
+import 'package:fuenfzigohm/screens/continuous_learning.dart';
 import 'package:fuenfzigohm/screens/question.dart';
 import 'package:fuenfzigohm/screens/settings.dart';
 import 'package:fuenfzigohm/screens/aboutApp.dart';
@@ -113,9 +117,9 @@ class _LearningmoduleState extends State<Learningmodule> {
 
   @override
   Widget build(BuildContext context) {
-    bool courseOrdering =
-        DatabaseWidget.of(context).settings_database.get("courseOrdering") ??
-            true;
+    final settings = DatabaseWidget.of(context).settings_database;
+    final courseOrdering = LearningMode.read(settings) !=
+        LearningMode.catalog;
     final storedClasses =
         DatabaseWidget.of(context).settings_database.get("Klasse");
     final selectedClasses = storedClasses is Iterable
@@ -352,14 +356,62 @@ class _LearningmoduleState extends State<Learningmodule> {
                       ));
                 }
                 if (i == 1) {
-                  return ProgressOverviewCard(
-                    questionScores: questionScores,
-                    answeredQuestions: answeredQuestions,
+                  return Column(
+                    children: [
+                      ProgressOverviewCard(
+                        questionScores: questionScores,
+                        answeredQuestions: answeredQuestions,
+                      ),
+                      if (mainchapter == -1 &&
+                          LearningMode.read(DatabaseWidget.of(context)
+                                  .settings_database) ==
+                              LearningMode.continuous)
+                        Padding(
+                          padding: EdgeInsets.all(std_padding),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: FilledButton.icon(
+                              onPressed: () =>
+                                  _openContinuousCourse(context, json),
+                              icon: const Icon(Icons.play_arrow),
+                              label: Text(
+                                  answeredQuestions.any((answered) => answered)
+                                      ? 'Weiterlernen'
+                                      : 'Lernen starten'),
+                            ),
+                          ),
+                        ),
+                    ],
                   );
                 }
                 return chapterwidget(json, lessonChapterIndex(i), context);
               })),
     ));
+  }
+
+  Future<void> _openContinuousCourse(BuildContext context, Json json,
+      {int? chapter, int? subchapter}) async {
+    final database = DatabaseWidget.of(context);
+    final storedClasses =
+        database.settings_database.get('Klasse') as List? ?? [];
+    final course =
+        courseIdFromSelectedClasses(storedClasses.whereType<int>().toList());
+    final lessons = continuousCourseLessons(json.data!, course);
+    if (lessons.isEmpty) return;
+    final initialLesson = chapter == null
+        ? continuousCourseEntryLesson(json.data!, lessons,
+            database.learningStateRepository.answeredQuestionIds)
+        : lessons.indexWhere((lesson) =>
+            lesson.chapter == chapter && lesson.subchapter == subchapter);
+    if (initialLesson < 0) return;
+    await Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => ContinuousLearningPage(
+        data: json.data!,
+        lessons: lessons,
+        initialLesson: initialLesson,
+      ),
+    ));
+    if (mounted) setState(() {});
   }
 
   Widget chapterwidget(var json, int currentmainchapter, var context) {
@@ -480,6 +532,13 @@ class _LearningmoduleState extends State<Learningmodule> {
               ListTile(
                 contentPadding: EdgeInsetsDirectional.only(start: 16, end: 8),
                 onTap: () async {
+                  final settings = DatabaseWidget.of(context).settings_database;
+                  if (LearningMode.read(settings) == LearningMode.continuous) {
+                    await _openContinuousCourse(context, json,
+                        chapter: chapter,
+                        subchapter: hasDirectQuestions ? null : subchapter);
+                    return;
+                  }
                   Navigator.of(context)
                       .push(
                     MaterialPageRoute(
